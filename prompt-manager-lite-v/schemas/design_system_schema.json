@@ -1,0 +1,234 @@
+{
+  "designSystem": {
+    "systemInfo": {
+      "name": "Nombre del Sistema de Diseño",
+      "version": "2.0.0",
+      "description": "Un schema exhaustivo y de clase mundial para guiar la extracción y catalogación de sistemas de diseño complejos, basado en Atomic Design."
+    },
+    "philosophyAndBrand": {
+      "designPrinciples": ["Claridad", "Eficiencia", "Consistencia", "Accesibilidad"],
+      "brandPersonality": {
+        "keywords": ["Moderno", "Confiable", "Escalable", "Intuitivo"]
+      }
+    },
+    "designTokens": {
+      "color": {
+        "palette": {
+          "blue-50": "#E3F2FD",
+          "blue-100": "#BBDEFB",
+          "neutral-50": "#F8F9FA",
+          "neutral-900": "#212529"
+        },
+        "semantic": {
+          "background": {
+            "canvas": "#FFFFFF",
+            "surface-default": "#F8F9FA",
+            "surface-raised": "#FFFFFF"
+          },
+          "text": {
+            "primary": "#212529",
+            "secondary": "#6C757D",
+            "on-primary": "#FFFFFF",
+            "disabled": "#ADB5BD"
+          },
+          "interactive": {
+            "default": "#0D6EFD",
+            "hover": "#0B5ED7",
+            "pressed": "#0A58CA",
+            "disabled-bg": "#E9ECEF"
+          },
+          "feedback": {
+            "success": "#198754",
+            "error": "#DC3545",
+            "warning": "#FFC107",
+            "info": "#0DCAF0"
+          },
+          "border": {
+            "default": "#DEE2E6",
+            "subtle": "#F1F3F5"
+          },
+          "overlay": {
+            "scrim": "rgba(0, 0, 0, 0.5)"
+          }
+        }
+      },
+      "typography": {
+        "fontStack": {
+          "sans": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+          "mono": "Menlo, Monaco, Consolas, 'Courier New', monospace"
+        },
+        "typeScale": [
+          {"name": "Display", "fontSize": "48px", "fontWeight": 700, "lineHeight": "1.2"},
+          {"name": "H1", "fontSize": "32px", "fontWeight": 700, "lineHeight": "1.3"},
+          {"name": "H2", "fontSize": "28px", "fontWeight": 700, "lineHeight": "1.3"},
+          {"name": "Body", "fontSize": "16px", "fontWeight": 400, "lineHeight": "1.5"},
+          {"name": "Caption", "fontSize": "12px", "fontWeight": 400, "lineHeight": "1.5"}
+        ]
+      },
+      "layout": {
+        "spacingUnit": 4,
+        "scale": {
+          "space-1": "4px",
+          "space-2": "8px",
+          "space-4": "16px",
+          "space-8": "32px"
+        },
+        "breakpoints": {
+          "sm": "640px",
+          "md": "768px",
+          "lg": "1024px",
+          "xl": "1280px"
+        }
+      },
+      "effects": {
+        "shadows": {
+          "sm": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+          "md": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+          "lg": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
+        },
+        "borderRadius": {
+          "sm": "4px",
+          "md": "8px",
+          "lg": "16px",
+          "full": "9999px"
+        }
+      },
+      "sizing": {
+        "icon": {
+          "sm": "16px",
+          "md": "24px",
+          "lg": "32px"
+        },
+        "container": {
+          "xs": "20rem",
+          "sm": "24rem",
+          "md": "28rem"
+        }
+      },
+      "borders": {
+        "width": {
+          "default": "1px",
+          "strong": "2px"
+        },
+        "style": {
+          "solid": "solid",
+          "dashed": "dashed"
+        }
+      },
+      "zIndex": {
+        "dropdown": 1000,
+        "sticky": 1020,
+        "banner": 1030,
+        "overlay": 1040,
+        "modal": 1050,
+        "popover": 1060,
+        "tooltip": 1070
+      },
+      "motion": {
+        "duration": {
+          "short": "100ms",
+          "medium": "250ms",
+          "long": "400ms"
+        },
+        "easing": {
+          "linear": "linear",
+          "standard": "cubic-bezier(0.4, 0, 0.2, 1)",
+          "decelerate": "cubic-bezier(0.0, 0.0, 0.2, 1)",
+          "accelerate": "cubic-bezier(0.4, 0.0, 1, 1)"
+        }
+      }
+    },
+    "componentCatalog": {
+      "atoms": {
+        "Button": {
+          "detectionMethod": "visual",
+          "anatomy": ["Container", "Label", "Icon (Opcional)"],
+          "variants": ["primary", "secondary", "tertiary", "danger"],
+          "sizes": ["sm", "md", "lg"],
+          "states": ["default", "hover", "active", "focus-visible", "disabled", "loading"],
+          "propsSchema": {"label": "string", "onClick": "function", "isLoading": "boolean"},
+          "accessibility": {"aria-label": "Requerido si no hay texto visible."},
+          "useCases": "Usar para acciones principales. No usar para navegación."
+        },
+        "Input": {
+          "detectionMethod": "visual",
+          "anatomy": ["Container", "Label", "Input Field", "Icon (Opcional)", "Help Text"],
+          "variants": ["default", "error", "success"],
+          "states": ["default", "hover", "focus", "disabled"],
+          "propsSchema": {"label": "string", "value": "string", "onChange": "function"}
+        },
+        "Icon": {
+          "detectionMethod": "visual",
+          "propsSchema": {"name": "string", "size": "string"}
+        },
+        "Avatar": {
+          "detectionMethod": "visual",
+          "sizes": ["sm", "md", "lg"],
+          "propsSchema": {"src": "string", "alt": "string"}
+        },
+        "Badge": {
+          "detectionMethod": "visual",
+          "variants": ["info", "success", "warning", "danger"],
+          "propsSchema": {"label": "string"}
+        },
+        "Checkbox": {
+          "detectionMethod": "visual",
+          "states": ["unchecked", "checked", "indeterminate", "disabled"],
+          "propsSchema": {"label": "string", "checked": "boolean", "onChange": "function"}
+        },
+        "Switch": {
+          "detectionMethod": "visual",
+          "states": ["off", "on", "disabled"],
+          "propsSchema": {"checked": "boolean", "onChange": "function"}
+        }
+      },
+      "molecules": {
+        "Alert": {
+          "detectionMethod": "inferred",
+          "anatomy": ["Container", "Icon", "Title", "Message", "Close Button (Opcional)"],
+          "variants": ["info", "success", "warning", "danger"]
+        },
+        "Dropdown": {
+          "detectionMethod": "inferred",
+          "anatomy": ["Trigger Button", "Menu Panel", "Menu Item"]
+        },
+        "Tooltip": {
+          "detectionMethod": "inferred",
+          "anatomy": ["Trigger Element", "Tooltip Bubble"]
+        },
+        "Pagination": {
+          "detectionMethod": "inferred",
+          "anatomy": ["Container", "Previous Button", "Next Button", "Page Number Items"]
+        }
+      },
+      "organisms": {
+        "DataTable": {
+          "detectionMethod": "inferred",
+          "anatomy": ["Header Row", "Data Row", "Cell", "Pagination Controls", "Search/Filter Bar"],
+          "features": ["Sorting", "Filtering", "Pagination", "Row Selection"]
+        },
+        "Header": {
+          "detectionMethod": "inferred",
+          "anatomy": ["Logo", "Navigation Links", "User Profile/Avatar", "Search Bar"]
+        },
+        "Sidebar": {
+          "detectionMethod": "inferred",
+          "anatomy": ["Container", "Navigation Items", "Sub-menus"]
+        },
+        "Card": {
+          "detectionMethod": "inferred",
+          "anatomy": ["Container", "Header (Opcional)", "Media/Image (Opcional)", "Body/Content", "Footer/Actions (Opcional)"]
+        },
+        "Form": {
+          "detectionMethod": "inferred",
+          "anatomy": ["Form Container", "Fieldsets (Opcional)", "Input Molecules", "Submit Button"]
+        },
+        "Chart": {
+          "detectionMethod": "inferred",
+          "variants": ["Bar", "Line", "Pie", "Doughnut", "Area"],
+          "anatomy": ["Chart Canvas", "Axes", "Labels", "Legend", "Tooltips"]
+        }
+      }
+    }
+  }
+}

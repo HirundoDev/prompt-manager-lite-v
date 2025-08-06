@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Feature Lifecycle Management",
+    "description": "Tracks the lifecycle of all product features from proposal to completion.",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "description": "A reference to a feature artifact. It acts as a pointer in the manifest to the actual feature file.",
+        "properties": {
+            "featureId": {
+                "type": "string",
+                "description": "Unique identifier for the feature (e.g., 'FEAT-001')."
+            },
+            "status": {
+                "type": "string",
+                "description": "The current high-level status of the feature.",
+                "enum": ["Proposed", "In Progress", "Completed", "On Hold"]
+            },
+            "summary": {
+                "type": "string",
+                "description": "A brief, one-line summary of the feature's purpose."
+            },
+            "path": {
+                "type": "string",
+                "description": "The relative file path to the feature's detailed markdown document from the `core-system` root."
+            }
+        },
+        "required": ["featureId", "status", "path", "summary"]
+    }
+}

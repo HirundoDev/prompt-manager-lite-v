@@ -1,0 +1,68 @@
+# Plan de Ejecución de Tarea: [Título de la Tarea]
+
+---
+
+## 1. Metadatos
+
+- **ID de Tarea:** `TSK[ID]`
+- **Título:** `[Título Descriptivo de la Sesión de Trabajo]`
+- **Estado:** `Activa | Pausada | Completada`
+- **Fecha de Inicio:** `[Fecha]`
+- **Fecha de Finalización:** `[Fecha]`
+
+## 2. Objetivo Principal de la Sesión
+
+*[Describe en una sola frase clara y concisa el objetivo principal que se persigue con esta tarea.]*
+
+---
+
+## 3. Manifiesto de Artefactos de la Sesión
+
+*Esta tabla registra todos los artefactos de ciclo de vida (`BUG`, `FEATURE`, `IDEA`) que han sido creados, modificados o abordados durante la ejecución de esta tarea. Actúa como un índice de trabajo de la sesión.*
+
+| ID del Artefacto | Tipo      | Descripción Breve                               | Estado/Resultado de la Sesión      |
+| :--------------- | :-------- | :---------------------------------------------- | :--------------------------------- |
+| `FTR002`         | `FEATURE` | Implementar autenticación de dos factores (2FA) | `En progreso`                      |
+| `BUG005`         | `BUG`     | Corregir error de cálculo en la facturación     | `Solucionado y verificado`         |
+| `IDE003`         | `IDEA`    | Proponer nuevo sistema de caché                 | `Prototipo inicial desarrollado`   |
+
+---
+
+## 4. Manifiesto de Cambios en el Código
+
+*Un registro de todos los archivos del proyecto que han sido creados, modificados o eliminados como parte de esta tarea.*
+
+| Ruta del Archivo                    | Estado     | Descripción del Cambio Realizado        |
+| :---------------------------------- | :--------- | :-------------------------------------- |
+| `src/services/auth_service.js`      | `Modificado` | Añadida lógica para la generación de códigos 2FA. |
+| `src/routes/auth_routes.js`         | `Modificado` | Nuevo endpoint `/verify-2fa`.           |
+| `config/secrets.yml`                | `Modificado` | Añadida nueva clave para el servicio 2FA. |
+| `tests/auth.test.js`                | `Creado`     | Pruebas de unidad para el flujo de 2FA. |
+
+---
+
+## 5. Criterios de Finalización
+
+*¿Cómo sabremos que esta tarea ha sido completada con éxito?*
+
+- [ ] El objetivo principal ha sido alcanzado.
+- [ ] Todos los artefactos en el manifiesto de la sesión están en un estado final (p. ej., `Solucionado`, `Completado`).
+- [ ] El código ha sido revisado, fusionado y desplegado.
+- [ ] No hay acciones pendientes relacionadas con esta tarea.
+
+---
+
+## 6. Registro de Progreso y Decisiones Clave
+
+*Un log de decisiones importantes o bloqueos encontrados durante la sesión.*
+
+- **2025-07-23:** Se decidió utilizar la librería `speakeasy` para la generación de códigos TOTP en lugar de implementarlo manualmente.
+- **2025-07-24:** Bloqueo temporal debido a la caída de la API de terceros. Se implementó un mock para continuar el desarrollo.
+
+---
+
+## 7. Siguiente Acción Propuesta
+
+*Esta sección es actualizada por el agente al final de una sesión de trabajo para facilitar la continuación.*
+
+- **[Descripción clara de la próxima tarea a realizar, ya sea dentro de esta `TASK` o como una nueva.]**

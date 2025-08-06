@@ -1,0 +1,281 @@
+{
+  "_purpose": "Este manifiesto es el catálogo central de todos los documentos de sistema. Cada entrada define un artefacto de documentación, su plantilla maestra y su propósito dentro del proyecto. Es utilizado por el Orquestador para entender qué documentos puede generar o actualizar.",
+  "documents": [
+    {
+      "id": "DOC000",
+      "name": "Project Brief",
+      "template_path": "system_blueprints/starter_kit/docs/DOC000-ProjectBrief.md",
+      "purpose": "El punto de partida para cualquier proyecto. Define la visión, objetivos y contexto."
+    },
+    {
+      "id": "DOC001",
+      "name": "Project README",
+      "template_path": "system_blueprints/starter_kit/docs/DOC001-ProjectREADME.md",
+      "purpose": "La guía de inicio rápido para cualquier persona que interactúe con el proyecto."
+    },
+    {
+      "id": "DOC002",
+      "name": "Product Definition",
+      "template_path": "system_blueprints/starter_kit/docs/DOC002-ProductDefinition.md",
+      "purpose": "Define el producto, su visión, objetivos, alcance y público objetivo."
+    },
+    {
+      "id": "DOC003",
+      "name": "Design System",
+      "template_path": "system_blueprints/starter_kit/docs/DOC003-DesignSystem.md",
+      "purpose": "Define los principios, componentes y guías del sistema de diseño visual."
+    },
+    {
+      "id": "DOC004",
+      "name": "Frontend Architecture",
+      "template_path": "system_blueprints/starter_kit/docs/DOC004-FrontendArchitecture.md",
+      "purpose": "Describe la arquitectura, patrones y estructura del código del frontend."
+    },
+    {
+      "id": "DOC005",
+      "name": "Frontend Dependencies",
+      "template_path": "system_blueprints/starter_kit/docs/DOC005-FrontendDependencies.md",
+      "purpose": "Lista y justifica las dependencias y librerías del frontend."
+    },
+    {
+      "id": "DOC006",
+      "name": "Backend Architecture",
+      "template_path": "system_blueprints/starter_kit/docs/DOC006-BackendArchitecture.md",
+      "purpose": "Describe la arquitectura, patrones y estructura del código del backend."
+    },
+    {
+      "id": "DOC007",
+      "name": "Backend Dependencies",
+      "template_path": "system_blueprints/starter_kit/docs/DOC007-BackendDependencies.md",
+      "purpose": "Lista y justifica las dependencias y librerías del backend."
+    },
+    {
+      "id": "DOC008",
+      "name": "API Specification",
+      "template_path": "system_blueprints/starter_kit/docs/DOC008-APISpecification.md",
+      "purpose": "Define los endpoints, payloads y contratos de la API."
+    },
+    {
+      "id": "DOC009",
+      "name": "Data Model",
+      "template_path": "system_blueprints/starter_kit/docs/DOC009-DataModel.md",
+      "purpose": "Describe el modelo de datos, entidades, relaciones y el diccionario de datos."
+    },
+    {
+      "id": "DOC010",
+      "name": "Deployment",
+      "template_path": "system_blueprints/starter_kit/docs/DOC010-Deployment.md",
+      "purpose": "Explica la estrategia de despliegue, CI/CD y gestión de entornos."
+    },
+    {
+      "id": "DOC011",
+      "name": "Testing Strategy",
+      "template_path": "system_blueprints/starter_kit/docs/DOC011-TestingStrategy.md",
+      "purpose": "Define la estrategia de pruebas, incluyendo unitarias, de integración y E2E."
+    },
+    {
+      "id": "DOC012",
+      "name": "Security & Compliance",
+      "template_path": "system_blueprints/starter_kit/docs/DOC012-SecurityCompliance.md",
+      "purpose": "Detalla las medidas de seguridad y los estándares de cumplimiento."
+    },
+    {
+      "id": "DOC013",
+      "name": "Change Log",
+      "template_path": "system_blueprints/starter_kit/docs/DOC013-ChangeLog.md",
+      "purpose": "Registro de todos los cambios significativos en el proyecto."
+    },
+    {
+      "id": "DOC014",
+      "name": "Issue Template",
+      "template_path": "system_blueprints/starter_kit/docs/DOC014-IssueTemplate.md",
+      "purpose": "Plantilla estándar para la creación de issues en el gestor de proyectos."
+    },
+    {
+      "id": "DOC015",
+      "name": "Pull Request Template",
+      "template_path": "system_blueprints/starter_kit/docs/DOC015-PullRequestTemplate.md",
+      "purpose": "Plantilla estándar para la creación de Pull Requests."
+    },
+    {
+      "id": "DOC016",
+      "name": "Contributing",
+      "template_path": "system_blueprints/starter_kit/docs/DOC016-Contributing.md",
+      "purpose": "Guía para desarrolladores que deseen contribuir al proyecto."
+    },
+    {
+      "id": "DOC017",
+      "name": "ADR Index",
+      "template_path": "system_blueprints/starter_kit/docs/DOC017-ADR-Index.md",
+      "purpose": "Índice de todos los Architecture Decision Records (ADRs)."
+    },
+    {
+      "id": "DOC019",
+      "name": "CLI Command Reference",
+      "template_path": "system_blueprints/starter_kit/docs/DOC019-CLI-Command-Reference.md",
+      "purpose": "Referencia completa de todos los comandos de la CLI del proyecto."
+    },
+    {
+      "id": "DOC020",
+      "name": "Code of Conduct",
+      "template_path": "system_blueprints/starter_kit/docs/DOC020-CodeOfConduct.md",
+      "purpose": "Establece las normas de comportamiento para la comunidad del proyecto."
+    },
+    {
+      "id": "DOC021",
+      "name": "Onboarding Guide",
+      "template_path": "system_blueprints/starter_kit/docs/DOC021-OnboardingGuide.md",
+      "purpose": "Guía para la incorporación de nuevos miembros al equipo."
+    },
+    {
+      "id": "DOC022",
+      "name": "Release Process",
+      "template_path": "system_blueprints/starter_kit/docs/DOC022-ReleaseProcess.md",
+      "purpose": "Describe el proceso y la política para realizar nuevos lanzamientos."
+    },
+    {
+      "id": "DOC023",
+      "name": "Backend Manifest",
+      "template_path": "system_blueprints/starter_kit/docs/DOC023-BackendManifest.md",
+      "purpose": "Manifiesto de todos los artefactos y componentes del backend."
+    },
+    {
+      "id": "DOC024",
+      "name": "Database Manifest",
+      "template_path": "system_blueprints/starter_kit/docs/DOC024-DatabaseManifest.md",
+      "purpose": "Manifiesto de todos los artefactos relacionados con la base de datos."
+    },
+    {
+      "id": "DOC025",
+      "name": "Frontend Manifest",
+      "template_path": "system_blueprints/starter_kit/docs/DOC025-FrontendManifest.md",
+      "purpose": "Manifiesto de todos los artefactos y componentes del frontend."
+    },
+    {
+      "id": "DOC026",
+      "name": "Project File Manifest",
+      "template_path": "system_blueprints/starter_kit/docs/DOC026-ProjectFileManifest.md",
+      "purpose": "Manifiesto de todos los ficheros y directorios importantes del proyecto."
+    },
+    {
+      "id": "DOC027",
+      "name": "Shared Libs Manifest",
+      "template_path": "system_blueprints/starter_kit/docs/DOC027-SharedLibsManifest.md",
+      "purpose": "Manifiesto de todas las librerías compartidas en un monorepo."
+    },
+    {
+      "id": "DOC028",
+      "name": "Operations Runbook",
+      "template_path": "system_blueprints/starter_kit/docs/DOC028-OperationsRunbook.md",
+      "purpose": "Guía de operaciones para el mantenimiento y la resolución de problemas del sistema."
+    },
+    {
+      "id": "DOC029",
+      "name": "Project Roadmap",
+      "template_path": "system_blueprints/starter_kit/docs/DOC029-ProjectRoadmap.md",
+      "purpose": "Planificación visual de las futuras características y lanzamientos del proyecto."
+    },
+    {
+      "id": "DOC030",
+      "name": "Feature Index",
+      "template_path": "system_blueprints/starter_kit/docs/DOC030-FeatureIndex.md",
+      "purpose": "Índice y seguimiento del ciclo de vida de todas las características del proyecto."
+    },
+    {
+      "id": "DOC031",
+      "name": "Bug Index",
+      "template_path": "system_blueprints/starter_kit/docs/DOC031-BugIndex.md",
+      "purpose": "Índice y seguimiento del ciclo de vida de todos los bugs reportados."
+    },
+    {
+      "id": "DOC032",
+      "name": "Frontend Screen Flow",
+      "template_path": "system_blueprints/starter_kit/docs/DOC032-FrontendScreenFlow.md",
+      "purpose": "Mapea las pantallas del frontend a sus rutas, componentes de código y APIs consumidas."
+    },
+    {
+      "id": "DOC033",
+      "name": "ADR Template",
+      "template_path": "system_blueprints/starter_kit/docs/template-ADR.md",
+      "purpose": "A template for Architecture Decision Records."
+    },
+    {
+      "id": "CLI_DOC_INIT",
+      "name": "CLI Command: init",
+      "template_path": "system_blueprints/cli_documentation/CMD_init.md",
+      "purpose": "Documentación exhaustiva del comando CLI init con diagramas, casos de uso y ejemplos."
+    },
+    {
+      "id": "CLI_DOC_CREATE_ARTEFACT",
+      "name": "CLI Command: create-artefact",
+      "template_path": "system_blueprints/cli_documentation/CMD_create-artefact.md",
+      "purpose": "Documentación completa del comando create-artefact para creación de artefactos."
+    },
+    {
+      "id": "CLI_DOC_VALIDATE",
+      "name": "CLI Command: validate",
+      "template_path": "system_blueprints/cli_documentation/CMD_validate.md",
+      "purpose": "Documentación del comando validate para validación de blueprints."
+    },
+    {
+      "id": "CLI_DOC_STATUS",
+      "name": "CLI Command: status",
+      "template_path": "system_blueprints/cli_documentation/CMD_status.md",
+      "purpose": "Documentación del comando status para mostrar estado del proyecto."
+    },
+    {
+      "id": "CLI_DOC_RUN_FLOW",
+      "name": "CLI Command: run-flow",
+      "template_path": "system_blueprints/cli_documentation/CMD_run-flow.md",
+      "purpose": "Documentación del comando run-flow para ejecución de flujos JSON."
+    },
+    {
+      "id": "CLI_DOC_SYNC_MANIFESTS",
+      "name": "CLI Command: sync-manifests",
+      "template_path": "system_blueprints/cli_documentation/CMD_sync-manifests.md",
+      "purpose": "Documentación del comando sync-manifests para sincronización de manifiestos."
+    },
+    {
+      "id": "CLI_DOC_COMPLETE",
+      "name": "CLI Complete Documentation",
+      "template_path": "system_blueprints/cli_documentation/FULL_CLI_DOCUMENTATION.md",
+      "purpose": "Documentación maestra completa de todos los comandos CLI y scripts."
+    },
+    {
+      "id": "SCRIPT_DOC_AUDIT_CLI",
+      "name": "Script: audit_cli.py",
+      "template_path": "system_blueprints/cli_documentation/SCRIPT_audit_cli.md",
+      "purpose": "Documentación del script de auditoría del CLI."
+    },
+    {
+      "id": "CLI_DOC_COMPREHENSIVE",
+      "name": "CLI Complete Command Documentation Collection",
+      "template_path": "documentation/create-artefact_command.md",
+      "purpose": "Documentación exhaustiva de create-artefact con diagramas Mermaid y casos de uso."
+    },
+    {
+      "id": "CLI_DOC_VALIDATION_COMPLETE",
+      "name": "CLI Validation Commands Collection",
+      "template_path": "documentation/validation_commands_complete.md",
+      "purpose": "Documentación completa de todos los comandos de validación."
+    },
+    {
+      "id": "CLI_DOC_MANIFEST_AGENT_COMPLETE",
+      "name": "CLI Manifest and Agent Commands Collection",
+      "template_path": "documentation/manifest_and_agent_commands_complete.md",
+      "purpose": "Documentación completa de comandos de manifiestos y agentes."
+    },
+    {
+      "id": "CLI_DOC_FINAL_COMPLETE",
+      "name": "CLI Final Commands Collection",
+      "template_path": "documentation/final_commands_complete.md",
+      "purpose": "Documentación de comandos finales incluyendo utilidades y tareas pendientes."
+    },
+    {
+      "id": "CLI_DOC_SCRIPTS_COMPLETE",
+      "name": "CLI Scripts Documentation Collection",
+      "template_path": "documentation/scripts_complete.md",
+      "purpose": "Documentación completa de todos los 5 scripts de auditoría y verificación."
+    }
+  ]
+}

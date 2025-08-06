@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Project Info",
+    "description": "High-level metadata about the project.",
+    "type": "object",
+    "properties": {
+        "projectName": {
+            "type": "string",
+            "description": "The official name of the project."
+        },
+        "projectDescription": {
+            "type": "string",
+            "description": "A concise summary of the project's purpose and goals."
+        },
+        "version": {
+            "type": "string",
+            "description": "The current version of the blueprint document.",
+            "default": "3.0.0"
+        }
+    },
+    "required": ["projectName", "projectDescription"]
+}

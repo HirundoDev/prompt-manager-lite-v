@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Master Blueprint for Software Projects V3 (Modular)",
+    "description": "The master orchestrator for a project's DNA. This schema acts as a high-level assembler, composing 18 independent, resilient sub-schemas into a single, authoritative blueprint. It defines the entire project lifecycle, from strategic goals and business logic to a high-fidelity 'Visual Blueprint' that specifies the UI with engineering precision. This modular architecture ensures maintainability and allows specialized agents to focus on discrete parts of the project while maintaining overall coherence.",
+    "type": "object",
+    "properties": {
+        "projectInfo": { "$ref": "master_blueprint_parts/projectInfo.json" },
+        "visualBlueprint": { "$ref": "master_blueprint_parts/visualBlueprint.json" },
+        "projectManagement": { "$ref": "master_blueprint_parts/projectManagement.json" },
+        "forensicAudit": { "$ref": "master_blueprint_parts/forensicAudit.json" },
+        "businessLogic": { "$ref": "master_blueprint_parts/businessLogic.json" },
+        "qualityGoals": { "$ref": "master_blueprint_parts/qualityGoals.json" },
+        "testingStrategy": { "$ref": "master_blueprint_parts/testingStrategy.json" },
+        "deploymentStrategy": { "$ref": "master_blueprint_parts/deploymentStrategy.json" },
+        "operationalStrategy": { "$ref": "master_blueprint_parts/operationalStrategy.json" },
+        "documentationManifest": { "$ref": "master_blueprint_parts/documentationManifest.json" },
+        "featureLifecycle": { "$ref": "master_blueprint_parts/featureLifecycle.json" },
+    "bugLifecycle": { "$ref": "master_blueprint_parts/bugLifecycle.json" },
+        "dataModelDictionary": { "$ref": "master_blueprint_parts/dataModelDictionary.json" },
+        "apiContract": { "$ref": "master_blueprint_parts/apiContract.json" },
+        "stateManagementPlan": { "$ref": "master_blueprint_parts/stateManagementPlan.json" },
+        "componentLibrary": { "$ref": "master_blueprint_parts/componentLibrary.json" },
+        "designSystem": { "$ref": "master_blueprint_parts/designSystem.json" },
+        "fileExecutionMap": { "$ref": "master_blueprint_parts/fileExecutionMap.json" },
+        "deepLogicAnalysis": { "$ref": "master_blueprint_parts/deepLogicAnalysis.json" }
+    },
+    "definitions": {
+        "$ref": "master_blueprint_parts/definitions.json#/definitions"
+    }
+}

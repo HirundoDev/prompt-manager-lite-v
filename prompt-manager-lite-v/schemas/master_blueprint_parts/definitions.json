@@ -1,0 +1,94 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Shared Definitions",
+    "definitions": {
+        "techStackItem": {
+            "type": "object",
+            "properties": {
+                "name": { "type": "string" },
+                "category": { "type": "string", "enum": ["Frontend", "Backend", "Database", "DevOps", "Testing"] },
+                "version": { "type": "string" }
+            },
+            "required": ["name", "category"]
+        },
+        "userStory": {
+            "type": 'object',
+            "properties": {
+                "id": { "type": "string" },
+                "story": { "type": "string" },
+                "acceptanceCriteria": { "type": "array", "items": { "type": "string" } }
+            },
+            "required": ["id", "story"]
+        },
+        "businessRule": {
+            "type": "object",
+            "properties": {
+                "id": { "type": "string" },
+                "rule": { "type": "string" },
+                "source": { "type": "string", "description": "The part of the application where this rule is enforced." }
+            },
+            "required": ["id", "rule"]
+        },
+        "apiParameter": {
+            "type": "object",
+            "properties": {
+                "name": { "type": "string" },
+                "in": { "type": "string", "enum": ["query", "header", "path", "cookie"] },
+                "description": { "type": "string" },
+                "required": { "type": "boolean" },
+                "schema": { "type": "object" }
+            },
+            "required": ["name", "in"]
+        },
+        "apiRequestBody": {
+            "type": "object",
+            "properties": {
+                "description": { "type": "string" },
+                "content": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                            "schema": { "type": "object" }
+                        }
+                    }
+                }
+            }
+        },
+        "apiResponse": {
+            "type": "object",
+            "properties": {
+                "description": { "type": "string" },
+                "content": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                            "schema": { "type": "object" }
+                        }
+                    }
+                }
+            },
+            "required": ["description"]
+        },
+        "managedState": {
+            "type": "object",
+            "properties": {
+                "stateName": { "type": "string" },
+                "stateType": { "type": "string" },
+                "description": { "type": "string" }
+            }
+        },
+        "emittedEvent": {
+            "type": "object",
+            "properties": {
+                "eventName": { "type": "string", "description": "e.g., onClick, onSubmit" },
+                "payloadSchema": { "type": "object", "description": "JSON schema of the data emitted with the event." }
+            }
+        },
+        "keyValuePairs": {
+            "type": "object",
+            "additionalProperties": { "type": "string" }
+        }
+    }
+}
