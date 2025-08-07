@@ -1,5 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
+    "$comment": "Playbook: prompt_playbooks/schemas_playbooks/playbook_schema-masterBlueprint.md",
     "title": "Master Blueprint for Software Projects V3 (Modular)",
     "description": "The master orchestrator for a project's DNA. This schema acts as a high-level assembler, composing 18 independent, resilient sub-schemas into a single, authoritative blueprint. It defines the entire project lifecycle, from strategic goals and business logic to a high-fidelity 'Visual Blueprint' that specifies the UI with engineering precision. This modular architecture ensures maintainability and allows specialized agents to focus on discrete parts of the project while maintaining overall coherence.",
     "type": "object",
@@ -15,13 +16,18 @@
         "operationalStrategy": { "$ref": "master_blueprint_parts/operationalStrategy.json" },
         "documentationManifest": { "$ref": "master_blueprint_parts/documentationManifest.json" },
         "featureLifecycle": { "$ref": "master_blueprint_parts/featureLifecycle.json" },
-    "bugLifecycle": { "$ref": "master_blueprint_parts/bugLifecycle.json" },
+        "bugLifecycle": { "$ref": "master_blueprint_parts/bugLifecycle.json" },
         "dataModelDictionary": { "$ref": "master_blueprint_parts/dataModelDictionary.json" },
+        "dataModel": { "$ref": "master_blueprint_parts/dataModel.json" },
         "apiContract": { "$ref": "master_blueprint_parts/apiContract.json" },
         "stateManagementPlan": { "$ref": "master_blueprint_parts/stateManagementPlan.json" },
         "componentLibrary": { "$ref": "master_blueprint_parts/componentLibrary.json" },
         "designSystem": { "$ref": "master_blueprint_parts/designSystem.json" },
+        "designPatterns": { "$ref": "master_blueprint_parts/designPatterns.json" },
         "fileExecutionMap": { "$ref": "master_blueprint_parts/fileExecutionMap.json" },
+        "architecture": { "$ref": "master_blueprint_parts/architecture.json" },
+        "featureManifest": { "$ref": "master_blueprint_parts/featureManifest.json" },
+        "wireframeStates": { "$ref": "master_blueprint_parts/wireframeStates.json" },
         "deepLogicAnalysis": { "$ref": "master_blueprint_parts/deepLogicAnalysis.json" }
     },
     "definitions": {

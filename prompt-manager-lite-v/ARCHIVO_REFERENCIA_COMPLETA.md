@@ -76,7 +76,6 @@ prompt-manager-lite-v/
 ├── ⚙️ SCHEMAS JSON (schemas/)
 │   ├── master_blueprint_schema.json       # Schema principal que define la estructura completa
 │   ├── cli_schema.json                    # Schema para definición de comandos CLI
-│   ├── command_registry_schema.json       # Schema para registro de comandos
 │   ├── design_system_schema.json          # Schema para sistema de diseño
 │   │
 │   └── 🧩 PARTES DEL MASTER BLUEPRINT (master_blueprint_parts/)

@@ -1,5 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
+    "$comment": "Playbook: prompt_playbooks/schemas_playbooks/playbook_schema-featureLifecycle.md",
     "title": "Feature Lifecycle Management",
     "description": "Tracks the lifecycle of all product features from proposal to completion.",
     "type": "array",
@@ -23,6 +24,44 @@
             "path": {
                 "type": "string",
                 "description": "The relative file path to the feature's detailed markdown document from the `core-system` root."
+            },
+            "stages": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "enum": ["Idea", "Discovery", "MVP", "Beta", "GA", "Sunset"] },
+                        "entryChecks": { "type": "array", "items": { "type": "string" } },
+                        "exitCriteria": { "type": "array", "items": { "type": "string" } }
+                    }
+                }
+            },
+            "transitions": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "from": { "type": "string" },
+                        "to": { "type": "string" },
+                        "guards": { "type": "array", "items": { "type": "string" } },
+                        "actions": { "type": "array", "items": { "type": "string" } }
+                    }
+                }
+            },
+            "metrics": {
+                "type": "object",
+                "properties": {
+                    "adoption": { "type": "number" },
+                    "churn": { "type": "number" },
+                    "NPS": { "type": "number" }
+                }
+            },
+            "ownership": {
+                "type": "object",
+                "properties": {
+                    "productOwner": { "type": "string" },
+                    "techOwner": { "type": "string" }
+                }
             }
         },
         "required": ["featureId", "status", "path", "summary"]

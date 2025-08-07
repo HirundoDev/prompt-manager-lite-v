@@ -1,6 +1,45 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
+    "$comment": "Playbook: prompt_playbooks/schemas_playbooks/playbook_schema-definitions.md",
     "title": "Shared Definitions",
+    "type": "object",
+    "properties": {
+        "terms": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "term": { "type": "string" },
+                    "definition": { "type": "string" },
+                    "examples": { "type": "array", "items": { "type": "string" } },
+                    "synonyms": { "type": "array", "items": { "type": "string" } },
+                    "antiPatterns": { "type": "array", "items": { "type": "string" } }
+                }
+            }
+        },
+        "types": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": { "type": "string" },
+                    "jsonSchema": { "type": "object" },
+                    "description": { "type": "string" }
+                }
+            }
+        },
+        "conventions": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string" },
+                    "rule": { "type": "string" },
+                    "examples": { "type": "array", "items": { "type": "string" } }
+                }
+            }
+        }
+    },
     "definitions": {
         "techStackItem": {
             "type": "object",
@@ -12,7 +51,7 @@
             "required": ["name", "category"]
         },
         "userStory": {
-            "type": 'object',
+            "type": "object",
             "properties": {
                 "id": { "type": "string" },
                 "story": { "type": "string" },

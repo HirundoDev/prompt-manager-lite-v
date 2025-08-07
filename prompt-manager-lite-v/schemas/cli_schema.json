@@ -1,1 +1,9 @@
-{}
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$comment": "Playbook: prompt_playbooks/schemas_playbooks/playbook_schema-cliSchema.md",
+  "title": "CLI Schema (Placeholder)",
+  "type": "object",
+  "description": "Placeholder for CLI schema; to be defined per project needs",
+  "properties": {},
+  "additionalProperties": true
+}

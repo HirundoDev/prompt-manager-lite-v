@@ -1,4 +1,5 @@
 {
+  "$comment": "Playbook: prompt_playbooks/schemas_playbooks/playbook_schema-design_system_schema.md",
   "designSystem": {
     "systemInfo": {
       "name": "Nombre del Sistema de Diseño",
@@ -10,6 +11,11 @@
       "brandPersonality": {
         "keywords": ["Moderno", "Confiable", "Escalable", "Intuitivo"]
       }
+    },
+    "theming": {
+      "modes": ["light", "dark"],
+      "defaultMode": "light",
+      "brandVariants": ["default"]
     },
     "designTokens": {
       "color": {
@@ -137,6 +143,28 @@
           "accelerate": "cubic-bezier(0.4, 0.0, 1, 1)"
         }
       }
+    ,
+      "themes": {
+        "dark": {
+          "color": {
+            "semantic": {
+              "background": { "canvas": "#121212", "surface-default": "#1E1E1E", "surface-raised": "#232323" },
+              "text": { "primary": "#F8F9FA", "secondary": "#CED4DA", "disabled": "#6C757D" },
+              "interactive": { "default": "#66B2FF", "hover": "#4DA3FF", "pressed": "#1A73E8", "disabled-bg": "#343A40" },
+              "border": { "default": "#343A40", "subtle": "#2B3035" },
+              "overlay": { "scrim": "rgba(0,0,0,0.6)" }
+            }
+          }
+        }
+      },
+      "exportMappings": {
+        "cssVariables": {
+          "text.primary": "--text-primary",
+          "interactive.default": "--interactive-default",
+          "layout.scale.space-4": "--space-4",
+          "effects.borderRadius.md": "--radius-md"
+        }
+      }
     },
     "componentCatalog": {
       "atoms": {
@@ -146,16 +174,45 @@
           "variants": ["primary", "secondary", "tertiary", "danger"],
           "sizes": ["sm", "md", "lg"],
           "states": ["default", "hover", "active", "focus-visible", "disabled", "loading"],
-          "propsSchema": {"label": "string", "onClick": "function", "isLoading": "boolean"},
-          "accessibility": {"aria-label": "Requerido si no hay texto visible."},
+          "propsSchema": { "label": "string", "onClick": "function", "isLoading": "boolean", "leftIcon": "string?", "rightIcon": "string?" },
+          "accessibility": {
+            "role": "button",
+            "aria": { "aria-label": "Requerido si no hay texto visible.", "aria-pressed": "opcional para toggle buttons" },
+            "keyboardInteractions": [
+              { "keys": ["Enter", "Space"], "action": "Activar click" },
+              { "keys": ["Tab"], "action": "Navegar al botón (focus-visible)" }
+            ],
+            "focusManagement": "Usar outline/token de foco accesible en focus-visible"
+          },
+          "themingRefs": {
+            "background": {
+              "primary": { "default": "interactive.default", "hover": "interactive.hover", "active": "interactive.pressed", "disabled": "interactive.disabled-bg" },
+              "secondary": { "default": "border.subtle", "hover": "border.default" }
+            },
+            "text": { "default": "text.primary", "onPrimary": "text.on-primary" },
+            "border": { "default": "border.default" }
+          },
+          "examples": {
+            "do": ["Usar variant 'primary' para CTA principal"],
+            "dont": ["No usar 'danger' para acciones neutrales"]
+          },
           "useCases": "Usar para acciones principales. No usar para navegación."
         },
         "Input": {
           "detectionMethod": "visual",
           "anatomy": ["Container", "Label", "Input Field", "Icon (Opcional)", "Help Text"],
           "variants": ["default", "error", "success"],
+          "sizes": ["sm", "md", "lg"],
           "states": ["default", "hover", "focus", "disabled"],
-          "propsSchema": {"label": "string", "value": "string", "onChange": "function"}
+          "propsSchema": { "label": "string", "value": "string", "onChange": "function", "placeholder": "string?", "icon": "string?" },
+          "accessibility": {
+            "role": "textbox",
+            "aria": { "aria-invalid": "true|false", "aria-describedby": "id del help text cuando exista" },
+            "keyboardInteractions": [
+              { "keys": ["Tab"], "action": "Entra/sale del campo" },
+              { "keys": ["Shift+Tab"], "action": "Retrocede en el orden de foco" }
+            ]
+          }
         },
         "Icon": {
           "detectionMethod": "visual",
