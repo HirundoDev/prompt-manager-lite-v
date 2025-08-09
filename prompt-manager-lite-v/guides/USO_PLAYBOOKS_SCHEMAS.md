@@ -123,7 +123,7 @@ Verificación y calidad
   - [ ] Todos los nuevos campos son opcionales y documentados.
   - [ ] `$comment` actualizado si cambió el playbook.
   - [ ] Cross-referencias coherentes (ids/slug; referenceKey en API/Arquitectura si aplica).
-  - [ ] `verify_integrity.py` en verde.
+  - [ ] `tools/verify_integrity.py` en verde.
 
 Relación con documentos
 - Consulta `guides/CONEXION_SCHEMAS_DOCS.md` para ver qué docs consumen cada schema y qué extractos llenar.
