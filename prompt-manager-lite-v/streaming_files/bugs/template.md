@@ -1,6 +1,14 @@
-# Informe de Bug: [Título del Bug]
-
 ---
+title: "{Resumen del Bug}"
+status: open|in-progress|resolved
+owner: "@usuario"
+severity: low|medium|high|critical
+schemaRefs:
+  - schemas/master_blueprint_parts/bugLifecycle.json
+  - schemas/master_blueprint_parts/testingStrategy.json
+---
+
+# Informe de Bug: [Título del Bug]
 
 ## 1. Metadatos
 
@@ -46,3 +54,20 @@
 - [ ] Se ha añadido una nueva prueba unitaria (`test_case_name`) que cubre este escenario.
 
 ## 7. Log de Implementación de la Solución
+
+## Archivos Relacionados / Actualizaciones Requeridas
+
+- Actualiza si corresponde (rutas relativas a `prompt-manager-lite-v/`):
+  - `docs/DOC031-BugIndex.md`
+  - `docs/DOC011-TestingStrategy.md`
+  - `docs/DOC013-ChangeLog.md`
+  - `docs/DOC012-SecurityCompliance.md` (si aplica)
+- Manifest global: `manifests/documentation_manifest.json` (agregar/ajustar entrada si se indexa el bug).
+- Enlaces cruzados: `features/`, `operations/` relacionados.
+
+## Verificación
+
+```bash
+python3 tools/verify_docs_and_schemas.py
+python3 tools/verify_integrity.py
+```

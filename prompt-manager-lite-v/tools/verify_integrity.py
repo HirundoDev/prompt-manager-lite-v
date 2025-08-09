@@ -13,13 +13,22 @@ from pathlib import Path
 from datetime import datetime
 
 # Configuración
-BASE_PATH = Path(__file__).parent
-DOCS_PATH = BASE_PATH / 'docs'
-FEATURES_PATH = BASE_PATH / 'features'
-BUGS_PATH = BASE_PATH / 'bugs'
-OPERATIONS_PATH = BASE_PATH / 'operations'
-PROPOSALS_PATH = BASE_PATH / 'proposals'
-SCHEMAS_PATH = BASE_PATH / 'schemas' / 'master_blueprint_parts'
+# Detecta la raíz del repo aunque el script esté dentro de tools/
+SCRIPT_DIR = Path(__file__).resolve().parent
+if (SCRIPT_DIR / 'manifests').exists() and (SCRIPT_DIR / 'guides').exists():
+    BASE_PATH = SCRIPT_DIR
+else:
+    BASE_PATH = SCRIPT_DIR.parent
+# Compatibilidad transicional: aceptar estructura antigua y nueva
+DOCS_PATHS = [BASE_PATH / 'docs', BASE_PATH / 'real_structure_documentation' / 'docs']
+FEATURES_PATHS = [BASE_PATH / 'features', BASE_PATH / 'streaming_files' / 'features']
+BUGS_PATHS = [BASE_PATH / 'bugs', BASE_PATH / 'streaming_files' / 'bugs']
+OPERATIONS_PATHS = [BASE_PATH / 'operations', BASE_PATH / 'streaming_files' / 'operations']
+PROPOSALS_PATHS = [BASE_PATH / 'proposals', BASE_PATH / 'streaming_files' / 'proposals']
+SCHEMAS_PATHS = [
+    BASE_PATH / 'schemas' / 'master_blueprint_parts',
+    BASE_PATH / 'real_structure_documentation' / 'schemas' / 'master_blueprint_parts',
+]
 HASH_FILE = BASE_PATH / 'file_integrity.json'
 
 # Patrones de placeholders comunes
@@ -105,15 +114,20 @@ def store_initial_state():
         'files': {}
     }
     
-    # Analizar todas las carpetas
-    paths_to_analyze = [
-        (DOCS_PATH, '*.md'),
-        (FEATURES_PATH, '*.md'),
-        (BUGS_PATH, '*.md'),
-        (OPERATIONS_PATH, '*.md'),
-        (PROPOSALS_PATH, '*.md'),
-        (SCHEMAS_PATH, '*.json')
-    ]
+    # Analizar todas las carpetas (estructura antigua y nueva)
+    paths_to_analyze = []
+    for p in DOCS_PATHS:
+        paths_to_analyze.append((p, '*.md'))
+    for p in FEATURES_PATHS:
+        paths_to_analyze.append((p, '*.md'))
+    for p in BUGS_PATHS:
+        paths_to_analyze.append((p, '*.md'))
+    for p in OPERATIONS_PATHS:
+        paths_to_analyze.append((p, '*.md'))
+    for p in PROPOSALS_PATHS:
+        paths_to_analyze.append((p, '*.md'))
+    for p in SCHEMAS_PATHS:
+        paths_to_analyze.append((p, '*.json'))
     
     total_files = 0
     for base_path, pattern in paths_to_analyze:
@@ -138,7 +152,7 @@ def verify_file_integrity():
     """Verifica integridad y cambios en archivos."""
     if not HASH_FILE.exists():
         print(f"❌ {HASH_FILE} no existe.")
-        print("   Ejecuta: python verify_integrity.py store")
+        print("   Ejecuta: python3 tools/verify_integrity.py store")
         return
     
     # Cargar estado inicial

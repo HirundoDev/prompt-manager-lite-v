@@ -1,0 +1,145 @@
+{
+  "$schema": "../real_structure_documentation/schemas/master_blueprint_parts/documentationManifest.json",
+  "title": "Project Documentation Manifest (Instance)",
+  "description": "Inventory of all project documents with owners, status, and inter-document dependencies.",
+  "documents": [
+    {"id": "DOC000-ProjectBrief", "title": "Project Brief", "path": "real_structure_documentation/docs/DOC000-ProjectBrief.md", "description": "Contexto, objetivo y alcance del proyecto.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/projectInfo.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/projectManagement.json"
+    ]},
+    {"id": "DOC001-ProjectREADME", "title": "Project README", "path": "real_structure_documentation/docs/DOC001-ProjectREADME.md", "description": "Resumen del repo, cómo ejecutar y contribuir.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/projectInfo.json"
+    ]},
+    {"id": "DOC002-ProductDefinition", "title": "Product Definition", "path": "real_structure_documentation/docs/DOC002-ProductDefinition.md", "description": "Definición de producto, negocio y dominios.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/businessLogic.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/definitions.json"
+    ]},
+    {"id": "DOC003-DesignSystem", "title": "Design System", "path": "real_structure_documentation/docs/DOC003-DesignSystem.md", "description": "Especificación del sistema de diseño (canónico).", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/design_system_schema.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/designSystem.json"
+    ]},
+    {"id": "DOC004-FrontendArchitecture", "title": "Frontend Architecture", "path": "real_structure_documentation/docs/DOC004-FrontendArchitecture.md", "description": "Arquitectura de frontend y patrones UI/estado.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/architecture.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/designPatterns.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/stateManagementPlan.json"
+    ]},
+    {"id": "DOC005-FrontendDependencies", "title": "Frontend Dependencies", "path": "real_structure_documentation/docs/DOC005-FrontendDependencies.md", "description": "Catálogo de dependencias de frontend y componentes base.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/componentLibrary.json",
+      "real_structure_documentation/schemas/design_system_schema.json"
+    ]},
+    {"id": "DOC006-BackendArchitecture", "title": "Backend Architecture", "path": "real_structure_documentation/docs/DOC006-BackendArchitecture.md", "description": "Arquitectura de backend e integración de servicios.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/architecture.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/deepLogicAnalysis.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/designPatterns.json"
+    ]},
+    {"id": "DOC007-BackendDependencies", "title": "Backend Dependencies", "path": "real_structure_documentation/docs/DOC007-BackendDependencies.md", "description": "Dependencias de backend e implicancias operativas.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/operationalStrategy.json"
+    ]},
+    {"id": "DOC008-APISpecification", "title": "API Specification", "path": "real_structure_documentation/docs/DOC008-APISpecification.md", "description": "Contratos de API, endpoints y políticas transversales.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/apiContract.json"
+    ]},
+    {"id": "DOC009-DataModel", "title": "Data Model", "path": "real_structure_documentation/docs/DOC009-DataModel.md", "description": "Entidades, relaciones y convenciones del modelo de datos.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/dataModel.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/dataModelDictionary.json"
+    ]},
+    {"id": "DOC010-Deployment", "title": "Deployment Strategy", "path": "real_structure_documentation/docs/DOC010-Deployment.md", "description": "Ambientes, pipelines, rollout/rollback y compliance.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/deploymentStrategy.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/architecture.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/designPatterns.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/qualityGoals.json"
+    ]},
+    {"id": "DOC011-TestingStrategy", "title": "Testing Strategy", "path": "real_structure_documentation/docs/DOC011-TestingStrategy.md", "description": "Pirámide de pruebas, cobertura, datos y entornos.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/testingStrategy.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/deploymentStrategy.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/qualityGoals.json"
+    ]},
+    {"id": "DOC012-SecurityCompliance", "title": "Security & Compliance", "path": "real_structure_documentation/docs/DOC012-SecurityCompliance.md", "description": "Arquitectura de seguridad, políticas y cumplimiento.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/architecture.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/apiContract.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/designPatterns.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/forensicAudit.json"
+    ]},
+    {"id": "DOC013-ChangeLog", "title": "Change Log", "path": "real_structure_documentation/docs/DOC013-ChangeLog.md", "description": "Historial de cambios y releases.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08"},
+    {"id": "DOC014-IssueTemplate", "title": "Issue Template", "path": "real_structure_documentation/docs/DOC014-IssueTemplate.md", "description": "Plantilla de issues y criterios mínimos.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08"},
+    {"id": "DOC015-PullRequestTemplate", "title": "Pull Request Template", "path": "real_structure_documentation/docs/DOC015-PullRequestTemplate.md", "description": "Plantilla de PR y checklist de calidad.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08"},
+    {"id": "DOC016-Contributing", "title": "Contributing Guide", "path": "real_structure_documentation/docs/DOC016-Contributing.md", "description": "Guía de contribución, procesos y roles.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08"},
+    {"id": "DOC017-ADR-Index", "title": "ADR Index", "path": "real_structure_documentation/docs/DOC017-ADR-Index.md", "description": "Índice de decisiones de arquitectura (ADRs).", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/architecture.json"
+    ]},
+    {"id": "DOC019-CLI-Command-Reference", "title": "CLI Command Reference", "path": "real_structure_documentation/docs/DOC019-CLI-Command-Reference.md", "description": "Referencia de comandos de la CLI y ejemplos.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/cli_schema.json"
+    ]},
+    {"id": "DOC020-CodeOfConduct", "title": "Code of Conduct", "path": "real_structure_documentation/docs/DOC020-CodeOfConduct.md", "description": "Código de conducta y canales de contacto.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08"},
+    {"id": "DOC021-OnboardingGuide", "title": "Onboarding Guide", "path": "real_structure_documentation/docs/DOC021-OnboardingGuide.md", "description": "Checklist de onboarding y accesos iniciales.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/projectManagement.json"
+    ]},
+    {"id": "DOC022-ReleaseProcess", "title": "Release Process", "path": "real_structure_documentation/docs/DOC022-ReleaseProcess.md", "description": "Proceso de releases y gobierno de versiones.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/projectManagement.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/deploymentStrategy.json"
+    ]},
+    {"id": "DOC023-BackendManifest", "title": "Backend Manifest", "path": "real_structure_documentation/docs/DOC023-BackendManifest.md", "description": "Inventario de features/servicios backend y ownership.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/featureManifest.json"
+    ]},
+    {"id": "DOC024-DatabaseManifest", "title": "Database Manifest", "path": "real_structure_documentation/docs/DOC024-DatabaseManifest.md", "description": "Inventario de entidades/tablas y relaciones principales.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/dataModel.json"
+    ]},
+    {"id": "DOC025-FrontendManifest", "title": "Frontend Manifest", "path": "real_structure_documentation/docs/DOC025-FrontendManifest.md", "description": "Inventario de componentes UI y estados base.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/componentLibrary.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/stateManagementPlan.json"
+    ]},
+    {"id": "DOC026-ProjectFileManifest", "title": "Project File Manifest", "path": "real_structure_documentation/docs/DOC026-ProjectFileManifest.md", "description": "Mapa de archivos y ejecuciones del proyecto.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/fileExecutionMap.json"
+    ]},
+    {"id": "DOC027-SharedLibsManifest", "title": "Shared Libs Manifest", "path": "real_structure_documentation/docs/DOC027-SharedLibsManifest.md", "description": "Librerías compartidas, versiones y ownership.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/projectManagement.json"
+    ]},
+    {"id": "DOC028-OperationsRunbook", "title": "Operations Runbook", "path": "real_structure_documentation/docs/DOC028-OperationsRunbook.md", "description": "Procedimientos operativos, observabilidad y respuesta a incidentes.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/operationalStrategy.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/deploymentStrategy.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/architecture.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/forensicAudit.json"
+    ]},
+    {"id": "DOC029-ProjectRoadmap", "title": "Project Roadmap", "path": "real_structure_documentation/docs/DOC029-ProjectRoadmap.md", "description": "Hitos, timeline y riesgos del proyecto.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/projectManagement.json"
+    ]},
+    {"id": "DOC030-FeatureIndex", "title": "Feature Index", "path": "real_structure_documentation/docs/DOC030-FeatureIndex.md", "description": "Índice de features y estados de ciclo de vida.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/featureManifest.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/featureLifecycle.json"
+    ]},
+    {"id": "DOC031-BugIndex", "title": "Bug Index", "path": "real_structure_documentation/docs/DOC031-BugIndex.md", "description": "Índice de bugs, estados y transiciones.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/bugLifecycle.json"
+    ]},
+    {"id": "DOC032-FrontendScreenFlow", "title": "Frontend Screen Flow", "path": "real_structure_documentation/docs/DOC032-FrontendScreenFlow.md", "description": "Flujo de pantallas, referencias de componentes y estados.", "ownerAgent": "unassigned", "status": "draft", "lastUpdated": "2025-08-08", "schemaRefs": [
+      "real_structure_documentation/schemas/master_blueprint_parts/visualBlueprint.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/wireframeStates.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/componentLibrary.json",
+      "real_structure_documentation/schemas/master_blueprint_parts/stateManagementPlan.json"
+    ]}
+  ],
+  "dependencies": [
+    {"fromDoc": "DOC001-ProjectREADME", "toDoc": "DOC000-ProjectBrief", "relation": "summarizes"},
+    {"fromDoc": "DOC008-APISpecification", "toDoc": "DOC006-BackendArchitecture", "relation": "references"},
+    {"fromDoc": "DOC008-APISpecification", "toDoc": "DOC004-FrontendArchitecture", "relation": "references"},
+    {"fromDoc": "DOC011-TestingStrategy", "toDoc": "DOC010-Deployment", "relation": "gates-from"},
+    {"fromDoc": "DOC022-ReleaseProcess", "toDoc": "DOC010-Deployment", "relation": "uses"},
+    {"fromDoc": "DOC022-ReleaseProcess", "toDoc": "DOC011-TestingStrategy", "relation": "requires"},
+    {"fromDoc": "DOC028-OperationsRunbook", "toDoc": "DOC010-Deployment", "relation": "integrates"},
+    {"fromDoc": "DOC028-OperationsRunbook", "toDoc": "DOC012-SecurityCompliance", "relation": "aligns"},
+    {"fromDoc": "DOC032-FrontendScreenFlow", "toDoc": "DOC025-FrontendManifest", "relation": "uses"},
+    {"fromDoc": "DOC032-FrontendScreenFlow", "toDoc": "DOC005-FrontendDependencies", "relation": "references"},
+    {"fromDoc": "DOC024-DatabaseManifest", "toDoc": "DOC009-DataModel", "relation": "derived-from"},
+    {"fromDoc": "DOC023-BackendManifest", "toDoc": "DOC006-BackendArchitecture", "relation": "aligns"},
+    {"fromDoc": "DOC023-BackendManifest", "toDoc": "DOC028-OperationsRunbook", "relation": "integrates"},
+    {"fromDoc": "DOC030-FeatureIndex", "toDoc": "DOC023-BackendManifest", "relation": "indexes"},
+    {"fromDoc": "DOC029-ProjectRoadmap", "toDoc": "DOC000-ProjectBrief", "relation": "plans"}
+  ],
+  "reviewCycles": {
+    "frequency": "monthly",
+    "reviewers": ["Documentation Lead", "Tech Lead"]
+  },
+  "qualityChecks": [
+    {"id": "playbook-complete", "description": "Cada DOC completado conforme a su playbook canónico.", "automated": false},
+    {"id": "schema-refs-present", "description": "Frontmatter incluye schemaRefs cuando aplica.", "automated": false},
+    {"id": "links-valid", "description": "Rutas y referencias de documentos válidas.", "automated": false}
+  ]
+}

@@ -1,6 +1,13 @@
-# Especificación de Feature: [Título de la Feature]
-
 ---
+title: "{Nombre de la Feature}"
+status: draft|in-progress|done
+owner: "@usuario"
+schemaRefs:
+  - schemas/master_blueprint_parts/featureManifest.json
+  - schemas/master_blueprint_parts/featureLifecycle.json
+---
+
+# Especificación de Feature: [Título de la Feature]
 
 ## 1. Metadatos
 
@@ -81,10 +88,26 @@
 
 - **2025-07-20:** Se decidió usar `libreria-x` en lugar de `libreria-y` por motivos de rendimiento.
 
----
-
 ## 7. Siguiente Acción Propuesta
 
 *Esta sección es actualizada por el agente al final de una sesión de trabajo para facilitar la continuación.*
 
 - **[Descripción clara de la próxima tarea a realizar.]**
+
+## Archivos Relacionados / Actualizaciones Requeridas
+
+- Revisa/actualiza, según corresponda (rutas relativas a `prompt-manager-lite-v/`):
+  - `docs/DOC008-APISpecification.md`
+  - `docs/DOC009-DataModel.md`
+  - `docs/DOC006-BackendArchitecture.md`
+  - `docs/DOC004-FrontendArchitecture.md`
+  - `docs/DOC019-CLI-Command-Reference.md`
+  - `docs/DOC028-OperationsRunbook.md`
+- Manifest global: `manifests/documentation_manifest.json` (agregar/ajustar entrada: id, title, path, owner, status, schemaRefs).
+- Enlaces cruzados: `proposals/`, `bugs/`, `operations/` relacionados.
+
+## Verificación
+
+```bash
+python3 tools/verify_docs_and_schemas.py
+python3 tools/verify_integrity.py

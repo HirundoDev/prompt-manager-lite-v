@@ -16,7 +16,8 @@
                     "description": { "type": "string" },
                     "ownerAgent": { "type": "string" },
                     "status": { "type": "string", "enum": ["draft", "review", "approved"] },
-                    "lastUpdated": { "type": "string" }
+                    "lastUpdated": { "type": "string" },
+                    "schemaRefs": { "type": "array", "items": { "type": "string" } }
                 },
                 "required": ["title", "path", "ownerAgent"]
             }
@@ -32,6 +33,17 @@
         "qualityChecks": {
             "type": "array",
             "items": { "type": "object", "properties": { "id": { "type": "string" }, "description": { "type": "string" }, "automated": { "type": "boolean" } } }
+        },
+        "schemaCoverage": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "schema": { "type": "string" },
+                    "docs": { "type": "array", "items": { "type": "string" } }
+                },
+                "required": ["schema", "docs"]
+            }
         }
     }
 }

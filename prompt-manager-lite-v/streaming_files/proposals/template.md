@@ -1,6 +1,14 @@
-# Propuesta de Idea: [Título de la Idea]
-
 ---
+title: "{Nombre de la Propuesta}"
+status: draft|review|approved|rejected
+owner: "@usuario"
+impact: low|medium|high
+schemaRefs:
+  - schemas/master_blueprint_parts/qualityGoals.json
+  - schemas/master_blueprint_parts/projectManagement.json
+---
+
+# Propuesta de Idea: [Título de la Idea]
 
 ## 1. Metadatos
 
@@ -75,3 +83,21 @@
 *¿Cuál es la acción más pequeña y concreta que podemos tomar para hacer avanzar esta idea?*
 
 - **[Acción específica, p. ej., "Crear un PoC para validar la integración con la API de X", "Diseñar un wireframe de la nueva interfaz", "Presentar esta propuesta al equipo en la próxima reunión de planificación".]**
+
+---
+
+## Archivos Relacionados / Actualizaciones Requeridas
+
+- Actualiza si corresponde (rutas relativas a `prompt-manager-lite-v/`):
+  - `docs/DOC029-ProjectRoadmap.md`
+  - `docs/DOC017-ADR-Index.md` (si se transforma en decisión)
+  - `docs/DOC022-ReleaseProcess.md` (si aplica)
+- Si la propuesta se aprueba → crear `features/feature-*.md` y enlazar bidireccionalmente.
+- Manifest global: `manifests/documentation_manifest.json`.
+
+## Verificación
+
+```bash
+python3 tools/verify_docs_and_schemas.py
+python3 tools/verify_integrity.py
+```

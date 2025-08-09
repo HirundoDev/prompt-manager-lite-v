@@ -1,502 +1,502 @@
 {
-  "created_at": "2025-08-04T16:30:20.666837",
+  "created_at": "2025-08-08T15:57:08.133959",
   "files": {
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC000-ProjectBrief.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC000-ProjectBrief.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC000-ProjectBrief.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC000-ProjectBrief.md",
       "hash": "97055cf9d26891901c1770b5c8bc75d5988f6ac908133133afbec81d00f6cb4e",
       "placeholder_count": 21,
       "placeholders": [
-        "[Nombre de la característica]",
         "[¿Hay alguna aplicación existente cuyo diseño le guste?]",
-        "[Ruta absoluta al directorio raíz del proyecto]",
-        "[¿Hay alguna tecnología que deba usarse? (Ej. React, Python, AWS)]",
-        "`[Ruta absoluta al directorio raíz del proyecto]`",
-        "[Nombre del Proyecto]",
-        "[¿Qué dolor o necesidad del mercado está abordando?]",
-        "[¿Cómo resuelve su producto ese problema?]",
-        "[Describa a su usuario ideal. ¿Qué rol tiene? ¿Qué necesita?]",
         "[ ]",
+        "`[Ruta absoluta al directorio raíz del proyecto]`",
         "[Describa la idea en una o dos frases.]",
+        "[¿Qué dolor o necesidad del mercado está abordando?]",
         "[¿Qué hace y por qué es importante?]",
-        "[Ej: \"Tener un prototipo funcional que demuestre la Feature 1 y 2.\"]"
+        "[Describa a su usuario ideal. ¿Qué rol tiene? ¿Qué necesita?]",
+        "[¿Cómo resuelve su producto ese problema?]",
+        "[Nombre del Proyecto]",
+        "[Ej: \"Tener un prototipo funcional que demuestre la Feature 1 y 2.\"]",
+        "[Nombre de la característica]",
+        "[Ruta absoluta al directorio raíz del proyecto]",
+        "[¿Hay alguna tecnología que deba usarse? (Ej. React, Python, AWS)]"
       ],
       "stats": {
         "size": 2128,
-        "modified": 1754330772.132978,
+        "modified": 1754518058.0417812,
         "lines": 59,
         "chars": 2074,
         "words": 321
       },
-      "analyzed_at": "2025-08-04T16:30:20.667334"
+      "analyzed_at": "2025-08-08T15:57:08.134432"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC001-ProjectREADME.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC001-ProjectREADME.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC001-ProjectREADME.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC001-ProjectREADME.md",
       "hash": "cf8345679fc38e8198cc98986912acd1d15c44387db559ddadfd54cbac7b09ff",
       "placeholder_count": 38,
       "placeholders": [
-        "[Listar frameworks/librerías principales de `dependencies.backend`]",
-        "[Nombre del Proyecto, desde projectInfo.name]",
-        "[Licencia]",
-        "[Sobre el Proyecto]",
-        "[Listar frameworks/librerías principales de `dependencies.frontend`]",
-        "[Contribuciones]",
-        "[repo]",
-        "[user]",
-        "[Comando de instalación, desde deployment.buildSteps.installDependencies]",
-        "[URL del logo, desde projectInfo.logoUrl]",
-        "[Uso]",
-        "[Listar de `dependencies.database`]",
-        "[Primeros Pasos]",
-        "[Descripción detallada del proyecto, desde projectInfo.description]",
-        "[Stack Tecnológico]",
-        "[Listar los prerrequisitos de `deployment.prerequisites`, ej. Node.js v18+, Docker]",
         "[Slogan del proyecto, desde projectInfo.slogan]",
-        "[placeholder]",
+        "[Uso]",
+        "[Licencia]",
+        "[repo]",
+        "[Comando de instalación, desde deployment.buildSteps.installDependencies]",
+        "[Descripción detallada del proyecto, desde projectInfo.description]",
+        "[Listar frameworks/librerías principales de `dependencies.backend`]",
         "[Comando de ejecución, desde deployment.run.development]",
+        "[Primeros Pasos]",
+        "`[placeholder]`",
         "[Nombre de la licencia, desde projectInfo.license]",
+        "[Stack Tecnológico]",
+        "[Contribuciones]",
+        "[placeholder]",
+        "[Listar los prerrequisitos de `deployment.prerequisites`, ej. Node.js v18+, Docker]",
+        "[Nombre del Proyecto, desde projectInfo.name]",
+        "[user]",
         "[Listar de `dependencies.devops`]",
-        "`[placeholder]`"
+        "[Sobre el Proyecto]",
+        "[Listar de `dependencies.database`]",
+        "[URL del logo, desde projectInfo.logoUrl]",
+        "[Listar frameworks/librerías principales de `dependencies.frontend`]"
       ],
       "stats": {
         "size": 3038,
-        "modified": 1754330772.132978,
+        "modified": 1754518058.0419004,
         "lines": 93,
         "chars": 3019,
         "words": 299
       },
-      "analyzed_at": "2025-08-04T16:30:20.667507"
+      "analyzed_at": "2025-08-08T15:57:08.134574"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC002-ProductDefinition.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC002-ProductDefinition.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC002-ProductDefinition.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC002-ProductDefinition.md",
       "hash": "6b3f76d53a536a2dd26c6a59de424719cfd53a6eea2a3daf3780630591c979bd",
       "placeholder_count": 35,
       "placeholders": [
-        "[view.description]",
         "[Métrica de `qualityGoals.kpis`]",
-        "[Valor objetivo de `qualityGoals.kpis`]",
-        "[Descripción del requisito]",
-        "[Descripción del público objetivo, desde productStrategy.targetAudience]",
-        "[Nombre del Proyecto, desde projectInfo.name]",
-        "[view.name]",
-        "[Criterio 1, desde `feature.acceptanceCriteria`]",
-        "[Iterar sobre `featureManifest` para crear una sección para cada feature, con sus user stories y criterios de aceptación.]",
-        "[rol]",
-        "`[Fecha Actual]`",
-        "`[v1.0.0]`",
-        "[Listar elementos de `projectScope.outOfScope`]",
-        "[v1.0.0]",
         "[Categoría, ej. Rendimiento] | [Descripción del requisito]",
+        "`[Fecha Actual]`",
+        "[rol]",
+        "[Listar elementos de `projectScope.outOfScope`]",
+        "[Draft]` | `[v1.0.0]` | `[Nombre del Mantenedor, desde projectInfo.maintainers]",
+        "[Iterar sobre `visualBlueprint.views` para listar las vistas clave.]",
+        "`[v1.0.0]`",
+        "`[Nombre del Mantenedor, desde projectInfo.maintainers]`",
+        "[Descripción del requisito]",
+        "`[view.name]`",
+        "[Iterar sobre `featureManifest` para crear una sección para cada feature, con sus user stories y criterios de aceptación.]",
+        "[Categoría, ej. Rendimiento]",
+        "[Descripción de la solución y propuesta de valor, desde productStrategy.valueProposition]",
+        "[Valor objetivo de `qualityGoals.kpis`]",
+        "[Criterio 2, desde `feature.acceptanceCriteria`]",
+        "[view.description]",
+        "[v1.0.0]",
+        "[Descripción del público objetivo, desde productStrategy.targetAudience]",
+        "[acción]",
+        "[Resumen del problema que se resuelve, desde productStrategy.problemStatement]",
+        "[view.name]",
+        "[Nombre de la feature, desde feature.name]",
+        "[Criterio 1, desde `feature.acceptanceCriteria`]",
+        "[beneficio]",
+        "[Draft]",
+        "[Fecha Actual]",
+        "`[Draft]`",
+        "[Nombre del Proyecto, desde projectInfo.name]",
         "[Nombre del Mantenedor, desde projectInfo.maintainers]",
         "[Iterar sobre `qualityGoals.nonFunctionalRequirements` para crear una tabla.]",
-        "[Criterio 2, desde `feature.acceptanceCriteria`]",
-        "[Resumen del problema que se resuelve, desde productStrategy.problemStatement]",
-        "[Descripción de la solución y propuesta de valor, desde productStrategy.valueProposition]",
-        "`[Nombre del Mantenedor, desde projectInfo.maintainers]`",
-        "[Categoría, ej. Rendimiento]",
-        "[Nombre de la feature, desde feature.name]",
-        "[Objetivo de negocio/producto]",
-        "`[Draft]`",
-        "[Fecha Actual]",
-        "[beneficio]",
-        "[acción]",
-        "[Iterar sobre `visualBlueprint.views` para listar las vistas clave.]",
-        "`[view.name]`",
-        "[Draft]",
-        "[Draft]` | `[v1.0.0]` | `[Nombre del Mantenedor, desde projectInfo.maintainers]"
+        "[Objetivo de negocio/producto]"
       ],
       "stats": {
         "size": 2555,
-        "modified": 1754330772.132978,
+        "modified": 1754518058.0420358,
         "lines": 67,
         "chars": 2520,
         "words": 347
       },
-      "analyzed_at": "2025-08-04T16:30:20.667663"
+      "analyzed_at": "2025-08-08T15:57:08.134700"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC003-DesignSystem.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC003-DesignSystem.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC003-DesignSystem.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC003-DesignSystem.md",
       "hash": "cb972376aae417945ddc1ee8ecb241ca89a683bc3b2a009550b1afdcc3396f48",
       "placeholder_count": 29,
       "placeholders": [
-        "[Iterar sobre `designSystem.tokens.colors` para poblar la tabla]",
-        "[Nombre del Proyecto]",
-        "[Iterar sobre `component.propsSchema`]",
-        "[Equipo de Diseño]",
-        "`[Live]`",
         "`[Fecha Actual]`",
-        "`[v1.0.0]`",
+        "[Desde `designSystem.iconography.link`]",
         "[Iterar sobre `designSystem.tokens.typography`]",
-        "[Desde `designSystem.iconography.library`]",
-        "[v1.0.0]",
+        "[Iterar sobre cada componente en `componentLibrary` para crear una sección para cada uno.]",
+        "`[Live]`",
+        "[Iterar sobre `designSystem.designPrinciples` para crear una lista con viñetas.]",
+        "[Iterar sobre `component.propsSchema`]",
+        "[Mejor práctica, desde `component.guidelines.do`]",
+        "`[v1.0.0]`",
+        "[Nombre del Componente, desde `component.name`]",
+        "[Nombre del Proyecto]",
+        "[Propósito del componente, desde `component.purpose`]",
         "[Desde `designSystem.iconography.style`]",
+        "[v1.0.0]",
+        "[Equipo de Diseño]",
+        "[Desde `designSystem.iconography.library`]",
+        "[Anti-patrón, desde `component.guidelines.dont`]",
+        "[Fecha Actual]",
         "[Poblar con una lista de las `designSystem.accessibilityGuidelines`.]",
         "[Live]",
+        "[Iterar sobre `designSystem.tokens.spacing`]",
         "`[Equipo de Diseño]`",
-        "[Anti-patrón, desde `component.guidelines.dont`]",
-        "[Desde `designSystem.iconography.link`]",
-        "[Mejor práctica, desde `component.guidelines.do`]",
-        "[Fecha Actual]",
-        "[Iterar sobre `designSystem.designPrinciples` para crear una lista con viñetas.]",
-        "[Propósito del componente, desde `component.purpose`]",
-        "[Nombre del Componente, desde `component.name`]",
-        "[Iterar sobre cada componente en `componentLibrary` para crear una sección para cada uno.]",
-        "[Iterar sobre `designSystem.tokens.spacing`]"
+        "[Iterar sobre `designSystem.tokens.colors` para poblar la tabla]"
       ],
       "stats": {
         "size": 2304,
-        "modified": 1754330772.132978,
+        "modified": 1754518058.042174,
         "lines": 77,
         "chars": 2273,
         "words": 334
       },
-      "analyzed_at": "2025-08-04T16:30:20.667819"
+      "analyzed_at": "2025-08-08T15:57:08.134821"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC004-FrontendArchitecture.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC004-FrontendArchitecture.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC004-FrontendArchitecture.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC004-FrontendArchitecture.md",
       "hash": "8f042173292e5eee9d04ce52eaaaf27dccdb7ed2b6de17646ad2fb1359c61400",
       "placeholder_count": 21,
       "placeholders": [
-        "[Iterar sobre `architecture.decisionLog` para poblar la tabla con ADRs relevantes al frontend.]",
-        "[ADR-XXX]",
-        "`[ADR-XXX]`",
-        "`[Título]`",
-        "[Ej. Atomic Design, desde `architecture.frontend.componentStructure`]",
-        "[Ej. React, Vue, desde `architecture.frontend.framework`]",
-        "[Nombre del Proyecto]",
-        "[Aceptado]",
-        "[Framework]",
-        "[Ej. SPA, Micro-frontends, desde `architecture.frontend.architecturePattern`]",
-        "[Título]",
-        "[Librería de Estado]",
         "`[Aceptado]`",
+        "[Framework]",
+        "[Lenguaje/Framework Backend]",
+        "[Título]",
+        "[Ej. Atomic Design, desde `architecture.frontend.componentStructure`]",
+        "[Aceptado]",
+        "[Iterar sobre `architecture.decisionLog` para poblar la tabla con ADRs relevantes al frontend.]",
+        "[Nombre del Proyecto]",
         "[Ej. Redux, Zustand, desde `architecture.frontend.stateManagement`]",
+        "[ADR-XXX]",
+        "`[Título]`",
         "[Describe los requisitos clave (ej. Rendimiento, SEO) y las restricciones (ej. presupuesto) que han influido en las decisiones de arquitectura. Extraer de `qualityGoals` y `projectScope.constraints`.]",
-        "[Lenguaje/Framework Backend]"
+        "[Ej. SPA, Micro-frontends, desde `architecture.frontend.architecturePattern`]",
+        "[Ej. React, Vue, desde `architecture.frontend.framework`]",
+        "[Librería de Estado]",
+        "`[ADR-XXX]`"
       ],
       "stats": {
         "size": 3607,
-        "modified": 1754330772.132978,
+        "modified": 1754518058.0422926,
         "lines": 92,
         "chars": 3583,
         "words": 449
       },
-      "analyzed_at": "2025-08-04T16:30:20.667968"
+      "analyzed_at": "2025-08-08T15:57:08.134936"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC005-FrontendDependencies.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC005-FrontendDependencies.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC005-FrontendDependencies.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC005-FrontendDependencies.md",
       "hash": "f28adc4ecb87ede49142ed0ff7d76e7e808c86184efd5e424cbba36768cf3605",
       "placeholder_count": 14,
       "placeholders": [
-        "[Resumen de los resultados de `npm audit`. Listar vulnerabilidades críticas, altas, moderadas y bajas.]",
-        "[package.json]",
         "[Fecha y Hora]",
+        "`[package.json]`",
         "[Iterar sobre `devDependencies` del `package.json` y los resultados de las auditorías]",
         "`[✅ Saludable / ⚠️ Requiere Revisión]`",
-        "[Resumen de las licencias encontradas. Advertir sobre licencias restrictivas o incompatibles.]",
+        "[Iterar sobre `dependencies` del `package.json` y los resultados de las auditorías]",
         "`[Fecha y Hora]`",
+        "[Resumen de los resultados de `npm audit`. Listar vulnerabilidades críticas, altas, moderadas y bajas.]",
         "[npm/yarn]",
         "`[npm/yarn]`",
+        "[package.json]",
         "[✅ Saludable / ⚠️ Requiere Revisión]",
-        "`[package.json]`",
-        "[Iterar sobre `dependencies` del `package.json` y los resultados de las auditorías]"
+        "[Resumen de las licencias encontradas. Advertir sobre licencias restrictivas o incompatibles.]"
       ],
       "stats": {
         "size": 1882,
-        "modified": 1754330772.132978,
+        "modified": 1754518058.0424101,
         "lines": 42,
         "chars": 1859,
         "words": 310
       },
-      "analyzed_at": "2025-08-04T16:30:20.668106"
+      "analyzed_at": "2025-08-08T15:57:08.135045"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC006-BackendArchitecture.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC006-BackendArchitecture.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC006-BackendArchitecture.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC006-BackendArchitecture.md",
       "hash": "eb26b77cc678f90799c0d50c2d72f410af9db8254bb5f67b268b9dece7e1f8bb",
       "placeholder_count": 22,
       "placeholders": [
-        "[Tecnología, ej. Redis]",
-        "[Tecnología, ej. NestJS]",
-        "[ADR-XXX]",
-        "`[Título]`",
-        "[Nombre del Proyecto]",
-        "[Ej. NestJS, Django, desde `architecture.backend.framework`]",
+        "[Framework Backend]",
         "[Iterar sobre `architecture.decisionLog` para poblar la tabla con ADRs relevantes al backend.]",
-        "[Ej. PostgreSQL, desde `architecture.backend.database`]",
-        "[Aceptado]",
+        "[Tecnología, ej. Redis]",
         "[Tecnología de BD]",
-        "[Tecnología]",
-        "[Nombre del ORM]",
+        "[ADR-XXX]",
+        "[Título]",
+        "`[Aceptado]`",
         "[Ej. Monolito, Microservicios, desde `architecture.backend.architecturePattern`]",
         "[Ej. JWT, OAuth2, desde `architecture.backend.authentication`]",
-        "[Título]",
-        "[Describe los requisitos clave (ej. Escalabilidad, Seguridad) y las restricciones (ej. presupuesto) que han influido en las decisiones de arquitectura. Extraer de `qualityGoals` y `projectScope.constraints`.]",
+        "[Nombre del Proyecto]",
+        "`[Título]`",
+        "[Ej. PostgreSQL, desde `architecture.backend.database`]",
         "`[ADR-XXX]`",
-        "[Framework Backend]",
-        "`[Aceptado]`"
+        "[Aceptado]",
+        "[Nombre del ORM]",
+        "[Tecnología, ej. NestJS]",
+        "[Tecnología]",
+        "[Describe los requisitos clave (ej. Escalabilidad, Seguridad) y las restricciones (ej. presupuesto) que han influido en las decisiones de arquitectura. Extraer de `qualityGoals` y `projectScope.constraints`.]",
+        "[Ej. NestJS, Django, desde `architecture.backend.framework`]"
       ],
       "stats": {
         "size": 3777,
-        "modified": 1754330772.132978,
+        "modified": 1754518058.042522,
         "lines": 98,
         "chars": 3752,
         "words": 455
       },
-      "analyzed_at": "2025-08-04T16:30:20.668255"
+      "analyzed_at": "2025-08-08T15:57:08.135169"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC007-BackendDependencies.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC007-BackendDependencies.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC007-BackendDependencies.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC007-BackendDependencies.md",
       "hash": "dd2d90da8717fa8cca4fb7e02e53d92061b96504b4e3386190a7859aa41b0970",
       "placeholder_count": 14,
       "placeholders": [
-        "[requirements.txt/package.json/pom.xml]",
-        "[Iterar sobre las dependencias del manifiesto y los resultados de las auditorías]",
-        "[pip/npm/maven]",
         "[Fecha y Hora]",
-        "[Resumen de los resultados de la herramienta de auditoría. Listar vulnerabilidades críticas, altas, moderadas y bajas.]",
-        "[Resumen de las licencias encontradas. Advertir sobre licencias restrictivas, incompatibles o no aprobadas por la política de la empresa.]",
-        "`[pip/npm/maven]`",
         "`[✅ Saludable / ⚠️ Requiere Revisión]`",
-        "`[Fecha y Hora]`",
-        "[✅ Saludable / ⚠️ Requiere Revisión]",
+        "`[pip/npm/maven]`",
         "[Iterar sobre las dependencias de desarrollo del manifiesto y los resultados de las auditorías]",
-        "`[requirements.txt/package.json/pom.xml]`"
+        "[Iterar sobre las dependencias del manifiesto y los resultados de las auditorías]",
+        "`[requirements.txt/package.json/pom.xml]`",
+        "`[Fecha y Hora]`",
+        "[pip/npm/maven]",
+        "[Resumen de las licencias encontradas. Advertir sobre licencias restrictivas, incompatibles o no aprobadas por la política de la empresa.]",
+        "[✅ Saludable / ⚠️ Requiere Revisión]",
+        "[Resumen de los resultados de la herramienta de auditoría. Listar vulnerabilidades críticas, altas, moderadas y bajas.]",
+        "[requirements.txt/package.json/pom.xml]"
       ],
       "stats": {
         "size": 1903,
-        "modified": 1754330772.133978,
+        "modified": 1754518058.0426471,
         "lines": 42,
         "chars": 1876,
         "words": 307
       },
-      "analyzed_at": "2025-08-04T16:30:20.668381"
+      "analyzed_at": "2025-08-08T15:57:08.135269"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC008-APISpecification.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC008-APISpecification.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC008-APISpecification.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC008-APISpecification.md",
       "hash": "adb0398ca5544753d2c3bf578457a0b5fb93b6c6de3f2a74b5c3a110c0338985",
       "placeholder_count": 22,
       "placeholders": [
         "[URL base de la API, ej. /api/v1]",
-        "[Nombre del Proyecto]",
-        "[param.name]",
-        "[MÉTODO]",
-        "`[param.name]`",
+        "`[param.description]`",
         "`[URL base de la API, ej. /api/v1]`",
-        "`[param.type]`",
         "[ruta]",
-        "`[ruta]`",
-        "[param.description]",
-        "[Versión de la API, ej. 1.0.0]",
-        "`[MÉTODO]`",
-        "[Descripción del método de autenticación, desde `apiContract.authentication.strategy`. Ej. Bearer Token (JWT)]",
-        "[Descripción del endpoint, desde `endpoint.description`]",
         "[Descripción de la política de límite de tasa, desde `apiContract.rateLimiting`.]",
+        "[Nombre del Proyecto]",
+        "`[param.type]`",
+        "[param.description]",
+        "[MÉTODO]",
+        "[param.name]",
         "[param.type]",
+        "[Versión de la API, ej. 1.0.0]",
+        "[Descripción del método de autenticación, desde `apiContract.authentication.strategy`. Ej. Bearer Token (JWT)]",
         "`[Versión de la API, ej. 1.0.0]`",
+        "`[MÉTODO]`",
+        "[Descripción del endpoint, desde `endpoint.description`]",
+        "`[ruta]`",
         "[Iterar sobre `apiContract.endpoints` para generar una sección para cada uno.]",
-        "`[param.description]`"
+        "`[param.name]`"
       ],
       "stats": {
         "size": 1990,
-        "modified": 1754330772.133978,
+        "modified": 1754518058.042756,
         "lines": 69,
         "chars": 1962,
         "words": 275
       },
-      "analyzed_at": "2025-08-04T16:30:20.668517"
+      "analyzed_at": "2025-08-08T15:57:08.135406"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC009-DataModel.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC009-DataModel.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC009-DataModel.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC009-DataModel.md",
       "hash": "34cacc54f572618fb17b227f1eb3e6631ff98a87bf997c72283776be987af8ae",
       "placeholder_count": 15,
       "placeholders": [
-        "[Nombre de la Entidad]",
-        "`[tipo]`",
-        "[Sí/No]",
-        "[Describir las relaciones de esta entidad con otras, ej. \"Pertenece a un `Usuario`\", \"Tiene muchos `Comentarios`\".]",
         "[nombre_atributo]",
-        "[Iterar sobre cada entidad en `dataModelDictionary.entities` para generar las siguientes secciones.]",
-        "`[Sí/No]`",
-        "`[Nombre de la Entidad]`",
-        "[Generar el ERD completo aquí, mostrando todas las entidades y sus relaciones]",
-        "`[nombre_atributo]`",
-        "`[descripción]`",
-        "[Propósito y rol de la entidad en el sistema.]",
         "[descripción]",
-        "[tipo]"
+        "`[Nombre de la Entidad]`",
+        "[Nombre de la Entidad]",
+        "`[descripción]`",
+        "`[tipo]`",
+        "`[Sí/No]`",
+        "[Describir las relaciones de esta entidad con otras, ej. \"Pertenece a un `Usuario`\", \"Tiene muchos `Comentarios`\".]",
+        "`[nombre_atributo]`",
+        "[tipo]",
+        "[Sí/No]",
+        "[Generar el ERD completo aquí, mostrando todas las entidades y sus relaciones]",
+        "[Propósito y rol de la entidad en el sistema.]",
+        "[Iterar sobre cada entidad en `dataModelDictionary.entities` para generar las siguientes secciones.]"
       ],
       "stats": {
         "size": 1508,
-        "modified": 1754330772.133978,
+        "modified": 1754518058.0430243,
         "lines": 49,
         "chars": 1494,
         "words": 216
       },
-      "analyzed_at": "2025-08-04T16:30:20.668634"
+      "analyzed_at": "2025-08-08T15:57:08.135530"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC010-Deployment.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC010-Deployment.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC010-Deployment.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC010-Deployment.md",
       "hash": "e978f22516c579420ac890c154f237be7f982d292271dedebb383846e22b25da",
       "placeholder_count": 35,
       "placeholders": [
-        "[operationalManual.deploymentSteps.frontend.build]",
+        "`[operationalManual.hosting.backend.provider]`",
+        "`[Iterar sobre operationalManual.environmentVariables.backend]`",
+        "[operationalManual.hosting.database.provider]",
+        "[operationalManual.deploymentSteps.backend.deploy]",
+        "`[operationalManual.ci_cd.tool, ej. GitHub Actions]`",
+        "[Ej. Node.js, Docker, AWS CLI, gcloud]",
+        "[operationalManual.ci_cd.tool, ej. GitHub Actions]",
+        "[ej. en cada push a main/develop]",
+        "[Lista de entornos, ej. development, staging, production]",
+        "`[Ej. Acceso a la cuenta de AWS, permisos en el repositorio de Git]`",
+        "[operationalManual.deploymentSteps.backend.push]",
+        "[operationalManual.deploymentSteps.frontend.deploy]",
+        "[operationalManual.hosting.frontend.provider]",
+        "`[operationalManual.hosting.database.provider]`",
+        "`[Iterar sobre operationalManual.environmentVariables.frontend]`",
         "[operationalManual.deploymentSteps.backend.migrate]",
         "[operationalManual.deploymentSteps.backend.build]",
-        "`[Ej. Node.js, Docker, AWS CLI, gcloud]`",
-        "[Descripción del proceso de rollback, ej. redesplegar la versión anterior desde el registro de imágenes]",
-        "`[operationalManual.hosting.database.provider]`",
-        "[operationalManual.hosting.frontend.provider]",
-        "`[operationalManual.ci_cd.tool, ej. GitHub Actions]`",
-        "`[Ej. Acceso a la cuenta de AWS, permisos en el repositorio de Git]`",
-        "[operationalManual.hosting.database.provider]",
-        "[operationalManual.deploymentSteps.backend.push]",
-        "[ej. en cada push a main/develop]",
         "[Ej. Acceso a la cuenta de AWS, permisos en el repositorio de Git]",
-        "[Iterar sobre operationalManual.environmentVariables.backend]",
-        "`[Iterar sobre operationalManual.environmentVariables.backend]`",
-        "[operationalManual.hosting.backend.provider]",
-        "`[Descripción del proceso de rollback, ej. redesplegar la versión anterior desde el registro de imágenes]`",
-        "`[Iterar sobre operationalManual.environmentVariables.frontend]`",
-        "[operationalManual.ci_cd.tool, ej. GitHub Actions]",
-        "[Ej. Node.js, Docker, AWS CLI, gcloud]",
-        "[Breve descripción de las etapas del pipeline: build, test, deploy]",
-        "[Lista de entornos, ej. development, staging, production]",
-        "`[Lista de entornos, ej. development, staging, production]`",
-        "`[operationalManual.hosting.backend.provider]`",
-        "`[Descripción del proceso de rollback, ej. revertir al despliegue anterior en Vercel/Netlify]`",
-        "[Descripción del proceso de rollback, ej. revertir al despliegue anterior en Vercel/Netlify]",
-        "`[Breve descripción de las etapas del pipeline: build, test, deploy]`",
-        "[operationalManual.deploymentSteps.backend.deploy]",
-        "[operationalManual.deploymentSteps.frontend.deploy]",
         "[Iterar sobre operationalManual.environmentVariables.frontend]",
+        "`[ej. en cada push a main/develop]`",
+        "[Descripción del proceso de rollback, ej. revertir al despliegue anterior en Vercel/Netlify]",
+        "`[Lista de entornos, ej. development, staging, production]`",
+        "[Breve descripción de las etapas del pipeline: build, test, deploy]",
+        "`[Descripción del proceso de rollback, ej. redesplegar la versión anterior desde el registro de imágenes]`",
+        "`[Descripción del proceso de rollback, ej. revertir al despliegue anterior en Vercel/Netlify]`",
+        "`[Breve descripción de las etapas del pipeline: build, test, deploy]`",
+        "[Descripción del proceso de rollback, ej. redesplegar la versión anterior desde el registro de imágenes]",
+        "`[Ej. Node.js, Docker, AWS CLI, gcloud]`",
+        "[operationalManual.deploymentSteps.frontend.build]",
         "`[operationalManual.hosting.frontend.provider]`",
-        "`[ej. en cada push a main/develop]`"
+        "[operationalManual.hosting.backend.provider]",
+        "[Iterar sobre operationalManual.environmentVariables.backend]"
       ],
       "stats": {
         "size": 2878,
-        "modified": 1754330772.133978,
+        "modified": 1754518058.043137,
         "lines": 79,
         "chars": 2860,
         "words": 348
       },
-      "analyzed_at": "2025-08-04T16:30:20.668775"
+      "analyzed_at": "2025-08-08T15:57:08.135660"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC011-TestingStrategy.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC011-TestingStrategy.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC011-TestingStrategy.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC011-TestingStrategy.md",
       "hash": "a73030f65802eb72961f1e71b7d432a27385daef12df8868c3fcce8dde214435",
       "placeholder_count": 21,
       "placeholders": [
-        "`[level.description]`",
-        "[Iterar sobre qualityAssurance.testingStrategy.goals]",
         "[Iterar sobre `qualityAssurance.testExecution` para generar los siguientes bloques de comandos]",
-        "`[Iterar sobre qualityAssurance.testingStrategy.goals]`",
-        "`[qualityAssurance.testingStrategy.philosophy]`",
-        "`[level.tools]`",
         "`[qualityAssurance.reporting.resultsReportPath]`",
-        "[level.tools]",
-        "`[qualityAssurance.reporting.coverageReportPath]`",
-        "[qualityAssurance.testingStrategy.philosophy]",
-        "[suite.command]",
-        "[qualityAssurance.reporting.coverageReportPath]",
-        "[Iterar sobre `qualityAssurance.testingLevels` para generar las siguientes secciones]",
         "[level.coverageGoal]",
-        "`[suite.name]`",
-        "[level.description]",
+        "`[level.tools]`",
+        "[Iterar sobre qualityAssurance.testingStrategy.goals]",
+        "[Iterar sobre `qualityAssurance.testingLevels` para generar las siguientes secciones]",
         "`[level.name]`",
-        "[suite.name]",
-        "[level.name]",
         "`[level.coverageGoal]`",
-        "[qualityAssurance.reporting.resultsReportPath]"
+        "[level.name]",
+        "[level.description]",
+        "[qualityAssurance.testingStrategy.philosophy]",
+        "`[qualityAssurance.reporting.coverageReportPath]`",
+        "[level.tools]",
+        "[qualityAssurance.reporting.resultsReportPath]",
+        "`[Iterar sobre qualityAssurance.testingStrategy.goals]`",
+        "`[level.description]`",
+        "[suite.command]",
+        "`[suite.name]`",
+        "[suite.name]",
+        "`[qualityAssurance.testingStrategy.philosophy]`",
+        "[qualityAssurance.reporting.coverageReportPath]"
       ],
       "stats": {
         "size": 1390,
-        "modified": 1754330772.133978,
+        "modified": 1754518058.0433638,
         "lines": 45,
         "chars": 1382,
         "words": 149
       },
-      "analyzed_at": "2025-08-04T16:30:20.668899"
+      "analyzed_at": "2025-08-08T15:57:08.135746"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC012-SecurityCompliance.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC012-SecurityCompliance.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC012-SecurityCompliance.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC012-SecurityCompliance.md",
       "hash": "3eed8bf9074a207c9da94a93825c9bfb171e1f6eabd2d15340d50608cde0d526",
       "placeholder_count": 23,
       "placeholders": [
-        "[securityAndCompliance.dataHandling.protectionMeasures]",
-        "`[securityAndCompliance.dependencySecurity.remediationProcess]`",
-        "[securityAndCompliance.vulnerabilityDisclosure.responseTimeline]",
-        "`[securityAndCompliance.dataHandling.protectionMeasures]`",
-        "`[securityAndCompliance.secretsManagement.tool]`",
-        "[securityAndCompliance.dependencySecurity.scanningTool]",
-        "[securityAndCompliance.secretsManagement.policy]",
-        "[securityAndCompliance.secretsManagement.tool]",
         "[Iterar sobre securityAndCompliance.compliance.standards]",
-        "`[Iterar sobre securityAndCompliance.compliance.standards]`",
-        "[securityAndCompliance.dataHandling.dataClassification]",
-        "`[securityAndCompliance.secretsManagement.policy]`",
-        "`[securityAndCompliance.dataHandling.dataClassification]`",
-        "`[securityAndCompliance.authentication.authorizationModel]`",
-        "[securityAndCompliance.vulnerabilityDisclosure.reportingInstructions]",
         "`[securityAndCompliance.vulnerabilityDisclosure.reportingInstructions]`",
-        "`[securityAndCompliance.authentication.methods]`",
-        "[securityAndCompliance.dependencySecurity.remediationProcess]",
+        "`[securityAndCompliance.dependencySecurity.scanningTool]`",
+        "`[securityAndCompliance.dependencySecurity.remediationProcess]`",
+        "[securityAndCompliance.secretsManagement.tool]",
         "[securityAndCompliance.authentication.authorizationModel]",
-        "[securityAndCompliance.authentication.methods]",
         "`[securityAndCompliance.vulnerabilityDisclosure.responseTimeline]`",
-        "`[securityAndCompliance.dependencySecurity.scanningTool]`"
+        "[securityAndCompliance.dependencySecurity.scanningTool]",
+        "[securityAndCompliance.dataHandling.dataClassification]",
+        "[securityAndCompliance.authentication.methods]",
+        "[securityAndCompliance.vulnerabilityDisclosure.reportingInstructions]",
+        "`[securityAndCompliance.dataHandling.dataClassification]`",
+        "`[Iterar sobre securityAndCompliance.compliance.standards]`",
+        "`[securityAndCompliance.authentication.methods]`",
+        "[securityAndCompliance.vulnerabilityDisclosure.responseTimeline]",
+        "[securityAndCompliance.dependencySecurity.remediationProcess]",
+        "`[securityAndCompliance.dataHandling.protectionMeasures]`",
+        "[securityAndCompliance.dataHandling.protectionMeasures]",
+        "[securityAndCompliance.secretsManagement.policy]",
+        "`[securityAndCompliance.secretsManagement.policy]`",
+        "`[securityAndCompliance.secretsManagement.tool]`",
+        "`[securityAndCompliance.authentication.authorizationModel]`"
       ],
       "stats": {
         "size": 1657,
-        "modified": 1754330772.133978,
+        "modified": 1754518058.043473,
         "lines": 39,
         "chars": 1642,
         "words": 140
       },
-      "analyzed_at": "2025-08-04T16:30:20.669046"
+      "analyzed_at": "2025-08-08T15:57:08.135861"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC013-ChangeLog.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC013-ChangeLog.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC013-ChangeLog.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC013-ChangeLog.md",
       "hash": "a300c0bca0b94d13c72fb5085a460b92eef07a42da218a8539e56fb294dc120a",
       "placeholder_count": 8,
       "placeholders": [
         "[Keep a Changelog]",
-        "[...El historial de cambios permanece aquí de forma permanente...]",
         "[Semantic Versioning]",
+        "[Unreleased]",
+        "[...El historial de cambios permanece aquí de forma permanente...]",
         "`[Unreleased]`",
-        "[Versión Anterior]",
-        "[Unreleased]"
+        "[Versión Anterior]"
       ],
       "stats": {
         "size": 1195,
-        "modified": 1754330772.133978,
+        "modified": 1754518058.0435874,
         "lines": 45,
         "chars": 1184,
         "words": 158
       },
-      "analyzed_at": "2025-08-04T16:30:20.669165"
+      "analyzed_at": "2025-08-08T15:57:08.135993"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC014-IssueTemplate.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC014-IssueTemplate.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC014-IssueTemplate.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC014-IssueTemplate.md",
       "hash": "6964c7440b6462971b86dd62b83ce47a9a05e0452937c90435b2f55ea6ce40fd",
       "placeholder_count": 8,
       "placeholders": [
         "[\"bug\"]",
-        "[ej. Chrome 108, Firefox 107]",
-        "[ej. v1.2.3, commit hash]",
-        "[BUG]",
         "[ ]",
-        "[ej. macOS, Windows 10, Ubuntu 22.04]"
+        "[ej. v1.2.3, commit hash]",
+        "[ej. Chrome 108, Firefox 107]",
+        "[ej. macOS, Windows 10, Ubuntu 22.04]",
+        "[BUG]"
       ],
       "stats": {
         "size": 1544,
-        "modified": 1754330772.133978,
+        "modified": 1754518058.0436883,
         "lines": 54,
         "chars": 1526,
         "words": 243
       },
-      "analyzed_at": "2025-08-04T16:30:20.669282"
+      "analyzed_at": "2025-08-08T15:57:08.136119"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC015-PullRequestTemplate.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC015-PullRequestTemplate.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC015-PullRequestTemplate.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC015-PullRequestTemplate.md",
       "hash": "71437d45bc51c355fee5bebe43ee55e0a732355900e2e7dcfd5aae0c8080485d",
       "placeholder_count": 16,
       "placeholders": [
@@ -505,1080 +505,1107 @@
       ],
       "stats": {
         "size": 1955,
-        "modified": 1754330772.133978,
+        "modified": 1754518058.0437982,
         "lines": 50,
         "chars": 1897,
         "words": 326
       },
-      "analyzed_at": "2025-08-04T16:30:20.669421"
+      "analyzed_at": "2025-08-08T15:57:08.136234"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC016-Contributing.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC016-Contributing.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC016-Contributing.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC016-Contributing.md",
       "hash": "75fc2da3fdc85f3cde0ad964a6c91d46666063698ba515bc8a1f564063b5d9d5",
       "placeholder_count": 12,
       "placeholders": [
-        "[URL_DEL_REPOSITORIO]",
-        "[Manual de Despliegue]",
-        "[projectManagement.codingStandards.linter]",
-        "[plantilla de reporte de bugs]",
-        "[Código de Conducta]",
         "`[projectManagement.codingStandards.styleGuide]`",
+        "[Código de Conducta]",
+        "[projectManagement.codingStandards.styleGuide]",
         "[issues abiertos]",
-        "[projectManagement.codingStandards.commands]",
-        "`[projectManagement.codingStandards.linter]`",
+        "[plantilla de reporte de bugs]",
         "`[projectManagement.codingStandards.commands]`",
-        "[plantilla de Pull Request]",
-        "[projectManagement.codingStandards.styleGuide]"
+        "[projectManagement.codingStandards.commands]",
+        "[URL_DEL_REPOSITORIO]",
+        "[projectManagement.codingStandards.linter]",
+        "[Manual de Despliegue]",
+        "`[projectManagement.codingStandards.linter]`",
+        "[plantilla de Pull Request]"
       ],
       "stats": {
         "size": 2314,
-        "modified": 1754330772.133978,
+        "modified": 1754518058.0439017,
         "lines": 35,
         "chars": 2280,
         "words": 293
       },
-      "analyzed_at": "2025-08-04T16:30:20.669554"
+      "analyzed_at": "2025-08-08T15:57:08.136334"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC017-ADR-Index.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC017-ADR-Index.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC017-ADR-Index.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC017-ADR-Index.md",
       "hash": "4810fdd1b378aa4b04d6329fbf68fdc3d136f44d11e48f4a53a373bfa0d65eca",
       "placeholder_count": 4,
       "placeholders": [
-        "[Título del ADR]",
         "[ADR-XXXX](./adrs/ADR-XXXX.md) | [Título del ADR]",
-        "[Estado]",
-        "[ADR-XXXX]"
+        "[Título del ADR]",
+        "[ADR-XXXX]",
+        "[Estado]"
       ],
       "stats": {
         "size": 1071,
-        "modified": 1754330772.133978,
+        "modified": 1754518058.0440164,
         "lines": 21,
         "chars": 1056,
         "words": 168
       },
-      "analyzed_at": "2025-08-04T16:30:20.669656"
+      "analyzed_at": "2025-08-08T15:57:08.136402"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC019-CLI-Command-Reference.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC019-CLI-Command-Reference.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC019-CLI-Command-Reference.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC019-CLI-Command-Reference.md",
       "hash": "3069b6c498e8230b0c15e38a93f0fea45d8625e715dbbfdb81a2a03411d58abd",
       "placeholder_count": 34,
       "placeholders": [
-        "[option.longFlag]",
-        "`[option.default]`",
         "[command.example.description]",
-        "[Iterar sobre command.arguments]",
-        "`[option.type]`",
+        "[Guía de `update-metadata`]",
+        "[argument.name]",
+        "[option.type]",
         "[Guía de `update-content`]",
-        "`[command.name]`",
-        "[argumentos]",
+        "`[option.default]`",
+        "[option.flag]",
         "[command.example.usage]",
         "`[argument.description]`",
-        "[option.default]",
-        "[argument.description]",
-        "[Guía de `batch-update`]",
-        "[argument.type]",
+        "`[Iterar sobre command.arguments]`",
+        "`[argument.name]`",
+        "[argumentos]",
+        "[cli_name]",
         "`[command.description]`",
         "`[argument.type]`",
-        "`[argument.name]`",
-        "`[option.flag]`",
-        "[cli_name]",
-        "[command.description]",
-        "[option.type]",
-        "[opciones]",
-        "`[Iterar sobre command.options]`",
-        "[argument.name]",
+        "[option.default]",
         "`[option.longFlag]`",
-        "`[Iterar sobre command.arguments]`",
         "[command.name]",
-        "[option.flag]",
+        "[option.longFlag]",
+        "`[option.flag]`",
+        "[Guía de `batch-update`]",
         "`[option.description]`",
-        "[Iterar sobre command.options]",
+        "[argument.description]",
         "[option.description]",
-        "[Guía de `update-metadata`]"
+        "`[Iterar sobre command.options]`",
+        "`[option.type]`",
+        "[argument.type]",
+        "[Iterar sobre command.options]",
+        "[Iterar sobre command.arguments]",
+        "[command.description]",
+        "`[command.name]`",
+        "[opciones]"
       ],
       "stats": {
         "size": 1358,
-        "modified": 1754330772.133978,
+        "modified": 1754518058.0441115,
         "lines": 39,
         "chars": 1349,
         "words": 144
       },
-      "analyzed_at": "2025-08-04T16:30:20.669774"
+      "analyzed_at": "2025-08-08T15:57:08.136502"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC020-CodeOfConduct.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC020-CodeOfConduct.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC020-CodeOfConduct.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC020-CodeOfConduct.md",
       "hash": "452e573bd95f570ca8fed1795b149353b12a2437a9f7f69259ec36eb69c0ed1f",
       "placeholder_count": 8,
       "placeholders": [
+        "[INSERTAR EMAIL DE CONTACTO]",
+        "`[INSERTAR EMAIL DE CONTACTO]`",
         "[v2.1]",
         "[homepage]",
         "[Contributor Covenant]",
-        "[https://www.contributor-covenant.org/version/2/1/code_of_conduct.html]",
-        "`[INSERTAR EMAIL DE CONTACTO]`",
-        "[INSERTAR EMAIL DE CONTACTO]"
+        "[https://www.contributor-covenant.org/version/2/1/code_of_conduct.html]"
       ],
       "stats": {
         "size": 3777,
-        "modified": 1754330772.133978,
+        "modified": 1754518058.0442257,
         "lines": 54,
         "chars": 3721,
         "words": 507
       },
-      "analyzed_at": "2025-08-04T16:30:20.669906"
+      "analyzed_at": "2025-08-08T15:57:08.136613"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC021-OnboardingGuide.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC021-OnboardingGuide.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC021-OnboardingGuide.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC021-OnboardingGuide.md",
       "hash": "98cb10e4595d396bdaeee73a22a412f05ceac59968136af259c958b866ca76c8",
       "placeholder_count": 30,
       "placeholders": [
-        "`[projectManagement.keyContacts.productOwner]`",
-        "[Ver Código de Conducta]",
-        "[ ] **Entiende nuestra Estrategia de Pruebas:** Conoce cómo aseguramos la calidad del código. ([Ver Estrategia de Pruebas]",
-        "[projectManagement.keyContacts.projectLead]",
-        "[ ] **Revisa el Modelo de Datos:** Entiende las entidades de datos clave del sistema. ([Ver Modelo de Datos]",
-        "[Ver Definición del Producto]",
-        "[Arquitectura Backend]",
-        "[Ver Manual de Despliegue]",
-        "[projectManagement.keyContacts.techLead]",
-        "[Ver Índice de ADRs]",
-        "[ ] **Entiende la Misión:** Comprende qué problema resolvemos y para quién. ([Ver Definición del Producto]",
-        "`[projectManagement.keyContacts.techLead]`",
-        "[projectManagement.keyContacts.productOwner]",
-        "`[projectManagement.keyContacts.projectLead]`",
         "[ ]",
-        "[Ver Especificación de la API]",
-        "[Ver Estrategia de Pruebas]",
-        "[Arquitectura Frontend]",
+        "[Ver Índice de ADRs]",
+        "[Ver Código de Conducta]",
+        "[Ver Definición del Producto]",
+        "`[projectManagement.keyContacts.techLead]`",
         "[Ver Guía de Contribución]",
-        "[Ver Modelo de Datos]"
+        "[Ver Modelo de Datos]",
+        "[Ver Manual de Despliegue]",
+        "[ ] **Entiende nuestra Estrategia de Pruebas:** Conoce cómo aseguramos la calidad del código. ([Ver Estrategia de Pruebas]",
+        "[ ] **Entiende la Misión:** Comprende qué problema resolvemos y para quién. ([Ver Definición del Producto]",
+        "[Ver Especificación de la API]",
+        "[Arquitectura Backend]",
+        "[Arquitectura Frontend]",
+        "`[projectManagement.keyContacts.productOwner]`",
+        "[projectManagement.keyContacts.productOwner]",
+        "[projectManagement.keyContacts.techLead]",
+        "`[projectManagement.keyContacts.projectLead]`",
+        "[Ver Estrategia de Pruebas]",
+        "[projectManagement.keyContacts.projectLead]",
+        "[ ] **Revisa el Modelo de Datos:** Entiende las entidades de datos clave del sistema. ([Ver Modelo de Datos]"
       ],
       "stats": {
         "size": 3041,
-        "modified": 1754330772.133978,
+        "modified": 1754518058.044329,
         "lines": 48,
         "chars": 2993,
         "words": 397
       },
-      "analyzed_at": "2025-08-04T16:30:20.670047"
+      "analyzed_at": "2025-08-08T15:57:08.136735"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC022-ReleaseProcess.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC022-ReleaseProcess.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC022-ReleaseProcess.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC022-ReleaseProcess.md",
       "hash": "d1ca2b910c2e39550f9f1712ed31b6d1efe877e34964ee6be638dc4d2bf98410",
       "placeholder_count": 28,
       "placeholders": [
-        "`[qualityAssurance.testExecution.fullSuiteCommand]`",
         "`[releaseManagement.publishCommand]`",
-        "[Changelog]",
-        "[Ver Panel de Salud de Dependencias]",
-        "[releaseManagement.publishCommand]",
-        "[qualityAssurance.testExecution.fullSuiteCommand]",
-        "`[Unreleased]`",
         "[ ]",
         "`[releaseManagement.versioningStrategy]`",
-        "[DOC007-BackendDependencies.md]",
         "[Unreleased]",
-        "[releaseManagement.versioningStrategy]"
+        "[Changelog]",
+        "[Ver Panel de Salud de Dependencias]",
+        "`[Unreleased]`",
+        "[releaseManagement.versioningStrategy]",
+        "[DOC007-BackendDependencies.md]",
+        "`[qualityAssurance.testExecution.fullSuiteCommand]`",
+        "[qualityAssurance.testExecution.fullSuiteCommand]",
+        "[releaseManagement.publishCommand]"
       ],
       "stats": {
         "size": 2581,
-        "modified": 1754330772.133978,
+        "modified": 1754518058.0444543,
         "lines": 44,
         "chars": 2559,
         "words": 358
       },
-      "analyzed_at": "2025-08-04T16:30:20.670187"
+      "analyzed_at": "2025-08-08T15:57:08.136854"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC023-BackendManifest.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC023-BackendManifest.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC023-BackendManifest.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC023-BackendManifest.md",
       "hash": "7a59e794f39dd9b0d5742361675431ef7fcc4dd5ef17c9a8bed97c310b24e944",
       "placeholder_count": 8,
       "placeholders": [
-        "[component.name]",
+        "[component.technologies]",
         "`[component.path]`",
+        "`[component.description]`",
         "[component.path]",
         "`[component.technologies]`",
-        "[component.description]",
         "`[component.name]`",
-        "`[component.description]`",
-        "[component.technologies]"
+        "[component.description]",
+        "[component.name]"
       ],
       "stats": {
         "size": 982,
-        "modified": 1754330772.133978,
+        "modified": 1754518058.0445573,
         "lines": 18,
         "chars": 974,
         "words": 123
       },
-      "analyzed_at": "2025-08-04T16:30:20.670289"
+      "analyzed_at": "2025-08-08T15:57:08.136923"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC024-DatabaseManifest.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC024-DatabaseManifest.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC024-DatabaseManifest.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC024-DatabaseManifest.md",
       "hash": "58c89dd3313d6b5d261724bffa0eeaff9e41401e8d31cbce40d03ed6d1a50a36",
       "placeholder_count": 9,
       "placeholders": [
-        "`[entity.name]`",
-        "`[dataModel.databaseType]`",
-        "[entity.description]",
         "[entity.name]",
+        "`[entity.schemaPath]`",
+        "[entity.description]",
         "`[entity.description]`",
-        "[entity.schemaPath]",
-        "[dataModel.databaseType]",
         "[entity.name]`           | `[entity.description]` | `[dataModel.databaseType]",
-        "`[entity.schemaPath]`"
+        "`[entity.name]`",
+        "[dataModel.databaseType]",
+        "[entity.schemaPath]",
+        "`[dataModel.databaseType]`"
       ],
       "stats": {
         "size": 962,
-        "modified": 1754330772.133978,
+        "modified": 1754518058.044678,
         "lines": 18,
         "chars": 956,
         "words": 128
       },
-      "analyzed_at": "2025-08-04T16:30:20.670387"
+      "analyzed_at": "2025-08-08T15:57:08.136998"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC025-FrontendManifest.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC025-FrontendManifest.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC025-FrontendManifest.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC025-FrontendManifest.md",
       "hash": "bf1fcc6bf357cafac88a5795ab5e4831a418e486f0faa8903623b359746a553b",
       "placeholder_count": 8,
       "placeholders": [
-        "[component.name]",
+        "[component.technologies]",
         "`[component.path]`",
+        "`[component.description]`",
         "[component.path]",
         "`[component.technologies]`",
-        "[component.description]",
         "`[component.name]`",
-        "`[component.description]`",
-        "[component.technologies]"
+        "[component.description]",
+        "[component.name]"
       ],
       "stats": {
         "size": 978,
-        "modified": 1754330772.134978,
+        "modified": 1754518058.0447972,
         "lines": 18,
         "chars": 970,
         "words": 124
       },
-      "analyzed_at": "2025-08-04T16:30:20.670486"
+      "analyzed_at": "2025-08-08T15:57:08.137303"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC026-ProjectFileManifest.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC026-ProjectFileManifest.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC026-ProjectFileManifest.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC026-ProjectFileManifest.md",
       "hash": "b76f780b238d292636181328064acafadc7921b6256041110d767b954c499546",
       "placeholder_count": 6,
       "placeholders": [
-        "`[path.location]`",
-        "[path.purpose]",
-        "`[path.type]`",
         "[path.type]",
         "[path.location]",
-        "`[path.purpose]`"
+        "[path.purpose]",
+        "`[path.location]`",
+        "`[path.purpose]`",
+        "`[path.type]`"
       ],
       "stats": {
         "size": 911,
-        "modified": 1754330772.134978,
+        "modified": 1754518058.0449133,
         "lines": 18,
         "chars": 903,
         "words": 128
       },
-      "analyzed_at": "2025-08-04T16:30:20.670588"
+      "analyzed_at": "2025-08-08T15:57:08.137393"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC027-SharedLibsManifest.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC027-SharedLibsManifest.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC027-SharedLibsManifest.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC027-SharedLibsManifest.md",
       "hash": "1db9f4f405a5e6b0a7d514bf9e74843a0c2b1df8e250a6f1fc798d0f787f5b2d",
       "placeholder_count": 8,
       "placeholders": [
-        "[lib.purpose]",
         "[lib.consumers]",
         "`[lib.path]`",
         "[lib.path]",
-        "`[lib.purpose]`",
-        "`[lib.name]`",
+        "[lib.name]",
         "`[lib.consumers]`",
-        "[lib.name]"
+        "[lib.purpose]",
+        "`[lib.name]`",
+        "`[lib.purpose]`"
       ],
       "stats": {
         "size": 907,
-        "modified": 1754330772.134978,
+        "modified": 1754518058.045022,
         "lines": 17,
         "chars": 895,
         "words": 113
       },
-      "analyzed_at": "2025-08-04T16:30:20.670689"
+      "analyzed_at": "2025-08-08T15:57:08.137464"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC028-OperationsRunbook.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC028-OperationsRunbook.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC028-OperationsRunbook.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC028-OperationsRunbook.md",
       "hash": "a596e32f15d9df10dd6ce26ba183e96e536023f33e0f76d66964d45ddbf458cb",
       "placeholder_count": 10,
       "placeholders": [
         "`[procedure.name]`",
-        "`[procedure.steps[1].description]`",
-        "`[procedure.steps[0].description]`",
-        "`[procedure.objective]`",
-        "[procedure.steps[0]",
-        "[procedure.name]",
         "[procedure.steps[1]",
-        "[procedure.objective]"
+        "`[procedure.steps[0].description]`",
+        "`[procedure.steps[1].description]`",
+        "[procedure.name]",
+        "[procedure.objective]",
+        "[procedure.steps[0]",
+        "`[procedure.objective]`"
       ],
       "stats": {
         "size": 934,
-        "modified": 1754330772.134978,
+        "modified": 1754518058.0451567,
         "lines": 31,
         "chars": 928,
         "words": 98
       },
-      "analyzed_at": "2025-08-04T16:30:20.670992"
+      "analyzed_at": "2025-08-08T15:57:08.137531"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC029-ProjectRoadmap.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC029-ProjectRoadmap.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC029-ProjectRoadmap.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC029-ProjectRoadmap.md",
       "hash": "a6a2a3c33b1d120bfccf1a8d69319e0bb482ef59489101500b49cf7ff3c8410f",
       "placeholder_count": 20,
       "placeholders": [
-        "[theme.name]",
-        "`[initiative.description]`",
-        "[initiative.title]",
-        "[productRoadmap.vision]",
         "[initiative.description]",
-        "`[productRoadmap.vision]`",
+        "[productRoadmap.vision]",
         "`[initiative.title]`",
-        "`[theme.name]`"
+        "[initiative.title]",
+        "`[initiative.description]`",
+        "`[theme.name]`",
+        "[theme.name]",
+        "`[productRoadmap.vision]`"
       ],
       "stats": {
         "size": 1073,
-        "modified": 1754330772.134978,
+        "modified": 1754518058.045282,
         "lines": 35,
         "chars": 1060,
         "words": 126
       },
-      "analyzed_at": "2025-08-04T16:30:20.671120"
+      "analyzed_at": "2025-08-08T15:57:08.137606"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC030-FeatureIndex.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC030-FeatureIndex.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC030-FeatureIndex.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC030-FeatureIndex.md",
       "hash": "745dd89824ea5ddb0564551f2af8ef45339d334b783c42ac0b8bb446d186d0f3",
       "placeholder_count": 8,
       "placeholders": [
-        "[title]",
-        "[id]",
-        "[status]",
-        "`[status]`",
-        "`[title]`",
-        "[Ver Spec]",
         "[specPath]",
-        "`[id]`"
+        "[status]",
+        "`[id]`",
+        "`[title]`",
+        "[title]",
+        "[Ver Spec]",
+        "[id]",
+        "`[status]`"
       ],
       "stats": {
         "size": 981,
-        "modified": 1754330772.134978,
+        "modified": 1754518058.045392,
         "lines": 17,
         "chars": 971,
         "words": 128
       },
-      "analyzed_at": "2025-08-04T16:30:20.671226"
+      "analyzed_at": "2025-08-08T15:57:08.137671"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC031-BugIndex.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC031-BugIndex.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC031-BugIndex.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC031-BugIndex.md",
       "hash": "052d033d8cc31d797a7a1c4b2104fe2121fa58c04d0dab527e2b85aa4f2a1cf3",
       "placeholder_count": 10,
       "placeholders": [
-        "[title]",
-        "[id]",
-        "`[id]`",
-        "`[sev]`",
         "[status]",
-        "[path]",
+        "`[id]`",
         "[sev]",
-        "`[status]`",
         "`[title]`",
-        "[Ver Informe]"
+        "[title]",
+        "[Ver Informe]",
+        "[id]",
+        "`[status]`",
+        "[path]",
+        "`[sev]`"
       ],
       "stats": {
         "size": 956,
-        "modified": 1754330772.134978,
+        "modified": 1754518058.0454762,
         "lines": 17,
         "chars": 947,
         "words": 132
       },
-      "analyzed_at": "2025-08-04T16:30:20.671329"
+      "analyzed_at": "2025-08-08T15:57:08.137734"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC032-FrontendScreenFlow.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/DOC032-FrontendScreenFlow.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC032-FrontendScreenFlow.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/DOC032-FrontendScreenFlow.md",
       "hash": "0b70292b585985c461f6f620f4f0ea0e715ff81950072fcc5a778784422de69e",
       "placeholder_count": 2,
       "placeholders": [
-        "[Nombre de la Pantalla, ej: 'Dashboard']",
-        "[Nombre de la Pantalla, ej: 'Login']"
+        "[Nombre de la Pantalla, ej: 'Login']",
+        "[Nombre de la Pantalla, ej: 'Dashboard']"
       ],
       "stats": {
         "size": 1281,
-        "modified": 1754330772.134978,
+        "modified": 1754518058.045576,
         "lines": 35,
         "chars": 1275,
         "words": 165
       },
-      "analyzed_at": "2025-08-04T16:30:20.671440"
+      "analyzed_at": "2025-08-08T15:57:08.137800"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/GUIDE-batch-update.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/GUIDE-batch-update.md",
-      "hash": "9bf5ea23ace6d27f2701eefb240b18f428ae6cf2bcaa408653a91f5dd81fc375",
-      "placeholder_count": 3,
-      "placeholders": [
-        "[TAGS ...]",
-        "[LABELS ...]"
-      ],
-      "stats": {
-        "size": 2512,
-        "modified": 1754330772.134978,
-        "lines": 49,
-        "chars": 2501,
-        "words": 318
-      },
-      "analyzed_at": "2025-08-04T16:30:20.671555"
-    },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/GUIDE-update-content.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/GUIDE-update-content.md",
-      "hash": "7a36f3bf05d7b5a5b1d970db80016980e34d48e21091787677c822a7de010046",
-      "placeholder_count": 0,
-      "placeholders": [],
-      "stats": {
-        "size": 1663,
-        "modified": 1754330772.134978,
-        "lines": 41,
-        "chars": 1649,
-        "words": 225
-      },
-      "analyzed_at": "2025-08-04T16:30:20.671656"
-    },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/GUIDE-update-metadata.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/GUIDE-update-metadata.md",
-      "hash": "a41776642ef3a179b8abaee30918472aee370a95ae579365e723f7371cff1cd8",
-      "placeholder_count": 2,
-      "placeholders": [
-        "[TAGS ...]",
-        "[LABELS ...]"
-      ],
-      "stats": {
-        "size": 2055,
-        "modified": 1754330772.134978,
-        "lines": 46,
-        "chars": 2038,
-        "words": 277
-      },
-      "analyzed_at": "2025-08-04T16:30:20.671768"
-    },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/template-ADR.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/docs/template-ADR.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/template-ADR.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/docs/template-ADR.md",
       "hash": "61fa296921898101cc2588f5dc375d8eaefb41208d531da089f6f036f3315cfa",
       "placeholder_count": 4,
       "placeholders": [
-        "[Alternativa 2]",
         "[Alternativa 1]",
         "[Título de la Decisión]",
-        "[Número ADR]"
+        "[Número ADR]",
+        "[Alternativa 2]"
       ],
       "stats": {
         "size": 1497,
-        "modified": 1754330772.134978,
+        "modified": 1754518058.0460517,
         "lines": 40,
         "chars": 1458,
         "words": 202
       },
-      "analyzed_at": "2025-08-04T16:30:20.671874"
+      "analyzed_at": "2025-08-08T15:57:08.137890"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/features/template.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/features/template.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/streaming_files/features/template.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/streaming_files/features/template.md",
+      "hash": "40f6cbe9e80e465cb8a6c9c29514ba2828facc230b550a49d06e94cf3f451f95",
+      "placeholder_count": 32,
+      "placeholders": [
+        "[Descripción clara y concisa de la funcionalidad desde la perspectiva del usuario.]",
+        "[Título Descriptivo]",
+        "[ ]",
+        "[Título de la Feature]",
+        "[short-name]",
+        "[version]",
+        "[ID]",
+        "[Descripción clara de la próxima tarea a realizar.]",
+        "[ ] El usuario puede [acción del usuario]",
+        "`[Título Descriptivo]`",
+        "`[nombre-de-la-libreria]@[version]`",
+        "[nombre-de-la-libreria]",
+        "[acción del usuario]",
+        "[Especificar]",
+        "[El problema que resuelve o el valor que aporta al negocio/usuario.]",
+        "[respuesta esperada]",
+        "[Número del Issue]",
+        "`[Especificar]`"
+      ],
+      "stats": {
+        "size": 3935,
+        "modified": 1754681535.5640414,
+        "lines": 113,
+        "chars": 3893,
+        "words": 482
+      },
+      "analyzed_at": "2025-08-08T15:57:08.138169"
+    },
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/streaming_files/features/F000-Ejemplo-de-Feature/feature_spec.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/streaming_files/features/F000-Ejemplo-de-Feature/feature_spec.md",
       "hash": "0745a0f58bf07367e9a494ebee01f35a798570ec600931eb59aa6007ff6337e4",
       "placeholder_count": 32,
       "placeholders": [
-        "[El problema que resuelve o el valor que aporta al negocio/usuario.]",
-        "[Número del Issue]",
-        "[Descripción clara de la próxima tarea a realizar.]",
-        "[ ] El usuario puede [acción del usuario]",
-        "[short-name]",
         "[Descripción clara y concisa de la funcionalidad desde la perspectiva del usuario.]",
-        "[acción del usuario]",
+        "[Título Descriptivo]",
+        "[ ]",
+        "[Título de la Feature]",
+        "[short-name]",
         "[version]",
         "[ID]",
+        "[Descripción clara de la próxima tarea a realizar.]",
+        "[ ] El usuario puede [acción del usuario]",
         "`[Título Descriptivo]`",
-        "`[Especificar]`",
-        "[respuesta esperada]",
-        "[ ]",
-        "[Especificar]",
         "`[nombre-de-la-libreria]@[version]`",
         "[nombre-de-la-libreria]",
-        "[Título Descriptivo]",
-        "[Título de la Feature]"
+        "[acción del usuario]",
+        "[Especificar]",
+        "[El problema que resuelve o el valor que aporta al negocio/usuario.]",
+        "[respuesta esperada]",
+        "[Número del Issue]",
+        "`[Especificar]`"
       ],
       "stats": {
         "size": 3064,
-        "modified": 1754332553.2449265,
+        "modified": 1754518058.0463514,
         "lines": 90,
         "chars": 3024,
         "words": 416
       },
-      "analyzed_at": "2025-08-04T16:30:20.672132"
+      "analyzed_at": "2025-08-08T15:57:08.138305"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/features/F000-Ejemplo-de-Feature/feature_spec.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/features/F000-Ejemplo-de-Feature/feature_spec.md",
-      "hash": "0745a0f58bf07367e9a494ebee01f35a798570ec600931eb59aa6007ff6337e4",
-      "placeholder_count": 32,
-      "placeholders": [
-        "[El problema que resuelve o el valor que aporta al negocio/usuario.]",
-        "[Número del Issue]",
-        "[Descripción clara de la próxima tarea a realizar.]",
-        "[ ] El usuario puede [acción del usuario]",
-        "[short-name]",
-        "[Descripción clara y concisa de la funcionalidad desde la perspectiva del usuario.]",
-        "[acción del usuario]",
-        "[version]",
-        "[ID]",
-        "`[Título Descriptivo]`",
-        "`[Especificar]`",
-        "[respuesta esperada]",
-        "[ ]",
-        "[Especificar]",
-        "`[nombre-de-la-libreria]@[version]`",
-        "[nombre-de-la-libreria]",
-        "[Título Descriptivo]",
-        "[Título de la Feature]"
-      ],
-      "stats": {
-        "size": 3064,
-        "modified": 1754332553.2448676,
-        "lines": 90,
-        "chars": 3024,
-        "words": 416
-      },
-      "analyzed_at": "2025-08-04T16:30:20.672312"
-    },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/bugs/template.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/bugs/template.md",
-      "hash": "bdc83597ce07cd1b84574219687127a404f666179291d2611e3b7e846caa4cc6",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/streaming_files/bugs/template.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/streaming_files/bugs/template.md",
+      "hash": "143edb3eb69a3b170d35036b13c71634a916d0c573fab77727e1b2812b586303",
       "placeholder_count": 23,
       "placeholders": [
-        "[Número del Issue]",
-        "[Título del Bug]",
-        "[¿Qué podemos cambiar en nuestros procesos o pruebas para evitar que este tipo de bug vuelva a ocurrir?]",
-        "[¿Qué debería haber ocurrido?]",
         "[Primer paso]",
+        "[ ]",
+        "[Explicación técnica detallada de la causa fundamental del problema. No solo el síntoma, sino la causa.]",
+        "[short-name]",
         "`[Título Corto y Descriptivo del Bug]`",
         "[ID]",
-        "[Explicación técnica detallada de la causa fundamental del problema. No solo el síntoma, sino la causa.]",
-        "[Tercer paso]",
-        "[Título Corto y Descriptivo del Bug]",
-        "[ ]",
         "[¿Qué ocurrió exactamente? Incluir logs o capturas si es posible.]",
+        "[Título Corto y Descriptivo del Bug]",
+        "[¿Qué podemos cambiar en nuestros procesos o pruebas para evitar que este tipo de bug vuelva a ocurrir?]",
+        "[Título del Bug]",
+        "[Tercer paso]",
         "[Segundo paso]",
-        "[short-name]"
+        "[¿Qué debería haber ocurrido?]",
+        "[Número del Issue]"
       ],
       "stats": {
-        "size": 1832,
-        "modified": 1754332560.4074197,
-        "lines": 48,
-        "chars": 1791,
-        "words": 272
+        "size": 2607,
+        "modified": 1754681582.7986436,
+        "lines": 72,
+        "chars": 2565,
+        "words": 336
       },
-      "analyzed_at": "2025-08-04T16:30:20.672509"
+      "analyzed_at": "2025-08-08T15:57:08.138468"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/bugs/B000-Ejemplo-de-Bug/bug_report.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/bugs/B000-Ejemplo-de-Bug/bug_report.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/streaming_files/bugs/B000-Ejemplo-de-Bug/bug_report.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/streaming_files/bugs/B000-Ejemplo-de-Bug/bug_report.md",
       "hash": "2232b70af60ce0f5ad709d5ce492b760884e72c58e663a0fd56cbda1391681f9",
       "placeholder_count": 24,
       "placeholders": [
-        "[Número del Issue]",
-        "[Título del Bug]",
-        "[¿Qué podemos cambiar en nuestros procesos o pruebas para evitar que este tipo de bug vuelva a ocurrir?]",
-        "[Descripción clara de la próxima tarea a realizar.]",
-        "[¿Qué debería haber ocurrido?]",
         "[Primer paso]",
-        "`[Título Corto y Descriptivo del Bug]`",
-        "[ID]",
-        "[Explicación técnica detallada de la causa fundamental del problema. No solo el síntoma, sino la causa.]",
-        "[Tercer paso]",
-        "[Título Corto y Descriptivo del Bug]",
         "[ ]",
+        "[Explicación técnica detallada de la causa fundamental del problema. No solo el síntoma, sino la causa.]",
+        "[short-name]",
+        "[Descripción clara de la próxima tarea a realizar.]",
+        "[ID]",
+        "`[Título Corto y Descriptivo del Bug]`",
         "[¿Qué ocurrió exactamente? Incluir logs o capturas si es posible.]",
+        "[Título Corto y Descriptivo del Bug]",
+        "[¿Qué podemos cambiar en nuestros procesos o pruebas para evitar que este tipo de bug vuelva a ocurrir?]",
+        "[Título del Bug]",
+        "[Tercer paso]",
         "[Segundo paso]",
-        "[short-name]"
+        "[¿Qué debería haber ocurrido?]",
+        "[Número del Issue]"
       ],
       "stats": {
         "size": 2099,
-        "modified": 1754332560.4073207,
+        "modified": 1754518058.0411131,
         "lines": 56,
         "chars": 2053,
         "words": 310
       },
-      "analyzed_at": "2025-08-04T16:30:20.672672"
+      "analyzed_at": "2025-08-08T15:57:08.138576"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/operations/template.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/operations/template.md",
-      "hash": "92fd7ca7e3cf2db6442a7079faff7585a1cb0c18ac08fb9508467bb96a131c74",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/streaming_files/operations/template.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/streaming_files/operations/template.md",
+      "hash": "9822b207f3948d2f991e52970474d7c4b2a53242de1da6086a1703ecfce22a84",
       "placeholder_count": 8,
       "placeholders": [
-        "{{task_description}}",
+        "{{task_title}}",
         "{{task_id}}",
         "[ ]",
-        "{{task_title}}",
         "{{creation_date}}",
-        "{{priority}}"
+        "{{priority}}",
+        "{{task_description}}"
       ],
       "stats": {
-        "size": 937,
-        "modified": 1754332566.682506,
-        "lines": 47,
-        "chars": 917,
-        "words": 122
+        "size": 1750,
+        "modified": 1754681601.4924343,
+        "lines": 76,
+        "chars": 1728,
+        "words": 187
       },
-      "analyzed_at": "2025-08-04T16:30:20.672847"
+      "analyzed_at": "2025-08-08T15:57:08.138716"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/operations/T000-Ejemplo-de-Tarea/task_spec.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/operations/T000-Ejemplo-de-Tarea/task_spec.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/streaming_files/operations/T000-Ejemplo-de-Tarea/task_spec.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/streaming_files/operations/T000-Ejemplo-de-Tarea/task_spec.md",
       "hash": "2704425a1e3b62231c7947d06998cef4992cbc741d49f78db419e76eccf0f9dc",
       "placeholder_count": 0,
       "placeholders": [],
       "stats": {
         "size": 261,
-        "modified": 1754332566.682506,
+        "modified": 1754518058.0472107,
         "lines": 5,
         "chars": 255,
         "words": 35
       },
-      "analyzed_at": "2025-08-04T16:30:20.672978"
+      "analyzed_at": "2025-08-08T15:57:08.138812"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/proposals/template.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/proposals/template.md",
-      "hash": "fc22581b754a6bd7b539c8dabf554e07f7c5865beab034ae540f4179d5fbf46a",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/streaming_files/proposals/template.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/streaming_files/proposals/template.md",
+      "hash": "2ec539988a805821372e6707d68d3325ae395cd15307be56ab01c2a05422bc83",
       "placeholder_count": 24,
       "placeholders": [
-        "`[Título Atractivo y Claro de la Idea]`",
-        "[¿Cómo apoya esta idea los objetivos más amplios del proyecto o de la empresa?]",
-        "[Título de la Idea]",
+        "[Describe la idea en 2-3 frases. ¿De qué se trata y por qué es emocionante?]",
+        "[Explicación de alto nivel de la solución.]",
         "[Describe cómo funcionan las cosas ahora y por qué es un problema.]",
         "[Enumera los resultados positivos y medibles. (p. ej., \"Reducir el tiempo de carga de la página X en un 50%\", \"Aumentar la retención de usuarios en un 15%\").]",
-        "[Título Atractivo y Claro de la Idea]",
-        "[obtener un beneficio]",
-        "[tipo de usuario]",
         "[ ]",
+        "[ID]",
+        "[Título de la Idea]",
+        "[obtener un beneficio]",
+        "[hacer algo]",
+        "`[Título Atractivo y Claro de la Idea]`",
+        "[¿Cómo apoya esta idea los objetivos más amplios del proyecto o de la empresa?]",
+        "[¿A quién afecta? ¿Qué consecuencias tiene? (p. ej., pérdida de tiempo, mala experiencia de usuario, costes elevados, deuda técnica).]",
+        "[tipo de usuario]",
         "`[Tu Nombre/ID de Agente]`",
         "[Tu Nombre/ID de Agente]",
-        "[hacer algo]",
-        "[Explicación de alto nivel de la solución.]",
-        "[¿A quién afecta? ¿Qué consecuencias tiene? (p. ej., pérdida de tiempo, mala experiencia de usuario, costes elevados, deuda técnica).]",
-        "[Acción específica, p. ej., \"Crear un PoC para validar la integración con la API de X\", \"Diseñar un wireframe de la nueva interfaz\", \"Presentar esta propuesta al equipo en la próxima reunión de planificación\".]",
-        "[ID]",
-        "[Describe la idea en 2-3 frases. ¿De qué se trata y por qué es emocionante?]"
+        "[Título Atractivo y Claro de la Idea]",
+        "[Acción específica, p. ej., \"Crear un PoC para validar la integración con la API de X\", \"Diseñar un wireframe de la nueva interfaz\", \"Presentar esta propuesta al equipo en la próxima reunión de planificación\".]"
       ],
       "stats": {
-        "size": 3251,
-        "modified": 1754332588.3579366,
-        "lines": 77,
-        "chars": 3184,
-        "words": 490
+        "size": 4021,
+        "modified": 1754681608.5233698,
+        "lines": 103,
+        "chars": 3950,
+        "words": 559
       },
-      "analyzed_at": "2025-08-04T16:30:20.673200"
+      "analyzed_at": "2025-08-08T15:57:08.139074"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/proposals/IDEA000-Ejemplo-de-Idea/idea_spec.md": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/proposals/IDEA000-Ejemplo-de-Idea/idea_spec.md",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/streaming_files/proposals/IDEA000-Ejemplo-de-Idea/idea_spec.md": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/streaming_files/proposals/IDEA000-Ejemplo-de-Idea/idea_spec.md",
       "hash": "57f9d08ea9933a4ea8605b30acc772e294ed0ca83d9b97be93ed61093c898e1b",
       "placeholder_count": 0,
       "placeholders": [],
       "stats": {
         "size": 222,
-        "modified": 1754332588.358103,
+        "modified": 1754518058.0569263,
         "lines": 5,
         "chars": 217,
         "words": 35
       },
-      "analyzed_at": "2025-08-04T16:30:20.673330"
+      "analyzed_at": "2025-08-08T15:57:08.139171"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/definitions.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/definitions.json",
-      "hash": "a96f7119acb0b3b2dd30dc6c2b0679e463bb457e4d2d72a810e9482d771a2ca7",
-      "placeholder_count": 7,
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/apiContract.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/apiContract.json",
+      "hash": "5f3c6549cab6d088f881b94aea8849c3a5d1acf69123288b3985681d71940306",
+      "placeholder_count": 6,
       "placeholders": [
-        "[\"id\", \"rule\"]",
-        "[\"name\", \"category\"]",
-        "[\"description\"]",
-        "[\"Frontend\", \"Backend\", \"Database\", \"DevOps\", \"Testing\"]",
-        "[\"query\", \"header\", \"path\", \"cookie\"]",
-        "[\"name\", \"in\"]",
-        "[\"id\", \"story\"]"
+        "[\"page\", \"cursor\"]",
+        "[\"GET\", \"POST\", \"PUT\", \"DELETE\", \"PATCH\"]",
+        "[\"path\", \"query\", \"header\", \"cookie\"]",
+        "[\"OAuth 2.0\", \"JWT\", \"API Key\", \"None\"]",
+        "[\"client_credentials\", \"authorization_code\", \"password\", \"implicit\", \"device_code\"]",
+        "[\"header\", \"query\", \"cookie\"]"
       ],
       "stats": {
-        "size": 3329,
-        "modified": 1754330777.3566575,
-        "lines": 94,
-        "chars": 3329,
-        "words": 280
+        "size": 8568,
+        "modified": 1754601054.9541588,
+        "lines": 192,
+        "chars": 8568,
+        "words": 674
       },
-      "analyzed_at": "2025-08-04T16:30:20.673602"
+      "analyzed_at": "2025-08-08T15:57:08.139556"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/projectInfo.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/projectInfo.json",
-      "hash": "09d43e7b1fdff115e8c6a8c66cc4bd8a86f64b69a770cb23095db2b4e9c7da44",
-      "placeholder_count": 1,
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/architecture.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/architecture.json",
+      "hash": "d7197ab146e17c299db809d5392bc42adcedbca83724fbb8b9932549ab0b4403",
+      "placeholder_count": 6,
       "placeholders": [
-        "[\"projectName\", \"projectDescription\"]"
+        "[\"at-most-once\", \"at-least-once\", \"exactly-once\"]",
+        "[\"architecturalPattern\", \"technologyStack\"]",
+        "[\"strong\", \"eventual\", \"bounded-staleness\", \"causal\"]",
+        "[\"Monolithic\", \"Microservices\", \"Serverless\", \"Layered\", \"Event-Driven\", \"Other\"]",
+        "[\"Frontend\", \"Backend\", \"Database\", \"Cache\", \"MessageQueue\"]",
+        "[\"REST\", \"GraphQL\", \"gRPC\", \"WebSocket\", \"Message-Based\"]"
       ],
       "stats": {
-        "size": 708,
-        "modified": 1754349810.8714325,
-        "lines": 22,
-        "chars": 708,
-        "words": 63
+        "size": 6686,
+        "modified": 1754601148.8191974,
+        "lines": 145,
+        "chars": 6686,
+        "words": 637
       },
-      "analyzed_at": "2025-08-04T16:30:20.673697"
+      "analyzed_at": "2025-08-08T15:57:08.139693"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/projectManagement.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/projectManagement.json",
-      "hash": "0df470a44185dd826718fdce7781ca6435fc32a8625258fbfbba8a438361efd2",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/bugLifecycle.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/bugLifecycle.json",
+      "hash": "8ab0886457d4349cdb5927cbfcea101986cfe60fc089c8cb1f358cd24243c49b",
+      "placeholder_count": 4,
+      "placeholders": [
+        "[\"to\", \"at\"]",
+        "[\"Reported\", \"In Progress\", \"Resolved\", \"Closed\"]",
+        "[\"P0\", \"P1\", \"P2\", \"P3\"]",
+        "[\"bugId\", \"status\", \"path\", \"summary\"]"
+      ],
+      "stats": {
+        "size": 2749,
+        "modified": 1754601331.076331,
+        "lines": 57,
+        "chars": 2749,
+        "words": 259
+      },
+      "analyzed_at": "2025-08-08T15:57:08.139773"
+    },
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/businessLogic.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/businessLogic.json",
+      "hash": "6b232706756c575d1251c0ace3fdc6c885d9c7af92967d4d65b7fdbd8c2370bc",
+      "placeholder_count": 4,
+      "placeholders": [
+        "[\"hard\", \"soft\"]",
+        "[\"global\", \"module\"]",
+        "[\"ruleId\", \"description\"]",
+        "[\"decision-table\", \"rules-engine\", \"custom\"]"
+      ],
+      "stats": {
+        "size": 3351,
+        "modified": 1754601318.1987228,
+        "lines": 66,
+        "chars": 3351,
+        "words": 341
+      },
+      "analyzed_at": "2025-08-08T15:57:08.139850"
+    },
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/componentLibrary.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/componentLibrary.json",
+      "hash": "389949bc98761cdd94ab74b9c264a61c2d8be9fe221c8a3672e715b232bd07fd",
       "placeholder_count": 2,
       "placeholders": [
-        "[\"name\", \"justification\"]",
-        "[\"Scrum\", \"Kanban\", \"ScrumBan\", \"Lean\", \"Waterfall\", \"Custom\"]"
+        "[\"Design\", \"Development\", \"Ready\", \"Deprecated\"]",
+        "[\"color\", \"space\", \"radius\", \"font\"]"
       ],
       "stats": {
-        "size": 1588,
-        "modified": 1754330777.3567443,
-        "lines": 38,
-        "chars": 1588,
-        "words": 136
+        "size": 5502,
+        "modified": 1754608666.374725,
+        "lines": 113,
+        "chars": 5501,
+        "words": 428
       },
-      "analyzed_at": "2025-08-04T16:30:20.673795"
+      "analyzed_at": "2025-08-08T15:57:08.139948"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/architecture.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/architecture.json",
-      "hash": "4b580ac4ab6438e15e59f4394cdc994f2cb38ab37e739e1721962de1be427be0",
-      "placeholder_count": 4,
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/dataModel.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/dataModel.json",
+      "hash": "e1461d3dba7432c4b130db8c6b10598ea2b09afb90a997279b4b9e264b7bd09d",
+      "placeholder_count": 25,
       "placeholders": [
-        "[\"architecturalPattern\", \"technologyStack\"]",
-        "[\"REST\", \"GraphQL\", \"gRPC\", \"WebSocket\", \"Message-Based\"]",
-        "[\"Monolithic\", \"Microservices\", \"Serverless\", \"Layered\", \"Event-Driven\", \"Other\"]",
-        "[\"Frontend\", \"Backend\", \"Database\", \"Cache\", \"MessageQueue\"]"
-      ],
-      "stats": {
-        "size": 1376,
-        "modified": 1754330777.3567443,
-        "lines": 34,
-        "chars": 1376,
-        "words": 114
-      },
-      "analyzed_at": "2025-08-04T16:30:20.673898"
-    },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/dataModel.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/dataModel.json",
-      "hash": "c92080a6199ee69951f1cd50e397a74ab8baa59293df21fc577544f05bfad9ba",
-      "placeholder_count": 4,
-      "placeholders": [
+        "[\"unique\", \"check\", \"fk\"]",
+        "[\"restrict\", \"cascade\", \"set-null\", \"no-action\"]",
+        "[\"name\", \"sourceEntity\"]",
+        "[\"name\", \"type\"]",
+        "[\"camelCase\", \"snake_case\"]",
         "[\"Mermaid\", \"PlantUML\", \"Image URL\", \"ASCII\"]",
+        "[\"create\", \"update\", \"delete\"]",
+        "[\"one-to-one\", \"one-to-many\", \"many-to-one\", \"many-to-many\"]",
+        "[\"PascalCase\", \"CamelCase\", \"snake_case\", \"kebab-case\"]",
+        "[\"none\", \"separate-db\", \"separate-schema\", \"row-level\"]",
+        "[\"asc\", \"desc\"]",
+        "[\"name\", \"source\"]",
+        "[\"attribute\"]",
+        "[\"table-per-locale\", \"jsonb\", \"columns\"]",
+        "[\"boolean-flag\", \"deleted-at\"]",
+        "[\"name\"]",
+        "[\"none\", \"app\", \"db\", \"event-sourced\"]",
         "[\"ERD\", \"UML Class Diagram\", \"Conceptual Model\"]",
-        "[\"type\", \"format\", \"source\"]"
+        "[\"manual\", \"auto\", \"tooling\"]",
+        "[\"type\", \"format\", \"source\"]",
+        "[\"fromEntity\", \"toEntity\", \"type\"]"
       ],
       "stats": {
-        "size": 1124,
-        "modified": 1754330777.3567443,
-        "lines": 28,
-        "chars": 1124,
-        "words": 109
+        "size": 8637,
+        "modified": 1754601512.75847,
+        "lines": 164,
+        "chars": 8637,
+        "words": 770
       },
-      "analyzed_at": "2025-08-04T16:30:20.673994"
+      "analyzed_at": "2025-08-08T15:57:08.140105"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/businessLogic.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/businessLogic.json",
-      "hash": "8c973836a3244a7253b4dedc2e979be27ea5d11edca9f1ac9d5a70189efaeb11",
-      "placeholder_count": 1,
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/dataModelDictionary.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/dataModelDictionary.json",
+      "hash": "db658ccfe812a9ff903fd48aa54f05349fd7bcd1aa9967cfd605ec33d8a4ed8d",
+      "placeholder_count": 5,
       "placeholders": [
-        "[\"ruleId\", \"description\"]"
+        "[\"pii\", \"sensitive\", \"public\", \"internal\"]",
+        "[\"restrict\", \"cascade\", \"set-null\", \"no-action\"]",
+        "[\"One-to-One\", \"One-to-Many\", \"Many-to-Many\"]",
+        "[\"none\", \"low\", \"moderate\", \"high\"]"
       ],
       "stats": {
-        "size": 959,
-        "modified": 1754330777.3567443,
-        "lines": 21,
-        "chars": 959,
-        "words": 97
+        "size": 3731,
+        "modified": 1754601579.0259078,
+        "lines": 62,
+        "chars": 3731,
+        "words": 293
       },
-      "analyzed_at": "2025-08-04T16:30:20.674097"
+      "analyzed_at": "2025-08-08T15:57:08.140255"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/operationalStrategy.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/operationalStrategy.json",
-      "hash": "b91257805772d0997769e9cee49c2aec6ec59a353af30324cd5e761c3fa6fd5e",
-      "placeholder_count": 0,
-      "placeholders": [],
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/deepLogicAnalysis.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/deepLogicAnalysis.json",
+      "hash": "29fc01800a9901b3d97d240886bb615f96bdb14f85e22932c803e8720c51bdbe",
+      "placeholder_count": 4,
+      "placeholders": [
+        "[\"Logical Flaw\", \"Edge Case\", \"Complexity Hotspot\", \"Inconsistency\"]",
+        "[\"monitor\", \"alert\", \"test\"]",
+        "[\"low\", \"medium\", \"high\"]"
+      ],
       "stats": {
-        "size": 1243,
-        "modified": 1754330777.3567443,
-        "lines": 27,
-        "chars": 1243,
-        "words": 114
+        "size": 4007,
+        "modified": 1754601597.3726034,
+        "lines": 68,
+        "chars": 4007,
+        "words": 424
       },
-      "analyzed_at": "2025-08-04T16:30:20.674192"
+      "analyzed_at": "2025-08-08T15:57:08.140363"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/forensicAudit.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/forensicAudit.json",
-      "hash": "dca15c9e370427e06f33f2e3fd768953e7c887fdf975ef67f69f0011d71b0ff6",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/definitions.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/definitions.json",
+      "hash": "43531dd2e4fc3c1759068c634bf6e8048c37fafee9aff7fc0f9aa32e69fe41e1",
+      "placeholder_count": 7,
+      "placeholders": [
+        "[\"query\", \"header\", \"path\", \"cookie\"]",
+        "[\"description\"]",
+        "[\"id\", \"rule\"]",
+        "[\"name\", \"in\"]",
+        "[\"name\", \"category\"]",
+        "[\"id\", \"story\"]",
+        "[\"Frontend\", \"Backend\", \"Database\", \"DevOps\", \"Testing\"]"
+      ],
+      "stats": {
+        "size": 4722,
+        "modified": 1754601618.2063916,
+        "lines": 133,
+        "chars": 4722,
+        "words": 402
+      },
+      "analyzed_at": "2025-08-08T15:57:08.140461"
+    },
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/deploymentStrategy.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/deploymentStrategy.json",
+      "hash": "023ae693838b4f79270b53c533b8d49c9aea321803ad179004a14dc683503f41",
+      "placeholder_count": 3,
+      "placeholders": [
+        "[\"Blue-Green\", \"Canary\", \"Rolling Update\", \"Recreate\"]",
+        "[\"Development\", \"Staging\", \"Production\"]",
+        "[\"blue-green\", \"canary\", \"rolling\", \"recreate\"]"
+      ],
+      "stats": {
+        "size": 3655,
+        "modified": 1754601770.9269783,
+        "lines": 85,
+        "chars": 3655,
+        "words": 321
+      },
+      "analyzed_at": "2025-08-08T15:57:08.140543"
+    },
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/designSystem.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/designSystem.json",
+      "hash": "23be6778c0fdcd5cc171bb4ae593f8113d0dfaf4c802feb518b131eca220ad5a",
+      "placeholder_count": 3,
+      "placeholders": [
+        "[\"number\", \"integer\"]",
+        "[\"number\", \"string\"]"
+      ],
+      "stats": {
+        "size": 3312,
+        "modified": 1754601804.2206702,
+        "lines": 78,
+        "chars": 3312,
+        "words": 334
+      },
+      "analyzed_at": "2025-08-08T15:57:08.140622"
+    },
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/documentationManifest.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/documentationManifest.json",
+      "hash": "c70290f58e3490141e39f291ee77c6c46b366cf177f29aa00b4c8ce524d69d98",
+      "placeholder_count": 3,
+      "placeholders": [
+        "[\"schema\", \"docs\"]",
+        "[\"draft\", \"review\", \"approved\"]",
+        "[\"title\", \"path\", \"ownerAgent\"]"
+      ],
+      "stats": {
+        "size": 2147,
+        "modified": 1754667599.2145257,
+        "lines": 49,
+        "chars": 2147,
+        "words": 207
+      },
+      "analyzed_at": "2025-08-08T15:57:08.140690"
+    },
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/featureLifecycle.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/featureLifecycle.json",
+      "hash": "d5f5a03f5cf12abf0f58be6450ab114e0c9dbf48f81d2c816d94a1ea219036cd",
+      "placeholder_count": 3,
+      "placeholders": [
+        "[\"Idea\", \"Discovery\", \"MVP\", \"Beta\", \"GA\", \"Sunset\"]",
+        "[\"featureId\", \"status\", \"path\", \"summary\"]",
+        "[\"Proposed\", \"In Progress\", \"Completed\", \"On Hold\"]"
+      ],
+      "stats": {
+        "size": 2866,
+        "modified": 1754601966.882165,
+        "lines": 69,
+        "chars": 2866,
+        "words": 254
+      },
+      "analyzed_at": "2025-08-08T15:57:08.140763"
+    },
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/featureManifest.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/featureManifest.json",
+      "hash": "d0e2d4e00c43a60caf808f7c4825dcd0dd003b980c0cc16dcd34fcf285edf933",
+      "placeholder_count": 4,
+      "placeholders": [
+        "[\"featureId\", \"description\", \"status\"]",
+        "[\"Idea\", \"Discovery\", \"MVP\", \"Beta\", \"GA\", \"Sunset\"]",
+        "[\"blocks\", \"duplicates\", \"relates\"]",
+        "[\"Planned\", \"In Development\", \"Completed\", \"Deprecated\"]"
+      ],
+      "stats": {
+        "size": 2146,
+        "modified": 1754602001.7078428,
+        "lines": 50,
+        "chars": 2146,
+        "words": 196
+      },
+      "analyzed_at": "2025-08-08T15:57:08.140834"
+    },
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/fileExecutionMap.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/fileExecutionMap.json",
+      "hash": "cbeb2e8b16d8f7748595236d1ac1713de26dee2c2a1e709f812b9b0c7b495413",
+      "placeholder_count": 3,
+      "placeholders": [
+        "[\"script\", \"service\", \"job\"]",
+        "[\"path\", \"language\", \"purpose\"]"
+      ],
+      "stats": {
+        "size": 2132,
+        "modified": 1754602045.011442,
+        "lines": 51,
+        "chars": 2132,
+        "words": 198
+      },
+      "analyzed_at": "2025-08-08T15:57:08.140905"
+    },
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/forensicAudit.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/forensicAudit.json",
+      "hash": "ab25e489c6818c305fad40023ed5008638e0face38409acf3b63f4553f555926",
       "placeholder_count": 1,
       "placeholders": [
         "[\"Critical\", \"Major\", \"Minor\", \"Info\"]"
       ],
       "stats": {
-        "size": 1334,
-        "modified": 1754330777.356932,
-        "lines": 35,
-        "chars": 1334,
-        "words": 120
+        "size": 3046,
+        "modified": 1754602158.2533941,
+        "lines": 76,
+        "chars": 3046,
+        "words": 284
       },
-      "analyzed_at": "2025-08-04T16:30:20.674285"
+      "analyzed_at": "2025-08-08T15:57:08.140995"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/componentLibrary.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/componentLibrary.json",
-      "hash": "19fd015fc0246fb7adb30cf56f54be6770a8accf4f0f3a4f82b699cedb22275d",
-      "placeholder_count": 1,
-      "placeholders": [
-        "[\"Design\", \"Development\", \"Ready\", \"Deprecated\"]"
-      ],
-      "stats": {
-        "size": 884,
-        "modified": 1754330777.356932,
-        "lines": 21,
-        "chars": 884,
-        "words": 84
-      },
-      "analyzed_at": "2025-08-04T16:30:20.674385"
-    },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/qualityGoals.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/qualityGoals.json",
-      "hash": "b28c89f1563eddd5aeefdd8b7ed4ce0fa93c836da9aa248e5ee29e77c3ee4e9a",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/operationalStrategy.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/operationalStrategy.json",
+      "hash": "f2d0e6f6c12924dea83554fc85333fdb0d5c514ecc86931c992a7c16bdd4d107",
       "placeholder_count": 0,
       "placeholders": [],
       "stats": {
-        "size": 1416,
-        "modified": 1754330777.356932,
-        "lines": 35,
-        "chars": 1416,
+        "size": 1346,
+        "modified": 1754539419.6863956,
+        "lines": 28,
+        "chars": 1346,
+        "words": 117
+      },
+      "analyzed_at": "2025-08-08T15:57:08.141068"
+    },
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/projectInfo.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/projectInfo.json",
+      "hash": "c8a5923133e9a1965410dfb4c6a6cb1d46189b0f60359f7f447b4410daa77b0a",
+      "placeholder_count": 1,
+      "placeholders": [
+        "[\"projectName\", \"projectDescription\"]"
+      ],
+      "stats": {
+        "size": 803,
+        "modified": 1754522781.996221,
+        "lines": 23,
+        "chars": 803,
+        "words": 66
+      },
+      "analyzed_at": "2025-08-08T15:57:08.141135"
+    },
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/projectManagement.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/projectManagement.json",
+      "hash": "f00e3c5e9832a966bfba6c45a4bdc38920b194d1364390f5cd3d3d6674067688",
+      "placeholder_count": 2,
+      "placeholders": [
+        "[\"Scrum\", \"Kanban\", \"ScrumBan\", \"Lean\", \"Waterfall\", \"Custom\"]",
+        "[\"name\", \"justification\"]"
+      ],
+      "stats": {
+        "size": 1689,
+        "modified": 1754539429.2443035,
+        "lines": 39,
+        "chars": 1689,
         "words": 139
       },
-      "analyzed_at": "2025-08-04T16:30:20.674479"
+      "analyzed_at": "2025-08-08T15:57:08.141202"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/testingStrategy.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/testingStrategy.json",
-      "hash": "78333b4df53a592e388d65f283ce7a56017afff98fa68c8a4b24ab183c20374a",
-      "placeholder_count": 1,
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/qualityGoals.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/qualityGoals.json",
+      "hash": "6b6476ef0d47939b08448e2cfc0cd2395dfcd4a09a84c623a0febd4742d5a786",
+      "placeholder_count": 4,
       "placeholders": [
-        "[\"Unit\", \"Integration\", \"End-to-End\", \"Performance\", \"Security\"]"
+        "[\"number\", \"integer\"]",
+        "[\"reliability\", \"security\", \"usability\", \"performance\", \"maintainability\"]"
       ],
       "stats": {
-        "size": 1278,
-        "modified": 1754330777.356932,
-        "lines": 29,
-        "chars": 1278,
-        "words": 121
+        "size": 2694,
+        "modified": 1754602176.8032224,
+        "lines": 69,
+        "chars": 2694,
+        "words": 238
       },
-      "analyzed_at": "2025-08-04T16:30:20.674572"
+      "analyzed_at": "2025-08-08T15:57:08.141273"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/deploymentStrategy.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/deploymentStrategy.json",
-      "hash": "2b7c3a661f4c051be7d03b4209b1294122e9e7c65e8c8d14077f7b325d397439",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/stateManagementPlan.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/stateManagementPlan.json",
+      "hash": "67a63c98a884573f226a217c86bed55b2f5450c1b695a76d903c02db0270836b",
       "placeholder_count": 2,
       "placeholders": [
-        "[\"Blue-Green\", \"Canary\", \"Rolling Update\", \"Recreate\"]",
-        "[\"Development\", \"Staging\", \"Production\"]"
-      ],
-      "stats": {
-        "size": 1396,
-        "modified": 1754330777.356932,
-        "lines": 31,
-        "chars": 1396,
-        "words": 120
-      },
-      "analyzed_at": "2025-08-04T16:30:20.674667"
-    },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/documentationManifest.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/documentationManifest.json",
-      "hash": "4b3c05b2f5d888ee61d77f9c6aaf74f0c11d2bfef617fda2b05c66f6cebf4052",
-      "placeholder_count": 1,
-      "placeholders": [
-        "[\"title\", \"path\", \"ownerAgent\"]"
-      ],
-      "stats": {
-        "size": 742,
-        "modified": 1754330777.356932,
-        "lines": 21,
-        "chars": 742,
-        "words": 65
-      },
-      "analyzed_at": "2025-08-04T16:30:20.674757"
-    },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/featureManifest.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/featureManifest.json",
-      "hash": "1cd02402d76d1c236f5d051b1cb9c6de5a0611c876393cdef9121ab852f0d975",
-      "placeholder_count": 2,
-      "placeholders": [
-        "[\"Planned\", \"In Development\", \"Completed\", \"Deprecated\"]",
-        "[\"featureId\", \"description\", \"status\"]"
-      ],
-      "stats": {
-        "size": 832,
-        "modified": 1754330777.356932,
-        "lines": 21,
-        "chars": 832,
-        "words": 76
-      },
-      "analyzed_at": "2025-08-04T16:30:20.674849"
-    },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/dataModelDictionary.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/dataModelDictionary.json",
-      "hash": "582288b27bc324db3619331c2585c58eaa0379656afda35b9a7453a1105078aa",
-      "placeholder_count": 1,
-      "placeholders": [
-        "[\"One-to-One\", \"One-to-Many\", \"Many-to-Many\"]"
-      ],
-      "stats": {
-        "size": 1787,
-        "modified": 1754330777.356932,
-        "lines": 43,
-        "chars": 1787,
-        "words": 126
-      },
-      "analyzed_at": "2025-08-04T16:30:20.674947"
-    },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/apiContract.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/apiContract.json",
-      "hash": "eec079bb90a4630ca27c8d9e7e3c74886d679be9aef01348d9f6774b2fcb474f",
-      "placeholder_count": 2,
-      "placeholders": [
-        "[\"GET\", \"POST\", \"PUT\", \"DELETE\", \"PATCH\"]",
-        "[\"OAuth 2.0\", \"JWT\", \"API Key\", \"None\"]"
-      ],
-      "stats": {
-        "size": 1101,
-        "modified": 1754330777.356932,
-        "lines": 28,
-        "chars": 1101,
-        "words": 101
-      },
-      "analyzed_at": "2025-08-04T16:30:20.675045"
-    },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/stateManagementPlan.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/stateManagementPlan.json",
-      "hash": "3281a2a1fedf597dec1964a911254fdc2f1a11314b71a60be4975e41bf16cac8",
-      "placeholder_count": 1,
-      "placeholders": [
+        "[\"client\", \"server\", \"shared\"]",
         "[\"Global Store\", \"Component State\", \"Hybrid\"]"
       ],
       "stats": {
-        "size": 1160,
-        "modified": 1754330777.356932,
-        "lines": 30,
-        "chars": 1160,
-        "words": 115
+        "size": 2896,
+        "modified": 1754602332.901549,
+        "lines": 73,
+        "chars": 2896,
+        "words": 249
       },
-      "analyzed_at": "2025-08-04T16:30:20.675154"
+      "analyzed_at": "2025-08-08T15:57:08.141340"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/designSystem.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/designSystem.json",
-      "hash": "337419a1917b7810aee85b6ee40a4493785413da6f2aea9944e04eae74769f1b",
-      "placeholder_count": 0,
-      "placeholders": [],
-      "stats": {
-        "size": 1066,
-        "modified": 1754330777.356932,
-        "lines": 32,
-        "chars": 1066,
-        "words": 101
-      },
-      "analyzed_at": "2025-08-04T16:30:20.675246"
-    },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/fileExecutionMap.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/fileExecutionMap.json",
-      "hash": "be06a745b65cb1bca1eb103495907b4e2d0687af879936a3fa235accfb991651",
-      "placeholder_count": 1,
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/testingStrategy.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/testingStrategy.json",
+      "hash": "23c21fcdb120af530ded7421961edd7e6e8212d80f5ab19c08a3fc5ca0129c94",
+      "placeholder_count": 8,
       "placeholders": [
-        "[\"path\", \"language\", \"purpose\"]"
+        "[\"integer\", \"number\"]",
+        "[\"synthetic\", \"masked\", \"mixed\"]",
+        "[\"Unit\", \"Integration\", \"End-to-End\", \"Performance\", \"Security\"]"
       ],
       "stats": {
-        "size": 856,
-        "modified": 1754330777.356932,
-        "lines": 22,
-        "chars": 856,
-        "words": 81
+        "size": 2862,
+        "modified": 1754602348.2526357,
+        "lines": 72,
+        "chars": 2862,
+        "words": 259
       },
-      "analyzed_at": "2025-08-04T16:30:20.675336"
+      "analyzed_at": "2025-08-08T15:57:08.141416"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/deepLogicAnalysis.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/deepLogicAnalysis.json",
-      "hash": "3f8157d063669005d39434aaf0f4703321d74b40d46d17eb88dfabaaf52b92fc",
-      "placeholder_count": 1,
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/visualBlueprint.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/visualBlueprint.json",
+      "hash": "33728e9fe483dbd0077dc5a25aeb68c6369d007d16579afbe93e87e7bcdde607",
+      "placeholder_count": 3,
       "placeholders": [
-        "[\"Logical Flaw\", \"Edge Case\", \"Complexity Hotspot\", \"Inconsistency\"]"
+        "[]",
+        "[\"integer\", \"number\"]",
+        "[\"info\", \"warning\", \"critical\"]"
       ],
       "stats": {
-        "size": 1449,
-        "modified": 1754330777.356932,
-        "lines": 30,
-        "chars": 1449,
-        "words": 123
+        "size": 3910,
+        "modified": 1754608243.3931534,
+        "lines": 107,
+        "chars": 3910,
+        "words": 336
       },
-      "analyzed_at": "2025-08-04T16:30:20.675433"
+      "analyzed_at": "2025-08-08T15:57:08.141490"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/wireframeStates.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/wireframeStates.json",
-      "hash": "171677e4b287345b758c56e64199fc0616a1f572dd8a9119f3a2f18823b03d65",
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/wireframeStates.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/wireframeStates.json",
+      "hash": "ec0c37d71f8c681a4bfb26edbba38a6b0a7ce0df348cc43955743bf9dab71876",
       "placeholder_count": 2,
       "placeholders": [
         "[\"viewName\", \"componentTree\"]",
         "[\"componentType\"]"
       ],
       "stats": {
-        "size": 2577,
-        "modified": 1754330777.356932,
-        "lines": 65,
-        "chars": 2577,
-        "words": 204
+        "size": 3690,
+        "modified": 1754602361.952509,
+        "lines": 92,
+        "chars": 3690,
+        "words": 300
       },
-      "analyzed_at": "2025-08-04T16:30:20.675539"
+      "analyzed_at": "2025-08-08T15:57:08.141559"
     },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/visualBlueprint.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/visualBlueprint.json",
-      "hash": "b7c16dcef17215978b81f7259be2fa52843a5723c6a6d0c63848b2e6ef6304ba",
-      "placeholder_count": 0,
-      "placeholders": [],
-      "stats": {
-        "size": 723,
-        "modified": 1754330777.356932,
-        "lines": 20,
-        "chars": 723,
-        "words": 66
-      },
-      "analyzed_at": "2025-08-04T16:30:20.675634"
-    },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/featureLifecycle.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/featureLifecycle.json",
-      "hash": "1dd0d222f72f1b6ab4814240c0fb3facfc2ec23eee87e3251649378c0078925a",
-      "placeholder_count": 2,
+    "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/designPatterns.json": {
+      "path": "/home/hirundodev/development/prompt-manager-lite-v/prompt-manager-lite-v/real_structure_documentation/schemas/master_blueprint_parts/designPatterns.json",
+      "hash": "45a47af4efa8705d216a947b6f82da5b51bc40b84f5871bbb1f9911ece521704",
+      "placeholder_count": 5,
       "placeholders": [
-        "[\"featureId\", \"status\", \"path\", \"summary\"]",
-        "[\"Proposed\", \"In Progress\", \"Completed\", \"On Hold\"]"
+        "[\"frontend\", \"backend\", \"fullstack\", \"infrastructure\"]",
+        "[\"complements\", \"alternative\", \"dependsOn\"]",
+        "[\"architectural\", \"design\", \"integration\", \"concurrency\", \"state\", \"data\", \"testing\", \"security\", \"resilience\"]",
+        "[\"experimental\", \"recommended\", \"deprecated\"]",
+        "[\"number\", \"string\"]"
       ],
       "stats": {
-        "size": 1244,
-        "modified": 1754330777.356932,
-        "lines": 30,
-        "chars": 1244,
-        "words": 122
+        "size": 6862,
+        "modified": 1754608718.9882872,
+        "lines": 141,
+        "chars": 6862,
+        "words": 781
       },
-      "analyzed_at": "2025-08-04T16:30:20.675732"
-    },
-    "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/bugLifecycle.json": {
-      "path": "/home/hirundodev/development/prompt-manager/prompt-manager-lite-v/schemas/master_blueprint_parts/bugLifecycle.json",
-      "hash": "45ffb50af6a0a63a4d5559c2a3100332a980ae272fee405a4145fea3f2793337",
-      "placeholder_count": 2,
-      "placeholders": [
-        "[\"Reported\", \"In Progress\", \"Resolved\", \"Closed\"]",
-        "[\"bugId\", \"status\", \"path\", \"summary\"]"
-      ],
-      "stats": {
-        "size": 1207,
-        "modified": 1754330777.356932,
-        "lines": 30,
-        "chars": 1207,
-        "words": 122
-      },
-      "analyzed_at": "2025-08-04T16:30:20.675829"
+      "analyzed_at": "2025-08-08T15:57:08.141657"
     }
   }
 }

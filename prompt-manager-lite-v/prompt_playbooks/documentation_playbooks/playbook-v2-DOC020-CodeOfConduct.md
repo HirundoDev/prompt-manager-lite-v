@@ -2,7 +2,7 @@
 
 Guía para mantener el Código de Conducta del proyecto.
 
-Relacionado con: `docs/DOC020-Code-of-Conduct.md`
+Relacionado con: `docs/DOC020-CodeOfConduct.md`
 
 ---
 
@@ -60,7 +60,6 @@ Definir expectativas de comportamiento, ámbitos de aplicación, ejemplos acepta
 
 ## 7) Referencias
 
-- Documento: `docs/DOC020-Code-of-Conduct.md`
+- Documento: `docs/DOC020-CodeOfConduct.md`
 - Contributor Covenant: https://www.contributor-covenant.org/
 - Guía general: `GUIA_COMPLETA_DE_USO.md`
-
