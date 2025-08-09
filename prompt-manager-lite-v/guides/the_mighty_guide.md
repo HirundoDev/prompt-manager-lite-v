@@ -30,6 +30,10 @@ Notas importantes antes de empezar:
 - Fuente de verdad: los Schemas. Los DOCs derivan de ellos.
 - Pasos 1 y 2 son OPCIONALES según el estado del proyecto. Nunca sobrescribas documentación establecida; si ya está completa, solo valida y alinea `schemaRefs`/manifest.
 
+0) Análisis inicial del proyecto (tech stack y aplicabilidad)
+   - Revisa la estructura y tecnologías reales del proyecto (¿tiene frontend?, ¿backend?, ¿CLI?, ¿infra?, etc.).
+   - Actualiza manualmente el checklist `docs_checklist-verificaction.md`: marca "Aplica" (si/no/pendiente) por ruta y registra `ContadorCambios`/`UltimaModificacion` cuando un archivo sea ajustado.
+
 1) Schemas (opcional si ya están completos)
    - Consolidar/completar los schemas en `real_structure_documentation/schemas/master_blueprint_parts/` con información real del proyecto (analizando código/estructura actual) usando los playbooks de `prompt_playbooks/schemas_playbooks/`.
 2) Documentación (opcional si ya está completa)
