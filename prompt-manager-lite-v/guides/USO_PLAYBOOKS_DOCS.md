@@ -131,6 +131,7 @@ Referencias
 - DOC030-FeatureIndex.md ↔ `prompt_playbooks/documentation_playbooks/playbook-v2-DOC030-FeatureIndex.md`
 - DOC031-BugIndex.md ↔ `prompt_playbooks/documentation_playbooks/playbook-v2-DOC031-BugIndex.md`
 - DOC032-FrontendScreenFlow.md ↔ `prompt_playbooks/documentation_playbooks/playbook-v2-DOC032-FrontendScreenFlow.md`
+- DOC033-SOC2Compliance.md ↔ `prompt_playbooks/documentation_playbooks/playbook-v2-DOC033-SOC2Compliance.md`
 
 Notas
  - Aliases eliminados (usar solo canónicos):

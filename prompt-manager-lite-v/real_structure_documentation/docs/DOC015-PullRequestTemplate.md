@@ -41,6 +41,13 @@ Closes #[Número del Issue]
 - [ ] He añadido pruebas que demuestran que mi corrección es efectiva o que mi funcionalidad funciona.
 - [ ] Las pruebas unitarias y de integración nuevas y existentes pasan localmente con mis cambios.
 
+### Checklist de Cumplimiento de Guías
+
+- [ ] He leído y seguido `guides/the_mighty_guide.md` (incluido el Paso 0).
+- [ ] Actualicé `docs_checklist-verificaction.md` para cada archivo afectado (Aplica/ContadorCambios/UltimaModificacion).
+- [ ] Respeté estrictamente la plantilla/playbook correspondiente para cada artefacto (sin eliminar campos obligatorios ni cambiar estructura).
+- [ ] Ejecuté los verificadores locales: `python3 tools/verify_docs_and_schemas.py` y `python3 tools/verify_integrity.py`.
+
 ### Capturas de Pantalla (si aplica)
 
 <!-- Para cambios en la interfaz de usuario, por favor, añade capturas de pantalla o GIFs para mostrar los cambios. -->

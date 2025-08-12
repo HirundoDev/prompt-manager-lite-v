@@ -14,6 +14,12 @@ labels: ["bug"]
 - [ ] He proporcionado los pasos más simples posibles para reproducir el problema.
 - [ ] He incluido toda la información relevante sobre mi entorno.
 
+#### Cumplimiento de Guías (si este issue implica cambios en DOCs/Schemas)
+
+- [ ] Leí `guides/the_mighty_guide.md` (Paso 0) antes de comenzar.
+- [ ] Actualizaré `docs_checklist-verificaction.md` por cada archivo afectado.
+- [ ] Seguiré estrictamente la plantilla/playbook correspondiente.
+
 ---
 
 ### Descripción del Bug

@@ -44,6 +44,7 @@ Cómo usarlo (modo manual):
 | DOC | real_structure_documentation/docs/DOC030-FeatureIndex.md | pendiente | 0 | - |  |
 | DOC | real_structure_documentation/docs/DOC031-BugIndex.md | pendiente | 0 | - |  |
 | DOC | real_structure_documentation/docs/DOC032-FrontendScreenFlow.md | pendiente | 0 | - |  |
+| DOC | real_structure_documentation/docs/DOC033-SOC2Compliance.md | si | 1 | 2025-12-08 | Nuevo documento SOC 2 |
 | Schema | real_structure_documentation/schemas/cli_schema.json | pendiente | 0 | - |  |
 | Schema | real_structure_documentation/schemas/design_system_schema.json | pendiente | 0 | - |  |
 | Schema | real_structure_documentation/schemas/master_blueprint_parts/apiContract.json | pendiente | 0 | - |  |
@@ -71,4 +72,5 @@ Cómo usarlo (modo manual):
 | Schema | real_structure_documentation/schemas/master_blueprint_parts/testingStrategy.json | pendiente | 0 | - |  |
 | Schema | real_structure_documentation/schemas/master_blueprint_parts/visualBlueprint.json | pendiente | 0 | - |  |
 | Schema | real_structure_documentation/schemas/master_blueprint_parts/wireframeStates.json | pendiente | 0 | - |  |
+| Schema | real_structure_documentation/schemas/master_blueprint_parts/soc2Compliance.json | si | 1 | 2025-12-08 | Nuevo schema SOC 2 |
 | Schema | real_structure_documentation/schemas/master_blueprint_schema.json | pendiente | 0 | - |  |

@@ -2,6 +2,8 @@
 
 Guía maestra para usar Prompt Manager Lite V: dónde están los archivos, qué guía leer en cada caso y el flujo recomendado para documentar con trazabilidad.
 
+> Regla local (Windsurf/Cascade): este repositorio usa reglas de uso del asistente. Ver `guides/windsurf_cascade_rules.md`. Seguir esta guía al pie de la letra y presentar resultados de verificación en formato simple (✔/✖ por archivo), abriendo `verification_report.md` como checklist visual.
+
 ## 🧭 Mapa Rápido
 - Base del repositorio: `prompt-manager-lite-v/` (todas las rutas a continuación se asumen relativas a esta carpeta)
 - Docs base: `prompt-manager-lite-v/real_structure_documentation/docs/`
@@ -29,14 +31,17 @@ Guía maestra para usar Prompt Manager Lite V: dónde están los archivos, qué 
 Notas importantes antes de empezar:
 - Fuente de verdad: los Schemas. Los DOCs derivan de ellos.
 - Pasos 1 y 2 son OPCIONALES según el estado del proyecto. Nunca sobrescribas documentación establecida; si ya está completa, solo valida y alinea `schemaRefs`/manifest.
+- Obligatorio: respetar al pie de la letra el formato de cada plantilla (Schemas JSON, DOCs, PendingTask, Features, Bugs, Operations, Proposals, Manifests) y leer su playbook canónico antes de editar.
 
 0) Análisis inicial del proyecto (tech stack y aplicabilidad)
    - Revisa la estructura y tecnologías reales del proyecto (¿tiene frontend?, ¿backend?, ¿CLI?, ¿infra?, etc.).
    - Actualiza manualmente el checklist `docs_checklist-verificaction.md`: marca "Aplica" (si/no/pendiente) por ruta y registra `ContadorCambios`/`UltimaModificacion` cuando un archivo sea ajustado.
 
 1) Schemas (opcional si ya están completos)
+   - Antes de editar cualquier schema, leer y seguir el playbook correspondiente en `prompt_playbooks/schemas_playbooks/` y respetar el schema JSON (tipos, required, estructura, convenciones).
    - Consolidar/completar los schemas en `real_structure_documentation/schemas/master_blueprint_parts/` con información real del proyecto (analizando código/estructura actual) usando los playbooks de `prompt_playbooks/schemas_playbooks/`.
 2) Documentación (opcional si ya está completa)
+   - Antes de completar cualquier DOC, leer y seguir el playbook canónico en `prompt_playbooks/documentation_playbooks/` y respetar el frontmatter y secciones definidas por la plantilla.
    - Generar/actualizar DOCs en `real_structure_documentation/docs/` a partir de schemas usando los playbooks de `prompt_playbooks/documentation_playbooks/`.
    - Si los DOCs ya están al día, NO regenerar: solo validar consistencia y actualizar referencias.
 3) Enlaces y referencias
@@ -44,13 +49,50 @@ Notas importantes antes de empezar:
 4) Artefactos específicos
    - Seguir las guías de `streaming_files/features/`, `streaming_files/bugs/`, `streaming_files/operations/`, `streaming_files/proposals/` según aplique.
 5) Verificación (idempotente)
-   - `python3 tools/verify_docs_and_schemas.py` (manifest, playbooks canónicos, cobertura de real_structure_documentation/schemas/guías, schemaRefs)
-   - `python3 tools/verify_integrity.py` (estado vs plantillas)
+    - `python3 tools/verify_docs_and_schemas.py` (manifest, playbooks canónicos, cobertura de real_structure_documentation/schemas/guías, schemaRefs)
+    - `python3 tools/verify_integrity.py` (estado vs plantillas)
+
+## ✅ Lista rápida de verificación (limpia)
+
+- Ejecuta el verificador una sola vez:
+  - `python3 tools/verify_docs_and_schemas.py`
+
+- Revisa y corrige en este orden:
+  1) Checklist manual (`docs_checklist-verificaction.md`)
+     - Cada DOC del manifest debe tener Aplica: "si" o "no" (no "pendiente").
+     - Las rutas listadas deben existir y la fecha `UltimaModificacion` ser coherente.
+  2) Estructura DOC ↔ Playbook
+     - Abre el playbook canónico del DOC y añade las secciones H2/H3 requeridas.
+  3) Contenido real (calidad de DOCs y JSON)
+     - DOCs: encabezado H1 con el ID (ej. `# DOC010 - …`), sin placeholders (TODO/TBD/PENDIENTE/RELLENAR), longitud mínima razonable.
+     - Schemas/JSON: JSON válido, sin placeholders; en schemas incluir metadatos básicos (`title`, `$id`, `$schema`, `type`).
+  4) Índices por tipo
+     - `DOC031-BugIndex.md` cubre los items en `bugs/`.
+     - `DOC030-FeatureIndex.md` cubre los items en `features/`.
+     - `DOC028-OperationsRunbook.md` cubre los items en `operations/`.
+  5) Schemas y referencias
+     - Mantener `schemaRefs` en el frontmatter de los DOCs y en `manifests/documentation_manifest.json`.
+     - Asegurar mapeo en `guides/CONEXION_SCHEMAS_DOCS.md`. Evitar schemas JSON "nuevos" no referenciados.
+  6) Referencias a scripts
+     - Usar rutas correctas con prefijo `tools/` y eliminar referencias obsoletas.
+
+- Errores comunes y cómo resolver:
+  - "Heading no incluye ID 'DOCxxx'": cambia el H1 a `# DOCxxx - Título`.
+  - "Doc contiene placeholders": reemplaza TODO/TBD/PENDIENTE/RELLENAR por contenido real.
+  - "Secciones del playbook ausentes": abre el playbook y añade las secciones H2/H3 exactas.
+  - "Schema inválido o sin metadatos": valida el JSON e incluye `title`, `$id`, `$schema`, `type`.
+  - "No indexado": añade el enlace o referencia en `DOC028/030/031` según corresponda.
+
+- ¿Cuándo está OK?
+  - Cuando el verificador no muestra errores. Las advertencias son aceptables temporalmente, pero deben resolverse.
 
 ## ✅ Convenciones Clave
 - Playbooks canónicos: `prompt_playbooks/documentation_playbooks/playbook-v2-DOC{###}-{Nombre}.md` (sin alias).
 - `schemaRefs` es opcional pero recomendado; mantener consistencia entre frontmatter del DOC y el manifest.
 - Mantener actualizado `manifests/documentation_manifest.json` como índice de documentación (owners, estados, schemaRefs, paths).
+- Respetar estrictamente las plantillas: no cambiar la estructura, campos o tipos definidos. Para JSON Schemas, validar contra el schema correspondiente; para DOCs, mantener el frontmatter y secciones exactamente como en el playbook/plantilla.
+- Leer SIEMPRE el playbook canónico antes de rellenar un artefacto (DOC, schema, pendingtask, feature, bug, operation, proposal, manifest) y seguirlo al pie de la letra.
+- PendingTask: usar `template-pendingtask.md` como base; no remover campos obligatorios.
 
 ## 📎 Enlaces útiles
 - Manifest (instancia): `manifests/documentation_manifest.json`

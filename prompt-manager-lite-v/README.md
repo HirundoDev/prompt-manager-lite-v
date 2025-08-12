@@ -1,5 +1,7 @@
 # Prompt Manager Lite v
 
+> Empieza aquí: lee primero `guides/the_mighty_guide.md` y sigue el Paso 0 para actualizar `docs_checklist-verificaction.md` (aplicabilidad, contador de cambios y última modificación).
+
 ## 🎯 Introducción
 
 Prompt Manager Lite es una versión simplificada y portátil del Prompt Manager diseñada para documentar rápidamente proyectos usando un esquema modular flexible. **Plug & Play**: copia la carpeta y comienza a documentar.

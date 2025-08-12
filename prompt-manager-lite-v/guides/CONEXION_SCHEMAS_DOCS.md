@@ -52,6 +52,7 @@ Mapa Doc → Schemas (núcleo)
  - DOC030-FeatureIndex → `featureManifest.json`, `featureLifecycle.json`
  - DOC031-BugIndex → `bugLifecycle.json`
  - DOC032-FrontendScreenFlow → `visualBlueprint.json` + `wireframeStates.json` + `componentLibrary.json`
+ - DOC033-SOC2Compliance → `soc2Compliance.json` (+ `architecture.json`, `forensicAudit.json`)
 
 Recetas de extracción (resumen)
 - DOC008 (API):
@@ -150,6 +151,7 @@ Matriz inversa Schemas → Docs (resumen)
  - visualBlueprint.json → DOC032
  - wireframeStates.json → DOC032
  - designPatterns.json → DOC004, DOC006, DOC010, DOC012
+ - soc2Compliance.json → DOC033
  - operationalStrategy.json → DOC007, DOC028
  - featureManifest.json → DOC023, DOC030
  - featureLifecycle.json → DOC030

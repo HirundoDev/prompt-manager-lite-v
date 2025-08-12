@@ -1,0 +1,1616 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "soc2Compliance.json",
+    "$comment": "Playbook: prompt_playbooks/schemas_playbooks/playbook_schema-soc2Compliance.md",
+    "title": "SOC 2 Compliance Framework",
+    "description": "Schema defining the SOC 2 (System and Organization Controls 2) compliance framework structure, including Trust Services Criteria, controls, governance, and audit processes for demonstrating effective controls over security, availability, processing integrity, confidentiality, and privacy.",
+    "type": "object",
+    "required": [
+        "title",
+        "description",
+        "scope",
+        "reportType",
+        "trustServicesCriteria",
+        "governance",
+        "controls",
+        "auditProcess"
+    ],
+    "properties": {
+        "title": {
+            "type": "string",
+            "description": "Title of the SOC 2 compliance program"
+        },
+        "description": {
+            "type": "string",
+            "description": "Detailed description of the SOC 2 compliance objectives and scope"
+        },
+        "scope": {
+            "type": "object",
+            "description": "Definition of the SOC 2 audit scope",
+            "required": [
+                "systemsInScope",
+                "dataTypes",
+                "boundaries"
+            ],
+            "properties": {
+                "systemsInScope": {
+                    "type": "array",
+                    "description": "Systems, applications, and infrastructure included in SOC 2 scope",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "name",
+                            "type",
+                            "description"
+                        ],
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "Name of the system or component"
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "application",
+                                    "infrastructure",
+                                    "database",
+                                    "network",
+                                    "cloud-service"
+                                ],
+                                "description": "Type of system component"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Detailed description of the system and its role"
+                            },
+                            "criticality": {
+                                "type": "string",
+                                "enum": [
+                                    "critical",
+                                    "high",
+                                    "medium",
+                                    "low"
+                                ],
+                                "description": "Business criticality level"
+                            },
+                            "dataProcessed": {
+                                "type": "array",
+                                "description": "Types of data processed by this system",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "dataTypes": {
+                    "type": "array",
+                    "description": "Types of data covered by the SOC 2 scope",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "type",
+                            "classification",
+                            "description"
+                        ],
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "description": "Type of data (e.g., customer data, financial data, PII)"
+                            },
+                            "classification": {
+                                "type": "string",
+                                "enum": [
+                                    "public",
+                                    "internal",
+                                    "confidential",
+                                    "restricted"
+                                ],
+                                "description": "Data classification level"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Detailed description of the data type"
+                            },
+                            "volume": {
+                                "type": "string",
+                                "description": "Approximate volume of data"
+                            },
+                            "retention": {
+                                "type": "string",
+                                "description": "Data retention requirements"
+                            }
+                        }
+                    }
+                },
+                "boundaries": {
+                    "type": "object",
+                    "description": "Clear definition of what is included and excluded from scope",
+                    "properties": {
+                        "inclusions": {
+                            "type": "array",
+                            "description": "Explicitly included components",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "exclusions": {
+                            "type": "array",
+                            "description": "Explicitly excluded components with justification",
+                            "items": {
+                                "type": "object",
+                                "required": [
+                                    "component",
+                                    "justification"
+                                ],
+                                "properties": {
+                                    "component": {
+                                        "type": "string",
+                                        "description": "Excluded component name"
+                                    },
+                                    "justification": {
+                                        "type": "string",
+                                        "description": "Reason for exclusion"
+                                    }
+                                }
+                            }
+                        },
+                        "geographicScope": {
+                            "type": "array",
+                            "description": "Geographic locations included in scope",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "reportType": {
+            "type": "string",
+            "enum": [
+                "Type I",
+                "Type II"
+            ],
+            "description": "Type of SOC 2 report (Type I for point-in-time, Type II for period of time)"
+        },
+        "observationPeriod": {
+            "type": "object",
+            "description": "Period covered by the SOC 2 audit (required for Type II)",
+            "properties": {
+                "startDate": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Start date of the observation period"
+                },
+                "endDate": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "End date of the observation period"
+                },
+                "duration": {
+                    "type": "string",
+                    "description": "Duration of the observation period (e.g., '6 months', '12 months')"
+                }
+            }
+        },
+        "trustServicesCriteria": {
+            "type": "array",
+            "description": "Trust Services Criteria (TSC) applicable to this SOC 2 audit",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "required": [
+                    "category",
+                    "included",
+                    "justification"
+                ],
+                "properties": {
+                    "category": {
+                        "type": "string",
+                        "enum": [
+                            "Security",
+                            "Availability",
+                            "Processing Integrity",
+                            "Confidentiality",
+                            "Privacy"
+                        ],
+                        "description": "Trust Services Criteria category"
+                    },
+                    "included": {
+                        "type": "boolean",
+                        "description": "Whether this TSC is included in the audit scope"
+                    },
+                    "justification": {
+                        "type": "string",
+                        "description": "Justification for including or excluding this TSC"
+                    },
+                    "pointsOfFocus": {
+                        "type": "array",
+                        "description": "Specific points of focus within this TSC",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "id",
+                                "description",
+                                "applicable"
+                            ],
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "description": "Point of focus identifier (e.g., CC1.1, A1.2)"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "description": "Description of the point of focus"
+                                },
+                                "applicable": {
+                                    "type": "boolean",
+                                    "description": "Whether this point of focus applies to the organization"
+                                },
+                                "rationale": {
+                                    "type": "string",
+                                    "description": "Rationale for applicability determination"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "governance": {
+            "type": "object",
+            "description": "Governance structure for SOC 2 compliance program",
+            "required": [
+                "executiveSponsor",
+                "programLead",
+                "committee"
+            ],
+            "properties": {
+                "executiveSponsor": {
+                    "type": "object",
+                    "description": "Executive sponsor of the SOC 2 program",
+                    "required": [
+                        "name",
+                        "title",
+                        "responsibilities"
+                    ],
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "Name of the executive sponsor"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "Job title of the executive sponsor"
+                        },
+                        "responsibilities": {
+                            "type": "array",
+                            "description": "Key responsibilities in the SOC 2 program",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "programLead": {
+                    "type": "object",
+                    "description": "Program lead for day-to-day SOC 2 management",
+                    "required": [
+                        "name",
+                        "title",
+                        "responsibilities"
+                    ],
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "Name of the program lead"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "Job title of the program lead"
+                        },
+                        "responsibilities": {
+                            "type": "array",
+                            "description": "Key responsibilities in the SOC 2 program",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "qualifications": {
+                            "type": "array",
+                            "description": "Relevant qualifications and certifications",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "committee": {
+                    "type": "object",
+                    "description": "SOC 2 compliance committee structure",
+                    "properties": {
+                        "members": {
+                            "type": "array",
+                            "description": "Committee members and their roles",
+                            "items": {
+                                "type": "object",
+                                "required": [
+                                    "name",
+                                    "title",
+                                    "department",
+                                    "role"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "Name of the committee member"
+                                    },
+                                    "title": {
+                                        "type": "string",
+                                        "description": "Job title of the committee member"
+                                    },
+                                    "department": {
+                                        "type": "string",
+                                        "description": "Department or functional area"
+                                    },
+                                    "role": {
+                                        "type": "string",
+                                        "description": "Role in the SOC 2 program"
+                                    },
+                                    "responsibilities": {
+                                        "type": "array",
+                                        "description": "Specific responsibilities",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "meetingFrequency": {
+                            "type": "string",
+                            "description": "Frequency of committee meetings"
+                        },
+                        "reportingStructure": {
+                            "type": "string",
+                            "description": "How the committee reports to executive leadership"
+                        }
+                    }
+                }
+            }
+        },
+        "controls": {
+            "type": "array",
+            "description": "SOC 2 controls implemented to address Trust Services Criteria",
+            "items": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "tscMapping",
+                    "controlType",
+                    "owner"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the control"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the control"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Detailed description of the control"
+                    },
+                    "tscMapping": {
+                        "type": "array",
+                        "description": "Trust Services Criteria points of focus addressed by this control",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "controlType": {
+                        "type": "string",
+                        "enum": [
+                            "preventive",
+                            "detective",
+                            "corrective",
+                            "compensating"
+                        ],
+                        "description": "Type of control"
+                    },
+                    "controlNature": {
+                        "type": "string",
+                        "enum": [
+                            "manual",
+                            "automated",
+                            "IT-dependent manual"
+                        ],
+                        "description": "Nature of the control execution"
+                    },
+                    "frequency": {
+                        "type": "string",
+                        "enum": [
+                            "continuous",
+                            "daily",
+                            "weekly",
+                            "monthly",
+                            "quarterly",
+                            "annually",
+                            "ad-hoc"
+                        ],
+                        "description": "Frequency of control execution"
+                    },
+                    "owner": {
+                        "type": "object",
+                        "description": "Control owner information",
+                        "required": [
+                            "name",
+                            "title",
+                            "department"
+                        ],
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "Name of the control owner"
+                            },
+                            "title": {
+                                "type": "string",
+                                "description": "Job title of the control owner"
+                            },
+                            "department": {
+                                "type": "string",
+                                "description": "Department of the control owner"
+                            }
+                        }
+                    },
+                    "implementation": {
+                        "type": "object",
+                        "description": "Control implementation details",
+                        "properties": {
+                            "procedure": {
+                                "type": "string",
+                                "description": "Detailed procedure for executing the control"
+                            },
+                            "tools": {
+                                "type": "array",
+                                "description": "Tools or systems used to implement the control",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "evidence": {
+                                "type": "array",
+                                "description": "Types of evidence generated by this control",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "exceptions": {
+                                "type": "array",
+                                "description": "Known exceptions or limitations",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "description",
+                                        "impact",
+                                        "mitigation"
+                                    ],
+                                    "properties": {
+                                        "description": {
+                                            "type": "string",
+                                            "description": "Description of the exception"
+                                        },
+                                        "impact": {
+                                            "type": "string",
+                                            "description": "Impact of the exception on control effectiveness"
+                                        },
+                                        "mitigation": {
+                                            "type": "string",
+                                            "description": "Compensating controls or mitigation measures"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "testing": {
+                        "type": "object",
+                        "description": "Control testing information",
+                        "properties": {
+                            "testProcedure": {
+                                "type": "string",
+                                "description": "Procedure for testing the control"
+                            },
+                            "testFrequency": {
+                                "type": "string",
+                                "description": "Frequency of control testing"
+                            },
+                            "sampleSize": {
+                                "type": "string",
+                                "description": "Sample size for testing (if applicable)"
+                            },
+                            "lastTestDate": {
+                                "type": "string",
+                                "format": "date",
+                                "description": "Date of last control test"
+                            },
+                            "testResults": {
+                                "type": "string",
+                                "enum": [
+                                    "effective",
+                                    "deficient",
+                                    "not-tested"
+                                ],
+                                "description": "Results of the last control test"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "riskAssessment": {
+            "type": "object",
+            "description": "Risk assessment methodology and results",
+            "properties": {
+                "methodology": {
+                    "type": "string",
+                    "description": "Risk assessment methodology used (e.g., NIST, ISO 27005)"
+                },
+                "frequency": {
+                    "type": "string",
+                    "description": "Frequency of risk assessment updates"
+                },
+                "riskRegister": {
+                    "type": "array",
+                    "description": "Identified risks relevant to SOC 2",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "id",
+                            "description",
+                            "category",
+                            "likelihood",
+                            "impact",
+                            "riskLevel"
+                        ],
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "description": "Unique risk identifier"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Detailed description of the risk"
+                            },
+                            "category": {
+                                "type": "string",
+                                "enum": [
+                                    "security",
+                                    "availability",
+                                    "processing-integrity",
+                                    "confidentiality",
+                                    "privacy",
+                                    "operational",
+                                    "compliance"
+                                ],
+                                "description": "Risk category"
+                            },
+                            "likelihood": {
+                                "type": "string",
+                                "enum": [
+                                    "very-low",
+                                    "low",
+                                    "medium",
+                                    "high",
+                                    "very-high"
+                                ],
+                                "description": "Likelihood of risk occurrence"
+                            },
+                            "impact": {
+                                "type": "string",
+                                "enum": [
+                                    "very-low",
+                                    "low",
+                                    "medium",
+                                    "high",
+                                    "very-high"
+                                ],
+                                "description": "Impact if risk occurs"
+                            },
+                            "riskLevel": {
+                                "type": "string",
+                                "enum": [
+                                    "very-low",
+                                    "low",
+                                    "medium",
+                                    "high",
+                                    "very-high"
+                                ],
+                                "description": "Overall risk level (likelihood × impact)"
+                            },
+                            "mitigatingControls": {
+                                "type": "array",
+                                "description": "Controls that mitigate this risk",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "residualRisk": {
+                                "type": "string",
+                                "enum": [
+                                    "very-low",
+                                    "low",
+                                    "medium",
+                                    "high",
+                                    "very-high"
+                                ],
+                                "description": "Residual risk level after controls"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "policies": {
+            "type": "array",
+            "description": "Policies required for SOC 2 compliance",
+            "items": {
+                "type": "object",
+                "required": [
+                    "name",
+                    "description",
+                    "owner",
+                    "lastReview"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the policy"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the policy scope and purpose"
+                    },
+                    "owner": {
+                        "type": "string",
+                        "description": "Policy owner"
+                    },
+                    "lastReview": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Date of last policy review"
+                    },
+                    "nextReview": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Date of next scheduled review"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "Current version of the policy"
+                    },
+                    "documentLocation": {
+                        "type": "string",
+                        "description": "Location of the policy document"
+                    },
+                    "tscRelevance": {
+                        "type": "array",
+                        "description": "Trust Services Criteria addressed by this policy",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "procedures": {
+            "type": "array",
+            "description": "Operational procedures supporting SOC 2 controls",
+            "items": {
+                "type": "object",
+                "required": [
+                    "name",
+                    "description",
+                    "owner",
+                    "frequency"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the procedure"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the procedure"
+                    },
+                    "owner": {
+                        "type": "string",
+                        "description": "Procedure owner"
+                    },
+                    "frequency": {
+                        "type": "string",
+                        "description": "Frequency of procedure execution"
+                    },
+                    "steps": {
+                        "type": "array",
+                        "description": "Detailed steps of the procedure",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "stepNumber",
+                                "description",
+                                "responsible"
+                            ],
+                            "properties": {
+                                "stepNumber": {
+                                    "type": "integer",
+                                    "description": "Step number in sequence"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "description": "Description of the step"
+                                },
+                                "responsible": {
+                                    "type": "string",
+                                    "description": "Role responsible for this step"
+                                },
+                                "tools": {
+                                    "type": "array",
+                                    "description": "Tools or systems used in this step",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "relatedControls": {
+                        "type": "array",
+                        "description": "Controls supported by this procedure",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "evidenceManagement": {
+            "type": "object",
+            "description": "Evidence collection and management processes",
+            "properties": {
+                "repository": {
+                    "type": "object",
+                    "description": "Evidence repository configuration",
+                    "properties": {
+                        "location": {
+                            "type": "string",
+                            "description": "Location of the evidence repository"
+                        },
+                        "structure": {
+                            "type": "object",
+                            "description": "Folder structure for evidence organization",
+                            "properties": {
+                                "byTSC": {
+                                    "type": "boolean",
+                                    "description": "Whether evidence is organized by Trust Services Criteria"
+                                },
+                                "byControl": {
+                                    "type": "boolean",
+                                    "description": "Whether evidence is organized by control"
+                                },
+                                "byPeriod": {
+                                    "type": "boolean",
+                                    "description": "Whether evidence is organized by time period"
+                                }
+                            }
+                        },
+                        "accessControls": {
+                            "type": "array",
+                            "description": "Access controls for the evidence repository",
+                            "items": {
+                                "type": "object",
+                                "required": [
+                                    "role",
+                                    "permissions"
+                                ],
+                                "properties": {
+                                    "role": {
+                                        "type": "string",
+                                        "description": "Role or user group"
+                                    },
+                                    "permissions": {
+                                        "type": "array",
+                                        "description": "Permissions granted to this role",
+                                        "items": {
+                                            "type": "string",
+                                            "enum": [
+                                                "read",
+                                                "write",
+                                                "delete",
+                                                "admin"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "collectionProcess": {
+                    "type": "object",
+                    "description": "Evidence collection process",
+                    "properties": {
+                        "automated": {
+                            "type": "boolean",
+                            "description": "Whether evidence collection is automated"
+                        },
+                        "frequency": {
+                            "type": "string",
+                            "description": "Frequency of evidence collection"
+                        },
+                        "responsible": {
+                            "type": "string",
+                            "description": "Role responsible for evidence collection"
+                        },
+                        "tools": {
+                            "type": "array",
+                            "description": "Tools used for evidence collection",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "retention": {
+                    "type": "object",
+                    "description": "Evidence retention policies",
+                    "properties": {
+                        "period": {
+                            "type": "string",
+                            "description": "Evidence retention period"
+                        },
+                        "disposalProcess": {
+                            "type": "string",
+                            "description": "Process for evidence disposal"
+                        },
+                        "backupRequirements": {
+                            "type": "string",
+                            "description": "Backup requirements for evidence"
+                        }
+                    }
+                }
+            }
+        },
+        "auditProcess": {
+            "type": "object",
+            "description": "SOC 2 audit process and timeline",
+            "required": [
+                "auditor",
+                "timeline",
+                "phases"
+            ],
+            "properties": {
+                "auditor": {
+                    "type": "object",
+                    "description": "Selected auditor information",
+                    "required": [
+                        "firm",
+                        "leadAuditor"
+                    ],
+                    "properties": {
+                        "firm": {
+                            "type": "string",
+                            "description": "Name of the auditing firm"
+                        },
+                        "leadAuditor": {
+                            "type": "string",
+                            "description": "Name of the lead auditor"
+                        },
+                        "qualifications": {
+                            "type": "array",
+                            "description": "Relevant qualifications and certifications",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "experience": {
+                            "type": "string",
+                            "description": "Relevant experience in SOC 2 audits"
+                        },
+                        "industryExperience": {
+                            "type": "array",
+                            "description": "Industry experience relevant to the organization",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "timeline": {
+                    "type": "object",
+                    "description": "Audit timeline and milestones",
+                    "properties": {
+                        "kickoffDate": {
+                            "type": "string",
+                            "format": "date",
+                            "description": "Audit kickoff date"
+                        },
+                        "fieldworkStart": {
+                            "type": "string",
+                            "format": "date",
+                            "description": "Start date of audit fieldwork"
+                        },
+                        "fieldworkEnd": {
+                            "type": "string",
+                            "format": "date",
+                            "description": "End date of audit fieldwork"
+                        },
+                        "draftReportDate": {
+                            "type": "string",
+                            "format": "date",
+                            "description": "Expected date for draft report"
+                        },
+                        "finalReportDate": {
+                            "type": "string",
+                            "format": "date",
+                            "description": "Expected date for final report"
+                        },
+                        "totalDuration": {
+                            "type": "string",
+                            "description": "Total duration of the audit process"
+                        }
+                    }
+                },
+                "phases": {
+                    "type": "array",
+                    "description": "Audit phases and activities",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "name",
+                            "description",
+                            "duration",
+                            "deliverables"
+                        ],
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "Name of the audit phase"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Description of activities in this phase"
+                            },
+                            "duration": {
+                                "type": "string",
+                                "description": "Duration of this phase"
+                            },
+                            "responsible": {
+                                "type": "string",
+                                "description": "Primary responsible party for this phase"
+                            },
+                            "deliverables": {
+                                "type": "array",
+                                "description": "Deliverables expected from this phase",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "dependencies": {
+                                "type": "array",
+                                "description": "Dependencies for this phase",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "communication": {
+                    "type": "object",
+                    "description": "Communication plan with auditors",
+                    "properties": {
+                        "primaryContact": {
+                            "type": "string",
+                            "description": "Primary contact for audit communications"
+                        },
+                        "meetingFrequency": {
+                            "type": "string",
+                            "description": "Frequency of status meetings"
+                        },
+                        "reportingFormat": {
+                            "type": "string",
+                            "description": "Format for progress reporting"
+                        },
+                        "escalationProcess": {
+                            "type": "string",
+                            "description": "Process for escalating issues"
+                        }
+                    }
+                }
+            }
+        },
+        "monitoring": {
+            "type": "object",
+            "description": "Continuous monitoring and measurement",
+            "properties": {
+                "metrics": {
+                    "type": "array",
+                    "description": "Key performance indicators for SOC 2 compliance",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "name",
+                            "description",
+                            "target",
+                            "frequency"
+                        ],
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "Name of the metric"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Description of what the metric measures"
+                            },
+                            "target": {
+                                "type": "string",
+                                "description": "Target value or threshold for the metric"
+                            },
+                            "frequency": {
+                                "type": "string",
+                                "description": "Frequency of metric collection"
+                            },
+                            "owner": {
+                                "type": "string",
+                                "description": "Owner responsible for this metric"
+                            },
+                            "tscRelevance": {
+                                "type": "array",
+                                "description": "Trust Services Criteria relevant to this metric",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "dashboards": {
+                    "type": "array",
+                    "description": "Monitoring dashboards and reports",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "name",
+                            "description",
+                            "audience"
+                        ],
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "Name of the dashboard"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Description of dashboard content"
+                            },
+                            "audience": {
+                                "type": "string",
+                                "description": "Target audience for this dashboard"
+                            },
+                            "updateFrequency": {
+                                "type": "string",
+                                "description": "Frequency of dashboard updates"
+                            },
+                            "metricsIncluded": {
+                                "type": "array",
+                                "description": "Metrics included in this dashboard",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "alerting": {
+                    "type": "object",
+                    "description": "Alerting configuration for compliance issues",
+                    "properties": {
+                        "thresholds": {
+                            "type": "array",
+                            "description": "Alert thresholds and conditions",
+                            "items": {
+                                "type": "object",
+                                "required": [
+                                    "metric",
+                                    "condition",
+                                    "threshold",
+                                    "severity"
+                                ],
+                                "properties": {
+                                    "metric": {
+                                        "type": "string",
+                                        "description": "Metric that triggers the alert"
+                                    },
+                                    "condition": {
+                                        "type": "string",
+                                        "enum": [
+                                            "greater-than",
+                                            "less-than",
+                                            "equals",
+                                            "not-equals"
+                                        ],
+                                        "description": "Condition for triggering the alert"
+                                    },
+                                    "threshold": {
+                                        "type": "string",
+                                        "description": "Threshold value for the alert"
+                                    },
+                                    "severity": {
+                                        "type": "string",
+                                        "enum": [
+                                            "low",
+                                            "medium",
+                                            "high",
+                                            "critical"
+                                        ],
+                                        "description": "Severity level of the alert"
+                                    }
+                                }
+                            }
+                        },
+                        "recipients": {
+                            "type": "array",
+                            "description": "Alert recipients by severity level",
+                            "items": {
+                                "type": "object",
+                                "required": [
+                                    "severity",
+                                    "recipients"
+                                ],
+                                "properties": {
+                                    "severity": {
+                                        "type": "string",
+                                        "enum": [
+                                            "low",
+                                            "medium",
+                                            "high",
+                                            "critical"
+                                        ],
+                                        "description": "Severity level"
+                                    },
+                                    "recipients": {
+                                        "type": "array",
+                                        "description": "Recipients for this severity level",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "deficiencyManagement": {
+            "type": "object",
+            "description": "Process for managing control deficiencies",
+            "properties": {
+                "identificationProcess": {
+                    "type": "string",
+                    "description": "Process for identifying control deficiencies"
+                },
+                "classification": {
+                    "type": "array",
+                    "description": "Deficiency classification system",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "type",
+                            "description",
+                            "responseTime"
+                        ],
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "description": "Type of deficiency"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Description of this deficiency type"
+                            },
+                            "responseTime": {
+                                "type": "string",
+                                "description": "Required response time for this type"
+                            },
+                            "approvalRequired": {
+                                "type": "boolean",
+                                "description": "Whether executive approval is required"
+                            }
+                        }
+                    }
+                },
+                "remediationProcess": {
+                    "type": "object",
+                    "description": "Process for remediating deficiencies",
+                    "properties": {
+                        "steps": {
+                            "type": "array",
+                            "description": "Steps in the remediation process",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "responsible": {
+                            "type": "string",
+                            "description": "Role responsible for remediation"
+                        },
+                        "tracking": {
+                            "type": "string",
+                            "description": "System or method for tracking remediation"
+                        }
+                    }
+                }
+            }
+        },
+        "training": {
+            "type": "object",
+            "description": "Training and awareness program",
+            "properties": {
+                "programs": {
+                    "type": "array",
+                    "description": "Training programs for different audiences",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "name",
+                            "audience",
+                            "frequency",
+                            "duration"
+                        ],
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "Name of the training program"
+                            },
+                            "audience": {
+                                "type": "string",
+                                "description": "Target audience for this training"
+                            },
+                            "frequency": {
+                                "type": "string",
+                                "description": "Frequency of training delivery"
+                            },
+                            "duration": {
+                                "type": "string",
+                                "description": "Duration of the training"
+                            },
+                            "content": {
+                                "type": "array",
+                                "description": "Key topics covered in the training",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "deliveryMethod": {
+                                "type": "string",
+                                "enum": [
+                                    "in-person",
+                                    "online",
+                                    "hybrid"
+                                ],
+                                "description": "Method of training delivery"
+                            },
+                            "assessmentRequired": {
+                                "type": "boolean",
+                                "description": "Whether assessment is required"
+                            }
+                        }
+                    }
+                },
+                "effectiveness": {
+                    "type": "object",
+                    "description": "Training effectiveness measurement",
+                    "properties": {
+                        "metrics": {
+                            "type": "array",
+                            "description": "Metrics for measuring training effectiveness",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "feedback": {
+                            "type": "string",
+                            "description": "Process for collecting training feedback"
+                        }
+                    }
+                }
+            }
+        },
+        "vendorManagement": {
+            "type": "object",
+            "description": "Management of third-party vendors in SOC 2 scope",
+            "properties": {
+                "criticalVendors": {
+                    "type": "array",
+                    "description": "Vendors critical to SOC 2 compliance",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "name",
+                            "services",
+                            "riskLevel",
+                            "complianceStatus"
+                        ],
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "Name of the vendor"
+                            },
+                            "services": {
+                                "type": "string",
+                                "description": "Services provided by the vendor"
+                            },
+                            "riskLevel": {
+                                "type": "string",
+                                "enum": [
+                                    "low",
+                                    "medium",
+                                    "high",
+                                    "critical"
+                                ],
+                                "description": "Risk level associated with this vendor"
+                            },
+                            "complianceStatus": {
+                                "type": "object",
+                                "description": "Vendor's compliance status",
+                                "properties": {
+                                    "soc2": {
+                                        "type": "boolean",
+                                        "description": "Whether vendor has SOC 2 certification"
+                                    },
+                                    "iso27001": {
+                                        "type": "boolean",
+                                        "description": "Whether vendor has ISO 27001 certification"
+                                    },
+                                    "otherCertifications": {
+                                        "type": "array",
+                                        "description": "Other relevant certifications",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "contractualRequirements": {
+                                "type": "array",
+                                "description": "SOC 2-related contractual requirements",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "monitoringActivities": {
+                                "type": "array",
+                                "description": "Activities for monitoring vendor compliance",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "assessmentProcess": {
+                    "type": "string",
+                    "description": "Process for assessing vendor compliance"
+                },
+                "ongoingMonitoring": {
+                    "type": "string",
+                    "description": "Process for ongoing vendor monitoring"
+                }
+            }
+        },
+        "incidentResponse": {
+            "type": "object",
+            "description": "Incident response procedures for SOC 2-related incidents",
+            "properties": {
+                "classification": {
+                    "type": "array",
+                    "description": "Incident classification system",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "severity",
+                            "description",
+                            "responseTime"
+                        ],
+                        "properties": {
+                            "severity": {
+                                "type": "string",
+                                "enum": [
+                                    "low",
+                                    "medium",
+                                    "high",
+                                    "critical"
+                                ],
+                                "description": "Incident severity level"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Description of this severity level"
+                            },
+                            "responseTime": {
+                                "type": "string",
+                                "description": "Required response time"
+                            },
+                            "notificationRequired": {
+                                "type": "boolean",
+                                "description": "Whether external notification is required"
+                            }
+                        }
+                    }
+                },
+                "responseProcess": {
+                    "type": "array",
+                    "description": "Steps in the incident response process",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "step",
+                            "description",
+                            "responsible"
+                        ],
+                        "properties": {
+                            "step": {
+                                "type": "integer",
+                                "description": "Step number in the process"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Description of this step"
+                            },
+                            "responsible": {
+                                "type": "string",
+                                "description": "Role responsible for this step"
+                            },
+                            "timeframe": {
+                                "type": "string",
+                                "description": "Expected timeframe for completion"
+                            }
+                        }
+                    }
+                },
+                "communication": {
+                    "type": "object",
+                    "description": "Communication procedures for incidents",
+                    "properties": {
+                        "internal": {
+                            "type": "array",
+                            "description": "Internal stakeholders to notify",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "external": {
+                            "type": "array",
+                            "description": "External stakeholders to notify",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "auditorsNotification": {
+                            "type": "string",
+                            "description": "Process for notifying SOC 2 auditors"
+                        }
+                    }
+                }
+            }
+        },
+        "budget": {
+            "type": "object",
+            "description": "Budget and resource allocation for SOC 2 program",
+            "properties": {
+                "totalBudget": {
+                    "type": "number",
+                    "description": "Total budget allocated for SOC 2 compliance"
+                },
+                "breakdown": {
+                    "type": "array",
+                    "description": "Budget breakdown by category",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "category",
+                            "amount",
+                            "description"
+                        ],
+                        "properties": {
+                            "category": {
+                                "type": "string",
+                                "description": "Budget category"
+                            },
+                            "amount": {
+                                "type": "number",
+                                "description": "Amount allocated to this category"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Description of expenses in this category"
+                            }
+                        }
+                    }
+                },
+                "resources": {
+                    "type": "array",
+                    "description": "Human resource allocation",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "role",
+                            "allocation",
+                            "duration"
+                        ],
+                        "properties": {
+                            "role": {
+                                "type": "string",
+                                "description": "Role or position"
+                            },
+                            "allocation": {
+                                "type": "string",
+                                "description": "Percentage of time allocated"
+                            },
+                            "duration": {
+                                "type": "string",
+                                "description": "Duration of allocation"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "continuousImprovement": {
+            "type": "object",
+            "description": "Continuous improvement processes",
+            "properties": {
+                "reviewCycle": {
+                    "type": "string",
+                    "description": "Frequency of program reviews"
+                },
+                "improvementProcess": {
+                    "type": "string",
+                    "description": "Process for identifying and implementing improvements"
+                },
+                "benchmarking": {
+                    "type": "object",
+                    "description": "Benchmarking activities",
+                    "properties": {
+                        "industryStandards": {
+                            "type": "array",
+                            "description": "Industry standards used for benchmarking",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "peerComparison": {
+                            "type": "boolean",
+                            "description": "Whether peer comparison is conducted"
+                        },
+                        "bestPractices": {
+                            "type": "array",
+                            "description": "Best practices identified through benchmarking",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
