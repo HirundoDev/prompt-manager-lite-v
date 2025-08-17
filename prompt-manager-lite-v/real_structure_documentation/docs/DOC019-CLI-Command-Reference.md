@@ -36,7 +36,7 @@
 
 ### What is [CLI_TOOL_NAME]?
 
-[CLI_TOOL_NAME] is a powerful command-line interface designed to streamline [PRIMARY_PURPOSE]. Built with modern CLI design principles, it provides an intuitive, efficient, and robust experience for developers and system administrators.
+[CLI_TOOL_NAME] is a powerful command-line interface designed to streamline [PRIMARY_PURPOSE]. Built with modern CLI design principles, it provides an intuitive, efficient, and robust experience for [TARGET_USERS].
 
 ### Key Features
 - **Human-First Design:** Intuitive commands with clear, helpful output
@@ -62,28 +62,28 @@ Our CLI follows the [Command Line Interface Guidelines](https://clig.dev/) and e
 
 #### Package Managers
 ```bash
-# macOS (Homebrew)
-brew install [CLI_TOOL_NAME]
+# [PACKAGE_MANAGER_1] ([PLATFORM_1])
+[INSTALL_COMMAND_1]
 
-# Linux (apt)
-sudo apt install [CLI_TOOL_NAME]
+# [PACKAGE_MANAGER_2] ([PLATFORM_2])
+[INSTALL_COMMAND_2]
 
-# Linux (yum)
-sudo yum install [CLI_TOOL_NAME]
+# [PACKAGE_MANAGER_3] ([PLATFORM_3])
+[INSTALL_COMMAND_3]
 
-# Node.js (npm)
-npm install -g [CLI_TOOL_NAME]
+# [PACKAGE_MANAGER_4] ([PLATFORM_4])
+[INSTALL_COMMAND_4]
 
-# Python (pip)
-pip install [CLI_TOOL_NAME]
+# [PACKAGE_MANAGER_5] ([PLATFORM_5])
+[INSTALL_COMMAND_5]
 ```
 
 #### Direct Download
 ```bash
 # Download latest release
-curl -L https://github.com/[ORG]/[CLI_TOOL_NAME]/releases/latest/download/[CLI_TOOL_NAME]-linux-amd64 -o [CLI_TOOL_NAME]
+curl -L [DOWNLOAD_URL] -o [CLI_TOOL_NAME]
 chmod +x [CLI_TOOL_NAME]
-sudo mv [CLI_TOOL_NAME] /usr/local/bin/
+sudo mv [CLI_TOOL_NAME] [INSTALL_PATH]
 ```
 
 ### Quick Start
@@ -96,7 +96,7 @@ sudo mv [CLI_TOOL_NAME] /usr/local/bin/
 [CLI_TOOL_NAME] --help
 
 # Run your first command
-[CLI_TOOL_NAME] [BASIC_COMMAND]
+[CLI_TOOL_NAME] [BASIC_COMMAND_EXAMPLE]
 
 # Explore available commands
 [CLI_TOOL_NAME] help
@@ -107,7 +107,7 @@ sudo mv [CLI_TOOL_NAME] /usr/local/bin/
 #### Global Configuration
 ```bash
 # Set global configuration
-[CLI_TOOL_NAME] config set [KEY] [VALUE]
+[CLI_TOOL_NAME] config set [CONFIG_KEY] [CONFIG_VALUE]
 
 # View current configuration
 [CLI_TOOL_NAME] config list
@@ -119,9 +119,9 @@ sudo mv [CLI_TOOL_NAME] /usr/local/bin/
 #### Environment Variables
 ```bash
 # Common environment variables
-export [CLI_TOOL_NAME]_CONFIG_PATH="~/.config/[CLI_TOOL_NAME]"
-export [CLI_TOOL_NAME]_LOG_LEVEL="info"
-export [CLI_TOOL_NAME]_OUTPUT_FORMAT="table"
+export [CLI_TOOL_NAME]_CONFIG_PATH="[CONFIG_PATH]"
+export [CLI_TOOL_NAME]_LOG_LEVEL="[LOG_LEVEL]"
+export [CLI_TOOL_NAME]_OUTPUT_FORMAT="[OUTPUT_FORMAT]"
 export NO_COLOR=1  # Disable colored output
 ```
 
@@ -136,37 +136,37 @@ Initialize a new project with default configuration and structure.
 
 **Usage:**
 ```bash
-[CLI_TOOL_NAME] init [PROJECT_NAME] [OPTIONS]
+[CLI_TOOL_NAME] init [PROJECT_NAME_PLACEHOLDER] [OPTIONS]
 ```
 
 **Arguments:**
-- `PROJECT_NAME` (string, optional) - Name of the project to initialize. Defaults to current directory name.
+- `[PROJECT_NAME_ARG]` (string, optional) - [PROJECT_NAME_DESCRIPTION]
 
 **Options:**
-- `-t, --template <template>` - Project template to use (default: "basic")
-- `-f, --force` - Overwrite existing files without confirmation
-- `-i, --interactive` - Use interactive mode for configuration
-- `--dry-run` - Show what would be created without making changes
+- `[OPTION_1_FLAG], --[OPTION_1_LONG] <[OPTION_1_VALUE]>` - [OPTION_1_DESCRIPTION]
+- `[OPTION_2_FLAG], --[OPTION_2_LONG]` - [OPTION_2_DESCRIPTION]
+- `[OPTION_3_FLAG], --[OPTION_3_LONG]` - [OPTION_3_DESCRIPTION]
+- `--[OPTION_4_LONG]` - [OPTION_4_DESCRIPTION]
 
 **Examples:**
 ```bash
-# Initialize project in current directory
+# [EXAMPLE_1_DESCRIPTION]
 [CLI_TOOL_NAME] init
 
-# Initialize with specific name and template
-[CLI_TOOL_NAME] init my-project --template advanced
+# [EXAMPLE_2_DESCRIPTION]
+[CLI_TOOL_NAME] init [EXAMPLE_PROJECT_NAME] --[EXAMPLE_OPTION] [EXAMPLE_VALUE]
 
-# Interactive initialization
-[CLI_TOOL_NAME] init --interactive
+# [EXAMPLE_3_DESCRIPTION]
+[CLI_TOOL_NAME] init --[EXAMPLE_INTERACTIVE_FLAG]
 
-# Preview initialization without changes
-[CLI_TOOL_NAME] init --dry-run
+# [EXAMPLE_4_DESCRIPTION]
+[CLI_TOOL_NAME] init --[EXAMPLE_DRY_RUN_FLAG]
 ```
 
 **Exit Codes:**
-- `0` - Success
-- `1` - General error
-- `2` - Directory already exists (without --force)
+- `[EXIT_CODE_1]` - [EXIT_CODE_1_DESCRIPTION]
+- `[EXIT_CODE_2]` - [EXIT_CODE_2_DESCRIPTION]
+- `[EXIT_CODE_3]` - [EXIT_CODE_3_DESCRIPTION]
 
 ---
 
@@ -175,39 +175,39 @@ Compile and build the project according to configuration.
 
 **Usage:**
 ```bash
-[CLI_TOOL_NAME] build [TARGET] [OPTIONS]
+[CLI_TOOL_NAME] build [TARGET_PLACEHOLDER] [OPTIONS]
 ```
 
 **Arguments:**
-- `TARGET` (string, optional) - Specific build target. Defaults to "all"
+- `[TARGET_ARG]` (string, optional) - [TARGET_DESCRIPTION]
 
 **Options:**
-- `-e, --env <environment>` - Build environment (development, staging, production)
-- `-w, --watch` - Watch for changes and rebuild automatically
-- `-c, --clean` - Clean build artifacts before building
-- `-v, --verbose` - Enable verbose output
-- `-j, --jobs <number>` - Number of parallel jobs (default: CPU count)
-- `--no-cache` - Disable build cache
+- `[BUILD_OPTION_1_FLAG], --[BUILD_OPTION_1_LONG] <[BUILD_OPTION_1_VALUE]>` - [BUILD_OPTION_1_DESCRIPTION]
+- `[BUILD_OPTION_2_FLAG], --[BUILD_OPTION_2_LONG]` - [BUILD_OPTION_2_DESCRIPTION]
+- `[BUILD_OPTION_3_FLAG], --[BUILD_OPTION_3_LONG]` - [BUILD_OPTION_3_DESCRIPTION]
+- `[BUILD_OPTION_4_FLAG], --[BUILD_OPTION_4_LONG]` - [BUILD_OPTION_4_DESCRIPTION]
+- `[BUILD_OPTION_5_FLAG], --[BUILD_OPTION_5_LONG] <[BUILD_OPTION_5_VALUE]>` - [BUILD_OPTION_5_DESCRIPTION]
+- `--[BUILD_OPTION_6_LONG]` - [BUILD_OPTION_6_DESCRIPTION]
 
 **Examples:**
 ```bash
-# Basic build
+# [BUILD_EXAMPLE_1_DESCRIPTION]
 [CLI_TOOL_NAME] build
 
-# Production build with clean
-[CLI_TOOL_NAME] build --env production --clean
+# [BUILD_EXAMPLE_2_DESCRIPTION]
+[CLI_TOOL_NAME] build --[BUILD_EXAMPLE_2_OPTION_1] [BUILD_EXAMPLE_2_VALUE] --[BUILD_EXAMPLE_2_OPTION_2]
 
-# Watch mode for development
-[CLI_TOOL_NAME] build --watch --verbose
+# [BUILD_EXAMPLE_3_DESCRIPTION]
+[CLI_TOOL_NAME] build --[BUILD_EXAMPLE_3_OPTION_1] --[BUILD_EXAMPLE_3_OPTION_2]
 
-# Build specific target
-[CLI_TOOL_NAME] build frontend --env staging
+# [BUILD_EXAMPLE_4_DESCRIPTION]
+[CLI_TOOL_NAME] build [BUILD_EXAMPLE_4_TARGET] --[BUILD_EXAMPLE_4_OPTION] [BUILD_EXAMPLE_4_VALUE]
 ```
 
 **Exit Codes:**
-- `0` - Build successful
-- `1` - Build failed
-- `2` - Configuration error
+- `[BUILD_EXIT_CODE_1]` - [BUILD_EXIT_CODE_1_DESCRIPTION]
+- `[BUILD_EXIT_CODE_2]` - [BUILD_EXIT_CODE_2_DESCRIPTION]
+- `[BUILD_EXIT_CODE_3]` - [BUILD_EXIT_CODE_3_DESCRIPTION]
 
 ---
 
@@ -216,39 +216,39 @@ Deploy the built application to specified environment.
 
 **Usage:**
 ```bash
-[CLI_TOOL_NAME] deploy [ENVIRONMENT] [OPTIONS]
+[CLI_TOOL_NAME] deploy [ENVIRONMENT_PLACEHOLDER] [OPTIONS]
 ```
 
 **Arguments:**
-- `ENVIRONMENT` (string, required) - Target deployment environment
+- `[ENVIRONMENT_ARG]` (string, required) - [ENVIRONMENT_DESCRIPTION]
 
 **Options:**
-- `-c, --config <file>` - Deployment configuration file
-- `-f, --force` - Force deployment without confirmation
-- `-r, --rollback` - Rollback to previous version
-- `--dry-run` - Simulate deployment without making changes
-- `--wait` - Wait for deployment to complete
-- `--timeout <seconds>` - Deployment timeout (default: 300)
+- `[DEPLOY_OPTION_1_FLAG], --[DEPLOY_OPTION_1_LONG] <[DEPLOY_OPTION_1_VALUE]>` - [DEPLOY_OPTION_1_DESCRIPTION]
+- `[DEPLOY_OPTION_2_FLAG], --[DEPLOY_OPTION_2_LONG]` - [DEPLOY_OPTION_2_DESCRIPTION]
+- `[DEPLOY_OPTION_3_FLAG], --[DEPLOY_OPTION_3_LONG]` - [DEPLOY_OPTION_3_DESCRIPTION]
+- `--[DEPLOY_OPTION_4_LONG]` - [DEPLOY_OPTION_4_DESCRIPTION]
+- `--[DEPLOY_OPTION_5_LONG]` - [DEPLOY_OPTION_5_DESCRIPTION]
+- `--[DEPLOY_OPTION_6_LONG] <[DEPLOY_OPTION_6_VALUE]>` - [DEPLOY_OPTION_6_DESCRIPTION]
 
 **Examples:**
 ```bash
-# Deploy to staging
-[CLI_TOOL_NAME] deploy staging
+# [DEPLOY_EXAMPLE_1_DESCRIPTION]
+[CLI_TOOL_NAME] deploy [DEPLOY_EXAMPLE_1_ENV]
 
-# Production deployment with confirmation
-[CLI_TOOL_NAME] deploy production --wait
+# [DEPLOY_EXAMPLE_2_DESCRIPTION]
+[CLI_TOOL_NAME] deploy [DEPLOY_EXAMPLE_2_ENV] --[DEPLOY_EXAMPLE_2_OPTION]
 
-# Rollback deployment
-[CLI_TOOL_NAME] deploy production --rollback
+# [DEPLOY_EXAMPLE_3_DESCRIPTION]
+[CLI_TOOL_NAME] deploy [DEPLOY_EXAMPLE_3_ENV] --[DEPLOY_EXAMPLE_3_OPTION]
 
-# Dry run deployment
-[CLI_TOOL_NAME] deploy staging --dry-run
+# [DEPLOY_EXAMPLE_4_DESCRIPTION]
+[CLI_TOOL_NAME] deploy [DEPLOY_EXAMPLE_4_ENV] --[DEPLOY_EXAMPLE_4_OPTION]
 ```
 
 **Exit Codes:**
-- `0` - Deployment successful
-- `1` - Deployment failed
-- `3` - Rollback required
+- `[DEPLOY_EXIT_CODE_1]` - [DEPLOY_EXIT_CODE_1_DESCRIPTION]
+- `[DEPLOY_EXIT_CODE_2]` - [DEPLOY_EXIT_CODE_2_DESCRIPTION]
+- `[DEPLOY_EXIT_CODE_3]` - [DEPLOY_EXIT_CODE_3_DESCRIPTION]
 
 ---
 
@@ -259,31 +259,31 @@ Display current project status, health, and metrics.
 
 **Usage:**
 ```bash
-[CLI_TOOL_NAME] status [COMPONENT] [OPTIONS]
+[CLI_TOOL_NAME] status [COMPONENT_PLACEHOLDER] [OPTIONS]
 ```
 
 **Arguments:**
-- `COMPONENT` (string, optional) - Specific component to check
+- `[COMPONENT_ARG]` (string, optional) - [COMPONENT_DESCRIPTION]
 
 **Options:**
-- `-f, --format <format>` - Output format (table, json, yaml)
-- `-w, --watch` - Continuously monitor status
-- `--refresh <seconds>` - Refresh interval for watch mode (default: 5)
-- `-q, --quiet` - Show only essential information
+- `[STATUS_OPTION_1_FLAG], --[STATUS_OPTION_1_LONG] <[STATUS_OPTION_1_VALUE]>` - [STATUS_OPTION_1_DESCRIPTION]
+- `[STATUS_OPTION_2_FLAG], --[STATUS_OPTION_2_LONG]` - [STATUS_OPTION_2_DESCRIPTION]
+- `--[STATUS_OPTION_3_LONG] <[STATUS_OPTION_3_VALUE]>` - [STATUS_OPTION_3_DESCRIPTION]
+- `[STATUS_OPTION_4_FLAG], --[STATUS_OPTION_4_LONG]` - [STATUS_OPTION_4_DESCRIPTION]
 
 **Examples:**
 ```bash
-# Show overall status
+# [STATUS_EXAMPLE_1_DESCRIPTION]
 [CLI_TOOL_NAME] status
 
-# Monitor specific component
-[CLI_TOOL_NAME] status database --watch
+# [STATUS_EXAMPLE_2_DESCRIPTION]
+[CLI_TOOL_NAME] status [STATUS_EXAMPLE_2_COMPONENT] --[STATUS_EXAMPLE_2_OPTION]
 
-# JSON output for scripting
-[CLI_TOOL_NAME] status --format json
+# [STATUS_EXAMPLE_3_DESCRIPTION]
+[CLI_TOOL_NAME] status --[STATUS_EXAMPLE_3_OPTION] [STATUS_EXAMPLE_3_VALUE]
 
-# Quiet status check
-[CLI_TOOL_NAME] status --quiet
+# [STATUS_EXAMPLE_4_DESCRIPTION]
+[CLI_TOOL_NAME] status --[STATUS_EXAMPLE_4_OPTION]
 ```
 
 ---
@@ -293,33 +293,33 @@ Display and follow application logs with filtering options.
 
 **Usage:**
 ```bash
-[CLI_TOOL_NAME] logs [SERVICE] [OPTIONS]
+[CLI_TOOL_NAME] logs [SERVICE_PLACEHOLDER] [OPTIONS]
 ```
 
 **Arguments:**
-- `SERVICE` (string, optional) - Specific service to show logs for
+- `[SERVICE_ARG]` (string, optional) - [SERVICE_DESCRIPTION]
 
 **Options:**
-- `-f, --follow` - Follow log output in real-time
-- `-n, --lines <number>` - Number of lines to show (default: 100)
-- `--since <time>` - Show logs since timestamp (e.g., "2h", "2025-01-15")
-- `--level <level>` - Filter by log level (debug, info, warn, error)
-- `--grep <pattern>` - Filter logs by pattern
-- `--no-color` - Disable colored output
+- `[LOGS_OPTION_1_FLAG], --[LOGS_OPTION_1_LONG]` - [LOGS_OPTION_1_DESCRIPTION]
+- `[LOGS_OPTION_2_FLAG], --[LOGS_OPTION_2_LONG] <[LOGS_OPTION_2_VALUE]>` - [LOGS_OPTION_2_DESCRIPTION]
+- `--[LOGS_OPTION_3_LONG] <[LOGS_OPTION_3_VALUE]>` - [LOGS_OPTION_3_DESCRIPTION]
+- `--[LOGS_OPTION_4_LONG] <[LOGS_OPTION_4_VALUE]>` - [LOGS_OPTION_4_DESCRIPTION]
+- `--[LOGS_OPTION_5_LONG] <[LOGS_OPTION_5_VALUE]>` - [LOGS_OPTION_5_DESCRIPTION]
+- `--[LOGS_OPTION_6_LONG]` - [LOGS_OPTION_6_DESCRIPTION]
 
 **Examples:**
 ```bash
-# Show recent logs
+# [LOGS_EXAMPLE_1_DESCRIPTION]
 [CLI_TOOL_NAME] logs
 
-# Follow logs for specific service
-[CLI_TOOL_NAME] logs api --follow
+# [LOGS_EXAMPLE_2_DESCRIPTION]
+[CLI_TOOL_NAME] logs [LOGS_EXAMPLE_2_SERVICE] --[LOGS_EXAMPLE_2_OPTION]
 
-# Show error logs from last 2 hours
-[CLI_TOOL_NAME] logs --level error --since 2h
+# [LOGS_EXAMPLE_3_DESCRIPTION]
+[CLI_TOOL_NAME] logs --[LOGS_EXAMPLE_3_OPTION_1] [LOGS_EXAMPLE_3_VALUE_1] --[LOGS_EXAMPLE_3_OPTION_2] [LOGS_EXAMPLE_3_VALUE_2]
 
-# Filter logs by pattern
-[CLI_TOOL_NAME] logs --grep "authentication"
+# [LOGS_EXAMPLE_4_DESCRIPTION]
+[CLI_TOOL_NAME] logs --[LOGS_EXAMPLE_4_OPTION] "[LOGS_EXAMPLE_4_PATTERN]"
 ```
 
 ---
@@ -331,35 +331,35 @@ View and modify CLI configuration settings.
 
 **Usage:**
 ```bash
-[CLI_TOOL_NAME] config <SUBCOMMAND> [OPTIONS]
+[CLI_TOOL_NAME] config <[SUBCOMMAND_PLACEHOLDER]> [OPTIONS]
 ```
 
 **Subcommands:**
-- `list` - Show all configuration values
-- `get <key>` - Get specific configuration value
-- `set <key> <value>` - Set configuration value
-- `unset <key>` - Remove configuration value
-- `reset` - Reset to default configuration
-- `edit` - Open configuration in editor
+- `[SUBCOMMAND_1]` - [SUBCOMMAND_1_DESCRIPTION]
+- `[SUBCOMMAND_2] <[SUBCOMMAND_2_ARG]>` - [SUBCOMMAND_2_DESCRIPTION]
+- `[SUBCOMMAND_3] <[SUBCOMMAND_3_ARG_1]> <[SUBCOMMAND_3_ARG_2]>` - [SUBCOMMAND_3_DESCRIPTION]
+- `[SUBCOMMAND_4] <[SUBCOMMAND_4_ARG]>` - [SUBCOMMAND_4_DESCRIPTION]
+- `[SUBCOMMAND_5]` - [SUBCOMMAND_5_DESCRIPTION]
+- `[SUBCOMMAND_6]` - [SUBCOMMAND_6_DESCRIPTION]
 
 **Options:**
-- `-g, --global` - Operate on global configuration
-- `-l, --local` - Operate on local project configuration
-- `--json` - Output in JSON format
+- `[CONFIG_OPTION_1_FLAG], --[CONFIG_OPTION_1_LONG]` - [CONFIG_OPTION_1_DESCRIPTION]
+- `[CONFIG_OPTION_2_FLAG], --[CONFIG_OPTION_2_LONG]` - [CONFIG_OPTION_2_DESCRIPTION]
+- `--[CONFIG_OPTION_3_LONG]` - [CONFIG_OPTION_3_DESCRIPTION]
 
 **Examples:**
 ```bash
-# List all configuration
-[CLI_TOOL_NAME] config list
+# [CONFIG_EXAMPLE_1_DESCRIPTION]
+[CLI_TOOL_NAME] config [CONFIG_EXAMPLE_1_SUBCOMMAND]
 
-# Set configuration value
-[CLI_TOOL_NAME] config set output.format table
+# [CONFIG_EXAMPLE_2_DESCRIPTION]
+[CLI_TOOL_NAME] config [CONFIG_EXAMPLE_2_SUBCOMMAND] [CONFIG_EXAMPLE_2_KEY] [CONFIG_EXAMPLE_2_VALUE]
 
-# Get specific value
-[CLI_TOOL_NAME] config get api.endpoint
+# [CONFIG_EXAMPLE_3_DESCRIPTION]
+[CLI_TOOL_NAME] config [CONFIG_EXAMPLE_3_SUBCOMMAND] [CONFIG_EXAMPLE_3_KEY]
 
-# Edit configuration interactively
-[CLI_TOOL_NAME] config edit
+# [CONFIG_EXAMPLE_4_DESCRIPTION]
+[CLI_TOOL_NAME] config [CONFIG_EXAMPLE_4_SUBCOMMAND]
 ```
 
 ---
@@ -373,20 +373,20 @@ Display version information and build details.
 ```
 
 **Options:**
-- `--short` - Show only version number
-- `--json` - Output in JSON format
-- `--check` - Check for updates
+- `--[VERSION_OPTION_1_LONG]` - [VERSION_OPTION_1_DESCRIPTION]
+- `--[VERSION_OPTION_2_LONG]` - [VERSION_OPTION_2_DESCRIPTION]
+- `--[VERSION_OPTION_3_LONG]` - [VERSION_OPTION_3_DESCRIPTION]
 
 **Examples:**
 ```bash
-# Show full version information
+# [VERSION_EXAMPLE_1_DESCRIPTION]
 [CLI_TOOL_NAME] version
 
-# Show only version number
-[CLI_TOOL_NAME] version --short
+# [VERSION_EXAMPLE_2_DESCRIPTION]
+[CLI_TOOL_NAME] version --[VERSION_EXAMPLE_2_OPTION]
 
-# Check for updates
-[CLI_TOOL_NAME] version --check
+# [VERSION_EXAMPLE_3_DESCRIPTION]
+[CLI_TOOL_NAME] version --[VERSION_EXAMPLE_3_OPTION]
 ```
 
 ---
@@ -397,26 +397,26 @@ These options are available for all commands:
 
 | Option | Description |
 |--------|-------------|
-| `-h, --help` | Show help information |
-| `-v, --verbose` | Enable verbose output |
-| `-q, --quiet` | Suppress non-essential output |
-| `--no-color` | Disable colored output |
-| `--config <file>` | Use specific configuration file |
-| `--log-level <level>` | Set logging level (debug, info, warn, error) |
-| `--output <format>` | Output format (table, json, yaml, plain) |
-| `--dry-run` | Show what would happen without making changes |
-| `--version` | Show version information |
+| `[GLOBAL_OPTION_1_FLAG], --[GLOBAL_OPTION_1_LONG]` | [GLOBAL_OPTION_1_DESCRIPTION] |
+| `[GLOBAL_OPTION_2_FLAG], --[GLOBAL_OPTION_2_LONG]` | [GLOBAL_OPTION_2_DESCRIPTION] |
+| `[GLOBAL_OPTION_3_FLAG], --[GLOBAL_OPTION_3_LONG]` | [GLOBAL_OPTION_3_DESCRIPTION] |
+| `--[GLOBAL_OPTION_4_LONG]` | [GLOBAL_OPTION_4_DESCRIPTION] |
+| `--[GLOBAL_OPTION_5_LONG] <[GLOBAL_OPTION_5_VALUE]>` | [GLOBAL_OPTION_5_DESCRIPTION] |
+| `--[GLOBAL_OPTION_6_LONG] <[GLOBAL_OPTION_6_VALUE]>` | [GLOBAL_OPTION_6_DESCRIPTION] |
+| `--[GLOBAL_OPTION_7_LONG] <[GLOBAL_OPTION_7_VALUE]>` | [GLOBAL_OPTION_7_DESCRIPTION] |
+| `--[GLOBAL_OPTION_8_LONG]` | [GLOBAL_OPTION_8_DESCRIPTION] |
+| `--[GLOBAL_OPTION_9_LONG]` | [GLOBAL_OPTION_9_DESCRIPTION] |
 
 ### Environment Variables
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `[CLI_TOOL_NAME]_CONFIG_PATH` | Configuration file path | `~/.config/[CLI_TOOL_NAME]` |
-| `[CLI_TOOL_NAME]_LOG_LEVEL` | Default log level | `info` |
-| `[CLI_TOOL_NAME]_OUTPUT_FORMAT` | Default output format | `table` |
-| `[CLI_TOOL_NAME]_API_ENDPOINT` | API endpoint URL | `https://api.example.com` |
-| `NO_COLOR` | Disable colored output | (unset) |
-| `DEBUG` | Enable debug mode | (unset) |
+| `[ENV_VAR_1]` | [ENV_VAR_1_DESCRIPTION] | `[ENV_VAR_1_DEFAULT]` |
+| `[ENV_VAR_2]` | [ENV_VAR_2_DESCRIPTION] | `[ENV_VAR_2_DEFAULT]` |
+| `[ENV_VAR_3]` | [ENV_VAR_3_DESCRIPTION] | `[ENV_VAR_3_DEFAULT]` |
+| `[ENV_VAR_4]` | [ENV_VAR_4_DESCRIPTION] | `[ENV_VAR_4_DEFAULT]` |
+| `[ENV_VAR_5]` | [ENV_VAR_5_DESCRIPTION] | `[ENV_VAR_5_DEFAULT]` |
+| `[ENV_VAR_6]` | [ENV_VAR_6_DESCRIPTION] | `[ENV_VAR_6_DEFAULT]` |
 
 ---
 
@@ -426,44 +426,44 @@ These options are available for all commands:
 
 #### Project Setup and Development
 ```bash
-# Initialize new project
-[CLI_TOOL_NAME] init my-app --template react
+# [WORKFLOW_1_STEP_1_DESCRIPTION]
+[CLI_TOOL_NAME] init [WORKFLOW_1_PROJECT_NAME] --[WORKFLOW_1_OPTION] [WORKFLOW_1_VALUE]
 
-# Configure for development
-[CLI_TOOL_NAME] config set env development
+# [WORKFLOW_1_STEP_2_DESCRIPTION]
+[CLI_TOOL_NAME] config set [WORKFLOW_1_CONFIG_KEY] [WORKFLOW_1_CONFIG_VALUE]
 
-# Start development build with watch
-[CLI_TOOL_NAME] build --watch --verbose
+# [WORKFLOW_1_STEP_3_DESCRIPTION]
+[CLI_TOOL_NAME] build --[WORKFLOW_1_BUILD_OPTION_1] --[WORKFLOW_1_BUILD_OPTION_2]
 
-# Check project status
-[CLI_TOOL_NAME] status --watch
+# [WORKFLOW_1_STEP_4_DESCRIPTION]
+[CLI_TOOL_NAME] status --[WORKFLOW_1_STATUS_OPTION]
 ```
 
 #### Deployment Pipeline
 ```bash
-# Build for production
-[CLI_TOOL_NAME] build --env production --clean
+# [WORKFLOW_2_STEP_1_DESCRIPTION]
+[CLI_TOOL_NAME] build --[WORKFLOW_2_BUILD_OPTION_1] [WORKFLOW_2_BUILD_VALUE] --[WORKFLOW_2_BUILD_OPTION_2]
 
-# Run pre-deployment checks
-[CLI_TOOL_NAME] status --format json | jq '.health'
+# [WORKFLOW_2_STEP_2_DESCRIPTION]
+[CLI_TOOL_NAME] status --[WORKFLOW_2_STATUS_OPTION] [WORKFLOW_2_STATUS_VALUE] | [WORKFLOW_2_PIPE_COMMAND]
 
-# Deploy to staging
-[CLI_TOOL_NAME] deploy staging --wait
+# [WORKFLOW_2_STEP_3_DESCRIPTION]
+[CLI_TOOL_NAME] deploy [WORKFLOW_2_ENV_1] --[WORKFLOW_2_DEPLOY_OPTION_1]
 
-# Deploy to production with confirmation
-[CLI_TOOL_NAME] deploy production --force
+# [WORKFLOW_2_STEP_4_DESCRIPTION]
+[CLI_TOOL_NAME] deploy [WORKFLOW_2_ENV_2] --[WORKFLOW_2_DEPLOY_OPTION_2]
 ```
 
 #### Monitoring and Debugging
 ```bash
-# Monitor application logs
-[CLI_TOOL_NAME] logs --follow --level warn
+# [WORKFLOW_3_STEP_1_DESCRIPTION]
+[CLI_TOOL_NAME] logs --[WORKFLOW_3_LOGS_OPTION_1] --[WORKFLOW_3_LOGS_OPTION_2] [WORKFLOW_3_LOGS_VALUE]
 
-# Check specific service status
-[CLI_TOOL_NAME] status api --format json
+# [WORKFLOW_3_STEP_2_DESCRIPTION]
+[CLI_TOOL_NAME] status [WORKFLOW_3_SERVICE] --[WORKFLOW_3_STATUS_OPTION] [WORKFLOW_3_STATUS_VALUE]
 
-# Debug configuration issues
-[CLI_TOOL_NAME] config list --verbose
+# [WORKFLOW_3_STEP_3_DESCRIPTION]
+[CLI_TOOL_NAME] config [WORKFLOW_3_CONFIG_SUBCOMMAND] --[WORKFLOW_3_CONFIG_OPTION]
 ```
 
 ### Scripting and Automation
@@ -473,58 +473,58 @@ These options are available for all commands:
 #!/bin/bash
 set -e
 
-# Build and deploy script
-echo "Building application..."
-[CLI_TOOL_NAME] build --env production
+# [SCRIPT_DESCRIPTION]
+echo "[SCRIPT_STEP_1_MESSAGE]"
+[CLI_TOOL_NAME] build --[SCRIPT_BUILD_OPTION] [SCRIPT_BUILD_VALUE]
 
-echo "Running health checks..."
-if [CLI_TOOL_NAME] status --quiet; then
-    echo "Deploying to production..."
-    [CLI_TOOL_NAME] deploy production --wait
-    echo "Deployment successful!"
+echo "[SCRIPT_STEP_2_MESSAGE]"
+if [CLI_TOOL_NAME] status --[SCRIPT_STATUS_OPTION]; then
+    echo "[SCRIPT_SUCCESS_MESSAGE]"
+    [CLI_TOOL_NAME] deploy [SCRIPT_DEPLOY_ENV] --[SCRIPT_DEPLOY_OPTION]
+    echo "[SCRIPT_COMPLETION_MESSAGE]"
 else
-    echo "Health checks failed, aborting deployment"
+    echo "[SCRIPT_FAILURE_MESSAGE]"
     exit 1
 fi
 ```
 
 #### CI/CD Integration
 ```yaml
-# GitHub Actions example
-- name: Build Application
-  run: [CLI_TOOL_NAME] build --env production --no-color
+# [CI_CD_PLATFORM] example
+- name: [CI_CD_STEP_1_NAME]
+  run: [CLI_TOOL_NAME] build --[CI_CD_BUILD_OPTION_1] [CI_CD_BUILD_VALUE] --[CI_CD_BUILD_OPTION_2]
 
-- name: Deploy to Staging
-  run: [CLI_TOOL_NAME] deploy staging --wait --no-color
-  if: github.ref == 'refs/heads/main'
+- name: [CI_CD_STEP_2_NAME]
+  run: [CLI_TOOL_NAME] deploy [CI_CD_DEPLOY_ENV] --[CI_CD_DEPLOY_OPTION_1] --[CI_CD_DEPLOY_OPTION_2]
+  if: [CI_CD_CONDITION]
 ```
 
 ### Power User Tips
 
 #### Aliases and Functions
 ```bash
-# Useful aliases
-alias [CLI_SHORT]='[CLI_TOOL_NAME]'
-alias [CLI_SHORT]-dev='[CLI_TOOL_NAME] build --watch --verbose'
-alias [CLI_SHORT]-prod='[CLI_TOOL_NAME] build --env production --clean'
+# [ALIASES_SECTION_TITLE]
+alias [ALIAS_1]='[CLI_TOOL_NAME]'
+alias [ALIAS_2]='[CLI_TOOL_NAME] [ALIAS_2_COMMAND] --[ALIAS_2_OPTION_1] --[ALIAS_2_OPTION_2]'
+alias [ALIAS_3]='[CLI_TOOL_NAME] [ALIAS_3_COMMAND] --[ALIAS_3_OPTION_1] [ALIAS_3_VALUE] --[ALIAS_3_OPTION_2]'
 
-# Bash function for quick deployment
-deploy-quick() {
-    [CLI_TOOL_NAME] build --env production && \
-    [CLI_TOOL_NAME] deploy "$1" --wait
+# [FUNCTION_DESCRIPTION]
+[FUNCTION_NAME]() {
+    [CLI_TOOL_NAME] [FUNCTION_COMMAND_1] --[FUNCTION_OPTION_1] [FUNCTION_VALUE] && \
+    [CLI_TOOL_NAME] [FUNCTION_COMMAND_2] "$1" --[FUNCTION_OPTION_2]
 }
 ```
 
 #### Output Processing
 ```bash
-# Extract specific information with jq
-[CLI_TOOL_NAME] status --format json | jq '.services[] | select(.status == "unhealthy")'
+# [OUTPUT_EXAMPLE_1_DESCRIPTION]
+[CLI_TOOL_NAME] status --[OUTPUT_OPTION_1] [OUTPUT_VALUE_1] | [OUTPUT_PROCESSOR_1] '[OUTPUT_FILTER_1]'
 
-# Monitor deployment progress
-[CLI_TOOL_NAME] deploy staging --format json | jq -r '.progress'
+# [OUTPUT_EXAMPLE_2_DESCRIPTION]
+[CLI_TOOL_NAME] deploy [OUTPUT_ENV] --[OUTPUT_OPTION_2] [OUTPUT_VALUE_2] | [OUTPUT_PROCESSOR_2] '[OUTPUT_FILTER_2]'
 
-# Get configuration as environment variables
-eval $([CLI_TOOL_NAME] config list --format env)
+# [OUTPUT_EXAMPLE_3_DESCRIPTION]
+eval $([CLI_TOOL_NAME] config [OUTPUT_SUBCOMMAND] --[OUTPUT_OPTION_3] [OUTPUT_VALUE_3])
 ```
 
 ---
@@ -535,86 +535,86 @@ eval $([CLI_TOOL_NAME] config list --format env)
 
 #### Hierarchical Configuration
 Configuration is loaded in this order (later values override earlier ones):
-1. System-wide configuration (`/etc/[CLI_TOOL_NAME]/config.yaml`)
-2. User configuration (`~/.config/[CLI_TOOL_NAME]/config.yaml`)
-3. Project configuration (`./.[CLI_TOOL_NAME].yaml`)
-4. Environment variables
-5. Command-line flags
+1. [CONFIG_LEVEL_1] (`[CONFIG_PATH_1]`)
+2. [CONFIG_LEVEL_2] (`[CONFIG_PATH_2]`)
+3. [CONFIG_LEVEL_3] (`[CONFIG_PATH_3]`)
+4. [CONFIG_LEVEL_4]
+5. [CONFIG_LEVEL_5]
 
 #### Configuration File Format
 ```yaml
-# ~/.config/[CLI_TOOL_NAME]/config.yaml
-api:
-  endpoint: "https://api.example.com"
-  timeout: 30s
-  retries: 3
+# [CONFIG_FILE_PATH]
+[CONFIG_SECTION_1]:
+  [CONFIG_KEY_1]: "[CONFIG_VALUE_1]"
+  [CONFIG_KEY_2]: [CONFIG_VALUE_2]
+  [CONFIG_KEY_3]: [CONFIG_VALUE_3]
 
-output:
-  format: "table"
-  color: true
-  verbose: false
+[CONFIG_SECTION_2]:
+  [CONFIG_KEY_4]: "[CONFIG_VALUE_4]"
+  [CONFIG_KEY_5]: [CONFIG_VALUE_5]
+  [CONFIG_KEY_6]: [CONFIG_VALUE_6]
 
-build:
-  parallel_jobs: 4
-  cache_enabled: true
-  default_env: "development"
+[CONFIG_SECTION_3]:
+  [CONFIG_KEY_7]: [CONFIG_VALUE_7]
+  [CONFIG_KEY_8]: [CONFIG_VALUE_8]
+  [CONFIG_KEY_9]: "[CONFIG_VALUE_9]"
 
-deploy:
-  confirm_production: true
-  rollback_on_failure: true
-  health_check_timeout: 300s
+[CONFIG_SECTION_4]:
+  [CONFIG_KEY_10]: [CONFIG_VALUE_10]
+  [CONFIG_KEY_11]: [CONFIG_VALUE_11]
+  [CONFIG_KEY_12]: [CONFIG_VALUE_12]
 ```
 
 ### Plugin System
 
 #### Installing Plugins
 ```bash
-# Install plugin from registry
-[CLI_TOOL_NAME] plugin install [PLUGIN_NAME]
+# [PLUGIN_EXAMPLE_1_DESCRIPTION]
+[CLI_TOOL_NAME] plugin install [PLUGIN_NAME_PLACEHOLDER]
 
-# Install from URL
-[CLI_TOOL_NAME] plugin install https://github.com/user/plugin
+# [PLUGIN_EXAMPLE_2_DESCRIPTION]
+[CLI_TOOL_NAME] plugin install [PLUGIN_URL_PLACEHOLDER]
 
-# List installed plugins
+# [PLUGIN_EXAMPLE_3_DESCRIPTION]
 [CLI_TOOL_NAME] plugin list
 
-# Update plugins
+# [PLUGIN_EXAMPLE_4_DESCRIPTION]
 [CLI_TOOL_NAME] plugin update
 ```
 
 #### Creating Custom Plugins
 ```bash
-# Generate plugin template
-[CLI_TOOL_NAME] plugin create my-plugin
+# [PLUGIN_CREATE_DESCRIPTION]
+[CLI_TOOL_NAME] plugin create [PLUGIN_CREATE_NAME]
 
-# Plugin structure
-my-plugin/
-├── plugin.yaml      # Plugin metadata
-├── commands/         # Command definitions
-└── scripts/          # Implementation scripts
+# [PLUGIN_STRUCTURE_TITLE]
+[PLUGIN_DIRECTORY_NAME]/
+├── [PLUGIN_FILE_1]      # [PLUGIN_FILE_1_DESCRIPTION]
+├── [PLUGIN_DIR_1]/         # [PLUGIN_DIR_1_DESCRIPTION]
+└── [PLUGIN_DIR_2]/          # [PLUGIN_DIR_2_DESCRIPTION]
 ```
 
 ### Integration with Other Tools
 
 #### Shell Completion
 ```bash
-# Bash completion
-echo 'source <([CLI_TOOL_NAME] completion bash)' >> ~/.bashrc
+# [COMPLETION_1_DESCRIPTION]
+echo 'source <([CLI_TOOL_NAME] completion [SHELL_1])' >> [COMPLETION_1_FILE]
 
-# Zsh completion
-echo 'source <([CLI_TOOL_NAME] completion zsh)' >> ~/.zshrc
+# [COMPLETION_2_DESCRIPTION]
+echo 'source <([CLI_TOOL_NAME] completion [SHELL_2])' >> [COMPLETION_2_FILE]
 
-# Fish completion
-[CLI_TOOL_NAME] completion fish > ~/.config/fish/completions/[CLI_TOOL_NAME].fish
+# [COMPLETION_3_DESCRIPTION]
+[CLI_TOOL_NAME] completion [SHELL_3] > [COMPLETION_3_PATH]
 ```
 
 #### Editor Integration
 ```bash
-# Generate VS Code snippets
-[CLI_TOOL_NAME] generate vscode-snippets > .vscode/[CLI_TOOL_NAME].code-snippets
+# [EDITOR_INTEGRATION_1_DESCRIPTION]
+[CLI_TOOL_NAME] generate [EDITOR_1_TYPE] > [EDITOR_1_OUTPUT_PATH]
 
-# Generate Vim syntax
-[CLI_TOOL_NAME] generate vim-syntax > ~/.vim/syntax/[CLI_TOOL_NAME].vim
+# [EDITOR_INTEGRATION_2_DESCRIPTION]
+[CLI_TOOL_NAME] generate [EDITOR_2_TYPE] > [EDITOR_2_OUTPUT_PATH]
 ```
 
 ---
@@ -625,117 +625,117 @@ echo 'source <([CLI_TOOL_NAME] completion zsh)' >> ~/.zshrc
 
 #### Command Not Found
 ```bash
-# Check if CLI is installed
+# [TROUBLESHOOT_1_DESCRIPTION]
 which [CLI_TOOL_NAME]
 
-# Check PATH
+# [TROUBLESHOOT_2_DESCRIPTION]
 echo $PATH
 
-# Reinstall if necessary
-curl -L [INSTALL_URL] | bash
+# [TROUBLESHOOT_3_DESCRIPTION]
+curl -L [REINSTALL_URL] | bash
 ```
 
 #### Permission Errors
 ```bash
-# Check file permissions
-ls -la ~/.config/[CLI_TOOL_NAME]/
+# [PERMISSION_CHECK_DESCRIPTION]
+ls -la [PERMISSION_CHECK_PATH]
 
-# Fix permissions
-chmod 600 ~/.config/[CLI_TOOL_NAME]/config.yaml
+# [PERMISSION_FIX_DESCRIPTION]
+chmod [PERMISSION_MODE] [PERMISSION_FILE_PATH]
 
-# Run with sudo if needed (not recommended)
-sudo [CLI_TOOL_NAME] [COMMAND]
+# [SUDO_USAGE_DESCRIPTION]
+sudo [CLI_TOOL_NAME] [COMMAND_PLACEHOLDER]
 ```
 
 #### Configuration Issues
 ```bash
-# Validate configuration
+# [CONFIG_VALIDATE_DESCRIPTION]
 [CLI_TOOL_NAME] config validate
 
-# Reset to defaults
+# [CONFIG_RESET_DESCRIPTION]
 [CLI_TOOL_NAME] config reset
 
-# Check configuration precedence
-[CLI_TOOL_NAME] config list --verbose
+# [CONFIG_PRECEDENCE_DESCRIPTION]
+[CLI_TOOL_NAME] config list --[CONFIG_VERBOSE_OPTION]
 ```
 
 #### Network Connectivity
 ```bash
-# Test API connectivity
-[CLI_TOOL_NAME] status --verbose
+# [NETWORK_TEST_DESCRIPTION]
+[CLI_TOOL_NAME] status --[NETWORK_VERBOSE_OPTION]
 
-# Check proxy settings
-echo $HTTP_PROXY $HTTPS_PROXY
+# [PROXY_CHECK_DESCRIPTION]
+echo $[PROXY_VAR_1] $[PROXY_VAR_2]
 
-# Use different endpoint
-[CLI_TOOL_NAME] config set api.endpoint https://backup-api.example.com
+# [ENDPOINT_CHANGE_DESCRIPTION]
+[CLI_TOOL_NAME] config set [ENDPOINT_CONFIG_KEY] [BACKUP_ENDPOINT_URL]
 ```
 
 ### Debug Mode
 
 Enable debug mode for detailed troubleshooting:
 ```bash
-# Environment variable
-export DEBUG=1
-[CLI_TOOL_NAME] [COMMAND]
+# [DEBUG_ENV_DESCRIPTION]
+export [DEBUG_VAR]=[DEBUG_VALUE]
+[CLI_TOOL_NAME] [COMMAND_PLACEHOLDER]
 
-# Command flag
-[CLI_TOOL_NAME] [COMMAND] --log-level debug
+# [DEBUG_FLAG_DESCRIPTION]
+[CLI_TOOL_NAME] [COMMAND_PLACEHOLDER] --[DEBUG_OPTION] [DEBUG_LEVEL]
 
-# Configuration
-[CLI_TOOL_NAME] config set log.level debug
+# [DEBUG_CONFIG_DESCRIPTION]
+[CLI_TOOL_NAME] config set [DEBUG_CONFIG_KEY] [DEBUG_CONFIG_VALUE]
 ```
 
 ### Getting Help
 
 #### Built-in Help
 ```bash
-# General help
+# [HELP_GENERAL_DESCRIPTION]
 [CLI_TOOL_NAME] --help
 
-# Command-specific help
-[CLI_TOOL_NAME] [COMMAND] --help
+# [HELP_COMMAND_DESCRIPTION]
+[CLI_TOOL_NAME] [COMMAND_PLACEHOLDER] --help
 
-# List all commands
+# [HELP_LIST_DESCRIPTION]
 [CLI_TOOL_NAME] help
 
-# Search help
-[CLI_TOOL_NAME] help search [TERM]
+# [HELP_SEARCH_DESCRIPTION]
+[CLI_TOOL_NAME] help search [SEARCH_TERM]
 ```
 
 #### Support Channels
-- **Documentation:** [https://docs.example.com/[CLI_TOOL_NAME]](https://docs.example.com/[CLI_TOOL_NAME])
-- **GitHub Issues:** [https://github.com/[ORG]/[CLI_TOOL_NAME]/issues](https://github.com/[ORG]/[CLI_TOOL_NAME]/issues)
-- **Community Forum:** [https://community.example.com/[CLI_TOOL_NAME]](https://community.example.com/[CLI_TOOL_NAME])
-- **Discord:** [https://discord.gg/[CLI_TOOL_NAME]](https://discord.gg/[CLI_TOOL_NAME])
+- **[SUPPORT_CHANNEL_1]:** [[SUPPORT_URL_1]]([SUPPORT_URL_1])
+- **[SUPPORT_CHANNEL_2]:** [[SUPPORT_URL_2]]([SUPPORT_URL_2])
+- **[SUPPORT_CHANNEL_3]:** [[SUPPORT_URL_3]]([SUPPORT_URL_3])
+- **[SUPPORT_CHANNEL_4]:** [[SUPPORT_URL_4]]([SUPPORT_URL_4])
 
 ---
 
 ## 📚 Additional Resources
 
 ### Documentation
-- **[Getting Started Guide](./guides/getting-started.md)** - Comprehensive tutorial for new users
-- **[API Reference](./api/reference.md)** - Complete API documentation
-- **[Configuration Reference](./config/reference.md)** - All configuration options
-- **[Plugin Development](./plugins/development.md)** - Guide for creating plugins
+- **[[GUIDE_1_TITLE]]([GUIDE_1_PATH])** - [GUIDE_1_DESCRIPTION]
+- **[[GUIDE_2_TITLE]]([GUIDE_2_PATH])** - [GUIDE_2_DESCRIPTION]
+- **[[GUIDE_3_TITLE]]([GUIDE_3_PATH])** - [GUIDE_3_DESCRIPTION]
+- **[[GUIDE_4_TITLE]]([GUIDE_4_PATH])** - [GUIDE_4_DESCRIPTION]
 
 ### Examples and Tutorials
-- **[Example Projects](./examples/)** - Sample projects and configurations
-- **[Video Tutorials](https://youtube.com/[CLI_TOOL_NAME])** - Step-by-step video guides
-- **[Best Practices](./guides/best-practices.md)** - Recommended patterns and practices
-- **[Migration Guide](./guides/migration.md)** - Upgrading from previous versions
+- **[[RESOURCE_1_TITLE]]([RESOURCE_1_PATH])** - [RESOURCE_1_DESCRIPTION]
+- **[[RESOURCE_2_TITLE]]([RESOURCE_2_URL])** - [RESOURCE_2_DESCRIPTION]
+- **[[RESOURCE_3_TITLE]]([RESOURCE_3_PATH])** - [RESOURCE_3_DESCRIPTION]
+- **[[RESOURCE_4_TITLE]]([RESOURCE_4_PATH])** - [RESOURCE_4_DESCRIPTION]
 
 ### Community Resources
-- **[Awesome [CLI_TOOL_NAME]](https://github.com/awesome-[CLI_TOOL_NAME])** - Curated list of resources
-- **[Community Plugins](https://plugins.example.com)** - Plugin registry and marketplace
-- **[Blog](https://blog.example.com/[CLI_TOOL_NAME])** - Latest news and updates
-- **[Changelog](./CHANGELOG.md)** - Version history and release notes
+- **[[COMMUNITY_RESOURCE_1_TITLE]]([COMMUNITY_RESOURCE_1_URL])** - [COMMUNITY_RESOURCE_1_DESCRIPTION]
+- **[[COMMUNITY_RESOURCE_2_TITLE]]([COMMUNITY_RESOURCE_2_URL])** - [COMMUNITY_RESOURCE_2_DESCRIPTION]
+- **[[COMMUNITY_RESOURCE_3_TITLE]]([COMMUNITY_RESOURCE_3_URL])** - [COMMUNITY_RESOURCE_3_DESCRIPTION]
+- **[[COMMUNITY_RESOURCE_4_TITLE]]([COMMUNITY_RESOURCE_4_PATH])** - [COMMUNITY_RESOURCE_4_DESCRIPTION]
 
 ### Development
-- **[Contributing Guide](./CONTRIBUTING.md)** - How to contribute to the project
-- **[Development Setup](./docs/development.md)** - Setting up development environment
-- **[Architecture Overview](./docs/architecture.md)** - System design and architecture
-- **[Release Process](./docs/releases.md)** - How releases are managed
+- **[[DEV_RESOURCE_1_TITLE]]([DEV_RESOURCE_1_PATH])** - [DEV_RESOURCE_1_DESCRIPTION]
+- **[[DEV_RESOURCE_2_TITLE]]([DEV_RESOURCE_2_PATH])** - [DEV_RESOURCE_2_DESCRIPTION]
+- **[[DEV_RESOURCE_3_TITLE]]([DEV_RESOURCE_3_PATH])** - [DEV_RESOURCE_3_DESCRIPTION]
+- **[[DEV_RESOURCE_4_TITLE]]([DEV_RESOURCE_4_PATH])** - [DEV_RESOURCE_4_DESCRIPTION]
 
 ---
 
@@ -743,32 +743,32 @@ export DEBUG=1
 
 ### Reporting Issues
 When reporting issues, please include:
-- CLI version (`[CLI_TOOL_NAME] version`)
-- Operating system and version
-- Complete command that failed
-- Full error message and stack trace
-- Configuration file (with sensitive data removed)
+- [ISSUE_REQUIREMENT_1] (`[CLI_TOOL_NAME] version`)
+- [ISSUE_REQUIREMENT_2]
+- [ISSUE_REQUIREMENT_3]
+- [ISSUE_REQUIREMENT_4]
+- [ISSUE_REQUIREMENT_5]
 
 ### Feature Requests
 We welcome feature requests! Please:
-- Check existing issues first
-- Describe the use case clearly
-- Explain why the feature would be valuable
-- Provide examples of how it would work
+- [FEATURE_REQUEST_STEP_1]
+- [FEATURE_REQUEST_STEP_2]
+- [FEATURE_REQUEST_STEP_3]
+- [FEATURE_REQUEST_STEP_4]
 
 ### Contributing
-We love contributions! See our [Contributing Guide](./CONTRIBUTING.md) for:
-- Code style guidelines
-- Development setup instructions
-- Pull request process
-- Community guidelines
+We love contributions! See our [[CONTRIBUTING_GUIDE_TITLE]]([CONTRIBUTING_GUIDE_PATH]) for:
+- [CONTRIBUTING_ITEM_1]
+- [CONTRIBUTING_ITEM_2]
+- [CONTRIBUTING_ITEM_3]
+- [CONTRIBUTING_ITEM_4]
 
 ---
 
-*This CLI reference is automatically updated with each release. For the most current information, run `[CLI_TOOL_NAME] --help` or visit our [online documentation](https://docs.example.com/[CLI_TOOL_NAME]).*
+*[FOOTER_NOTE_1] For the most current information, run `[CLI_TOOL_NAME] --help` or visit our [[ONLINE_DOCS_TITLE]]([ONLINE_DOCS_URL]).*
 
 ---
 
-**Last Updated:** [TIMESTAMP]  
-**CLI Version:** [CLI_VERSION]  
-**Documentation Version:** [DOC_VERSION]
+**[FOOTER_FIELD_1]:** [FOOTER_VALUE_1]  
+**[FOOTER_FIELD_2]:** [FOOTER_VALUE_2]  
+**[FOOTER_FIELD_3]:** [FOOTER_VALUE_3]

@@ -88,45 +88,45 @@ Architecture Decision Records (ADRs) are lightweight documents that capture impo
 
 | ADR | Title | Date | Status | Impact |
 |-----|-------|------|--------|--------|
-| [ADR-001](./adrs/ADR-001-cloud-provider-selection.md) | Cloud Provider Selection | 2025-01-10 | ✅ Accepted | High |
-| [ADR-002](./adrs/ADR-002-container-orchestration.md) | Container Orchestration Platform | 2025-01-12 | ✅ Accepted | High |
-| [ADR-003](./adrs/ADR-003-monitoring-strategy.md) | Monitoring and Observability Strategy | 2025-01-14 | 🔄 Proposed | Medium |
+| [ADR-[NUMBER_1]]([ADR_PATH_1]) | [ADR_TITLE_1] | [ADR_DATE_1] | [ADR_STATUS_1] | [ADR_IMPACT_1] |
+| [ADR-[NUMBER_2]]([ADR_PATH_2]) | [ADR_TITLE_2] | [ADR_DATE_2] | [ADR_STATUS_2] | [ADR_IMPACT_2] |
+| [ADR-[NUMBER_3]]([ADR_PATH_3]) | [ADR_TITLE_3] | [ADR_DATE_3] | [ADR_STATUS_3] | [ADR_IMPACT_3] |
 
 ### 🔒 Security & Compliance Decisions
 
 | ADR | Title | Date | Status | Impact |
 |-----|-------|------|--------|--------|
-| [ADR-004](./adrs/ADR-004-authentication-strategy.md) | Authentication and Authorization Strategy | 2025-01-08 | ✅ Accepted | High |
-| [ADR-005](./adrs/ADR-005-data-encryption.md) | Data Encryption Standards | 2025-01-11 | ✅ Accepted | High |
-| [ADR-006](./adrs/ADR-006-security-scanning.md) | Security Scanning and Vulnerability Management | 2025-01-13 | 🔄 Proposed | Medium |
+| [ADR-[NUMBER_4]]([ADR_PATH_4]) | [ADR_TITLE_4] | [ADR_DATE_4] | [ADR_STATUS_4] | [ADR_IMPACT_4] |
+| [ADR-[NUMBER_5]]([ADR_PATH_5]) | [ADR_TITLE_5] | [ADR_DATE_5] | [ADR_STATUS_5] | [ADR_IMPACT_5] |
+| [ADR-[NUMBER_6]]([ADR_PATH_6]) | [ADR_TITLE_6] | [ADR_DATE_6] | [ADR_STATUS_6] | [ADR_IMPACT_6] |
 
 ### 💾 Data Management Decisions
 
 | ADR | Title | Date | Status | Impact |
 |-----|-------|------|--------|--------|
-| [ADR-007](./adrs/ADR-007-database-selection.md) | Primary Database Technology Selection | 2025-01-09 | ✅ Accepted | High |
-| [ADR-008](./adrs/ADR-008-data-backup-strategy.md) | Data Backup and Recovery Strategy | 2025-01-15 | 🔄 Proposed | High |
+| [ADR-[NUMBER_7]]([ADR_PATH_7]) | [ADR_TITLE_7] | [ADR_DATE_7] | [ADR_STATUS_7] | [ADR_IMPACT_7] |
+| [ADR-[NUMBER_8]]([ADR_PATH_8]) | [ADR_TITLE_8] | [ADR_DATE_8] | [ADR_STATUS_8] | [ADR_IMPACT_8] |
 
 ### 🔗 Integration & API Decisions
 
 | ADR | Title | Date | Status | Impact |
 |-----|-------|------|--------|--------|
-| [ADR-009](./adrs/ADR-009-api-design-standards.md) | API Design Standards and Conventions | 2025-01-07 | ✅ Accepted | Medium |
-| [ADR-010](./adrs/ADR-010-message-queue-selection.md) | Message Queue Technology Selection | 2025-01-12 | ✅ Accepted | Medium |
+| [ADR-[NUMBER_9]]([ADR_PATH_9]) | [ADR_TITLE_9] | [ADR_DATE_9] | [ADR_STATUS_9] | [ADR_IMPACT_9] |
+| [ADR-[NUMBER_10]]([ADR_PATH_10]) | [ADR_TITLE_10] | [ADR_DATE_10] | [ADR_STATUS_10] | [ADR_IMPACT_10] |
 
 ### ⚡ Performance & Scalability Decisions
 
 | ADR | Title | Date | Status | Impact |
 |-----|-------|------|--------|--------|
-| [ADR-011](./adrs/ADR-011-caching-strategy.md) | Caching Strategy and Implementation | 2025-01-14 | 🔄 Proposed | Medium |
-| [ADR-012](./adrs/ADR-012-load-balancing.md) | Load Balancing and Traffic Distribution | 2025-01-15 | 🔄 Proposed | Medium |
+| [ADR-[NUMBER_11]]([ADR_PATH_11]) | [ADR_TITLE_11] | [ADR_DATE_11] | [ADR_STATUS_11] | [ADR_IMPACT_11] |
+| [ADR-[NUMBER_12]]([ADR_PATH_12]) | [ADR_TITLE_12] | [ADR_DATE_12] | [ADR_STATUS_12] | [ADR_IMPACT_12] |
 
 ### 🎨 User Experience & Frontend Decisions
 
 | ADR | Title | Date | Status | Impact |
 |-----|-------|------|--------|--------|
-| [ADR-013](./adrs/ADR-013-frontend-framework.md) | Frontend Framework Selection | 2025-01-06 | ✅ Accepted | High |
-| [ADR-014](./adrs/ADR-014-ui-component-library.md) | UI Component Library Strategy | 2025-01-10 | ✅ Accepted | Medium |
+| [ADR-[NUMBER_13]]([ADR_PATH_13]) | [ADR_TITLE_13] | [ADR_DATE_13] | [ADR_STATUS_13] | [ADR_IMPACT_13] |
+| [ADR-[NUMBER_14]]([ADR_PATH_14]) | [ADR_TITLE_14] | [ADR_DATE_14] | [ADR_STATUS_14] | [ADR_IMPACT_14] |
 
 ---
 
@@ -136,28 +136,28 @@ Architecture Decision Records (ADRs) are lightweight documents that capture impo
 
 ```mermaid
 gantt
-    title Architecture Decision Timeline 2025
+    title Architecture Decision Timeline [CURRENT_YEAR]
     dateFormat  YYYY-MM-DD
-    section Infrastructure
-    Cloud Provider Selection    :done, adr001, 2025-01-10, 1d
-    Container Orchestration     :done, adr002, 2025-01-12, 1d
-    Monitoring Strategy         :active, adr003, 2025-01-14, 3d
+    section [SECTION_1_NAME]
+    [DECISION_1_NAME]    :[STATUS_1], [ADR_ID_1], [START_DATE_1], [DURATION_1]
+    [DECISION_2_NAME]     :[STATUS_2], [ADR_ID_2], [START_DATE_2], [DURATION_2]
+    [DECISION_3_NAME]         :[STATUS_3], [ADR_ID_3], [START_DATE_3], [DURATION_3]
     
-    section Security
-    Authentication Strategy     :done, adr004, 2025-01-08, 1d
-    Data Encryption            :done, adr005, 2025-01-11, 1d
-    Security Scanning          :adr006, 2025-01-13, 3d
+    section [SECTION_2_NAME]
+    [DECISION_4_NAME]     :[STATUS_4], [ADR_ID_4], [START_DATE_4], [DURATION_4]
+    [DECISION_5_NAME]            :[STATUS_5], [ADR_ID_5], [START_DATE_5], [DURATION_5]
+    [DECISION_6_NAME]          :[STATUS_6], [ADR_ID_6], [START_DATE_6], [DURATION_6]
     
-    section Data
-    Database Selection         :done, adr007, 2025-01-09, 1d
-    Backup Strategy           :adr008, 2025-01-15, 3d
+    section [SECTION_3_NAME]
+    [DECISION_7_NAME]         :[STATUS_7], [ADR_ID_7], [START_DATE_7], [DURATION_7]
+    [DECISION_8_NAME]           :[STATUS_8], [ADR_ID_8], [START_DATE_8], [DURATION_8]
 ```
 
 ### Decision Velocity
-- **Q1 2025:** 14 ADRs (Target: 12)
-- **Average Decision Time:** 3.2 days
-- **Stakeholder Engagement:** 87% participation rate
-- **Decision Quality Score:** 4.3/5.0
+- **[TIME_PERIOD]:** [ACTUAL_ADRS] ADRs (Target: [TARGET_ADRS])
+- **Average Decision Time:** [AVG_DECISION_TIME] days
+- **Stakeholder Engagement:** [PARTICIPATION_RATE]% participation rate
+- **Decision Quality Score:** [QUALITY_SCORE]/5.0
 
 ---
 
@@ -273,29 +273,29 @@ gantt
 ### Decision Support Tools
 
 #### Decision Matrix Template
-| Criteria | Weight | Option A | Option B | Option C |
-|----------|--------|----------|----------|----------|
-| Performance | 30% | 8 | 6 | 9 |
-| Cost | 25% | 6 | 9 | 7 |
-| Maintainability | 20% | 7 | 8 | 6 |
-| Security | 15% | 9 | 7 | 8 |
-| Team Expertise | 10% | 8 | 9 | 5 |
-| **Total Score** | | **7.4** | **7.6** | **7.3** |
+| Criteria | Weight | [OPTION_A] | [OPTION_B] | [OPTION_C] |
+|----------|--------|------------|------------|------------|
+| [CRITERIA_1] | [WEIGHT_1]% | [SCORE_A1] | [SCORE_B1] | [SCORE_C1] |
+| [CRITERIA_2] | [WEIGHT_2]% | [SCORE_A2] | [SCORE_B2] | [SCORE_C2] |
+| [CRITERIA_3] | [WEIGHT_3]% | [SCORE_A3] | [SCORE_B3] | [SCORE_C3] |
+| [CRITERIA_4] | [WEIGHT_4]% | [SCORE_A4] | [SCORE_B4] | [SCORE_C4] |
+| [CRITERIA_5] | [WEIGHT_5]% | [SCORE_A5] | [SCORE_B5] | [SCORE_C5] |
+| **Total Score** | | **[TOTAL_A]** | **[TOTAL_B]** | **[TOTAL_C]** |
 
 #### Risk Assessment Matrix
 | Risk | Probability | Impact | Mitigation Strategy |
-|------|-------------|--------|-------------------|
-| Technology Obsolescence | Medium | High | Regular technology reviews |
-| Vendor Lock-in | Low | High | Multi-vendor strategy |
-| Performance Degradation | Medium | Medium | Performance monitoring |
+|------|-------------|--------|-----------------|
+| [RISK_1] | [PROBABILITY_1] | [IMPACT_1] | [MITIGATION_1] |
+| [RISK_2] | [PROBABILITY_2] | [IMPACT_2] | [MITIGATION_2] |
+| [RISK_3] | [PROBABILITY_3] | [IMPACT_3] | [MITIGATION_3] |
 
 ### Automation & Integration
 
 #### ADR Management Tools
-- **ADR-Tools:** Command-line tools for ADR creation and management
-- **GitHub Integration:** Automated ADR indexing and cross-referencing
-- **Confluence Integration:** Sync ADRs with team documentation
-- **Slack Notifications:** Automated updates on ADR status changes
+- **[ADR_TOOL_1]:** [ADR_TOOL_1_DESCRIPTION]
+- **[PLATFORM_INTEGRATION_1]:** [INTEGRATION_1_DESCRIPTION]
+- **[PLATFORM_INTEGRATION_2]:** [INTEGRATION_2_DESCRIPTION]
+- **[NOTIFICATION_SYSTEM]:** [NOTIFICATION_DESCRIPTION]
 
 #### Metrics & Analytics
 - **Decision Velocity:** Time from problem identification to decision
@@ -308,16 +308,16 @@ gantt
 ## 📚 Resources & References
 
 ### Internal Resources
-- **[ADR Template Library](./templates/adr-templates.md)** - Standard templates and examples
-- **[Decision Process Guide](./guides/decision-process.md)** - Detailed process documentation
-- **[Stakeholder Matrix](./guides/stakeholder-matrix.md)** - Roles and responsibilities
-- **[Architecture Principles](./principles/architecture-principles.md)** - Guiding principles for decisions
+- **[ADR Template Library]([ADR_TEMPLATES_PATH])** - Standard templates and examples
+- **[Decision Process Guide]([DECISION_PROCESS_PATH])** - Detailed process documentation
+- **[Stakeholder Matrix]([STAKEHOLDER_MATRIX_PATH])** - Roles and responsibilities
+- **[Architecture Principles]([ARCHITECTURE_PRINCIPLES_PATH])** - Guiding principles for decisions
 
 ### External Resources
-- **[ADR GitHub Organization](https://adr.github.io/)** - Community resources and best practices
-- **[AWS ADR Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/)** - AWS best practices
-- **[Microsoft ADR Framework](https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record)** - Azure Well-Architected guidance
-- **[Sustainable Architectural Decisions](https://www.infoq.com/articles/sustainable-architectural-design-decisions)** - Academic foundation
+- **[ADR Community Resources]([ADR_COMMUNITY_URL])** - Community resources and best practices
+- **[Cloud Provider ADR Guidance]([CLOUD_PROVIDER_ADR_URL])** - Cloud provider best practices
+- **[Framework ADR Documentation]([FRAMEWORK_ADR_URL])** - Framework-specific guidance
+- **[Academic ADR Resources]([ACADEMIC_ADR_URL])** - Academic foundation
 
 ### Training & Development
 - **ADR Workshop Series** - Monthly workshops on decision-making best practices
@@ -330,19 +330,19 @@ gantt
 ## 📞 Contact & Support
 
 ### Architecture Team
-- **Chief Architect:** [Name] - [email] - [Slack: @architect]
-- **Solution Architects:** [Names] - [team-email] - [Slack: @solution-architects]
-- **Technical Leads:** [Names] - [team-email] - [Slack: @tech-leads]
+- **Chief Architect:** [CHIEF_ARCHITECT_NAME] - [CHIEF_ARCHITECT_EMAIL] - [CHIEF_ARCHITECT_CONTACT]
+- **Solution Architects:** [SOLUTION_ARCHITECTS_NAMES] - [SOLUTION_ARCHITECTS_EMAIL] - [SOLUTION_ARCHITECTS_CONTACT]
+- **Technical Leads:** [TECHNICAL_LEADS_NAMES] - [TECHNICAL_LEADS_EMAIL] - [TECHNICAL_LEADS_CONTACT]
 
 ### ADR Support
-- **ADR Questions:** [adr-support@company.com]
-- **Process Feedback:** [architecture-process@company.com]
-- **Tool Support:** [dev-tools@company.com]
+- **ADR Questions:** [ADR_SUPPORT_EMAIL]
+- **Process Feedback:** [PROCESS_FEEDBACK_EMAIL]
+- **Tool Support:** [TOOL_SUPPORT_EMAIL]
 
 ### Governance
-- **Architecture Review Board:** [arb@company.com]
-- **Technical Steering Committee:** [tsc@company.com]
-- **Engineering Leadership:** [eng-leadership@company.com]
+- **Architecture Review Board:** [ARB_EMAIL]
+- **Technical Steering Committee:** [TSC_EMAIL]
+- **Engineering Leadership:** [ENG_LEADERSHIP_EMAIL]
 
 ---
 
@@ -362,10 +362,10 @@ gantt
 
 ---
 
-*This ADR index is automatically maintained and updated. For questions about specific decisions or the ADR process, please contact the Architecture Team or refer to our [Decision Process Guide](./guides/decision-process.md).*
+*This ADR index is automatically maintained and updated. For questions about specific decisions or the ADR process, please contact the Architecture Team or refer to our [Decision Process Guide]([DECISION_PROCESS_GUIDE_PATH]).*
 
 ---
 
-**Last Generated:** [TIMESTAMP]  
+**Last Generated:** [LAST_GENERATED_TIMESTAMP]  
 **Next Update:** [NEXT_UPDATE_DATE]  
-**ADR Count:** [TOTAL_COUNT] decisions documented
+**ADR Count:** [TOTAL_ADR_COUNT] decisions documented
