@@ -1,69 +1,1144 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$comment": "Playbook: prompt_playbooks/schemas_playbooks/playbook_schema-featureLifecycle.md",
-    "title": "Feature Lifecycle Management",
-    "description": "Tracks the lifecycle of all product features from proposal to completion.",
-    "type": "array",
-    "items": {
-        "type": "object",
-        "description": "A reference to a feature artifact. It acts as a pointer in the manifest to the actual feature file.",
-        "properties": {
-            "featureId": {
-                "type": "string",
-                "description": "Unique identifier for the feature (e.g., 'FEAT-001')."
-            },
-            "status": {
-                "type": "string",
-                "description": "The current high-level status of the feature.",
-                "enum": ["Proposed", "In Progress", "Completed", "On Hold"]
-            },
-            "summary": {
-                "type": "string",
-                "description": "A brief, one-line summary of the feature's purpose."
-            },
-            "path": {
-                "type": "string",
-                "description": "The relative file path to the feature's detailed markdown document from the `core-system` root."
-            },
-            "stages": {
-                "type": "array",
-                "items": {
+    "title": "Feature Lifecycle Management Schema",
+    "description": "Comprehensive feature lifecycle management following 2025 Agile best practices. Supports stage-gate processes, continuous delivery, stakeholder management, and data-driven product decisions with modern DevOps integration.",
+    "type": "object",
+    "required": [
+        "metadata",
+        "lifecycleDefinition",
+        "features"
+    ],
+    "properties": {
+        "metadata": {
+            "type": "object",
+            "description": "Feature lifecycle management metadata",
+            "required": [
+                "name",
+                "version",
+                "lastUpdated"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Lifecycle management system name",
+                    "examples": [
+                        "Product Feature Lifecycle",
+                        "Agile Feature Pipeline"
+                    ]
+                },
+                "version": {
+                    "type": "string",
+                    "pattern": "^\\d+\\.\\d+\\.\\d+$",
+                    "description": "Semantic version (major.minor.patch)"
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "ISO 8601 timestamp of last update"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Lifecycle management purpose and scope"
+                },
+                "methodology": {
+                    "type": "string",
+                    "enum": [
+                        "agile",
+                        "scrum",
+                        "kanban",
+                        "safe",
+                        "lean",
+                        "waterfall",
+                        "hybrid"
+                    ],
+                    "description": "Primary development methodology"
+                },
+                "organization": {
                     "type": "object",
                     "properties": {
-                        "name": { "type": "string", "enum": ["Idea", "Discovery", "MVP", "Beta", "GA", "Sunset"] },
-                        "entryChecks": { "type": "array", "items": { "type": "string" } },
-                        "exitCriteria": { "type": "array", "items": { "type": "string" } }
+                        "name": {
+                            "type": "string"
+                        },
+                        "department": {
+                            "type": "string"
+                        },
+                        "team": {
+                            "type": "string"
+                        }
                     }
-                }
-            },
-            "transitions": {
-                "type": "array",
-                "items": {
-                    "type": "object",
-                    "properties": {
-                        "from": { "type": "string" },
-                        "to": { "type": "string" },
-                        "guards": { "type": "array", "items": { "type": "string" } },
-                        "actions": { "type": "array", "items": { "type": "string" } }
-                    }
-                }
-            },
-            "metrics": {
-                "type": "object",
-                "properties": {
-                    "adoption": { "type": "number" },
-                    "churn": { "type": "number" },
-                    "NPS": { "type": "number" }
-                }
-            },
-            "ownership": {
-                "type": "object",
-                "properties": {
-                    "productOwner": { "type": "string" },
-                    "techOwner": { "type": "string" }
                 }
             }
         },
-        "required": ["featureId", "status", "path", "summary"]
-    }
+        "lifecycleDefinition": {
+            "type": "object",
+            "description": "Standardized lifecycle stages and processes",
+            "required": [
+                "stages",
+                "gates"
+            ],
+            "properties": {
+                "stages": {
+                    "type": "array",
+                    "description": "Defined lifecycle stages with criteria",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "name",
+                            "description",
+                            "entryGate",
+                            "exitGate"
+                        ],
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "enum": [
+                                    "concept",
+                                    "discovery",
+                                    "development",
+                                    "alpha",
+                                    "beta",
+                                    "ga",
+                                    "maintenance",
+                                    "sunset"
+                                ],
+                                "description": "Stage name following modern Agile practices"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Stage purpose and activities"
+                            },
+                            "duration": {
+                                "type": "object",
+                                "properties": {
+                                    "typical": {
+                                        "type": "string"
+                                    },
+                                    "minimum": {
+                                        "type": "string"
+                                    },
+                                    "maximum": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "entryGate": {
+                                "type": "object",
+                                "description": "Requirements to enter this stage",
+                                "properties": {
+                                    "criteria": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "deliverables": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "approvers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "automated": {
+                                        "type": "boolean"
+                                    }
+                                }
+                            },
+                            "exitGate": {
+                                "type": "object",
+                                "description": "Requirements to exit this stage",
+                                "properties": {
+                                    "criteria": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "deliverables": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "approvers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "automated": {
+                                        "type": "boolean"
+                                    }
+                                }
+                            },
+                            "activities": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "owner": {
+                                            "type": "string"
+                                        },
+                                        "duration": {
+                                            "type": "string"
+                                        },
+                                        "dependencies": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "metrics": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "target": {
+                                            "type": "string"
+                                        },
+                                        "measurement": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "gates": {
+                    "type": "array",
+                    "description": "Stage gate definitions and approval processes",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "name",
+                            "type",
+                            "criteria"
+                        ],
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "entry",
+                                    "exit",
+                                    "milestone",
+                                    "checkpoint"
+                                ]
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "criteria": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "requirement",
+                                        "type"
+                                    ],
+                                    "properties": {
+                                        "requirement": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string",
+                                            "enum": [
+                                                "mandatory",
+                                                "recommended",
+                                                "optional"
+                                            ]
+                                        },
+                                        "verification": {
+                                            "type": "string"
+                                        },
+                                        "automated": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            },
+                            "approvalProcess": {
+                                "type": "object",
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "single-approver",
+                                            "multi-approver",
+                                            "consensus",
+                                            "automated"
+                                        ]
+                                    },
+                                    "approvers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "role": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "required": {
+                                                    "type": "boolean"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "timeout": {
+                                        "type": "string"
+                                    },
+                                    "escalation": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "transitions": {
+                    "type": "array",
+                    "description": "Allowed transitions between stages",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "from",
+                            "to",
+                            "conditions"
+                        ],
+                        "properties": {
+                            "from": {
+                                "type": "string"
+                            },
+                            "to": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "forward",
+                                    "backward",
+                                    "skip",
+                                    "emergency"
+                                ]
+                            },
+                            "conditions": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "actions": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "notifications": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "features": {
+            "type": "array",
+            "description": "Features being tracked through the lifecycle",
+            "items": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "name",
+                    "currentStage",
+                    "lifecycle"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "pattern": "^[A-Z]{2,4}-\\d{3,6}$",
+                        "description": "Unique feature identifier",
+                        "examples": [
+                            "FEAT-1001",
+                            "EPIC-2045",
+                            "STORY-3012"
+                        ]
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Feature name"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Detailed feature description"
+                    },
+                    "category": {
+                        "type": "string",
+                        "enum": [
+                            "epic",
+                            "feature",
+                            "story",
+                            "task",
+                            "bug",
+                            "spike"
+                        ],
+                        "description": "Feature category or type"
+                    },
+                    "priority": {
+                        "type": "string",
+                        "enum": [
+                            "critical",
+                            "high",
+                            "medium",
+                            "low"
+                        ],
+                        "description": "Business priority"
+                    },
+                    "currentStage": {
+                        "type": "string",
+                        "description": "Current lifecycle stage"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "active",
+                            "blocked",
+                            "on-hold",
+                            "cancelled",
+                            "completed"
+                        ],
+                        "description": "Current status within the stage"
+                    },
+                    "lifecycle": {
+                        "type": "object",
+                        "description": "Lifecycle tracking information",
+                        "properties": {
+                            "history": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "stage",
+                                        "enteredAt"
+                                    ],
+                                    "properties": {
+                                        "stage": {
+                                            "type": "string"
+                                        },
+                                        "enteredAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "exitedAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "duration": {
+                                            "type": "string"
+                                        },
+                                        "notes": {
+                                            "type": "string"
+                                        },
+                                        "approver": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "milestones": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "name",
+                                        "targetDate"
+                                    ],
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "targetDate": {
+                                            "type": "string",
+                                            "format": "date"
+                                        },
+                                        "actualDate": {
+                                            "type": "string",
+                                            "format": "date"
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "enum": [
+                                                "planned",
+                                                "in-progress",
+                                                "completed",
+                                                "missed",
+                                                "cancelled"
+                                            ]
+                                        },
+                                        "owner": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "timeline": {
+                                "type": "object",
+                                "properties": {
+                                    "createdAt": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "estimatedCompletion": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "actualCompletion": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "lastUpdated": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "ownership": {
+                        "type": "object",
+                        "description": "Feature ownership and responsibility",
+                        "properties": {
+                            "productOwner": {
+                                "type": "string"
+                            },
+                            "techLead": {
+                                "type": "string"
+                            },
+                            "scrumMaster": {
+                                "type": "string"
+                            },
+                            "developmentTeam": {
+                                "type": "string"
+                            },
+                            "stakeholders": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "businessValue": {
+                        "type": "object",
+                        "description": "Business value and impact metrics",
+                        "properties": {
+                            "objectives": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "successMetrics": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "baseline": {
+                                            "type": "string"
+                                        },
+                                        "target": {
+                                            "type": "string"
+                                        },
+                                        "current": {
+                                            "type": "string"
+                                        },
+                                        "unit": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "roi": {
+                                "type": "object",
+                                "properties": {
+                                    "estimated": {
+                                        "type": "number"
+                                    },
+                                    "actual": {
+                                        "type": "number"
+                                    },
+                                    "timeToValue": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "technical": {
+                        "type": "object",
+                        "description": "Technical implementation details",
+                        "properties": {
+                            "complexity": {
+                                "type": "string",
+                                "enum": [
+                                    "low",
+                                    "medium",
+                                    "high",
+                                    "very-high"
+                                ]
+                            },
+                            "effort": {
+                                "type": "object",
+                                "properties": {
+                                    "storyPoints": {
+                                        "type": "number"
+                                    },
+                                    "estimatedHours": {
+                                        "type": "number"
+                                    },
+                                    "actualHours": {
+                                        "type": "number"
+                                    }
+                                }
+                            },
+                            "dependencies": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string",
+                                            "enum": [
+                                                "blocks",
+                                                "blocked-by",
+                                                "relates-to",
+                                                "duplicates"
+                                            ]
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "risks": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "impact": {
+                                            "type": "string",
+                                            "enum": [
+                                                "low",
+                                                "medium",
+                                                "high",
+                                                "critical"
+                                            ]
+                                        },
+                                        "probability": {
+                                            "type": "string",
+                                            "enum": [
+                                                "low",
+                                                "medium",
+                                                "high"
+                                            ]
+                                        },
+                                        "mitigation": {
+                                            "type": "string"
+                                        },
+                                        "owner": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "quality": {
+                        "type": "object",
+                        "description": "Quality assurance and testing information",
+                        "properties": {
+                            "testStrategy": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "unit",
+                                        "integration",
+                                        "e2e",
+                                        "performance",
+                                        "security",
+                                        "accessibility",
+                                        "usability"
+                                    ]
+                                }
+                            },
+                            "coverage": {
+                                "type": "object",
+                                "properties": {
+                                    "target": {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 100
+                                    },
+                                    "current": {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 100
+                                    }
+                                }
+                            },
+                            "defects": {
+                                "type": "object",
+                                "properties": {
+                                    "open": {
+                                        "type": "number"
+                                    },
+                                    "resolved": {
+                                        "type": "number"
+                                    },
+                                    "critical": {
+                                        "type": "number"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "analytics": {
+                        "type": "object",
+                        "description": "Feature analytics and performance data",
+                        "properties": {
+                            "usage": {
+                                "type": "object",
+                                "properties": {
+                                    "adoptionRate": {
+                                        "type": "number"
+                                    },
+                                    "activeUsers": {
+                                        "type": "number"
+                                    },
+                                    "engagementScore": {
+                                        "type": "number"
+                                    }
+                                }
+                            },
+                            "performance": {
+                                "type": "object",
+                                "properties": {
+                                    "responseTime": {
+                                        "type": "number"
+                                    },
+                                    "errorRate": {
+                                        "type": "number"
+                                    },
+                                    "availability": {
+                                        "type": "number"
+                                    }
+                                }
+                            },
+                            "feedback": {
+                                "type": "object",
+                                "properties": {
+                                    "nps": {
+                                        "type": "number"
+                                    },
+                                    "satisfaction": {
+                                        "type": "number"
+                                    },
+                                    "churnRate": {
+                                        "type": "number"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "documentation": {
+                        "type": "object",
+                        "description": "Feature documentation references",
+                        "properties": {
+                            "requirements": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "technicalSpec": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "userStories": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "testPlan": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "releaseNotes": {
+                                "type": "string",
+                                "format": "uri"
+                            }
+                        }
+                    },
+                    "compliance": {
+                        "type": "object",
+                        "description": "Compliance and regulatory requirements",
+                        "properties": {
+                            "requirements": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "assessments": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "completedAt": {
+                                            "type": "string",
+                                            "format": "date"
+                                        },
+                                        "assessor": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "governance": {
+            "type": "object",
+            "description": "Lifecycle governance and process management",
+            "properties": {
+                "reviewBoard": {
+                    "type": "object",
+                    "properties": {
+                        "members": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "role": {
+                                        "type": "string"
+                                    },
+                                    "responsibilities": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "meetingSchedule": {
+                            "type": "string"
+                        },
+                        "decisionCriteria": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "policies": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "applicableStages": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "enforcement": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "reporting": {
+                    "type": "object",
+                    "properties": {
+                        "dashboards": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "type": "string",
+                                        "format": "uri"
+                                    },
+                                    "audience": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "reports": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "frequency": {
+                                        "type": "string"
+                                    },
+                                    "recipients": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "examples": [
+        {
+            "metadata": {
+                "name": "Agile Feature Lifecycle",
+                "version": "2.1.0",
+                "lastUpdated": "2025-01-15T10:30:00Z",
+                "description": "Agile feature lifecycle management for product development",
+                "methodology": "scrum"
+            },
+            "lifecycleDefinition": {
+                "stages": [
+                    {
+                        "name": "concept",
+                        "description": "Initial feature ideation and validation",
+                        "duration": {
+                            "typical": "1-2 weeks",
+                            "minimum": "3 days",
+                            "maximum": "1 month"
+                        },
+                        "entryGate": {
+                            "criteria": [
+                                "Problem statement defined",
+                                "Initial business case created"
+                            ],
+                            "deliverables": [
+                                "Feature brief",
+                                "Initial user research"
+                            ],
+                            "approvers": [
+                                "Product Manager"
+                            ],
+                            "automated": false
+                        },
+                        "exitGate": {
+                            "criteria": [
+                                "Business case approved",
+                                "Initial feasibility confirmed",
+                                "Success metrics defined"
+                            ],
+                            "deliverables": [
+                                "Approved business case",
+                                "Success criteria"
+                            ],
+                            "approvers": [
+                                "Product Owner",
+                                "Tech Lead"
+                            ],
+                            "automated": false
+                        }
+                    },
+                    {
+                        "name": "development",
+                        "description": "Active feature development in sprints",
+                        "duration": {
+                            "typical": "4-12 weeks",
+                            "minimum": "2 weeks",
+                            "maximum": "6 months"
+                        },
+                        "entryGate": {
+                            "criteria": [
+                                "Requirements documented",
+                                "Technical design approved",
+                                "Development team assigned"
+                            ],
+                            "deliverables": [
+                                "User stories",
+                                "Technical specification"
+                            ],
+                            "approvers": [
+                                "Product Owner",
+                                "Tech Lead"
+                            ],
+                            "automated": false
+                        },
+                        "exitGate": {
+                            "criteria": [
+                                "All acceptance criteria met",
+                                "Code review completed",
+                                "Tests passing",
+                                "Security review passed"
+                            ],
+                            "deliverables": [
+                                "Working software",
+                                "Test results"
+                            ],
+                            "approvers": [
+                                "Tech Lead",
+                                "QA Lead"
+                            ],
+                            "automated": true
+                        }
+                    }
+                ],
+                "transitions": [
+                    {
+                        "from": "concept",
+                        "to": "development",
+                        "type": "forward",
+                        "conditions": [
+                            "Business case approved",
+                            "Resources allocated"
+                        ],
+                        "actions": [
+                            "Create development backlog",
+                            "Assign team"
+                        ],
+                        "notifications": [
+                            "Product team",
+                            "Development team"
+                        ]
+                    }
+                ]
+            },
+            "features": [
+                {
+                    "id": "FEAT-1001",
+                    "name": "Advanced Product Search",
+                    "description": "AI-powered search with personalization",
+                    "category": "feature",
+                    "priority": "high",
+                    "currentStage": "development",
+                    "status": "active",
+                    "lifecycle": {
+                        "history": [
+                            {
+                                "stage": "concept",
+                                "enteredAt": "2025-01-01T00:00:00Z",
+                                "exitedAt": "2025-01-15T00:00:00Z",
+                                "duration": "2 weeks",
+                                "approver": "jane.doe@company.com"
+                            }
+                        ],
+                        "milestones": [
+                            {
+                                "name": "MVP Complete",
+                                "targetDate": "2025-02-15",
+                                "status": "in-progress",
+                                "owner": "john.smith@company.com"
+                            }
+                        ],
+                        "timeline": {
+                            "createdAt": "2025-01-01T00:00:00Z",
+                            "estimatedCompletion": "2025-03-15",
+                            "lastUpdated": "2025-01-15T10:30:00Z"
+                        }
+                    },
+                    "ownership": {
+                        "productOwner": "jane.doe@company.com",
+                        "techLead": "john.smith@company.com",
+                        "developmentTeam": "search-team"
+                    },
+                    "businessValue": {
+                        "objectives": [
+                            "Improve search conversion by 25%"
+                        ],
+                        "successMetrics": [
+                            {
+                                "name": "Search Conversion Rate",
+                                "baseline": "18%",
+                                "target": "25%",
+                                "current": "20%",
+                                "unit": "percentage"
+                            }
+                        ]
+                    },
+                    "technical": {
+                        "complexity": "high",
+                        "effort": {
+                            "storyPoints": 21,
+                            "estimatedHours": 160,
+                            "actualHours": 120
+                        }
+                    },
+                    "analytics": {
+                        "usage": {
+                            "adoptionRate": 0.65,
+                            "activeUsers": 15000,
+                            "engagementScore": 8.2
+                        }
+                    }
+                }
+            ]
+        }
+    ]
 }

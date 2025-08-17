@@ -1,57 +1,1210 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$comment": "Playbook: prompt_playbooks/schemas_playbooks/playbook_schema-bugLifecycle.md",
-    "title": "Bug Lifecycle Management",
-    "description": "Tracks the lifecycle of all reported bugs from discovery to resolution.",
-    "type": "array",
-    "items": {
-        "type": "object",
-        "description": "A reference to a bug artifact. It acts as a pointer in the manifest to the actual bug report file.",
-        "properties": {
-            "bugId": {
-                "type": "string",
-                "description": "Unique identifier for the bug (e.g., 'BUG-001')."
-            },
-            "status": {
-                "type": "string",
-                "description": "The current high-level status of the bug.",
-                "enum": ["Reported", "In Progress", "Resolved", "Closed"]
-            },
-            "summary": {
-                "type": "string",
-                "description": "A brief, one-line summary of the bug's nature."
-            },
-            "path": {
-                "type": "string",
-                "description": "The relative file path to the bug's detailed markdown report from the `core-system` root."
-            },
-            "priority": {
-                "type": "string",
-                "description": "Priority level for SLA tracking.",
-                "enum": ["P0", "P1", "P2", "P3"]
-            },
-            "labels": { "type": "array", "items": { "type": "string" }, "description": "Normalized taxonomy labels (e.g., 'severity:P1', 'area:frontend')." },
-            "owner": { "type": "string", "description": "Current responsible team or user." },
-            "createdAt": { "type": "string", "format": "date-time" },
-            "updatedAt": { "type": "string", "format": "date-time" },
-            "history": {
-                "type": "array",
-                "description": "State transition history for auditability.",
-                "items": {
+    "title": "Bug Lifecycle Management Schema",
+    "description": "Comprehensive bug tracking and lifecycle management following 2025 QA best practices. Supports modern defect tracking workflows, SLA management, automated triage, and integration with development tools for efficient issue resolution.",
+    "type": "object",
+    "required": [
+        "metadata",
+        "lifecycleDefinition",
+        "bugs"
+    ],
+    "properties": {
+        "metadata": {
+            "type": "object",
+            "description": "Bug lifecycle management metadata and configuration",
+            "required": [
+                "name",
+                "version",
+                "lastUpdated"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Bug lifecycle system name",
+                    "examples": [
+                        "Product Bug Tracker",
+                        "QA Issue Management"
+                    ]
+                },
+                "version": {
+                    "type": "string",
+                    "pattern": "^\\d+\\.\\d+\\.\\d+$",
+                    "description": "Semantic version (major.minor.patch)"
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "ISO 8601 timestamp of last update"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Bug tracking system purpose and scope"
+                },
+                "project": {
                     "type": "object",
                     "properties": {
-                        "from": { "type": "string" },
-                        "to": { "type": "string" },
-                        "at": { "type": "string", "format": "date-time" },
-                        "by": { "type": "string" },
-                        "notes": { "type": "string" }
+                        "name": {
+                            "type": "string"
+                        },
+                        "version": {
+                            "type": "string"
+                        },
+                        "platform": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "team": {
+                    "type": "object",
+                    "properties": {
+                        "qaLead": {
+                            "type": "string"
+                        },
+                        "devLead": {
+                            "type": "string"
+                        },
+                        "productOwner": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "integrations": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "jira",
+                            "github",
+                            "azure-devops",
+                            "bugzilla",
+                            "linear",
+                            "asana",
+                            "trello"
+                        ]
                     },
-                    "required": ["to", "at"]
+                    "description": "Integrated bug tracking tools"
+                }
+            }
+        },
+        "lifecycleDefinition": {
+            "type": "object",
+            "description": "Bug lifecycle stages, transitions, and policies",
+            "required": [
+                "states",
+                "transitions",
+                "priorities"
+            ],
+            "properties": {
+                "states": {
+                    "type": "array",
+                    "description": "Defined bug lifecycle states",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "name",
+                            "description",
+                            "entryGate",
+                            "exitGate"
+                        ],
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "enum": [
+                                    "new",
+                                    "triaged",
+                                    "assigned",
+                                    "in-progress",
+                                    "testing",
+                                    "verified",
+                                    "resolved",
+                                    "closed",
+                                    "reopened",
+                                    "rejected",
+                                    "deferred"
+                                ],
+                                "description": "Bug state name"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "State purpose and activities"
+                            },
+                            "entryGate": {
+                                "type": "object",
+                                "description": "Requirements to enter this state",
+                                "properties": {
+                                    "criteria": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "requiredFields": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "approvers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "automated": {
+                                        "type": "boolean"
+                                    }
+                                }
+                            },
+                            "exitGate": {
+                                "type": "object",
+                                "description": "Requirements to exit this state",
+                                "properties": {
+                                    "criteria": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "deliverables": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "approvers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "automated": {
+                                        "type": "boolean"
+                                    }
+                                }
+                            },
+                            "slaHours": {
+                                "type": "object",
+                                "description": "SLA time limits by priority",
+                                "properties": {
+                                    "critical": {
+                                        "type": "number"
+                                    },
+                                    "high": {
+                                        "type": "number"
+                                    },
+                                    "medium": {
+                                        "type": "number"
+                                    },
+                                    "low": {
+                                        "type": "number"
+                                    }
+                                }
+                            },
+                            "assignmentRules": {
+                                "type": "object",
+                                "properties": {
+                                    "defaultAssignee": {
+                                        "type": "string"
+                                    },
+                                    "autoAssign": {
+                                        "type": "boolean"
+                                    },
+                                    "escalationPath": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "transitions": {
+                    "type": "array",
+                    "description": "Allowed state transitions with conditions",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "from",
+                            "to",
+                            "conditions"
+                        ],
+                        "properties": {
+                            "from": {
+                                "type": "string"
+                            },
+                            "to": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "forward",
+                                    "backward",
+                                    "skip",
+                                    "emergency"
+                                ]
+                            },
+                            "conditions": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "actions": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "enum": [
+                                                "assign",
+                                                "notify",
+                                                "label",
+                                                "comment",
+                                                "link",
+                                                "escalate"
+                                            ]
+                                        },
+                                        "target": {
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "permissions": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "priorities": {
+                    "type": "object",
+                    "description": "Priority levels and SLA definitions",
+                    "properties": {
+                        "levels": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "required": [
+                                    "name",
+                                    "description",
+                                    "slaHours"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "enum": [
+                                            "critical",
+                                            "high",
+                                            "medium",
+                                            "low"
+                                        ]
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "slaHours": {
+                                        "type": "number"
+                                    },
+                                    "escalationHours": {
+                                        "type": "number"
+                                    },
+                                    "autoAssign": {
+                                        "type": "boolean"
+                                    },
+                                    "notificationChannels": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "defaultPriority": {
+                            "type": "string"
+                        },
+                        "escalationRules": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "condition": {
+                                        "type": "string"
+                                    },
+                                    "action": {
+                                        "type": "string"
+                                    },
+                                    "target": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "severityLevels": {
+                    "type": "array",
+                    "description": "Bug severity classification",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "name",
+                            "description",
+                            "examples"
+                        ],
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "enum": [
+                                    "critical",
+                                    "major",
+                                    "moderate",
+                                    "minor",
+                                    "cosmetic"
+                                ]
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "examples": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "impactLevel": {
+                                "type": "string",
+                                "enum": [
+                                    "system-crash",
+                                    "feature-broken",
+                                    "functionality-impaired",
+                                    "ui-issue",
+                                    "cosmetic"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "categories": {
+                    "type": "array",
+                    "description": "Bug categorization taxonomy",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "name",
+                            "description"
+                        ],
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "enum": [
+                                    "ui",
+                                    "ux",
+                                    "security",
+                                    "performance",
+                                    "functional",
+                                    "integration",
+                                    "data",
+                                    "accessibility"
+                                ]
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "subcategories": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "defaultAssignee": {
+                                "type": "string"
+                            },
+                            "requiredFields": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "bugs": {
+            "type": "array",
+            "description": "Bug reports being tracked through the lifecycle",
+            "items": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "title",
+                    "description",
+                    "status",
+                    "priority",
+                    "severity"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "pattern": "^[A-Z]{2,4}-\\d{3,6}$",
+                        "description": "Unique bug identifier",
+                        "examples": [
+                            "BUG-1001",
+                            "DEF-2045",
+                            "ISS-3012"
+                        ]
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "Concise bug title",
+                        "maxLength": 100
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Detailed bug description"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Current bug status"
+                    },
+                    "priority": {
+                        "type": "string",
+                        "enum": [
+                            "critical",
+                            "high",
+                            "medium",
+                            "low"
+                        ],
+                        "description": "Bug priority level"
+                    },
+                    "severity": {
+                        "type": "string",
+                        "enum": [
+                            "critical",
+                            "major",
+                            "moderate",
+                            "minor",
+                            "cosmetic"
+                        ],
+                        "description": "Bug severity level"
+                    },
+                    "category": {
+                        "type": "string",
+                        "description": "Bug category classification"
+                    },
+                    "environment": {
+                        "type": "object",
+                        "description": "Environment where bug was discovered",
+                        "properties": {
+                            "os": {
+                                "type": "string"
+                            },
+                            "browser": {
+                                "type": "string"
+                            },
+                            "browserVersion": {
+                                "type": "string"
+                            },
+                            "device": {
+                                "type": "string"
+                            },
+                            "appVersion": {
+                                "type": "string"
+                            },
+                            "buildNumber": {
+                                "type": "string"
+                            },
+                            "environment": {
+                                "type": "string",
+                                "enum": [
+                                    "development",
+                                    "staging",
+                                    "production",
+                                    "testing"
+                                ]
+                            }
+                        }
+                    },
+                    "reproduction": {
+                        "type": "object",
+                        "description": "Steps to reproduce the bug",
+                        "properties": {
+                            "steps": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "expectedResult": {
+                                "type": "string"
+                            },
+                            "actualResult": {
+                                "type": "string"
+                            },
+                            "reproducible": {
+                                "type": "boolean"
+                            },
+                            "frequency": {
+                                "type": "string",
+                                "enum": [
+                                    "always",
+                                    "often",
+                                    "sometimes",
+                                    "rarely",
+                                    "once"
+                                ]
+                            },
+                            "preconditions": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "evidence": {
+                        "type": "object",
+                        "description": "Supporting evidence for the bug",
+                        "properties": {
+                            "screenshots": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "format": "uri"
+                                }
+                            },
+                            "videos": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "format": "uri"
+                                }
+                            },
+                            "logs": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "content": {
+                                            "type": "string"
+                                        },
+                                        "timestamp": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        }
+                                    }
+                                }
+                            },
+                            "errorMessages": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "networkLogs": {
+                                "type": "string"
+                            },
+                            "consoleOutput": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "assignment": {
+                        "type": "object",
+                        "description": "Bug assignment and ownership",
+                        "properties": {
+                            "assignee": {
+                                "type": "string"
+                            },
+                            "reporter": {
+                                "type": "string"
+                            },
+                            "team": {
+                                "type": "string"
+                            },
+                            "reviewer": {
+                                "type": "string"
+                            },
+                            "watchers": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "timeline": {
+                        "type": "object",
+                        "description": "Bug timeline and SLA tracking",
+                        "properties": {
+                            "createdAt": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "updatedAt": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "firstResponseAt": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "resolvedAt": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "closedAt": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "slaDeadline": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "slaStatus": {
+                                "type": "string",
+                                "enum": [
+                                    "within-sla",
+                                    "approaching-sla",
+                                    "sla-breached"
+                                ]
+                            },
+                            "timeToResolve": {
+                                "type": "number"
+                            },
+                            "timeToClose": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "lifecycle": {
+                        "type": "object",
+                        "description": "Bug lifecycle tracking",
+                        "properties": {
+                            "history": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "from",
+                                        "to",
+                                        "timestamp",
+                                        "actor"
+                                    ],
+                                    "properties": {
+                                        "from": {
+                                            "type": "string"
+                                        },
+                                        "to": {
+                                            "type": "string"
+                                        },
+                                        "timestamp": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "actor": {
+                                            "type": "string"
+                                        },
+                                        "reason": {
+                                            "type": "string"
+                                        },
+                                        "comment": {
+                                            "type": "string"
+                                        },
+                                        "automated": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            },
+                            "reopenCount": {
+                                "type": "number"
+                            },
+                            "escalationLevel": {
+                                "type": "number"
+                            },
+                            "blockedBy": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "blocks": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "relationships": {
+                        "type": "object",
+                        "description": "Bug relationships and dependencies",
+                        "properties": {
+                            "duplicateOf": {
+                                "type": "string"
+                            },
+                            "duplicates": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "relatedTo": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "causedBy": {
+                                "type": "string"
+                            },
+                            "causes": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "featureId": {
+                                "type": "string"
+                            },
+                            "epicId": {
+                                "type": "string"
+                            },
+                            "testCaseId": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "resolution": {
+                        "type": "object",
+                        "description": "Bug resolution information",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "fixed",
+                                    "wont-fix",
+                                    "duplicate",
+                                    "invalid",
+                                    "cannot-reproduce",
+                                    "by-design"
+                                ]
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "fixVersion": {
+                                "type": "string"
+                            },
+                            "commitHash": {
+                                "type": "string"
+                            },
+                            "pullRequestUrl": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "testingNotes": {
+                                "type": "string"
+                            },
+                            "verificationSteps": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "regressionRisk": {
+                                "type": "string",
+                                "enum": [
+                                    "low",
+                                    "medium",
+                                    "high"
+                                ]
+                            }
+                        }
+                    },
+                    "testing": {
+                        "type": "object",
+                        "description": "Testing and verification information",
+                        "properties": {
+                            "testCases": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "verificationStatus": {
+                                "type": "string",
+                                "enum": [
+                                    "pending",
+                                    "in-progress",
+                                    "passed",
+                                    "failed"
+                                ]
+                            },
+                            "verifiedBy": {
+                                "type": "string"
+                            },
+                            "verifiedAt": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "regressionTesting": {
+                                "type": "boolean"
+                            },
+                            "automatedTests": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "metrics": {
+                        "type": "object",
+                        "description": "Bug metrics and analytics",
+                        "properties": {
+                            "discoveryPhase": {
+                                "type": "string",
+                                "enum": [
+                                    "development",
+                                    "testing",
+                                    "staging",
+                                    "production",
+                                    "user-reported"
+                                ]
+                            },
+                            "fixComplexity": {
+                                "type": "string",
+                                "enum": [
+                                    "trivial",
+                                    "simple",
+                                    "moderate",
+                                    "complex",
+                                    "very-complex"
+                                ]
+                            },
+                            "effortHours": {
+                                "type": "number"
+                            },
+                            "customerImpact": {
+                                "type": "string",
+                                "enum": [
+                                    "none",
+                                    "low",
+                                    "medium",
+                                    "high",
+                                    "critical"
+                                ]
+                            },
+                            "businessImpact": {
+                                "type": "string"
+                            },
+                            "rootCause": {
+                                "type": "string"
+                            },
+                            "preventionMeasures": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "labels": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Normalized taxonomy labels"
+                    },
+                    "customFields": {
+                        "type": "object",
+                        "description": "Project-specific custom fields"
+                    }
+                }
+            }
+        },
+        "automation": {
+            "type": "object",
+            "description": "Automation rules and workflows",
+            "properties": {
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "trigger": {
+                                "type": "string"
+                            },
+                            "conditions": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "actions": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "enabled": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                },
+                "notifications": {
+                    "type": "object",
+                    "properties": {
+                        "channels": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "email",
+                                            "slack",
+                                            "teams",
+                                            "webhook"
+                                        ]
+                                    },
+                                    "endpoint": {
+                                        "type": "string"
+                                    },
+                                    "triggers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "templates": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "subject": {
+                                        "type": "string"
+                                    },
+                                    "body": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "reporting": {
+            "type": "object",
+            "description": "Bug reporting and analytics configuration",
+            "properties": {
+                "dashboards": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "url": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "audience": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "metrics": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "calculation": {
+                                "type": "string"
+                            },
+                            "target": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "reports": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "frequency": {
+                                "type": "string",
+                                "enum": [
+                                    "daily",
+                                    "weekly",
+                                    "monthly",
+                                    "quarterly"
+                                ]
+                            },
+                            "recipients": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "content": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "examples": [
+        {
+            "metadata": {
+                "name": "E-commerce Bug Tracker",
+                "version": "2.1.0",
+                "lastUpdated": "2025-01-15T10:30:00Z",
+                "description": "Bug tracking system for e-commerce platform",
+                "integrations": [
+                    "jira",
+                    "github"
+                ]
+            },
+            "lifecycleDefinition": {
+                "states": [
+                    {
+                        "name": "new",
+                        "description": "Newly reported bug awaiting triage",
+                        "entryGate": {
+                            "criteria": [
+                                "Bug report submitted"
+                            ],
+                            "requiredFields": [
+                                "title",
+                                "description",
+                                "steps"
+                            ],
+                            "automated": true
+                        },
+                        "exitGate": {
+                            "criteria": [
+                                "Priority assigned",
+                                "Category assigned"
+                            ],
+                            "approvers": [
+                                "qa-lead"
+                            ],
+                            "automated": false
+                        }
+                    }
+                ],
+                "priorities": {
+                    "levels": [
+                        {
+                            "name": "critical",
+                            "description": "System crash, data loss, security vulnerability",
+                            "slaHours": 4,
+                            "escalationHours": 2,
+                            "autoAssign": true,
+                            "notificationChannels": [
+                                "slack-critical",
+                                "email-oncall"
+                            ]
+                        }
+                    ]
                 }
             },
-            "relatedFeatureId": { "type": "string", "description": "If applicable, the related feature or epic identifier." },
-            "duplicateOf": { "type": "string", "description": "If marked duplicate, the canonical bug id." }
-        },
-        "required": ["bugId", "status", "path", "summary"]
-    }
+            "bugs": [
+                {
+                    "id": "BUG-1001",
+                    "title": "Checkout button unresponsive on mobile",
+                    "description": "Users cannot complete purchases on mobile devices",
+                    "status": "in-progress",
+                    "priority": "high",
+                    "severity": "major",
+                    "category": "ui",
+                    "environment": {
+                        "os": "iOS 17.2",
+                        "browser": "Safari",
+                        "device": "iPhone 15",
+                        "appVersion": "2.1.0",
+                        "environment": "production"
+                    },
+                    "reproduction": {
+                        "steps": [
+                            "Open app on mobile device",
+                            "Add items to cart",
+                            "Navigate to checkout",
+                            "Tap checkout button"
+                        ],
+                        "expectedResult": "Checkout process begins",
+                        "actualResult": "Button does not respond",
+                        "reproducible": true,
+                        "frequency": "always"
+                    },
+                    "assignment": {
+                        "assignee": "john.doe@company.com",
+                        "reporter": "jane.smith@company.com",
+                        "team": "mobile-team"
+                    },
+                    "timeline": {
+                        "createdAt": "2025-01-15T09:00:00Z",
+                        "slaDeadline": "2025-01-16T09:00:00Z",
+                        "slaStatus": "within-sla"
+                    }
+                }
+            ]
+        }
+    ]
 }

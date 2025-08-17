@@ -1,41 +1,981 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$comment": "Playbook: prompt_playbooks/schemas_playbooks/playbook_schema-definitions.md",
-    "title": "Shared Definitions",
+    "title": "Definitions & Glossary Schema",
+    "description": "Comprehensive terminology management system following 2025 knowledge management best practices. Supports business glossary management, standardized definitions, cross-references, and automated terminology governance with semantic relationships.",
     "type": "object",
+    "required": [
+        "metadata",
+        "glossary",
+        "governance"
+    ],
     "properties": {
-        "terms": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "term": { "type": "string" },
-                    "definition": { "type": "string" },
-                    "examples": { "type": "array", "items": { "type": "string" } },
-                    "synonyms": { "type": "array", "items": { "type": "string" } },
-                    "antiPatterns": { "type": "array", "items": { "type": "string" } }
+        "metadata": {
+            "type": "object",
+            "description": "Glossary metadata and management information",
+            "required": [
+                "name",
+                "version",
+                "lastUpdated"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Glossary name",
+                    "examples": [
+                        "Technical Glossary",
+                        "Business Terms Dictionary",
+                        "API Definitions"
+                    ]
+                },
+                "version": {
+                    "type": "string",
+                    "pattern": "^\\d+\\.\\d+\\.\\d+$",
+                    "description": "Semantic version (major.minor.patch)"
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "ISO 8601 timestamp of last update"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Glossary purpose and scope"
+                },
+                "domain": {
+                    "type": "string",
+                    "description": "Business domain or context",
+                    "examples": [
+                        "software-development",
+                        "business-operations",
+                        "data-management"
+                    ]
+                },
+                "audience": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "developers",
+                            "business-users",
+                            "stakeholders",
+                            "customers",
+                            "partners"
+                        ]
+                    },
+                    "description": "Target audience for this glossary"
+                },
+                "language": {
+                    "type": "string",
+                    "pattern": "^[a-z]{2}(-[A-Z]{2})?$",
+                    "description": "Primary language (ISO 639-1 with optional country code)",
+                    "examples": [
+                        "en",
+                        "en-US",
+                        "es",
+                        "fr"
+                    ]
+                },
+                "maintainers": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "role": {
+                                "type": "string",
+                                "enum": [
+                                    "glossary-owner",
+                                    "domain-expert",
+                                    "terminology-manager",
+                                    "reviewer"
+                                ]
+                            },
+                            "email": {
+                                "type": "string",
+                                "format": "email"
+                            },
+                            "department": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "standards": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "ISO-1087",
+                            "ISO-704",
+                            "ANSI-NISO-Z39.19",
+                            "Dublin-Core",
+                            "SKOS"
+                        ]
+                    },
+                    "description": "Terminology standards followed"
+                }
+            }
+        },
+        "glossary": {
+            "type": "object",
+            "description": "Main glossary content with terms and definitions",
+            "properties": {
+                "terms": {
+                    "type": "array",
+                    "description": "Comprehensive term definitions",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "id",
+                            "term",
+                            "definition"
+                        ],
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "pattern": "^[A-Z0-9_-]+$",
+                                "description": "Unique term identifier",
+                                "examples": [
+                                    "API_ENDPOINT",
+                                    "USER_STORY",
+                                    "TECH_DEBT"
+                                ]
+                            },
+                            "term": {
+                                "type": "string",
+                                "description": "The term or concept name"
+                            },
+                            "definition": {
+                                "type": "string",
+                                "description": "Clear, concise definition"
+                            },
+                            "shortDefinition": {
+                                "type": "string",
+                                "maxLength": 100,
+                                "description": "Brief definition for quick reference"
+                            },
+                            "context": {
+                                "type": "object",
+                                "description": "Contextual information",
+                                "properties": {
+                                    "domain": {
+                                        "type": "string"
+                                    },
+                                    "subdomain": {
+                                        "type": "string"
+                                    },
+                                    "usage": {
+                                        "type": "string",
+                                        "enum": [
+                                            "technical",
+                                            "business",
+                                            "mixed",
+                                            "deprecated"
+                                        ]
+                                    },
+                                    "formality": {
+                                        "type": "string",
+                                        "enum": [
+                                            "formal",
+                                            "informal",
+                                            "colloquial",
+                                            "jargon"
+                                        ]
+                                    }
+                                }
+                            },
+                            "examples": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "example": {
+                                            "type": "string"
+                                        },
+                                        "context": {
+                                            "type": "string"
+                                        },
+                                        "explanation": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "description": "Usage examples with context"
+                            },
+                            "synonyms": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "Alternative terms with same meaning"
+                            },
+                            "antonyms": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "Terms with opposite meaning"
+                            },
+                            "abbreviations": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "abbreviation": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string",
+                                            "enum": [
+                                                "acronym",
+                                                "initialism",
+                                                "shortening"
+                                            ]
+                                        }
+                                    }
+                                }
+                            },
+                            "relationships": {
+                                "type": "object",
+                                "description": "Semantic relationships with other terms",
+                                "properties": {
+                                    "broaderTerms": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "description": "More general terms (hypernyms)"
+                                    },
+                                    "narrowerTerms": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "description": "More specific terms (hyponyms)"
+                                    },
+                                    "relatedTerms": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "description": "Associated terms"
+                                    },
+                                    "partOf": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "description": "Terms this is a component of"
+                                    },
+                                    "hasParts": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "description": "Component terms"
+                                    },
+                                    "seeAlso": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "description": "Cross-references"
+                                    }
+                                }
+                            },
+                            "translations": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "language": {
+                                            "type": "string"
+                                        },
+                                        "term": {
+                                            "type": "string"
+                                        },
+                                        "definition": {
+                                            "type": "string"
+                                        },
+                                        "verified": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            },
+                            "antiPatterns": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "pattern": {
+                                            "type": "string"
+                                        },
+                                        "reason": {
+                                            "type": "string"
+                                        },
+                                        "alternative": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "description": "Common misuses or misconceptions"
+                            },
+                            "sources": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "enum": [
+                                                "standard",
+                                                "specification",
+                                                "documentation",
+                                                "expert",
+                                                "literature"
+                                            ]
+                                        },
+                                        "reference": {
+                                            "type": "string"
+                                        },
+                                        "url": {
+                                            "type": "string",
+                                            "format": "uri"
+                                        },
+                                        "authority": {
+                                            "type": "string"
+                                        },
+                                        "date": {
+                                            "type": "string",
+                                            "format": "date"
+                                        }
+                                    }
+                                },
+                                "description": "Authoritative sources for definition"
+                            },
+                            "lifecycle": {
+                                "type": "object",
+                                "description": "Term lifecycle information",
+                                "properties": {
+                                    "status": {
+                                        "type": "string",
+                                        "enum": [
+                                            "draft",
+                                            "review",
+                                            "approved",
+                                            "deprecated",
+                                            "obsolete"
+                                        ]
+                                    },
+                                    "createdAt": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "approvedAt": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "deprecatedAt": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "replacedBy": {
+                                        "type": "string"
+                                    },
+                                    "reviewDate": {
+                                        "type": "string",
+                                        "format": "date"
+                                    }
+                                }
+                            },
+                            "usage": {
+                                "type": "object",
+                                "description": "Usage statistics and patterns",
+                                "properties": {
+                                    "frequency": {
+                                        "type": "string",
+                                        "enum": [
+                                            "very-common",
+                                            "common",
+                                            "occasional",
+                                            "rare"
+                                        ]
+                                    },
+                                    "contexts": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "searchCount": {
+                                        "type": "number"
+                                    },
+                                    "lastAccessed": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                }
+                            },
+                            "metadata": {
+                                "type": "object",
+                                "properties": {
+                                    "owner": {
+                                        "type": "string"
+                                    },
+                                    "steward": {
+                                        "type": "string"
+                                    },
+                                    "reviewer": {
+                                        "type": "string"
+                                    },
+                                    "lastModified": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "version": {
+                                        "type": "string"
+                                    },
+                                    "tags": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "categories": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "priority": {
+                                        "type": "string",
+                                        "enum": [
+                                            "low",
+                                            "medium",
+                                            "high",
+                                            "critical"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "categories": {
+                    "type": "array",
+                    "description": "Term categorization system",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "id",
+                            "name"
+                        ],
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "parent": {
+                                "type": "string"
+                            },
+                            "children": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "termCount": {
+                                "type": "number"
+                            },
+                            "color": {
+                                "type": "string"
+                            },
+                            "icon": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "collections": {
+                    "type": "array",
+                    "description": "Curated collections of related terms",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "terms": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "purpose": {
+                                "type": "string"
+                            },
+                            "audience": {
+                                "type": "string"
+                            },
+                            "maintainer": {
+                                "type": "string"
+                            }
+                        }
+                    }
                 }
             }
         },
         "types": {
             "type": "array",
+            "description": "Reusable type definitions and schemas",
             "items": {
                 "type": "object",
+                "required": [
+                    "name",
+                    "type"
+                ],
                 "properties": {
-                    "name": { "type": "string" },
-                    "jsonSchema": { "type": "object" },
-                    "description": { "type": "string" }
+                    "name": {
+                        "type": "string",
+                        "description": "Type name"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "json-schema",
+                            "typescript",
+                            "openapi",
+                            "graphql",
+                            "custom"
+                        ]
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Type description and purpose"
+                    },
+                    "schema": {
+                        "type": "object",
+                        "description": "Type definition schema"
+                    },
+                    "examples": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "value": {},
+                                "description": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "validation": {
+                        "type": "object",
+                        "properties": {
+                            "rules": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "constraints": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "usage": {
+                        "type": "object",
+                        "properties": {
+                            "contexts": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "frequency": {
+                                "type": "string"
+                            },
+                            "dependencies": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "properties": {
+                            "version": {
+                                "type": "string"
+                            },
+                            "deprecated": {
+                                "type": "boolean"
+                            },
+                            "replacedBy": {
+                                "type": "string"
+                            },
+                            "tags": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
                 }
             }
         },
         "conventions": {
             "type": "array",
+            "description": "Naming conventions and style guidelines",
             "items": {
                 "type": "object",
+                "required": [
+                    "id",
+                    "name",
+                    "rule"
+                ],
                 "properties": {
-                    "id": { "type": "string" },
-                    "rule": { "type": "string" },
-                    "examples": { "type": "array", "items": { "type": "string" } }
+                    "id": {
+                        "type": "string",
+                        "description": "Convention identifier"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Convention name"
+                    },
+                    "category": {
+                        "type": "string",
+                        "enum": [
+                            "naming",
+                            "formatting",
+                            "structure",
+                            "documentation",
+                            "validation"
+                        ]
+                    },
+                    "rule": {
+                        "type": "string",
+                        "description": "Convention rule description"
+                    },
+                    "pattern": {
+                        "type": "string",
+                        "description": "Regex pattern for validation"
+                    },
+                    "scope": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "variables",
+                                "functions",
+                                "classes",
+                                "files",
+                                "apis",
+                                "databases",
+                                "all"
+                            ]
+                        }
+                    },
+                    "examples": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "correct": {
+                                    "type": "string"
+                                },
+                                "incorrect": {
+                                    "type": "string"
+                                },
+                                "explanation": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "exceptions": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "case": {
+                                    "type": "string"
+                                },
+                                "reason": {
+                                    "type": "string"
+                                },
+                                "alternative": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "enforcement": {
+                        "type": "object",
+                        "properties": {
+                            "automated": {
+                                "type": "boolean"
+                            },
+                            "tools": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "severity": {
+                                "type": "string",
+                                "enum": [
+                                    "info",
+                                    "warning",
+                                    "error",
+                                    "critical"
+                                ]
+                            }
+                        }
+                    },
+                    "rationale": {
+                        "type": "string",
+                        "description": "Why this convention exists"
+                    },
+                    "references": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "governance": {
+            "type": "object",
+            "description": "Glossary governance and management processes",
+            "properties": {
+                "workflow": {
+                    "type": "object",
+                    "description": "Term lifecycle workflow",
+                    "properties": {
+                        "states": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "permissions": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "transitions": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "approvalProcess": {
+                            "type": "object",
+                            "properties": {
+                                "required": {
+                                    "type": "boolean"
+                                },
+                                "approvers": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "criteria": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "responsibilities": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "permissions": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "qualityControl": {
+                    "type": "object",
+                    "properties": {
+                        "reviewCycle": {
+                            "type": "string"
+                        },
+                        "qualityChecks": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "metrics": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "automation": {
+                            "type": "object",
+                            "properties": {
+                                "duplicateDetection": {
+                                    "type": "boolean"
+                                },
+                                "consistencyChecks": {
+                                    "type": "boolean"
+                                },
+                                "linkValidation": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                },
+                "maintenance": {
+                    "type": "object",
+                    "properties": {
+                        "schedule": {
+                            "type": "string"
+                        },
+                        "tasks": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "archival": {
+                            "type": "object",
+                            "properties": {
+                                "policy": {
+                                    "type": "string"
+                                },
+                                "retention": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "integrations": {
+            "type": "object",
+            "description": "External system integrations",
+            "properties": {
+                "systems": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "documentation",
+                                    "wiki",
+                                    "cms",
+                                    "api",
+                                    "database",
+                                    "search"
+                                ]
+                            },
+                            "url": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "syncDirection": {
+                                "type": "string",
+                                "enum": [
+                                    "import",
+                                    "export",
+                                    "bidirectional"
+                                ]
+                            },
+                            "frequency": {
+                                "type": "string"
+                            },
+                            "mapping": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "apis": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "endpoint": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "authentication": {
+                                "type": "string"
+                            },
+                            "operations": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -44,51 +984,226 @@
         "techStackItem": {
             "type": "object",
             "properties": {
-                "name": { "type": "string" },
-                "category": { "type": "string", "enum": ["Frontend", "Backend", "Database", "DevOps", "Testing"] },
-                "version": { "type": "string" }
+                "name": {
+                    "type": "string"
+                },
+                "category": {
+                    "type": "string",
+                    "enum": [
+                        "Frontend",
+                        "Backend",
+                        "Database",
+                        "DevOps",
+                        "Testing",
+                        "Mobile",
+                        "AI/ML",
+                        "Security",
+                        "Monitoring"
+                    ]
+                },
+                "version": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "purpose": {
+                    "type": "string"
+                },
+                "alternatives": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "dependencies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "active",
+                        "deprecated",
+                        "experimental",
+                        "legacy"
+                    ]
+                }
             },
-            "required": ["name", "category"]
+            "required": [
+                "name",
+                "category"
+            ]
         },
         "userStory": {
             "type": "object",
             "properties": {
-                "id": { "type": "string" },
-                "story": { "type": "string" },
-                "acceptanceCriteria": { "type": "array", "items": { "type": "string" } }
+                "id": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "story": {
+                    "type": "string"
+                },
+                "persona": {
+                    "type": "string"
+                },
+                "goal": {
+                    "type": "string"
+                },
+                "benefit": {
+                    "type": "string"
+                },
+                "acceptanceCriteria": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "priority": {
+                    "type": "string",
+                    "enum": [
+                        "low",
+                        "medium",
+                        "high",
+                        "critical"
+                    ]
+                },
+                "estimatedEffort": {
+                    "type": "string"
+                },
+                "dependencies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
             },
-            "required": ["id", "story"]
+            "required": [
+                "id",
+                "story",
+                "acceptanceCriteria"
+            ]
         },
         "businessRule": {
             "type": "object",
             "properties": {
-                "id": { "type": "string" },
-                "rule": { "type": "string" },
-                "source": { "type": "string", "description": "The part of the application where this rule is enforced." }
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "rule": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "source": {
+                    "type": "string",
+                    "description": "The part of the application where this rule is enforced."
+                },
+                "category": {
+                    "type": "string",
+                    "enum": [
+                        "validation",
+                        "calculation",
+                        "workflow",
+                        "authorization",
+                        "compliance"
+                    ]
+                },
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "exceptions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "implementation": {
+                    "type": "string"
+                },
+                "testCases": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
             },
-            "required": ["id", "rule"]
+            "required": [
+                "id",
+                "rule"
+            ]
         },
         "apiParameter": {
             "type": "object",
             "properties": {
-                "name": { "type": "string" },
-                "in": { "type": "string", "enum": ["query", "header", "path", "cookie"] },
-                "description": { "type": "string" },
-                "required": { "type": "boolean" },
-                "schema": { "type": "object" }
+                "name": {
+                    "type": "string"
+                },
+                "in": {
+                    "type": "string",
+                    "enum": [
+                        "query",
+                        "header",
+                        "path",
+                        "cookie",
+                        "body"
+                    ]
+                },
+                "description": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "schema": {
+                    "type": "object"
+                },
+                "example": {},
+                "deprecated": {
+                    "type": "boolean"
+                },
+                "allowEmptyValue": {
+                    "type": "boolean"
+                }
             },
-            "required": ["name", "in"]
+            "required": [
+                "name",
+                "in"
+            ]
         },
         "apiRequestBody": {
             "type": "object",
             "properties": {
-                "description": { "type": "string" },
+                "description": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
                 "content": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "object",
                         "properties": {
-                            "schema": { "type": "object" }
+                            "schema": {
+                                "type": "object"
+                            },
+                            "example": {},
+                            "examples": {
+                                "type": "object"
+                            }
                         }
                     }
                 }
@@ -97,37 +1212,440 @@
         "apiResponse": {
             "type": "object",
             "properties": {
-                "description": { "type": "string" },
+                "description": {
+                    "type": "string"
+                },
+                "headers": {
+                    "type": "object"
+                },
                 "content": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "object",
                         "properties": {
-                            "schema": { "type": "object" }
+                            "schema": {
+                                "type": "object"
+                            },
+                            "example": {},
+                            "examples": {
+                                "type": "object"
+                            }
                         }
                     }
+                },
+                "links": {
+                    "type": "object"
                 }
             },
-            "required": ["description"]
+            "required": [
+                "description"
+            ]
         },
         "managedState": {
             "type": "object",
             "properties": {
-                "stateName": { "type": "string" },
-                "stateType": { "type": "string" },
-                "description": { "type": "string" }
+                "stateName": {
+                    "type": "string"
+                },
+                "stateType": {
+                    "type": "string",
+                    "enum": [
+                        "local",
+                        "global",
+                        "persistent",
+                        "session",
+                        "derived"
+                    ]
+                },
+                "description": {
+                    "type": "string"
+                },
+                "initialValue": {},
+                "actions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "selectors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "persistence": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        },
+                        "storage": {
+                            "type": "string",
+                            "enum": [
+                                "localStorage",
+                                "sessionStorage",
+                                "indexedDB",
+                                "server"
+                            ]
+                        }
+                    }
+                }
             }
         },
         "emittedEvent": {
             "type": "object",
             "properties": {
-                "eventName": { "type": "string", "description": "e.g., onClick, onSubmit" },
-                "payloadSchema": { "type": "object", "description": "JSON schema of the data emitted with the event." }
+                "eventName": {
+                    "type": "string",
+                    "description": "e.g., onClick, onSubmit, onDataChange"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "payloadSchema": {
+                    "type": "object",
+                    "description": "JSON schema of the data emitted with the event."
+                },
+                "bubbles": {
+                    "type": "boolean"
+                },
+                "cancelable": {
+                    "type": "boolean"
+                },
+                "frequency": {
+                    "type": "string",
+                    "enum": [
+                        "once",
+                        "multiple",
+                        "continuous"
+                    ]
+                },
+                "triggers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
             }
         },
         "keyValuePairs": {
             "type": "object",
-            "additionalProperties": { "type": "string" }
+            "additionalProperties": {
+                "type": "string"
+            },
+            "description": "Generic key-value pair structure for configuration and metadata"
+        },
+        "configurationItem": {
+            "type": "object",
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "value": {},
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "string",
+                        "number",
+                        "boolean",
+                        "array",
+                        "object"
+                    ]
+                },
+                "description": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "defaultValue": {},
+                "validation": {
+                    "type": "object"
+                },
+                "environment": {
+                    "type": "string",
+                    "enum": [
+                        "development",
+                        "staging",
+                        "production",
+                        "all"
+                    ]
+                },
+                "sensitive": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "key",
+                "value",
+                "type"
+            ]
+        },
+        "errorDefinition": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "category": {
+                    "type": "string",
+                    "enum": [
+                        "validation",
+                        "authentication",
+                        "authorization",
+                        "business",
+                        "system",
+                        "network"
+                    ]
+                },
+                "severity": {
+                    "type": "string",
+                    "enum": [
+                        "low",
+                        "medium",
+                        "high",
+                        "critical"
+                    ]
+                },
+                "httpStatus": {
+                    "type": "number"
+                },
+                "userMessage": {
+                    "type": "string"
+                },
+                "resolution": {
+                    "type": "string"
+                },
+                "documentation": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "code",
+                "name",
+                "message"
+            ]
         }
-    }
+    },
+    "examples": [
+        {
+            "metadata": {
+                "name": "E-commerce Platform Glossary",
+                "version": "2.1.0",
+                "lastUpdated": "2025-01-15T10:30:00Z",
+                "description": "Comprehensive terminology for e-commerce platform",
+                "domain": "e-commerce",
+                "audience": [
+                    "developers",
+                    "business-users",
+                    "stakeholders"
+                ],
+                "language": "en-US",
+                "standards": [
+                    "ISO-1087",
+                    "SKOS"
+                ]
+            },
+            "glossary": {
+                "terms": [
+                    {
+                        "id": "API_ENDPOINT",
+                        "term": "API Endpoint",
+                        "definition": "A specific URL where an API can be accessed by a client application",
+                        "shortDefinition": "URL for API access",
+                        "context": {
+                            "domain": "software-development",
+                            "usage": "technical",
+                            "formality": "formal"
+                        },
+                        "examples": [
+                            {
+                                "example": "https://api.example.com/v1/users",
+                                "context": "REST API",
+                                "explanation": "Endpoint for user management operations"
+                            }
+                        ],
+                        "synonyms": [
+                            "API URL",
+                            "Service Endpoint"
+                        ],
+                        "abbreviations": [
+                            {
+                                "abbreviation": "API",
+                                "type": "acronym"
+                            }
+                        ],
+                        "relationships": {
+                            "broaderTerms": [
+                                "API"
+                            ],
+                            "relatedTerms": [
+                                "HTTP Method",
+                                "REST API",
+                                "Request",
+                                "Response"
+                            ]
+                        },
+                        "sources": [
+                            {
+                                "type": "specification",
+                                "reference": "OpenAPI Specification 3.0",
+                                "url": "https://spec.openapis.org/oas/v3.0.3",
+                                "authority": "OpenAPI Initiative"
+                            }
+                        ],
+                        "lifecycle": {
+                            "status": "approved",
+                            "createdAt": "2024-01-15T10:00:00Z",
+                            "approvedAt": "2024-01-20T14:30:00Z"
+                        },
+                        "usage": {
+                            "frequency": "very-common",
+                            "contexts": [
+                                "API documentation",
+                                "development",
+                                "integration"
+                            ]
+                        },
+                        "metadata": {
+                            "owner": "API Team",
+                            "steward": "John Doe",
+                            "tags": [
+                                "api",
+                                "web-services",
+                                "integration"
+                            ],
+                            "categories": [
+                                "technical"
+                            ],
+                            "priority": "high"
+                        }
+                    }
+                ],
+                "categories": [
+                    {
+                        "id": "technical",
+                        "name": "Technical Terms",
+                        "description": "Software development and technical concepts",
+                        "termCount": 150,
+                        "color": "#007acc",
+                        "icon": "code"
+                    }
+                ],
+                "collections": [
+                    {
+                        "id": "api-terms",
+                        "name": "API & Integration Terms",
+                        "description": "Terms related to APIs and system integration",
+                        "terms": [
+                            "API_ENDPOINT",
+                            "REST_API",
+                            "WEBHOOK"
+                        ],
+                        "purpose": "Developer onboarding",
+                        "audience": "developers",
+                        "maintainer": "API Team"
+                    }
+                ]
+            },
+            "types": [
+                {
+                    "name": "techStackItem",
+                    "type": "json-schema",
+                    "description": "Technology stack component definition",
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "category": {
+                                "type": "string"
+                            },
+                            "version": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "examples": [
+                        {
+                            "name": "React Framework",
+                            "value": {
+                                "name": "React",
+                                "category": "Frontend",
+                                "version": "18.2.0"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "conventions": [
+                {
+                    "id": "CAMEL_CASE_VARS",
+                    "name": "Camel Case Variables",
+                    "category": "naming",
+                    "rule": "Variable names should use camelCase",
+                    "pattern": "^[a-z][a-zA-Z0-9]*$",
+                    "scope": [
+                        "variables",
+                        "functions"
+                    ],
+                    "examples": [
+                        {
+                            "correct": "userName",
+                            "incorrect": "user_name",
+                            "explanation": "Use camelCase for better readability"
+                        }
+                    ],
+                    "enforcement": {
+                        "automated": true,
+                        "tools": [
+                            "ESLint"
+                        ],
+                        "severity": "warning"
+                    },
+                    "rationale": "Consistent naming improves code readability and maintainability"
+                }
+            ],
+            "governance": {
+                "workflow": {
+                    "states": [
+                        {
+                            "name": "draft",
+                            "description": "Term is being created or edited",
+                            "permissions": [
+                                "author",
+                                "editor"
+                            ],
+                            "transitions": [
+                                "review",
+                                "approved"
+                            ]
+                        }
+                    ],
+                    "approvalProcess": {
+                        "required": true,
+                        "approvers": [
+                            "domain-expert",
+                            "glossary-owner"
+                        ],
+                        "criteria": [
+                            "accuracy",
+                            "clarity",
+                            "uniqueness"
+                        ]
+                    }
+                }
+            }
+        }
+    ]
 }

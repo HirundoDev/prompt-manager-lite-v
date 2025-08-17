@@ -345,47 +345,6 @@
                             }
                         }
                     }
-                },
-                "designPrinciples": {
-                    "type": "array",
-                    "description": "Core principles guiding the state management design",
-                    "items": {
-                        "type": "object",
-                        "required": [
-                            "principle",
-                            "implementation"
-                        ],
-                        "properties": {
-                            "principle": {
-                                "type": "string",
-                                "description": "Design principle name",
-                                "default": "[DESIGN_PRINCIPLE]",
-                                "examples": [
-                                    "[SINGLE_SOURCE_OF_TRUTH]",
-                                    "[IMMUTABLE_UPDATES]",
-                                    "[PREDICTABLE_STATE_CHANGES]",
-                                    "[SEPARATION_OF_CONCERNS]",
-                                    "[PERFORMANCE_FIRST]",
-                                    "[DEVELOPER_EXPERIENCE]",
-                                    "[TESTABILITY]",
-                                    "[MAINTAINABILITY]"
-                                ]
-                            },
-                            "implementation": {
-                                "type": "string",
-                                "description": "How this principle is implemented",
-                                "default": "[PRINCIPLE_IMPLEMENTATION]"
-                            },
-                            "benefits": {
-                                "type": "array",
-                                "description": "Benefits of following this principle",
-                                "items": {
-                                    "type": "string",
-                                    "default": "[PRINCIPLE_BENEFIT]"
-                                }
-                            }
-                        }
-                    }
                 }
             }
         },
@@ -591,306 +550,140 @@
                                 }
                             }
                         },
-                        "global": {
-                            "type": "array",
-                            "description": "Global client state",
-                            "items": {
-                                "type": "object",
-                                "required": [
-                                    "name",
-                                    "type",
-                                    "library"
-                                ],
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "user-session",
-                                            "app-config",
-                                            "ui-theme",
-                                            "navigation",
-                                            "notifications"
-                                        ]
-                                    },
-                                    "library": {
-                                        "type": "string"
-                                    },
-                                    "persistence": {
-                                        "type": "object",
-                                        "properties": {
-                                            "enabled": {
-                                                "type": "boolean"
-                                            },
-                                            "storage": {
+                        "serverState": {
+                            "type": "object",
+                            "description": "Server-side data and remote state management",
+                            "required": [
+                                "definition",
+                                "dataFetching",
+                                "caching",
+                                "synchronization"
+                            ],
+                            "properties": {
+                                "definition": {
+                                    "type": "string",
+                                    "description": "Definition of server state in this application context",
+                                    "default": "[SERVER_STATE_DEFINITION]"
+                                },
+                                "dataFetching": {
+                                    "type": "object",
+                                    "description": "Data fetching strategies and patterns",
+                                    "properties": {
+                                        "strategy": {
+                                            "type": "string",
+                                            "description": "Primary data fetching strategy",
+                                            "default": "[DATA_FETCHING_STRATEGY]"
+                                        },
+                                        "library": {
+                                            "type": "string",
+                                            "description": "Library used for data fetching",
+                                            "default": "[DATA_FETCHING_LIBRARY]"
+                                        },
+                                        "patterns": {
+                                            "type": "array",
+                                            "description": "Data fetching patterns used",
+                                            "items": {
                                                 "type": "string",
-                                                "enum": [
-                                                    "localStorage",
-                                                    "sessionStorage",
-                                                    "indexedDB",
-                                                    "cookies"
-                                                ]
-                                            },
-                                            "ttl": {
-                                                "type": "number",
-                                                "description": "Time to live in seconds"
-                                            }
-                                        }
-                                    },
-                                    "hydration": {
-                                        "type": "object",
-                                        "properties": {
-                                            "strategy": {
-                                                "type": "string",
-                                                "enum": [
-                                                    "eager",
-                                                    "lazy",
-                                                    "on-demand",
-                                                    "progressive"
-                                                ]
-                                            },
-                                            "priority": {
-                                                "type": "string",
-                                                "enum": [
-                                                    "critical",
-                                                    "high",
-                                                    "normal",
-                                                    "low"
-                                                ]
+                                                "default": "[FETCHING_PATTERN]"
                                             }
                                         }
                                     }
-                                }
-                            }
-                        }
-                    }
-                },
-                "serverState": {
-                    "type": "object",
-                    "description": "Server state management and caching",
-                    "properties": {
-                        "queries": {
-                            "type": "array",
-                            "description": "Data fetching and query management",
-                            "items": {
-                                "type": "object",
-                                "required": [
-                                    "name",
-                                    "endpoint",
-                                    "caching"
-                                ],
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "endpoint": {
-                                        "type": "string"
-                                    },
-                                    "method": {
-                                        "type": "string",
-                                        "enum": [
-                                            "GET",
-                                            "POST",
-                                            "PUT",
-                                            "DELETE",
-                                            "PATCH"
-                                        ]
-                                    },
-                                    "caching": {
-                                        "type": "object",
-                                        "required": [
-                                            "strategy",
-                                            "ttl"
-                                        ],
-                                        "properties": {
-                                            "strategy": {
-                                                "type": "string",
-                                                "enum": [
-                                                    "cache-first",
-                                                    "network-first",
-                                                    "stale-while-revalidate",
-                                                    "cache-only",
-                                                    "network-only"
-                                                ]
-                                            },
-                                            "ttl": {
-                                                "type": "number"
-                                            },
-                                            "invalidation": {
-                                                "type": "array",
-                                                "items": {
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "background-refetch": {
-                                                "type": "boolean"
-                                            }
+                                },
+                                "caching": {
+                                    "type": "object",
+                                    "description": "Caching strategies for server state",
+                                    "properties": {
+                                        "strategy": {
+                                            "type": "string",
+                                            "description": "Primary caching strategy",
+                                            "default": "[CACHING_STRATEGY]"
+                                        },
+                                        "invalidation": {
+                                            "type": "string",
+                                            "description": "Cache invalidation approach",
+                                            "default": "[CACHE_INVALIDATION_STRATEGY]"
+                                        },
+                                        "ttl": {
+                                            "type": "string",
+                                            "description": "Time to live for cached data",
+                                            "default": "[CACHE_TTL]"
                                         }
-                                    },
-                                    "optimisticUpdates": {
-                                        "type": "boolean"
-                                    },
-                                    "retryPolicy": {
-                                        "type": "object",
-                                        "properties": {
-                                            "attempts": {
-                                                "type": "number",
-                                                "minimum": 0,
-                                                "maximum": 10
-                                            },
-                                            "backoff": {
-                                                "type": "string",
-                                                "enum": [
-                                                    "linear",
-                                                    "exponential",
-                                                    "fixed"
-                                                ]
-                                            }
+                                    }
+                                },
+                                "synchronization": {
+                                    "type": "object",
+                                    "description": "Server state synchronization strategies",
+                                    "properties": {
+                                        "method": {
+                                            "type": "string",
+                                            "description": "Synchronization method",
+                                            "default": "[SYNC_METHOD]"
+                                        },
+                                        "conflictResolution": {
+                                            "type": "string",
+                                            "description": "How conflicts are resolved",
+                                            "default": "[CONFLICT_RESOLUTION]"
                                         }
                                     }
                                 }
                             }
                         },
-                        "mutations": {
-                            "type": "array",
-                            "description": "Data mutation and update operations",
-                            "items": {
-                                "type": "object",
-                                "required": [
-                                    "name",
-                                    "endpoint",
-                                    "invalidates"
-                                ],
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "endpoint": {
-                                        "type": "string"
-                                    },
-                                    "method": {
-                                        "type": "string",
-                                        "enum": [
-                                            "POST",
-                                            "PUT",
-                                            "DELETE",
-                                            "PATCH"
-                                        ]
-                                    },
-                                    "invalidates": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "string"
+                        "sharedState": {
+                            "type": "object",
+                            "description": "State shared between different parts of the application or between client and server",
+                            "required": [
+                                "definition",
+                                "synchronizationStrategy"
+                            ],
+                            "properties": {
+                                "definition": {
+                                    "type": "string",
+                                    "description": "Definition of shared state in this application context",
+                                    "default": "[SHARED_STATE_DEFINITION]"
+                                },
+                                "synchronizationStrategy": {
+                                    "type": "object",
+                                    "description": "How shared state is synchronized",
+                                    "properties": {
+                                        "method": {
+                                            "type": "string",
+                                            "description": "Synchronization method",
+                                            "default": "[SHARED_SYNC_METHOD]"
                                         },
-                                        "description": "Query keys to invalidate after mutation"
-                                    },
-                                    "optimisticUpdate": {
-                                        "type": "object",
-                                        "properties": {
-                                            "enabled": {
-                                                "type": "boolean"
-                                            },
-                                            "rollback": {
-                                                "type": "boolean"
-                                            }
+                                        "conflictResolution": {
+                                            "type": "string",
+                                            "description": "Conflict resolution strategy",
+                                            "default": "[SHARED_CONFLICT_RESOLUTION]"
+                                        },
+                                        "offlineSupport": {
+                                            "type": "boolean",
+                                            "description": "Whether offline support is provided",
+                                            "default": "[OFFLINE_SUPPORT]"
                                         }
-                                    },
-                                    "onSuccess": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "string"
-                                        },
-                                        "description": "Actions to perform on successful mutation"
-                                    },
-                                    "onError": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "string"
-                                        },
-                                        "description": "Actions to perform on failed mutation"
                                     }
                                 }
                             }
                         }
                     }
                 },
-                "sharedState": {
-                    "type": "array",
-                    "description": "State shared between client and server",
-                    "items": {
-                        "type": "object",
-                        "required": [
-                            "name",
-                            "type",
-                            "synchronization"
-                        ],
-                        "properties": {
-                            "name": {
-                                "type": "string"
-                            },
-                            "type": {
-                                "type": "string",
-                                "enum": [
-                                    "real-time",
-                                    "collaborative",
-                                    "offline-first",
-                                    "eventually-consistent"
-                                ]
-                            },
-                            "synchronization": {
-                                "type": "object",
-                                "required": [
-                                    "method",
-                                    "conflictResolution"
-                                ],
-                                "properties": {
-                                    "method": {
-                                        "type": "string",
-                                        "enum": [
-                                            "websocket",
-                                            "sse",
-                                            "polling",
-                                            "push-notifications"
-                                        ]
-                                    },
-                                    "conflictResolution": {
-                                        "type": "string",
-                                        "enum": [
-                                            "last-write-wins",
-                                            "first-write-wins",
-                                            "merge",
-                                            "manual",
-                                            "operational-transform"
-                                        ]
-                                    },
-                                    "offline": {
-                                        "type": "object",
-                                        "properties": {
-                                            "support": {
-                                                "type": "boolean"
-                                            },
-                                            "storage": {
-                                                "type": "string",
-                                                "enum": [
-                                                    "indexedDB",
-                                                    "localStorage",
-                                                    "webSQL"
-                                                ]
-                                            },
-                                            "syncStrategy": {
-                                                "type": "string",
-                                                "enum": [
-                                                    "immediate",
-                                                    "batched",
-                                                    "scheduled"
-                                                ]
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                "managementStrategies": {
+                    "type": "object",
+                    "description": "Overall strategies for managing different state types",
+                    "properties": {
+                        "stateNormalization": {
+                            "type": "string",
+                            "description": "How state is normalized across the application",
+                            "default": "[STATE_NORMALIZATION_STRATEGY]"
+                        },
+                        "stateComposition": {
+                            "type": "string",
+                            "description": "How different state types are composed together",
+                            "default": "[STATE_COMPOSITION_STRATEGY]"
+                        },
+                        "stateValidation": {
+                            "type": "string",
+                            "description": "How state is validated",
+                            "default": "[STATE_VALIDATION_STRATEGY]"
                         }
                     }
                 }
@@ -898,76 +691,85 @@
         },
         "libraries": {
             "type": "object",
-            "description": "State management libraries and tools configuration",
+            "description": "State management libraries, tools, and dependencies",
+            "required": [
+                "primaryLibraries",
+                "utilityLibraries",
+                "selectionCriteria"
+            ],
             "properties": {
-                "primary": {
+                "primaryLibraries": {
                     "type": "array",
-                    "description": "Primary state management libraries",
+                    "description": "Main state management libraries used in the application",
                     "items": {
                         "type": "object",
                         "required": [
                             "name",
                             "version",
-                            "purpose"
+                            "purpose",
+                            "justification"
                         ],
                         "properties": {
                             "name": {
                                 "type": "string",
-                                "enum": [
-                                    "redux",
-                                    "redux-toolkit",
-                                    "zustand",
-                                    "jotai",
-                                    "valtio",
-                                    "mobx",
-                                    "recoil",
-                                    "context-api",
-                                    "swr",
-                                    "react-query",
-                                    "tanstack-query",
-                                    "apollo-client",
-                                    "relay",
-                                    "urql",
-                                    "vuex",
-                                    "pinia",
-                                    "ngrx",
-                                    "akita",
-                                    "elf"
-                                ]
+                                "description": "Name of the state management library",
+                                "default": "[LIBRARY_NAME]"
                             },
                             "version": {
-                                "type": "string"
+                                "type": "string",
+                                "description": "Version of the library",
+                                "default": "[LIBRARY_VERSION]"
                             },
                             "purpose": {
                                 "type": "string",
-                                "enum": [
-                                    "global-state",
-                                    "server-state",
-                                    "local-state",
-                                    "form-state",
-                                    "cache-management"
+                                "description": "Primary purpose of this library in the application",
+                                "default": "[LIBRARY_PURPOSE]",
+                                "examples": [
+                                    "[GLOBAL_STATE_MANAGEMENT]",
+                                    "[SERVER_STATE_MANAGEMENT]",
+                                    "[LOCAL_STATE_MANAGEMENT]",
+                                    "[FORM_STATE_MANAGEMENT]",
+                                    "[CACHE_MANAGEMENT]"
                                 ]
+                            },
+                            "justification": {
+                                "type": "string",
+                                "description": "Why this library was chosen",
+                                "default": "[LIBRARY_JUSTIFICATION]"
                             },
                             "configuration": {
                                 "type": "object",
-                                "description": "Library-specific configuration"
+                                "description": "Library-specific configuration details",
+                                "properties": {
+                                    "configurationApproach": {
+                                        "type": "string",
+                                        "description": "How the library is configured",
+                                        "default": "[CONFIGURATION_APPROACH]"
+                                    },
+                                    "customizations": {
+                                        "type": "array",
+                                        "description": "Custom configurations or extensions",
+                                        "items": {
+                                            "type": "string",
+                                            "default": "[CUSTOMIZATION]"
+                                        }
+                                    }
+                                }
                             },
-                            "middleware": {
+                            "integrations": {
                                 "type": "array",
+                                "description": "How this library integrates with other tools",
                                 "items": {
-                                    "type": "string"
-                                },
-                                "description": "Middleware or plugins used"
-                            },
-                            "devtools": {
-                                "type": "boolean"
+                                    "type": "string",
+                                    "default": "[INTEGRATION]"
+                                }
                             }
                         }
                     }
                 },
-                "utilities": {
+                "utilityLibraries": {
                     "type": "array",
-                    "description": "Utility libraries for state management",
+                    "description": "Supporting libraries and utilities for state management",
                     "items": {
                         "type": "object",
                         "required": [
@@ -976,21 +778,54 @@
                         ],
                         "properties": {
                             "name": {
-                                "type": "string"
+                                "type": "string",
+                                "description": "Name of the utility library",
+                                "default": "[UTILITY_LIBRARY_NAME]"
                             },
                             "version": {
-                                "type": "string"
+                                "type": "string",
+                                "description": "Version of the utility library",
+                                "default": "[UTILITY_LIBRARY_VERSION]"
                             },
                             "purpose": {
                                 "type": "string",
-                                "enum": [
-                                    "immutability",
-                                    "normalization",
-                                    "validation",
-                                    "serialization",
-                                    "debugging"
+                                "description": "Purpose of this utility library",
+                                "default": "[UTILITY_PURPOSE]",
+                                "examples": [
+                                    "[IMMUTABILITY_HELPER]",
+                                    "[STATE_NORMALIZATION]",
+                                    "[VALIDATION_LIBRARY]",
+                                    "[SERIALIZATION_HELPER]",
+                                    "[DEBUGGING_TOOL]"
                                 ]
                             }
+                        }
+                    }
+                },
+                "selectionCriteria": {
+                    "type": "object",
+                    "description": "Criteria used for selecting state management libraries",
+                    "properties": {
+                        "technicalCriteria": {
+                            "type": "array",
+                            "description": "Technical criteria for library selection",
+                            "items": {
+                                "type": "string",
+                                "default": "[TECHNICAL_CRITERION]"
+                            }
+                        },
+                        "businessCriteria": {
+                            "type": "array",
+                            "description": "Business criteria for library selection",
+                            "items": {
+                                "type": "string",
+                                "default": "[BUSINESS_CRITERION]"
+                            }
+                        },
+                        "evaluationProcess": {
+                            "type": "string",
+                            "description": "Process used to evaluate and select libraries",
+                            "default": "[EVALUATION_PROCESS]"
                         }
                     }
                 }
@@ -998,52 +833,72 @@
         },
         "performance": {
             "type": "object",
-            "description": "Performance optimization strategies",
+            "description": "Performance optimization strategies and monitoring for state management",
+            "required": [
+                "optimizationStrategies",
+                "monitoring",
+                "benchmarks"
+            ],
             "properties": {
-                "optimization": {
+                "optimizationStrategies": {
                     "type": "object",
+                    "description": "Strategies used to optimize state management performance",
                     "properties": {
-                        "memoization": {
+                        "renderOptimization": {
                             "type": "object",
+                            "description": "Strategies to optimize rendering performance",
                             "properties": {
-                                "selectors": {
-                                    "type": "boolean"
-                                },
-                                "components": {
-                                    "type": "boolean"
-                                },
-                                "computedValues": {
-                                    "type": "boolean"
-                                }
-                            }
-                        },
-                        "bundleSplitting": {
-                            "type": "object",
-                            "properties": {
-                                "enabled": {
-                                    "type": "boolean"
-                                },
-                                "strategy": {
+                                "memoization": {
                                     "type": "string",
-                                    "enum": [
-                                        "route-based",
-                                        "feature-based",
-                                        "library-based"
-                                    ]
+                                    "description": "Memoization strategies used",
+                                    "default": "[MEMOIZATION_STRATEGY]"
+                                },
+                                "selectorOptimization": {
+                                    "type": "string",
+                                    "description": "How selectors are optimized",
+                                    "default": "[SELECTOR_OPTIMIZATION]"
+                                },
+                                "componentOptimization": {
+                                    "type": "string",
+                                    "description": "Component-level optimization strategies",
+                                    "default": "[COMPONENT_OPTIMIZATION]"
                                 }
                             }
                         },
-                        "lazyLoading": {
+                        "bundleOptimization": {
                             "type": "object",
+                            "description": "Bundle size and loading optimization",
                             "properties": {
-                                "stores": {
-                                    "type": "boolean"
+                                "codeSplitting": {
+                                    "type": "string",
+                                    "description": "Code splitting strategy for state management",
+                                    "default": "[CODE_SPLITTING_STRATEGY]"
                                 },
-                                "reducers": {
-                                    "type": "boolean"
+                                "lazyLoading": {
+                                    "type": "string",
+                                    "description": "Lazy loading approach for state modules",
+                                    "default": "[LAZY_LOADING_APPROACH]"
                                 },
-                                "middleware": {
-                                    "type": "boolean"
+                                "treeshaking": {
+                                    "type": "string",
+                                    "description": "Tree shaking optimization for state libraries",
+                                    "default": "[TREESHAKING_OPTIMIZATION]"
+                                }
+                            }
+                        },
+                        "memoryOptimization": {
+                            "type": "object",
+                            "description": "Memory usage optimization strategies",
+                            "properties": {
+                                "stateCleanup": {
+                                    "type": "string",
+                                    "description": "How unused state is cleaned up",
+                                    "default": "[STATE_CLEANUP_STRATEGY]"
+                                },
+                                "memoryLeakPrevention": {
+                                    "type": "string",
+                                    "description": "Strategies to prevent memory leaks",
+                                    "default": "[MEMORY_LEAK_PREVENTION]"
                                 }
                             }
                         }
@@ -1051,39 +906,60 @@
                 },
                 "monitoring": {
                     "type": "object",
+                    "description": "Performance monitoring and measurement strategies",
                     "properties": {
                         "metrics": {
                             "type": "array",
+                            "description": "Key performance metrics tracked",
                             "items": {
                                 "type": "string",
-                                "enum": [
-                                    "state-size",
-                                    "update-frequency",
-                                    "render-count",
-                                    "memory-usage",
-                                    "cache-hit-rate"
-                                ]
+                                "default": "[PERFORMANCE_METRIC]"
                             }
                         },
                         "tools": {
                             "type": "array",
+                            "description": "Tools used for performance monitoring",
                             "items": {
-                                "type": "string"
+                                "type": "string",
+                                "default": "[MONITORING_TOOL]"
                             }
                         },
-                        "thresholds": {
+                        "alerting": {
+                            "type": "string",
+                            "description": "Performance alerting strategy",
+                            "default": "[ALERTING_STRATEGY]"
+                        }
+                    }
+                },
+                "benchmarks": {
+                    "type": "object",
+                    "description": "Performance benchmarks and targets",
+                    "properties": {
+                        "targets": {
                             "type": "object",
+                            "description": "Performance targets and thresholds",
                             "properties": {
-                                "maxStateSize": {
-                                    "type": "number"
+                                "renderTime": {
+                                    "type": "string",
+                                    "description": "Target render time",
+                                    "default": "[RENDER_TIME_TARGET]"
                                 },
-                                "maxRenderTime": {
-                                    "type": "number"
+                                "stateSize": {
+                                    "type": "string",
+                                    "description": "Maximum state size target",
+                                    "default": "[STATE_SIZE_TARGET]"
                                 },
-                                "maxMemoryUsage": {
-                                    "type": "number"
+                                "memoryUsage": {
+                                    "type": "string",
+                                    "description": "Memory usage target",
+                                    "default": "[MEMORY_USAGE_TARGET]"
                                 }
                             }
+                        },
+                        "testingApproach": {
+                            "type": "string",
+                            "description": "How performance is tested",
+                            "default": "[PERFORMANCE_TESTING_APPROACH]"
                         }
                     }
                 }
@@ -1091,128 +967,93 @@
         },
         "testing": {
             "type": "object",
-            "description": "State management testing strategies",
+            "description": "Testing strategies and approaches for state management",
+            "required": [
+                "testingStrategy",
+                "testTypes",
+                "tools"
+            ],
             "properties": {
-                "strategies": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "enum": [
-                            "unit-tests",
-                            "integration-tests",
-                            "e2e-tests",
-                            "property-tests",
-                            "snapshot-tests"
-                        ]
-                    }
-                },
-                "tools": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "coverage": {
+                "testingStrategy": {
                     "type": "object",
+                    "description": "Overall testing strategy for state management",
                     "properties": {
-                        "target": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 100
+                        "approach": {
+                            "type": "string",
+                            "description": "Primary testing approach",
+                            "default": "[TESTING_APPROACH]"
                         },
-                        "areas": {
-                            "type": "array",
-                            "items": {
-                                "type": "string",
-                                "enum": [
-                                    "reducers",
-                                    "actions",
-                                    "selectors",
-                                    "side-effects",
-                                    "components"
-                                ]
-                            }
+                        "coverage": {
+                            "type": "string",
+                            "description": "Testing coverage strategy",
+                            "default": "[COVERAGE_STRATEGY]"
+                        },
+                        "automation": {
+                            "type": "string",
+                            "description": "Test automation approach",
+                            "default": "[AUTOMATION_APPROACH]"
                         }
                     }
                 },
-                "mocking": {
-                    "type": "object",
-                    "properties": {
-                        "serverState": {
-                            "type": "boolean"
-                        },
-                        "localStorage": {
-                            "type": "boolean"
-                        },
-                        "websockets": {
-                            "type": "boolean"
-                        }
-                    }
-                }
-            }
-        },
-        "migration": {
-            "type": "object",
-            "description": "Migration strategies and compatibility",
-            "properties": {
-                "fromLibrary": {
-                    "type": "string"
-                },
-                "toLibrary": {
-                    "type": "string"
-                },
-                "strategy": {
-                    "type": "string",
-                    "enum": [
-                        "big-bang",
-                        "gradual",
-                        "parallel",
-                        "feature-flag"
-                    ]
-                },
-                "phases": {
+                "testTypes": {
                     "type": "array",
+                    "description": "Types of tests implemented for state management",
                     "items": {
                         "type": "object",
                         "required": [
-                            "name",
-                            "description"
+                            "testType",
+                            "scope",
+                            "tools"
                         ],
                         "properties": {
-                            "name": {
-                                "type": "string"
+                            "testType": {
+                                "type": "string",
+                                "description": "Type of test",
+                                "default": "[TEST_TYPE]",
+                                "examples": [
+                                    "[UNIT_TESTS]",
+                                    "[INTEGRATION_TESTS]",
+                                    "[E2E_TESTS]",
+                                    "[PERFORMANCE_TESTS]",
+                                    "[SNAPSHOT_TESTS]"
+                                ]
                             },
-                            "description": {
-                                "type": "string"
+                            "scope": {
+                                "type": "string",
+                                "description": "What this test type covers",
+                                "default": "[TEST_SCOPE]"
                             },
-                            "duration": {
-                                "type": "string"
-                            },
-                            "risks": {
+                            "tools": {
                                 "type": "array",
+                                "description": "Tools used for this test type",
                                 "items": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "default": "[TEST_TOOL]"
                                 }
-                            },
-                            "rollback": {
-                                "type": "string"
                             }
                         }
                     }
                 },
-                "compatibility": {
+                "tools": {
                     "type": "object",
+                    "description": "Testing tools and frameworks used",
                     "properties": {
-                        "coexistence": {
-                            "type": "boolean"
+                        "testingFramework": {
+                            "type": "string",
+                            "description": "Primary testing framework",
+                            "default": "[TESTING_FRAMEWORK]"
                         },
-                        "dataTransformation": {
-                            "type": "boolean"
+                        "mockingLibrary": {
+                            "type": "string",
+                            "description": "Library used for mocking",
+                            "default": "[MOCKING_LIBRARY]"
                         },
-                        "apiChanges": {
+                        "testUtilities": {
                             "type": "array",
+                            "description": "Additional testing utilities",
                             "items": {
-                                "type": "string"
+                                "type": "string",
+                                "default": "[TEST_UTILITY]"
                             }
                         }
                     }
@@ -1221,197 +1062,89 @@
         },
         "documentation": {
             "type": "object",
-            "description": "State management documentation and guidelines",
+            "description": "Documentation strategy and resources for state management",
+            "required": [
+                "documentationStrategy",
+                "guidelines",
+                "resources"
+            ],
             "properties": {
-                "guidelines": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "required": [
-                            "category",
-                            "rules"
-                        ],
-                        "properties": {
-                            "category": {
+                "documentationStrategy": {
+                    "type": "object",
+                    "description": "Overall documentation strategy",
+                    "properties": {
+                        "approach": {
+                            "type": "string",
+                            "description": "Documentation approach",
+                            "default": "[DOCUMENTATION_APPROACH]"
+                        },
+                        "maintenance": {
+                            "type": "string",
+                            "description": "How documentation is maintained",
+                            "default": "[DOCUMENTATION_MAINTENANCE]"
+                        },
+                        "audience": {
+                            "type": "array",
+                            "description": "Target audience for documentation",
+                            "items": {
                                 "type": "string",
-                                "enum": [
-                                    "naming",
-                                    "structure",
-                                    "performance",
-                                    "testing",
-                                    "debugging"
-                                ]
-                            },
-                            "rules": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                }
+                                "default": "[DOCUMENTATION_AUDIENCE]"
                             }
                         }
                     }
                 },
-                "examples": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "required": [
-                            "name",
-                            "description",
-                            "code"
-                        ],
-                        "properties": {
-                            "name": {
-                                "type": "string"
-                            },
-                            "description": {
-                                "type": "string"
-                            },
-                            "code": {
-                                "type": "string"
-                            },
-                            "framework": {
-                                "type": "string"
+                "guidelines": {
+                    "type": "object",
+                    "description": "Guidelines and best practices documentation",
+                    "properties": {
+                        "codingStandards": {
+                            "type": "string",
+                            "description": "Coding standards for state management",
+                            "default": "[CODING_STANDARDS]"
+                        },
+                        "bestPractices": {
+                            "type": "array",
+                            "description": "Best practices documentation",
+                            "items": {
+                                "type": "string",
+                                "default": "[BEST_PRACTICE]"
                             }
+                        },
+                        "troubleshooting": {
+                            "type": "string",
+                            "description": "Troubleshooting guide approach",
+                            "default": "[TROUBLESHOOTING_APPROACH]"
                         }
                     }
                 },
-                "troubleshooting": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "required": [
-                            "problem",
-                            "solution"
-                        ],
-                        "properties": {
-                            "problem": {
-                                "type": "string"
-                            },
-                            "symptoms": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                }
-                            },
-                            "solution": {
-                                "type": "string"
-                            },
-                            "prevention": {
-                                "type": "string"
+                "resources": {
+                    "type": "object",
+                    "description": "Documentation resources and references",
+                    "properties": {
+                        "internalDocs": {
+                            "type": "array",
+                            "description": "Internal documentation resources",
+                            "items": {
+                                "type": "string",
+                                "default": "[INTERNAL_DOC_RESOURCE]"
                             }
+                        },
+                        "externalReferences": {
+                            "type": "array",
+                            "description": "External references and resources",
+                            "items": {
+                                "type": "string",
+                                "default": "[EXTERNAL_REFERENCE]"
+                            }
+                        },
+                        "examples": {
+                            "type": "string",
+                            "description": "How examples are provided and maintained",
+                            "default": "[EXAMPLES_APPROACH]"
                         }
                     }
                 }
             }
         }
-    },
-    "examples": [
-        {
-            "metadata": {
-                "name": "E-commerce App State Management",
-                "version": "2.1.0",
-                "framework": "react",
-                "lastUpdated": "2025-01-15T10:30:00Z",
-                "description": "State management for modern e-commerce application"
-            },
-            "architecture": {
-                "strategy": "hybrid",
-                "patterns": [
-                    "redux",
-                    "atomic",
-                    "reactive"
-                ],
-                "principles": [
-                    "single-source-of-truth",
-                    "immutable-updates",
-                    "performance-first"
-                ],
-                "dataFlow": "unidirectional"
-            },
-            "stateTypes": {
-                "clientState": {
-                    "local": [
-                        {
-                            "name": "searchFilters",
-                            "component": "ProductSearch",
-                            "type": "ui-state",
-                            "persistence": "session",
-                            "scope": "feature"
-                        }
-                    ],
-                    "global": [
-                        {
-                            "name": "userSession",
-                            "type": "user-session",
-                            "library": "zustand",
-                            "persistence": {
-                                "enabled": true,
-                                "storage": "localStorage",
-                                "ttl": 86400
-                            }
-                        }
-                    ]
-                },
-                "serverState": {
-                    "queries": [
-                        {
-                            "name": "products",
-                            "endpoint": "/api/products",
-                            "method": "GET",
-                            "caching": {
-                                "strategy": "stale-while-revalidate",
-                                "ttl": 300,
-                                "background-refetch": true
-                            }
-                        }
-                    ],
-                    "mutations": [
-                        {
-                            "name": "addToCart",
-                            "endpoint": "/api/cart",
-                            "method": "POST",
-                            "invalidates": [
-                                "cart",
-                                "products"
-                            ],
-                            "optimisticUpdate": {
-                                "enabled": true,
-                                "rollback": true
-                            }
-                        }
-                    ]
-                }
-            },
-            "libraries": {
-                "primary": [
-                    {
-                        "name": "zustand",
-                        "version": "4.5.0",
-                        "purpose": "global-state",
-                        "devtools": true
-                    },
-                    {
-                        "name": "tanstack-query",
-                        "version": "5.0.0",
-                        "purpose": "server-state",
-                        "devtools": true
-                    }
-                ]
-            },
-            "performance": {
-                "optimization": {
-                    "memoization": {
-                        "selectors": true,
-                        "components": true,
-                        "computedValues": true
-                    },
-                    "bundleSplitting": {
-                        "enabled": true,
-                        "strategy": "feature-based"
-                    }
-                }
-            }
-        }
-    ]
+    }
 }

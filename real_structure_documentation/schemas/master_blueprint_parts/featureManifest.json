@@ -1,0 +1,929 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$comment": "Playbook: prompt_playbooks/schemas_playbooks/playbook_schema-featureManifest.md",
+    "title": "Feature Manifest Template Schema",
+    "description": "Universal template for documenting feature management strategies across any platform or technology stack. Provides structured placeholders for feature lifecycle, rollout strategies, experimentation, and analytics tracking.",
+    "type": "object",
+    "required": [
+        "metadata",
+        "features",
+        "featureFlags",
+        "rolloutStrategies",
+        "experimentation",
+        "analytics"
+    ],
+    "properties": {
+        "metadata": {
+            "type": "object",
+            "description": "Feature manifest identification and context information",
+            "required": [
+                "manifestName",
+                "version",
+                "lastUpdated",
+                "productContext"
+            ],
+            "properties": {
+                "manifestName": {
+                    "type": "string",
+                    "description": "Descriptive name for this feature manifest",
+                    "default": "[FEATURE_MANIFEST_NAME]",
+                    "examples": [
+                        "[PRODUCT_NAME] Feature Catalog",
+                        "[APPLICATION_TYPE] Feature Management",
+                        "[PROJECT_NAME] Feature Manifest"
+                    ]
+                },
+                "version": {
+                    "type": "string",
+                    "pattern": "^\\d+\\.\\d+\\.\\d+$",
+                    "description": "Semantic version of this feature manifest",
+                    "default": "[MANIFEST_VERSION]"
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "ISO 8601 timestamp of last manifest update",
+                    "default": "[LAST_UPDATE_TIMESTAMP]"
+                },
+                "productContext": {
+                    "type": "object",
+                    "description": "Product context and scope information",
+                    "required": [
+                        "productName",
+                        "productVersion",
+                        "targetPlatform"
+                    ],
+                    "properties": {
+                        "productName": {
+                            "type": "string",
+                            "description": "Name of the product or application",
+                            "default": "[PRODUCT_NAME]"
+                        },
+                        "productVersion": {
+                            "type": "string",
+                            "description": "Version of the product",
+                            "default": "[PRODUCT_VERSION]"
+                        },
+                        "targetPlatform": {
+                            "type": "array",
+                            "description": "Target platforms for features",
+                            "items": {
+                                "type": "string",
+                                "default": "[TARGET_PLATFORM]",
+                                "examples": [
+                                    "[WEB_PLATFORM]",
+                                    "[MOBILE_PLATFORM]",
+                                    "[DESKTOP_PLATFORM]",
+                                    "[API_PLATFORM]",
+                                    "[MULTI_PLATFORM]"
+                                ]
+                            }
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "Detailed description of product and feature scope",
+                            "default": "[PRODUCT_DESCRIPTION]"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}   
+     "teamContext": {
+    "type": "object",
+    "description": "Team structure and ownership information",
+    "properties": {
+        "productManager": {
+            "type": "string",
+            "description": "Product manager responsible for features",
+            "default": "[PRODUCT_MANAGER_NAME]"
+        },
+        "techLead": {
+            "type": "string",
+            "description": "Technical lead for feature development",
+            "default": "[TECH_LEAD_NAME]"
+        },
+        "developmentTeam": {
+            "type": "string",
+            "description": "Development team responsible for implementation",
+            "default": "[DEVELOPMENT_TEAM_NAME]"
+        },
+        "stakeholders": {
+            "type": "array",
+            "description": "Key stakeholders involved in feature decisions",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "default": "[STAKEHOLDER_NAME]"
+                    },
+                    "role": {
+                        "type": "string",
+                        "default": "[STAKEHOLDER_ROLE]"
+                    },
+                    "responsibilities": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "default": "[RESPONSIBILITY]"
+                        }
+                    }
+                }
+            }
+        }
+    }
+},
+"features": {
+    "type": "array",
+    "description": "Comprehensive catalog of features with lifecycle management",
+    "items": {
+        "type": "object",
+        "required": [
+            "featureId",
+            "featureName",
+            "featureDescription",
+            "featureStatus",
+            "featureLifecycle"
+        ],
+        "properties": {
+            "featureId": {
+                "type": "string",
+                "description": "Unique identifier for the feature",
+                "default": "[FEATURE_ID]",
+                "examples": [
+                    "[FEAT-001]",
+                    "[FEATURE-1001]",
+                    "[UX-2045]",
+                    "[API-3012]"
+                ]
+            },
+            "featureName": {
+                "type": "string",
+                "description": "Human-readable name for the feature",
+                "default": "[FEATURE_NAME]",
+                "examples": [
+                    "[ADVANCED_SEARCH_FEATURE]",
+                    "[DARK_MODE_FEATURE]",
+                    "[REAL_TIME_NOTIFICATIONS]",
+                    "[USER_DASHBOARD_V2]"
+                ]
+            },
+            "featureDescription": {
+                "type": "string",
+                "description": "Detailed description of feature purpose and functionality",
+                "default": "[FEATURE_DESCRIPTION]"
+            },
+            "featureCategory": {
+                "type": "string",
+                "description": "Category classification for the feature",
+                "default": "[FEATURE_CATEGORY]",
+                "examples": [
+                    "[CORE_FEATURE]",
+                    "[ENHANCEMENT_FEATURE]",
+                    "[EXPERIMENTAL_FEATURE]",
+                    "[INTEGRATION_FEATURE]",
+                    "[SECURITY_FEATURE]",
+                    "[PERFORMANCE_FEATURE]",
+                    "[UI_UX_FEATURE]"
+                ]
+            },
+            "featurePriority": {
+                "type": "string",
+                "description": "Business priority level of the feature",
+                "default": "[FEATURE_PRIORITY]",
+                "examples": [
+                    "[CRITICAL_PRIORITY]",
+                    "[HIGH_PRIORITY]",
+                    "[MEDIUM_PRIORITY]",
+                    "[LOW_PRIORITY]"
+                ]
+            },
+            "featureStatus": {
+                "type": "string",
+                "description": "Current development status of the feature",
+                "default": "[FEATURE_STATUS]",
+                "examples": [
+                    "[PLANNED_STATUS]",
+                    "[IN_DEVELOPMENT_STATUS]",
+                    "[TESTING_STATUS]",
+                    "[STAGED_STATUS]",
+                    "[RELEASED_STATUS]",
+                    "[DEPRECATED_STATUS]",
+                    "[REMOVED_STATUS]"
+                ]
+            }
+        }
+    }
+}     
+               "featureLifecycle": {
+    "type": "object",
+    "description": "Feature lifecycle management and tracking",
+    "required": [
+        "currentStage"
+    ],
+    "properties": {
+        "currentStage": {
+            "type": "string",
+            "description": "Current stage in the feature lifecycle",
+            "default": "[LIFECYCLE_STAGE]",
+            "examples": [
+                "[IDEATION_STAGE]",
+                "[DISCOVERY_STAGE]",
+                "[DEVELOPMENT_STAGE]",
+                "[ALPHA_STAGE]",
+                "[BETA_STAGE]",
+                "[GA_STAGE]",
+                "[MAINTENANCE_STAGE]",
+                "[SUNSET_STAGE]"
+            ]
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When the feature was first created",
+            "default": "[FEATURE_CREATION_DATE]"
+        },
+        "targetReleaseDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Planned release date for the feature",
+            "default": "[TARGET_RELEASE_DATE]"
+        },
+        "actualReleaseDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Actual date when feature was released",
+            "default": "[ACTUAL_RELEASE_DATE]"
+        },
+        "sunsetDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Planned date for feature deprecation or removal",
+            "default": "[SUNSET_DATE]"
+        },
+        "milestones": {
+            "type": "array",
+            "description": "Key milestones in feature development",
+            "items": {
+                "type": "object",
+                "required": [
+                    "milestoneName",
+                    "milestoneDate",
+                    "milestoneStatus"
+                ],
+                "properties": {
+                    "milestoneName": {
+                        "type": "string",
+                        "description": "Name of the milestone",
+                        "default": "[MILESTONE_NAME]"
+                    },
+                    "milestoneDate": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Target or actual date for milestone",
+                        "default": "[MILESTONE_DATE]"
+                    },
+                    "milestoneStatus": {
+                        "type": "string",
+                        "description": "Current status of the milestone",
+                        "default": "[MILESTONE_STATUS]",
+                        "examples": [
+                            "[COMPLETED_STATUS]",
+                            "[IN_PROGRESS_STATUS]",
+                            "[PLANNED_STATUS]",
+                            "[BLOCKED_STATUS]"
+                        ]
+                    },
+                    "milestoneDescription": {
+                        "type": "string",
+                        "description": "Description of milestone deliverables",
+                        "default": "[MILESTONE_DESCRIPTION]"
+                    }
+                }
+            }
+        }
+    }
+},
+"businessValue": {
+    "type": "object",
+    "description": "Business impact and value proposition of the feature",
+    "properties": {
+        "objectives": {
+            "type": "array",
+            "description": "Business objectives this feature aims to achieve",
+            "items": {
+                "type": "string",
+                "default": "[BUSINESS_OBJECTIVE]"
+            }
+        },
+        "successMetrics": {
+            "type": "array",
+            "description": "Metrics used to measure feature success",
+            "items": {
+                "type": "object",
+                "required": [
+                    "metricName",
+                    "targetValue"
+                ],
+                "properties": {
+                    "metricName": {
+                        "type": "string",
+                        "description": "Name of the success metric",
+                        "default": "[METRIC_NAME]"
+                    },
+                    "targetValue": {
+                        "type": "string",
+                        "description": "Target value for the metric",
+                        "default": "[TARGET_VALUE]"
+                    },
+                    "currentValue": {
+                        "type": "string",
+                        "description": "Current value of the metric",
+                        "default": "[CURRENT_VALUE]"
+                    },
+                    "measurementUnit": {
+                        "type": "string",
+                        "description": "Unit of measurement for the metric",
+                        "default": "[MEASUREMENT_UNIT]"
+                    }
+                }
+            }
+        },
+        "impactLevel": {
+            "type": "string",
+            "description": "Expected business impact level",
+            "default": "[IMPACT_LEVEL]",
+            "examples": [
+                "[HIGH_IMPACT]",
+                "[MEDIUM_IMPACT]",
+                "[LOW_IMPACT]"
+            ]
+        },
+        "effortEstimation": {
+            "type": "object",
+            "description": "Effort required to implement the feature",
+            "properties": {
+                "storyPoints": {
+                    "type": "string",
+                    "description": "Story points estimation",
+                    "default": "[STORY_POINTS]"
+                },
+                "estimatedHours": {
+                    "type": "string",
+                    "description": "Estimated development hours",
+                    "default": "[ESTIMATED_HOURS]"
+                },
+                "complexityLevel": {
+                    "type": "string",
+                    "description": "Technical complexity level",
+                    "default": "[COMPLEXITY_LEVEL]",
+                    "examples": [
+                        "[LOW_COMPLEXITY]",
+                        "[MEDIUM_COMPLEXITY]",
+                        "[HIGH_COMPLEXITY]",
+                        "[VERY_HIGH_COMPLEXITY]"
+                    ]
+                }
+            }
+        }
+    }
+}
+},
+"featureFlags": {
+"type": "array",
+"description": "Feature flag definitions and management configuration",
+"items": {
+    "type": "object",
+    "required": [
+        "flagKey",
+        "flagName",
+        "flagType",
+        "defaultValue",
+        "flagCategory"
+    ],
+    "properties": {
+        "flagKey": {
+            "type": "string",
+            "description": "Unique key identifier for the feature flag",
+            "default": "[FLAG_KEY]",
+            "examples": [
+                "[new_checkout_flow]",
+                "[dark_mode_enabled]",
+                "[advanced_search_v2]",
+                "[experimental_ui]"
+            ]
+        },
+        "flagName": {
+            "type": "string",
+            "description": "Human-readable name for the feature flag",
+            "default": "[FLAG_NAME]"
+        },
+        "flagDescription": {
+            "type": "string",
+            "description": "Description of flag purpose and behavior",
+            "default": "[FLAG_DESCRIPTION]"
+        },
+        "flagType": {
+            "type": "string",
+            "description": "Data type of the flag value",
+            "default": "[FLAG_TYPE]",
+            "examples": [
+                "[BOOLEAN_TYPE]",
+                "[STRING_TYPE]",
+                "[NUMBER_TYPE]",
+                "[JSON_TYPE]"
+            ]
+        },
+        "defaultValue": {
+            "description": "Default value when flag is not overridden",
+            "default": "[DEFAULT_VALUE]"
+        },
+        "flagCategory": {
+            "type": "string",
+            "description": "Category of feature flag for organization",
+            "default": "[FLAG_CATEGORY]",
+            "examples": [
+                "[RELEASE_FLAG]",
+                "[EXPERIMENT_FLAG]",
+                "[OPERATIONAL_FLAG]",
+                "[PERMISSION_FLAG]",
+                "[KILL_SWITCH_FLAG]"
+            ]
+        },
+        "flagLifecycle": {
+            "type": "object",
+            "description": "Lifecycle management for the feature flag",
+            "properties": {
+                "stage": {
+                    "type": "string",
+                    "description": "Current lifecycle stage of the flag",
+                    "default": "[FLAG_LIFECYCLE_STAGE]",
+                    "examples": [
+                        "[TEMPORARY_FLAG]",
+                        "[PERMANENT_FLAG]",
+                        "[DEPRECATED_FLAG]"
+                    ]
+                },
+                "creationDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "When the flag was created",
+                    "default": "[FLAG_CREATION_DATE]"
+                },
+                "cleanupDate": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Planned date for flag removal",
+                    "default": "[FLAG_CLEANUP_DATE]"
+                },
+                "owner": {
+                    "type": "string",
+                    "description": "Person responsible for the flag",
+                    "default": "[FLAG_OWNER]"
+                }
+            }
+        },
+        "environments": {
+            "type": "object",
+            "description": "Environment-specific flag configurations",
+            "properties": {
+                "development": {
+                    "type": "object",
+                    "description": "Development environment configuration",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "description": "Whether flag is enabled in development",
+                            "default": "[DEV_ENABLED]"
+                        },
+                        "value": {
+                            "description": "Flag value in development environment",
+                            "default": "[DEV_VALUE]"
+                        },
+                        "rolloutPercentage": {
+                            "type": "string",
+                            "description": "Percentage of users who see the flag",
+                            "default": "[DEV_ROLLOUT_PERCENTAGE]"
+                        }
+                    }
+                },
+                "staging": {
+                    "type": "object",
+                    "description": "Staging environment configuration",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "description": "Whether flag is enabled in staging",
+                            "default": "[STAGING_ENABLED]"
+                        },
+                        "value": {
+                            "description": "Flag value in staging environment",
+                            "default": "[STAGING_VALUE]"
+                        },
+                        "rolloutPercentage": {
+                            "type": "string",
+                            "description": "Percentage of users who see the flag",
+                            "default": "[STAGING_ROLLOUT_PERCENTAGE]"
+                        }
+                    }
+                },
+                "production": {
+                    "type": "object",
+                    "description": "Production environment configuration",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "description": "Whether flag is enabled in production",
+                            "default": "[PROD_ENABLED]"
+                        },
+                        "value": {
+                            "description": "Flag value in production environment",
+                            "default": "[PROD_VALUE]"
+                        },
+                        "rolloutPercentage": {
+                            "type": "string",
+                            "description": "Percentage of users who see the flag",
+                            "default": "[PROD_ROLLOUT_PERCENTAGE]"
+                        }
+                    }
+                }
+            }
+        },
+        "targeting": {
+            "type": "object",
+            "description": "User targeting and segmentation rules",
+            "properties": {
+                "userSegments": {
+                    "type": "array",
+                    "description": "User segments that should see the flag",
+                    "items": {
+                        "type": "string",
+                        "default": "[USER_SEGMENT]"
+                    }
+                },
+                "targetingRules": {
+                    "type": "array",
+                    "description": "Rules for determining flag visibility",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "condition": {
+                                "type": "string",
+                                "description": "Condition for rule application",
+                                "default": "[TARGETING_CONDITION]"
+                            },
+                            "value": {
+                                "description": "Value to return when condition is met",
+                                "default": "[TARGETING_VALUE]"
+                            },
+                            "percentage": {
+                                "type": "string",
+                                "description": "Percentage of matching users",
+                                "default": "[TARGETING_PERCENTAGE]"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+}   
+     "rolloutStrategies": {
+"type": "array",
+"description": "Deployment and rollout strategies for features",
+"items": {
+    "type": "object",
+    "required": [
+        "strategyName",
+        "strategyType",
+        "configuration"
+    ],
+    "properties": {
+        "strategyName": {
+            "type": "string",
+            "description": "Name of the rollout strategy",
+            "default": "[ROLLOUT_STRATEGY_NAME]"
+        },
+        "strategyType": {
+            "type": "string",
+            "description": "Type of rollout strategy",
+            "default": "[ROLLOUT_STRATEGY_TYPE]",
+            "examples": [
+                "[CANARY_RELEASE]",
+                "[BLUE_GREEN_DEPLOYMENT]",
+                "[GRADUAL_ROLLOUT]",
+                "[BIG_BANG_DEPLOYMENT]",
+                "[FEATURE_TOGGLE_ROLLOUT]"
+            ]
+        },
+        "configuration": {
+            "type": "object",
+            "description": "Configuration parameters for the rollout strategy",
+            "properties": {
+                "phases": {
+                    "type": "array",
+                    "description": "Phases of the rollout strategy",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "phaseName": {
+                                "type": "string",
+                                "description": "Name of the rollout phase",
+                                "default": "[PHASE_NAME]"
+                            },
+                            "percentage": {
+                                "type": "string",
+                                "description": "Percentage of users in this phase",
+                                "default": "[PHASE_PERCENTAGE]"
+                            },
+                            "duration": {
+                                "type": "string",
+                                "description": "Duration of this phase",
+                                "default": "[PHASE_DURATION]"
+                            },
+                            "successCriteria": {
+                                "type": "array",
+                                "description": "Criteria for phase success",
+                                "items": {
+                                    "type": "string",
+                                    "default": "[SUCCESS_CRITERION]"
+                                }
+                            }
+                        }
+                    }
+                },
+                "rollbackTriggers": {
+                    "type": "array",
+                    "description": "Conditions that trigger automatic rollback",
+                    "items": {
+                        "type": "string",
+                        "default": "[ROLLBACK_TRIGGER]"
+                    }
+                },
+                "monitoringMetrics": {
+                    "type": "array",
+                    "description": "Metrics monitored during rollout",
+                    "items": {
+                        "type": "string",
+                        "default": "[MONITORING_METRIC]"
+                    }
+                }
+            }
+        }
+    }
+}
+},
+"experimentation": {
+"type": "object",
+"description": "A/B testing and experimentation framework",
+"properties": {
+    "experiments": {
+        "type": "array",
+        "description": "Active and completed experiments",
+        "items": {
+            "type": "object",
+            "required": [
+                "experimentId",
+                "experimentName",
+                "hypothesis",
+                "status"
+            ],
+            "properties": {
+                "experimentId": {
+                    "type": "string",
+                    "description": "Unique identifier for the experiment",
+                    "default": "[EXPERIMENT_ID]"
+                },
+                "experimentName": {
+                    "type": "string",
+                    "description": "Human-readable name for the experiment",
+                    "default": "[EXPERIMENT_NAME]"
+                },
+                "hypothesis": {
+                    "type": "string",
+                    "description": "Hypothesis being tested",
+                    "default": "[EXPERIMENT_HYPOTHESIS]"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Current status of the experiment",
+                    "default": "[EXPERIMENT_STATUS]",
+                    "examples": [
+                        "[PLANNED_EXPERIMENT]",
+                        "[RUNNING_EXPERIMENT]",
+                        "[COMPLETED_EXPERIMENT]",
+                        "[CANCELLED_EXPERIMENT]"
+                    ]
+                },
+                "variants": {
+                    "type": "array",
+                    "description": "Different variants being tested",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "variantName": {
+                                "type": "string",
+                                "description": "Name of the variant",
+                                "default": "[VARIANT_NAME]"
+                            },
+                            "variantDescription": {
+                                "type": "string",
+                                "description": "Description of the variant",
+                                "default": "[VARIANT_DESCRIPTION]"
+                            },
+                            "trafficPercentage": {
+                                "type": "string",
+                                "description": "Percentage of traffic for this variant",
+                                "default": "[VARIANT_PERCENTAGE]"
+                            },
+                            "associatedFlags": {
+                                "type": "array",
+                                "description": "Feature flags associated with this variant",
+                                "items": {
+                                    "type": "string",
+                                    "default": "[ASSOCIATED_FLAG]"
+                                }
+                            }
+                        }
+                    }
+                },
+                "metrics": {
+                    "type": "array",
+                    "description": "Metrics being measured in the experiment",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "metricName": {
+                                "type": "string",
+                                "description": "Name of the metric",
+                                "default": "[EXPERIMENT_METRIC_NAME]"
+                            },
+                            "metricType": {
+                                "type": "string",
+                                "description": "Type of metric",
+                                "default": "[EXPERIMENT_METRIC_TYPE]"
+                            },
+                            "targetImprovement": {
+                                "type": "string",
+                                "description": "Expected improvement target",
+                                "default": "[TARGET_IMPROVEMENT]"
+                            }
+                        }
+                    }
+                },
+                "duration": {
+                    "type": "object",
+                    "description": "Experiment duration and timeline",
+                    "properties": {
+                        "startDate": {
+                            "type": "string",
+                            "format": "date",
+                            "description": "Experiment start date",
+                            "default": "[EXPERIMENT_START_DATE]"
+                        },
+                        "endDate": {
+                            "type": "string",
+                            "format": "date",
+                            "description": "Experiment end date",
+                            "default": "[EXPERIMENT_END_DATE]"
+                        },
+                        "minimumSampleSize": {
+                            "type": "string",
+                            "description": "Minimum sample size for statistical significance",
+                            "default": "[MINIMUM_SAMPLE_SIZE]"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+},
+"analytics": {
+"type": "object",
+"description": "Analytics and tracking configuration for features",
+"required": [
+    "trackingStrategy",
+    "metrics"
+],
+"properties": {
+    "trackingStrategy": {
+        "type": "object",
+        "description": "Overall analytics tracking strategy",
+        "properties": {
+            "trackingApproach": {
+                "type": "string",
+                "description": "Primary approach to analytics tracking",
+                "default": "[TRACKING_APPROACH]"
+            },
+            "trackingTools": {
+                "type": "array",
+                "description": "Tools used for analytics tracking",
+                "items": {
+                    "type": "string",
+                    "default": "[TRACKING_TOOL]"
+                }
+            },
+            "dataGovernance": {
+                "type": "string",
+                "description": "Data governance and privacy approach",
+                "default": "[DATA_GOVERNANCE_APPROACH]"
+            }
+        }
+    },
+    "events": {
+        "type": "array",
+        "description": "Events tracked for feature analytics",
+        "items": {
+            "type": "object",
+            "required": [
+                "eventName",
+                "eventDescription"
+            ],
+            "properties": {
+                "eventName": {
+                    "type": "string",
+                    "description": "Name of the tracked event",
+                    "default": "[EVENT_NAME]"
+                },
+                "eventDescription": {
+                    "type": "string",
+                    "description": "Description of what the event represents",
+                    "default": "[EVENT_DESCRIPTION]"
+                },
+                "eventProperties": {
+                    "type": "array",
+                    "description": "Properties captured with the event",
+                    "items": {
+                        "type": "string",
+                        "default": "[EVENT_PROPERTY]"
+                    }
+                }
+            }
+        }
+    },
+    "metrics": {
+        "type": "array",
+        "description": "Key metrics tracked for feature performance",
+        "items": {
+            "type": "object",
+            "required": [
+                "metricName",
+                "metricType"
+            ],
+            "properties": {
+                "metricName": {
+                    "type": "string",
+                    "description": "Name of the metric",
+                    "default": "[ANALYTICS_METRIC_NAME]"
+                },
+                "metricType": {
+                    "type": "string",
+                    "description": "Type of metric",
+                    "default": "[ANALYTICS_METRIC_TYPE]",
+                    "examples": [
+                        "[CONVERSION_METRIC]",
+                        "[ENGAGEMENT_METRIC]",
+                        "[PERFORMANCE_METRIC]",
+                        "[BUSINESS_METRIC]"
+                    ]
+                },
+                "metricDescription": {
+                    "type": "string",
+                    "description": "Description of what the metric measures",
+                    "default": "[METRIC_DESCRIPTION]"
+                }
+            }
+        }
+    },
+    "dashboards": {
+        "type": "array",
+        "description": "Analytics dashboards and reporting",
+        "items": {
+            "type": "object",
+            "properties": {
+                "dashboardName": {
+                    "type": "string",
+                    "description": "Name of the dashboard",
+                    "default": "[DASHBOARD_NAME]"
+                },
+                "dashboardUrl": {
+                    "type": "string",
+                    "description": "URL to access the dashboard",
+                    "default": "[DASHBOARD_URL]"
+                },
+                "dashboardPurpose": {
+                    "type": "string",
+                    "description": "Purpose and audience for the dashboard",
+                    "default": "[DASHBOARD_PURPOSE]"
+                }
+            }
+        }
+    }
+}
+}
+}
+}

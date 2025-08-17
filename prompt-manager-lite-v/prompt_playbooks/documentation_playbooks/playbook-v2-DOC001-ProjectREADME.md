@@ -1,59 +1,191 @@
-# Playbook v2: DOC001 - Generación del README del Proyecto
+# Documentation Playbook — DOC001-ProjectREADME
 
-**Objetivo:** Generar un archivo `README.md` completo, profesional y amigable para el desarrollador, extrayendo y formateando información del `master_blueprint.json`.
+**Propósito:** Crear README files comprehensivos siguiendo mejores prácticas de developer onboarding 2025, con clear project understanding, smooth setup experience, y comprehensive documentation standards.
 
-**Agente Asignado:** Technical Writer Agent
+**Ubicación:** `docs/DOC001-ProjectREADME.md`
 
-**Principio Fundamental:** Un gran README es la puerta de entrada a tu proyecto. Debe ser acogedor, informativo y accionable.
-
----
-
-## Fase 1: Extracción de Datos del Blueprint
-
-Tu primera directiva es leer y extraer los siguientes objetos y claves del `master_blueprint.json`:
-
-1.  `projectInfo`: (name, slogan, description, logoUrl, license, github.user, github.repo)
-2.  `dependencies`: (frontend, backend, database, devops)
-3.  `deployment`: (prerequisites, buildSteps.installDependencies, run.development)
+**Schema Integration:**
+- **Primary Schema:** `projectInfo.json` - Provides project metadata, description, and basic information
+- **Secondary Schema:** `documentationManifest.json` - Provides documentation structure and organization guidelines
+- **Data Flow:** Template extracts project details, setup instructions, and documentation links from schemas
 
 ---
 
-## Fase 2: Generación del Documento
+## **METODOLOGÍA 2025: README BEST PRACTICES & DEVELOPER ONBOARDING**
 
-Construirás el `README.md` sección por sección, utilizando los datos extraídos.
+### **1. INVESTIGACIÓN PREVIA REQUERIDA**
+- **Developer Onboarding:** Quick start guides, setup automation, clear prerequisites
+- **Documentation Standards:** GitHub README best practices, accessibility, visual hierarchy
+- **Community Engagement:** Contribution guidelines, issue templates, community building
+- **Project Presentation:** Badges, shields, visual elements, professional appearance
+- **User Experience:** Progressive disclosure, scannable content, mobile-friendly design
 
-### 1. Cabecera
+### **2. ESTRUCTURA MODERNA DEL README**
 
--   **Logo:** Inserta la URL de `projectInfo.logoUrl`.
--   **Título:** Usa `projectInfo.name`.
--   **Slogan:** Usa `projectInfo.slogan`.
--   **Badges:** Construye las URLs de los badges usando `projectInfo.github.user` y `projectInfo.github.repo`.
+#### **A. HEADER SECTION (Critical First Impression)**
+```markdown
+<div align="center">
+  <img src="[PROJECT_LOGO_URL]" alt="[PROJECT_NAME] Logo" width="120" height="120">
+  <h1>[PROJECT_NAME]</h1>
+  <p><strong>[PROJECT_TAGLINE]</strong></p>
+  
+  <!-- Status Badges -->
+  <p>
+    <a href="https://github.com/[USER]/[REPO]/actions">
+      <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/[USER]/[REPO]/ci.yml?style=for-the-badge&logo=github">
+    </a>
+    <a href="https://codecov.io/gh/[USER]/[REPO]">
+      <img alt="Code Coverage" src="https://img.shields.io/codecov/c/github/[USER]/[REPO]?style=for-the-badge&logo=codecov">
+    </a>
+  </p>
+  
+  <!-- Quick Links -->
+  <p>
+    <a href="#-quick-start">Quick Start</a> •
+    <a href="#-features">Features</a> •
+    <a href="#-documentation">Documentation</a>
+  </p>
+</div>
+```
 
-### 2. Sobre el Proyecto
+#### **B. QUICK START SECTION (5-Minute Rule)**
+```markdown
+## 🚀 Quick Start
 
--   Pobla esta sección con el contenido de `projectInfo.description`.
+Get up and running in less than 5 minutes:
 
-### 3. Stack Tecnológico
+```bash
+# Clone the repository
+git clone https://github.com/[USER]/[REPO].git
+cd [REPO]
 
--   Itera sobre las listas en `dependencies` y crea una lista con viñetas para cada categoría (Frontend, Backend, etc.).
+# Install dependencies
+[INSTALL_COMMAND]
 
-### 4. Primeros Pasos
+# Start development server
+[DEV_START_COMMAND]
 
--   **Prerrequisitos:** Lista los elementos de `deployment.prerequisites`.
--   **Instalación:** Inserta el comando de `deployment.buildSteps.installDependencies` en el bloque de código correspondiente.
+# Open in browser
+open http://localhost:[PORT]
+```
 
-### 5. Uso
+**That's it!** 🎉 You should now have [PROJECT_NAME] running locally.
+```
 
--   Inserta el comando de `deployment.run.development` en el bloque de código.
+#### **C. FEATURES SECTION (Value Proposition)**
+```markdown
+## ✨ Features
 
-### 6. Licencia
+### Core Features
+- **[FEATURE_1]** - [Brief description of value]
+- **[FEATURE_2]** - [Brief description of value]
 
--   Inserta el nombre de la licencia desde `projectInfo.license`.
+### Developer Experience
+- 🔥 **Hot Reload** - Instant feedback during development
+- 📱 **Responsive Design** - Works seamlessly across all devices
+- 🎨 **Modern UI** - Clean, intuitive interface
+- 🔒 **Type Safety** - Full TypeScript support
+```
+
+#### **D. TECHNOLOGY STACK (Technical Overview)**
+```markdown
+## 🛠️ Technology Stack
+
+### Frontend
+- **Framework:** [FRONTEND_FRAMEWORK] [VERSION]
+- **Language:** [LANGUAGE] with [TYPE_SYSTEM]
+- **Styling:** [CSS_FRAMEWORK]
+- **State Management:** [STATE_MANAGEMENT]
+
+### Backend
+- **Runtime:** [BACKEND_RUNTIME] [VERSION]
+- **Framework:** [BACKEND_FRAMEWORK]
+- **Database:** [DATABASE] [VERSION]
+```
 
 ---
 
-## Fase 3: Ensamblaje Final
+## **3. MEJORES PRÁCTICAS 2025**
 
-1.  **Ensamblar:** Combina todas las secciones generadas en un único documento.
-2.  **Validar:** Asegúrate de que todos los placeholders han sido reemplazados y el formato es limpio y consistente.
-3.  **Escribir Archivo:** Escribe el contenido final en el archivo `README.md` en la raíz del proyecto.
+### **🎯 FIRST IMPRESSION (Above the Fold)**
+- **Visual Identity:** Professional logo, clear project name, compelling tagline
+- **Status Indicators:** Build status, coverage, version, license badges
+- **Quick Navigation:** Jump links to key sections
+- **Value Proposition:** Clear benefit statement in first paragraph
+
+### **🎯 DEVELOPER ONBOARDING (5-Minute Rule)**
+- **Prerequisites:** Clear system requirements with version numbers
+- **Quick Start:** Single command block to get running
+- **Verification:** How to confirm successful setup
+- **Next Steps:** Clear path to first meaningful interaction
+
+### **🎯 CONTENT ORGANIZATION**
+- **Progressive Disclosure:** Most important info first, details later
+- **Scannable Format:** Use headers, bullets, tables, code blocks
+- **Visual Hierarchy:** Emojis, formatting, consistent structure
+- **Mobile Friendly:** Readable on all devices
+
+### **🎯 COMMUNITY BUILDING**
+- **Contribution Welcome:** Clear invitation to contribute
+- **Multiple Ways to Help:** Bug reports, features, docs, translations
+- **Recognition:** Contributor acknowledgments, star history
+- **Support Channels:** Multiple ways to get help
+
+---
+
+## **4. HERRAMIENTAS RECOMENDADAS 2025**
+
+### **📊 BADGES & SHIELDS**
+- **Shields.io:** Status badges for build, coverage, version
+- **GitHub Actions:** Automated badge updates
+- **Codecov:** Code coverage visualization
+- **Dependabot:** Dependency status tracking
+
+### **📊 VISUAL ELEMENTS**
+- **Logo Design:** Canva, Figma for professional logos
+- **Screenshots:** CloudApp, CleanShot for high-quality captures
+- **GIFs/Videos:** LICEcap, Kap for demo recordings
+- **Diagrams:** Mermaid, Draw.io for architecture diagrams
+
+### **📊 CONTENT TOOLS**
+- **Markdown Editors:** Typora, Mark Text for WYSIWYG editing
+- **Link Checkers:** markdown-link-check for broken links
+- **Spell Check:** Vale, textlint for content quality
+- **Auto-generation:** readme-md-generator for templates
+
+---
+
+## **5. CHECKLIST DE COMPLETITUD**
+
+### **📋 ESSENTIAL ELEMENTS**
+- [ ] Clear project name and description
+- [ ] Quick start instructions (< 5 minutes)
+- [ ] Installation prerequisites with versions
+- [ ] Basic usage examples
+- [ ] Technology stack overview
+- [ ] License information
+- [ ] Contribution guidelines link
+
+### **📋 PROFESSIONAL POLISH**
+- [ ] Professional logo or visual identity
+- [ ] Status badges (build, coverage, version)
+- [ ] Table of contents for navigation
+- [ ] Code examples with syntax highlighting
+- [ ] Screenshots or demo GIFs
+- [ ] Contributor acknowledgments
+- [ ] Contact/support information
+
+### **📋 DEVELOPER EXPERIENCE**
+- [ ] Single-command setup when possible
+- [ ] Clear error troubleshooting section
+- [ ] Development vs production instructions
+- [ ] Testing instructions
+- [ ] Configuration options documented
+- [ ] API documentation links
+- [ ] Changelog or release notes link
+
+---
+
+**Última actualización:** 2025-01-15  
+**Versión del playbook:** 2.0  
+**Compatibilidad:** GitHub, GitLab, Bitbucket README standards 2025

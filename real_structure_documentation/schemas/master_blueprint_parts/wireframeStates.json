@@ -1,0 +1,1173 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$comment": "Playbook: prompt_playbooks/schemas_playbooks/playbook_schema-wireframeStates.md",
+    "title": "Wireframe States Template Schema",
+    "description": "Universal template for documenting wireframes, UI states, and user flow patterns across any design tool or platform. Provides structured placeholders for screen states, user journeys, interactions, and accessibility considerations.",
+    "type": "object",
+    "required": [
+        "metadata",
+        "designContext",
+        "userFlows",
+        "screens",
+        "stateManagement",
+        "interactions",
+        "accessibility",
+        "testing"
+    ],
+    "properties": {
+        "metadata": {
+            "type": "object",
+            "description": "Wireframe project identification and context information",
+            "required": [
+                "projectName",
+                "version",
+                "designTool",
+                "lastUpdated",
+                "projectContext"
+            ],
+            "properties": {
+                "projectName": {
+                    "type": "string",
+                    "description": "Descriptive name for this wireframe project",
+                    "default": "[WIREFRAME_PROJECT_NAME]",
+                    "examples": [
+                        "[PROJECT_NAME] Wireframes",
+                        "[APPLICATION_TYPE] UI States",
+                        "[FEATURE_NAME] User Flow"
+                    ]
+                },
+                "version": {
+                    "type": "string",
+                    "pattern": "^\\d+\\.\\d+\\.\\d+$",
+                    "description": "Semantic version of this wireframe project",
+                    "default": "[WIREFRAME_VERSION]"
+                },
+                "designTool": {
+                    "type": "string",
+                    "description": "Primary design tool or platform used",
+                    "default": "[DESIGN_TOOL]",
+                    "examples": [
+                        "[FIGMA_TOOL]",
+                        "[SKETCH_TOOL]",
+                        "[ADOBE_XD_TOOL]",
+                        "[AXURE_TOOL]",
+                        "[BALSAMIQ_TOOL]",
+                        "[FRAMER_TOOL]",
+                        "[PAPER_PROTOTYPE]",
+                        "[OTHER_TOOL]"
+                    ]
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "ISO 8601 timestamp of last wireframe update",
+                    "default": "[LAST_UPDATE_TIMESTAMP]"
+                },
+                "projectContext": {
+                    "type": "object",
+                    "description": "Project context and scope information",
+                    "required": [
+                        "projectType",
+                        "fidelityLevel",
+                        "targetPlatform"
+                    ],
+                    "properties": {
+                        "projectType": {
+                            "type": "string",
+                            "description": "Type of application or interface being wireframed",
+                            "default": "[PROJECT_TYPE]",
+                            "examples": [
+                                "[WEB_APPLICATION]",
+                                "[MOBILE_APP]",
+                                "[DESKTOP_APP]",
+                                "[RESPONSIVE_WEB]",
+                                "[TABLET_APP]",
+                                "[KIOSK_INTERFACE]",
+                                "[AR_VR_INTERFACE]"
+                            ]
+                        },
+                        "fidelityLevel": {
+                            "type": "string",
+                            "description": "Overall fidelity level of wireframes",
+                            "default": "[FIDELITY_LEVEL]",
+                            "examples": [
+                                "[LOW_FIDELITY]",
+                                "[MEDIUM_FIDELITY]",
+                                "[HIGH_FIDELITY]",
+                                "[MIXED_FIDELITY]"
+                            ]
+                        },
+                        "targetPlatform": {
+                            "type": "array",
+                            "description": "Target platforms for the wireframes",
+                            "items": {
+                                "type": "string",
+                                "default": "[TARGET_PLATFORM]",
+                                "examples": [
+                                    "[IOS_PLATFORM]",
+                                    "[ANDROID_PLATFORM]",
+                                    "[WEB_PLATFORM]",
+                                    "[DESKTOP_PLATFORM]",
+                                    "[CROSS_PLATFORM]"
+                                ]
+                            }
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "Detailed description of wireframe project scope and goals",
+                            "default": "[PROJECT_DESCRIPTION]"
+                        }
+                    }
+                },
+                "stakeholders": {
+                    "type": "array",
+                    "description": "Team members and stakeholders involved in wireframe project",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "name",
+                            "role"
+                        ],
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "Stakeholder name",
+                                "default": "[STAKEHOLDER_NAME]"
+                            },
+                            "role": {
+                                "type": "string",
+                                "description": "Role in wireframe project",
+                                "default": "[STAKEHOLDER_ROLE]",
+                                "examples": [
+                                    "[UX_DESIGNER]",
+                                    "[UI_DESIGNER]",
+                                    "[PRODUCT_MANAGER]",
+                                    "[DEVELOPER]",
+                                    "[BUSINESS_STAKEHOLDER]",
+                                    "[USER_RESEARCHER]"
+                                ]
+                            },
+                            "email": {
+                                "type": "string",
+                                "format": "email",
+                                "description": "Contact email",
+                                "default": "[STAKEHOLDER_EMAIL]"
+                            },
+                            "responsibilities": {
+                                "type": "array",
+                                "description": "Specific responsibilities in wireframe project",
+                                "items": {
+                                    "type": "string",
+                                    "default": "[RESPONSIBILITY]"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "designContext": {
+            "type": "object",
+            "description": "Design system and visual context for wireframes",
+            "required": [
+                "designSystemIntegration",
+                "visualFramework"
+            ],
+            "properties": {
+                "designSystemIntegration": {
+                    "type": "object",
+                    "description": "Integration with design system or style guide",
+                    "properties": {
+                        "systemReference": {
+                            "type": "string",
+                            "description": "Reference to design system or style guide",
+                            "default": "[DESIGN_SYSTEM_REFERENCE]"
+                        },
+                        "componentLibrary": {
+                            "type": "array",
+                            "description": "Available design system components",
+                            "items": {
+                                "type": "object",
+                                "required": [
+                                    "componentName",
+                                    "componentCategory"
+                                ],
+                                "properties": {
+                                    "componentName": {
+                                        "type": "string",
+                                        "description": "Name of the component",
+                                        "default": "[COMPONENT_NAME]"
+                                    },
+                                    "componentCategory": {
+                                        "type": "string",
+                                        "description": "Category or type of component",
+                                        "default": "[COMPONENT_CATEGORY]",
+                                        "examples": [
+                                            "[ATOMIC_COMPONENT]",
+                                            "[MOLECULAR_COMPONENT]",
+                                            "[ORGANISM_COMPONENT]",
+                                            "[TEMPLATE_COMPONENT]",
+                                            "[PAGE_COMPONENT]"
+                                        ]
+                                    },
+                                    "variants": {
+                                        "type": "array",
+                                        "description": "Available variants of the component",
+                                        "items": {
+                                            "type": "string",
+                                            "default": "[COMPONENT_VARIANT]"
+                                        }
+                                    },
+                                    "states": {
+                                        "type": "array",
+                                        "description": "Available states of the component",
+                                        "items": {
+                                            "type": "string",
+                                            "default": "[COMPONENT_STATE]",
+                                            "examples": [
+                                                "[DEFAULT_STATE]",
+                                                "[HOVER_STATE]",
+                                                "[ACTIVE_STATE]",
+                                                "[DISABLED_STATE]",
+                                                "[LOADING_STATE]",
+                                                "[ERROR_STATE]",
+                                                "[SUCCESS_STATE]"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "designTokens": {
+                            "type": "object",
+                            "description": "Design tokens used in wireframes",
+                            "properties": {
+                                "spacing": {
+                                    "type": "array",
+                                    "description": "Spacing tokens",
+                                    "items": {
+                                        "type": "string",
+                                        "default": "[SPACING_TOKEN]"
+                                    }
+                                },
+                                "typography": {
+                                    "type": "array",
+                                    "description": "Typography tokens",
+                                    "items": {
+                                        "type": "string",
+                                        "default": "[TYPOGRAPHY_TOKEN]"
+                                    }
+                                },
+                                "colors": {
+                                    "type": "array",
+                                    "description": "Color tokens",
+                                    "items": {
+                                        "type": "string",
+                                        "default": "[COLOR_TOKEN]"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "visualFramework": {
+                    "type": "object",
+                    "description": "Visual framework and layout approach",
+                    "properties": {
+                        "layoutSystem": {
+                            "type": "string",
+                            "description": "Layout system used in wireframes",
+                            "default": "[LAYOUT_SYSTEM]",
+                            "examples": [
+                                "[GRID_SYSTEM]",
+                                "[FLEXBOX_LAYOUT]",
+                                "[ABSOLUTE_POSITIONING]",
+                                "[RESPONSIVE_LAYOUT]",
+                                "[ADAPTIVE_LAYOUT]"
+                            ]
+                        },
+                        "breakpoints": {
+                            "type": "array",
+                            "description": "Responsive breakpoints",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "default": "[BREAKPOINT_NAME]"
+                                    },
+                                    "width": {
+                                        "type": "string",
+                                        "default": "[BREAKPOINT_WIDTH]"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "default": "[BREAKPOINT_DESCRIPTION]"
+                                    }
+                                }
+                            }
+                        },
+                        "annotationStyle": {
+                            "type": "string",
+                            "description": "Style of annotations and documentation",
+                            "default": "[ANNOTATION_STYLE]"
+                        }
+                    }
+                }
+            }
+        },
+        "userFlows": {
+            "type": "array",
+            "description": "User journey flows and navigation patterns",
+            "items": {
+                "type": "object",
+                "required": [
+                    "flowName",
+                    "flowDescription",
+                    "flowSteps"
+                ],
+                "properties": {
+                    "flowName": {
+                        "type": "string",
+                        "description": "Name of the user flow",
+                        "default": "[USER_FLOW_NAME]",
+                        "examples": [
+                            "[USER_REGISTRATION_FLOW]",
+                            "[CHECKOUT_PROCESS_FLOW]",
+                            "[PASSWORD_RESET_FLOW]",
+                            "[ONBOARDING_FLOW]"
+                        ]
+                    },
+                    "flowDescription": {
+                        "type": "string",
+                        "description": "Detailed description of the user flow",
+                        "default": "[FLOW_DESCRIPTION]"
+                    },
+                    "userType": {
+                        "type": "string",
+                        "description": "Type of user for this flow",
+                        "default": "[USER_TYPE]",
+                        "examples": [
+                            "[NEW_USER]",
+                            "[RETURNING_USER]",
+                            "[ADMIN_USER]",
+                            "[GUEST_USER]",
+                            "[PREMIUM_USER]",
+                            "[ANONYMOUS_USER]"
+                        ]
+                    },
+                    "flowPriority": {
+                        "type": "string",
+                        "description": "Priority level of this user flow",
+                        "default": "[FLOW_PRIORITY]",
+                        "examples": [
+                            "[CRITICAL_PRIORITY]",
+                            "[HIGH_PRIORITY]",
+                            "[MEDIUM_PRIORITY]",
+                            "[LOW_PRIORITY]"
+                        ]
+                    },
+                    "flowSteps": {
+                        "type": "array",
+                        "description": "Individual steps in the user flow",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "stepNumber",
+                                "screenReference",
+                                "userAction"
+                            ],
+                            "properties": {
+                                "stepNumber": {
+                                    "type": "number",
+                                    "description": "Sequential step number",
+                                    "default": "[STEP_NUMBER]"
+                                },
+                                "screenReference": {
+                                    "type": "string",
+                                    "description": "Reference to screen or wireframe",
+                                    "default": "[SCREEN_REFERENCE]"
+                                },
+                                "userAction": {
+                                    "type": "string",
+                                    "description": "Action the user performs in this step",
+                                    "default": "[USER_ACTION]"
+                                },
+                                "expectedOutcome": {
+                                    "type": "string",
+                                    "description": "Expected result of the user action",
+                                    "default": "[EXPECTED_OUTCOME]"
+                                },
+                                "alternativePaths": {
+                                    "type": "array",
+                                    "description": "Alternative paths from this step",
+                                    "items": {
+                                        "type": "string",
+                                        "default": "[ALTERNATIVE_PATH]"
+                                    }
+                                },
+                                "errorHandling": {
+                                    "type": "array",
+                                    "description": "Error scenarios and handling",
+                                    "items": {
+                                        "type": "string",
+                                        "default": "[ERROR_SCENARIO]"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "successCriteria": {
+                        "type": "array",
+                        "description": "Criteria for successful completion of the flow",
+                        "items": {
+                            "type": "string",
+                            "default": "[SUCCESS_CRITERION]"
+                        }
+                    },
+                    "painPoints": {
+                        "type": "array",
+                        "description": "Identified pain points or challenges in the flow",
+                        "items": {
+                            "type": "string",
+                            "default": "[PAIN_POINT]"
+                        }
+                    }
+                }
+            }
+        },
+        "screens": {
+            "type": "array",
+            "description": "Individual screen definitions with states and content",
+            "items": {
+                "type": "object",
+                "required": [
+                    "screenId",
+                    "screenName",
+                    "screenType",
+                    "screenStates"
+                ],
+                "properties": {
+                    "screenId": {
+                        "type": "string",
+                        "description": "Unique identifier for the screen",
+                        "default": "[SCREEN_ID]"
+                    },
+                    "screenName": {
+                        "type": "string",
+                        "description": "Human-readable name for the screen",
+                        "default": "[SCREEN_NAME]"
+                    },
+                    "screenType": {
+                        "type": "string",
+                        "description": "Type or category of screen",
+                        "default": "[SCREEN_TYPE]",
+                        "examples": [
+                            "[LANDING_SCREEN]",
+                            "[FORM_SCREEN]",
+                            "[DASHBOARD_SCREEN]",
+                            "[LIST_SCREEN]",
+                            "[DETAIL_SCREEN]",
+                            "[MODAL_SCREEN]",
+                            "[OVERLAY_SCREEN]",
+                            "[NAVIGATION_SCREEN]",
+                            "[ERROR_SCREEN]",
+                            "[EMPTY_STATE_SCREEN]"
+                        ]
+                    },
+                    "screenRoute": {
+                        "type": "string",
+                        "description": "URL route or navigation path to this screen",
+                        "default": "[SCREEN_ROUTE]"
+                    },
+                    "screenDescription": {
+                        "type": "string",
+                        "description": "Detailed description of screen purpose and content",
+                        "default": "[SCREEN_DESCRIPTION]"
+                    },
+                    "deviceContext": {
+                        "type": "object",
+                        "description": "Device and viewport context for the screen",
+                        "properties": {
+                            "targetDevice": {
+                                "type": "string",
+                                "description": "Primary target device",
+                                "default": "[TARGET_DEVICE]",
+                                "examples": [
+                                    "[MOBILE_DEVICE]",
+                                    "[TABLET_DEVICE]",
+                                    "[DESKTOP_DEVICE]",
+                                    "[RESPONSIVE_DEVICE]"
+                                ]
+                            },
+                            "viewport": {
+                                "type": "object",
+                                "description": "Viewport dimensions",
+                                "properties": {
+                                    "width": {
+                                        "type": "string",
+                                        "description": "Viewport width",
+                                        "default": "[VIEWPORT_WIDTH]"
+                                    },
+                                    "height": {
+                                        "type": "string",
+                                        "description": "Viewport height",
+                                        "default": "[VIEWPORT_HEIGHT]"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "screenStates": {
+                        "type": "array",
+                        "description": "Different states of the screen",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "stateName",
+                                "stateType",
+                                "wireframeContent"
+                            ],
+                            "properties": {
+                                "stateName": {
+                                    "type": "string",
+                                    "description": "Name of the screen state",
+                                    "default": "[STATE_NAME]",
+                                    "examples": [
+                                        "[DEFAULT_STATE]",
+                                        "[LOADING_STATE]",
+                                        "[EMPTY_STATE]",
+                                        "[ERROR_STATE]",
+                                        "[SUCCESS_STATE]",
+                                        "[SKELETON_STATE]"
+                                    ]
+                                },
+                                "stateType": {
+                                    "type": "string",
+                                    "description": "Type or category of state",
+                                    "default": "[STATE_TYPE]",
+                                    "examples": [
+                                        "[CONTENT_STATE]",
+                                        "[LOADING_STATE]",
+                                        "[EMPTY_STATE]",
+                                        "[ERROR_STATE]",
+                                        "[OFFLINE_STATE]",
+                                        "[MAINTENANCE_STATE]"
+                                    ]
+                                },
+                                "stateDescription": {
+                                    "type": "string",
+                                    "description": "Description of when and why this state occurs",
+                                    "default": "[STATE_DESCRIPTION]"
+                                },
+                                "wireframeContent": {
+                                    "type": "object",
+                                    "description": "Wireframe content and structure for this state",
+                                    "properties": {
+                                        "layout": {
+                                            "type": "string",
+                                            "description": "Layout structure for this state",
+                                            "default": "[LAYOUT_STRUCTURE]"
+                                        },
+                                        "components": {
+                                            "type": "array",
+                                            "description": "Components present in this state",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "componentId": {
+                                                        "type": "string",
+                                                        "default": "[COMPONENT_ID]"
+                                                    },
+                                                    "componentType": {
+                                                        "type": "string",
+                                                        "default": "[COMPONENT_TYPE]"
+                                                    },
+                                                    "content": {
+                                                        "type": "string",
+                                                        "default": "[COMPONENT_CONTENT]"
+                                                    },
+                                                    "position": {
+                                                        "type": "string",
+                                                        "default": "[COMPONENT_POSITION]"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "annotations": {
+                                            "type": "array",
+                                            "description": "Annotations and notes for this state",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "annotationId": {
+                                                        "type": "string",
+                                                        "default": "[ANNOTATION_ID]"
+                                                    },
+                                                    "content": {
+                                                        "type": "string",
+                                                        "default": "[ANNOTATION_CONTENT]"
+                                                    },
+                                                    "type": {
+                                                        "type": "string",
+                                                        "default": "[ANNOTATION_TYPE]",
+                                                        "examples": [
+                                                            "[NOTE_ANNOTATION]",
+                                                            "[REQUIREMENT_ANNOTATION]",
+                                                            "[INTERACTION_ANNOTATION]",
+                                                            "[ACCESSIBILITY_ANNOTATION]",
+                                                            "[TECHNICAL_ANNOTATION]"
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "stateManagement": {
+            "type": "object",
+            "description": "State management patterns and transitions between screen states",
+            "required": [
+                "stateTransitions",
+                "stateLogic"
+            ],
+            "properties": {
+                "stateTransitions": {
+                    "type": "array",
+                    "description": "Transitions between different screen states",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "transitionId",
+                            "fromState",
+                            "toState",
+                            "trigger"
+                        ],
+                        "properties": {
+                            "transitionId": {
+                                "type": "string",
+                                "description": "Unique identifier for the transition",
+                                "default": "[TRANSITION_ID]"
+                            },
+                            "fromState": {
+                                "type": "object",
+                                "description": "Source state of the transition",
+                                "properties": {
+                                    "screenId": {
+                                        "type": "string",
+                                        "default": "[FROM_SCREEN_ID]"
+                                    },
+                                    "stateName": {
+                                        "type": "string",
+                                        "default": "[FROM_STATE_NAME]"
+                                    }
+                                }
+                            },
+                            "toState": {
+                                "type": "object",
+                                "description": "Target state of the transition",
+                                "properties": {
+                                    "screenId": {
+                                        "type": "string",
+                                        "default": "[TO_SCREEN_ID]"
+                                    },
+                                    "stateName": {
+                                        "type": "string",
+                                        "default": "[TO_STATE_NAME]"
+                                    }
+                                }
+                            },
+                            "trigger": {
+                                "type": "object",
+                                "description": "What triggers this state transition",
+                                "properties": {
+                                    "triggerType": {
+                                        "type": "string",
+                                        "description": "Type of trigger",
+                                        "default": "[TRIGGER_TYPE]",
+                                        "examples": [
+                                            "[USER_ACTION_TRIGGER]",
+                                            "[SYSTEM_EVENT_TRIGGER]",
+                                            "[TIMER_TRIGGER]",
+                                            "[API_RESPONSE_TRIGGER]",
+                                            "[VALIDATION_TRIGGER]"
+                                        ]
+                                    },
+                                    "condition": {
+                                        "type": "string",
+                                        "description": "Condition that must be met for transition",
+                                        "default": "[TRIGGER_CONDITION]"
+                                    },
+                                    "delay": {
+                                        "type": "string",
+                                        "description": "Delay before transition occurs",
+                                        "default": "[TRANSITION_DELAY]"
+                                    }
+                                }
+                            },
+                            "guards": {
+                                "type": "array",
+                                "description": "Conditions that must be met for transition to occur",
+                                "items": {
+                                    "type": "string",
+                                    "default": "[TRANSITION_GUARD]"
+                                }
+                            },
+                            "actions": {
+                                "type": "array",
+                                "description": "Actions to perform during transition",
+                                "items": {
+                                    "type": "string",
+                                    "default": "[TRANSITION_ACTION]"
+                                }
+                            }
+                        }
+                    }
+                },
+                "stateLogic": {
+                    "type": "object",
+                    "description": "Logic and rules governing state behavior",
+                    "properties": {
+                        "defaultStates": {
+                            "type": "array",
+                            "description": "Default states for different screen types",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "screenType": {
+                                        "type": "string",
+                                        "default": "[SCREEN_TYPE]"
+                                    },
+                                    "defaultState": {
+                                        "type": "string",
+                                        "default": "[DEFAULT_STATE]"
+                                    }
+                                }
+                            }
+                        },
+                        "stateRules": {
+                            "type": "array",
+                            "description": "Rules governing state behavior",
+                            "items": {
+                                "type": "string",
+                                "default": "[STATE_RULE]"
+                            }
+                        },
+                        "errorRecovery": {
+                            "type": "array",
+                            "description": "Error recovery patterns",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "errorType": {
+                                        "type": "string",
+                                        "default": "[ERROR_TYPE]"
+                                    },
+                                    "recoveryAction": {
+                                        "type": "string",
+                                        "default": "[RECOVERY_ACTION]"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "interactions": {
+            "type": "object",
+            "description": "User interactions and interface behavior patterns",
+            "required": [
+                "interactionPatterns",
+                "feedbackMechanisms"
+            ],
+            "properties": {
+                "interactionPatterns": {
+                    "type": "array",
+                    "description": "Common interaction patterns used in the wireframes",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "patternName",
+                            "patternType",
+                            "implementation"
+                        ],
+                        "properties": {
+                            "patternName": {
+                                "type": "string",
+                                "description": "Name of the interaction pattern",
+                                "default": "[INTERACTION_PATTERN_NAME]"
+                            },
+                            "patternType": {
+                                "type": "string",
+                                "description": "Type of interaction pattern",
+                                "default": "[INTERACTION_PATTERN_TYPE]",
+                                "examples": [
+                                    "[CLICK_INTERACTION]",
+                                    "[TAP_INTERACTION]",
+                                    "[HOVER_INTERACTION]",
+                                    "[SWIPE_INTERACTION]",
+                                    "[SCROLL_INTERACTION]",
+                                    "[DRAG_DROP_INTERACTION]",
+                                    "[VOICE_INTERACTION]",
+                                    "[GESTURE_INTERACTION]"
+                                ]
+                            },
+                            "implementation": {
+                                "type": "string",
+                                "description": "How the interaction pattern is implemented",
+                                "default": "[PATTERN_IMPLEMENTATION]"
+                            },
+                            "targetElement": {
+                                "type": "string",
+                                "description": "Element that receives the interaction",
+                                "default": "[TARGET_ELEMENT]"
+                            },
+                            "expectedResponse": {
+                                "type": "string",
+                                "description": "Expected response to the interaction",
+                                "default": "[EXPECTED_RESPONSE]"
+                            }
+                        }
+                    }
+                },
+                "feedbackMechanisms": {
+                    "type": "array",
+                    "description": "Feedback mechanisms for user interactions",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "feedbackType",
+                            "trigger",
+                            "response"
+                        ],
+                        "properties": {
+                            "feedbackType": {
+                                "type": "string",
+                                "description": "Type of feedback mechanism",
+                                "default": "[FEEDBACK_TYPE]",
+                                "examples": [
+                                    "[VISUAL_FEEDBACK]",
+                                    "[AUDIO_FEEDBACK]",
+                                    "[HAPTIC_FEEDBACK]",
+                                    "[ANIMATION_FEEDBACK]",
+                                    "[TEXT_FEEDBACK]"
+                                ]
+                            },
+                            "trigger": {
+                                "type": "string",
+                                "description": "What triggers the feedback",
+                                "default": "[FEEDBACK_TRIGGER]"
+                            },
+                            "response": {
+                                "type": "string",
+                                "description": "The feedback response provided",
+                                "default": "[FEEDBACK_RESPONSE]"
+                            },
+                            "timing": {
+                                "type": "string",
+                                "description": "Timing of the feedback",
+                                "default": "[FEEDBACK_TIMING]"
+                            }
+                        }
+                    }
+                },
+                "animationSpecs": {
+                    "type": "array",
+                    "description": "Animation specifications for interactions",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "animationName": {
+                                "type": "string",
+                                "default": "[ANIMATION_NAME]"
+                            },
+                            "animationType": {
+                                "type": "string",
+                                "default": "[ANIMATION_TYPE]"
+                            },
+                            "duration": {
+                                "type": "string",
+                                "default": "[ANIMATION_DURATION]"
+                            },
+                            "easing": {
+                                "type": "string",
+                                "default": "[ANIMATION_EASING]"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "accessibility": {
+            "type": "object",
+            "description": "Accessibility considerations and compliance requirements",
+            "required": [
+                "accessibilityStandards",
+                "accessibilityFeatures"
+            ],
+            "properties": {
+                "accessibilityStandards": {
+                    "type": "object",
+                    "description": "Accessibility standards and compliance levels",
+                    "properties": {
+                        "primaryStandard": {
+                            "type": "string",
+                            "description": "Primary accessibility standard followed",
+                            "default": "[ACCESSIBILITY_STANDARD]",
+                            "examples": [
+                                "[WCAG_2_1_STANDARD]",
+                                "[WCAG_2_2_STANDARD]",
+                                "[SECTION_508_STANDARD]",
+                                "[ADA_COMPLIANCE]",
+                                "[EN_301_549_STANDARD]"
+                            ]
+                        },
+                        "complianceLevel": {
+                            "type": "string",
+                            "description": "Level of compliance targeted",
+                            "default": "[COMPLIANCE_LEVEL]",
+                            "examples": [
+                                "[LEVEL_A]",
+                                "[LEVEL_AA]",
+                                "[LEVEL_AAA]"
+                            ]
+                        },
+                        "additionalRequirements": {
+                            "type": "array",
+                            "description": "Additional accessibility requirements",
+                            "items": {
+                                "type": "string",
+                                "default": "[ADDITIONAL_REQUIREMENT]"
+                            }
+                        }
+                    }
+                },
+                "accessibilityFeatures": {
+                    "type": "object",
+                    "description": "Specific accessibility features implemented",
+                    "properties": {
+                        "keyboardNavigation": {
+                            "type": "object",
+                            "description": "Keyboard navigation support",
+                            "properties": {
+                                "supported": {
+                                    "type": "boolean",
+                                    "description": "Whether keyboard navigation is supported",
+                                    "default": "[KEYBOARD_NAVIGATION_SUPPORTED]"
+                                },
+                                "tabOrder": {
+                                    "type": "string",
+                                    "description": "Tab order strategy",
+                                    "default": "[TAB_ORDER_STRATEGY]"
+                                },
+                                "focusManagement": {
+                                    "type": "string",
+                                    "description": "Focus management approach",
+                                    "default": "[FOCUS_MANAGEMENT_APPROACH]"
+                                }
+                            }
+                        },
+                        "screenReaderSupport": {
+                            "type": "object",
+                            "description": "Screen reader compatibility",
+                            "properties": {
+                                "supported": {
+                                    "type": "boolean",
+                                    "description": "Whether screen reader support is provided",
+                                    "default": "[SCREEN_READER_SUPPORTED]"
+                                },
+                                "ariaLabels": {
+                                    "type": "array",
+                                    "description": "ARIA labels used",
+                                    "items": {
+                                        "type": "string",
+                                        "default": "[ARIA_LABEL]"
+                                    }
+                                },
+                                "landmarks": {
+                                    "type": "array",
+                                    "description": "Landmark regions defined",
+                                    "items": {
+                                        "type": "string",
+                                        "default": "[LANDMARK_REGION]"
+                                    }
+                                }
+                            }
+                        },
+                        "visualAccessibility": {
+                            "type": "object",
+                            "description": "Visual accessibility considerations",
+                            "properties": {
+                                "colorContrast": {
+                                    "type": "string",
+                                    "description": "Color contrast requirements",
+                                    "default": "[COLOR_CONTRAST_REQUIREMENT]"
+                                },
+                                "textScaling": {
+                                    "type": "string",
+                                    "description": "Text scaling support",
+                                    "default": "[TEXT_SCALING_SUPPORT]"
+                                },
+                                "colorBlindness": {
+                                    "type": "string",
+                                    "description": "Color blindness considerations",
+                                    "default": "[COLOR_BLINDNESS_CONSIDERATION]"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "testing": {
+            "type": "object",
+            "description": "Testing strategies and validation approaches for wireframes",
+            "required": [
+                "testingStrategy",
+                "validationMethods"
+            ],
+            "properties": {
+                "testingStrategy": {
+                    "type": "object",
+                    "description": "Overall testing strategy for wireframes",
+                    "properties": {
+                        "testingApproach": {
+                            "type": "string",
+                            "description": "Primary testing approach",
+                            "default": "[TESTING_APPROACH]",
+                            "examples": [
+                                "[USABILITY_TESTING]",
+                                "[A_B_TESTING]",
+                                "[GUERRILLA_TESTING]",
+                                "[REMOTE_TESTING]",
+                                "[MODERATED_TESTING]",
+                                "[UNMODERATED_TESTING]"
+                            ]
+                        },
+                        "testingPhases": {
+                            "type": "array",
+                            "description": "Different phases of testing",
+                            "items": {
+                                "type": "string",
+                                "default": "[TESTING_PHASE]"
+                            }
+                        },
+                        "successMetrics": {
+                            "type": "array",
+                            "description": "Metrics used to measure testing success",
+                            "items": {
+                                "type": "string",
+                                "default": "[SUCCESS_METRIC]"
+                            }
+                        }
+                    }
+                },
+                "validationMethods": {
+                    "type": "array",
+                    "description": "Methods used to validate wireframe effectiveness",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "methodName",
+                            "objective",
+                            "implementation"
+                        ],
+                        "properties": {
+                            "methodName": {
+                                "type": "string",
+                                "description": "Name of the validation method",
+                                "default": "[VALIDATION_METHOD_NAME]"
+                            },
+                            "objective": {
+                                "type": "string",
+                                "description": "Objective of this validation method",
+                                "default": "[VALIDATION_OBJECTIVE]"
+                            },
+                            "implementation": {
+                                "type": "string",
+                                "description": "How the validation method is implemented",
+                                "default": "[VALIDATION_IMPLEMENTATION]"
+                            },
+                            "targetUsers": {
+                                "type": "array",
+                                "description": "Target users for this validation",
+                                "items": {
+                                    "type": "string",
+                                    "default": "[TARGET_USER_TYPE]"
+                                }
+                            },
+                            "tasks": {
+                                "type": "array",
+                                "description": "Tasks performed during validation",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "taskDescription": {
+                                            "type": "string",
+                                            "default": "[TASK_DESCRIPTION]"
+                                        },
+                                        "successCriteria": {
+                                            "type": "string",
+                                            "default": "[TASK_SUCCESS_CRITERIA]"
+                                        },
+                                        "expectedTime": {
+                                            "type": "string",
+                                            "default": "[EXPECTED_TASK_TIME]"
+                                        }
+                                    }
+                                }
+                            },
+                            "metrics": {
+                                "type": "array",
+                                "description": "Metrics collected during validation",
+                                "items": {
+                                    "type": "string",
+                                    "default": "[VALIDATION_METRIC]",
+                                    "examples": [
+                                        "[TASK_COMPLETION_RATE]",
+                                        "[TIME_ON_TASK]",
+                                        "[ERROR_RATE]",
+                                        "[SATISFACTION_SCORE]",
+                                        "[SUS_SCORE]",
+                                        "[NET_PROMOTER_SCORE]"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "iterationPlan": {
+                    "type": "object",
+                    "description": "Plan for iterating on wireframes based on testing results",
+                    "properties": {
+                        "iterationCycles": {
+                            "type": "string",
+                            "description": "Number of planned iteration cycles",
+                            "default": "[ITERATION_CYCLES]"
+                        },
+                        "improvementCriteria": {
+                            "type": "array",
+                            "description": "Criteria for determining needed improvements",
+                            "items": {
+                                "type": "string",
+                                "default": "[IMPROVEMENT_CRITERION]"
+                            }
+                        },
+                        "prioritizationMethod": {
+                            "type": "string",
+                            "description": "Method for prioritizing improvements",
+                            "default": "[PRIORITIZATION_METHOD]"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

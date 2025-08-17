@@ -1,7 +1,13 @@
-# Playbook Schema: SOC 2 Compliance Framework
+# Playbook: Universal SOC 2 Compliance Schema Template
 
 ## Propósito
-Este playbook guía la creación y mantenimiento del schema `soc2Compliance.json`, que define la estructura de datos para el marco de cumplimiento SOC 2 (System and Organization Controls 2), incluyendo criterios de servicios de confianza, controles, gobernanza y procesos de auditoría.
+Este playbook guía el uso del schema `soc2Compliance.json` como template universal para documentar frameworks de compliance y seguridad. El schema utiliza placeholders `[VARIABLE]` que deben ser reemplazados con información específica del proyecto, permitiendo adaptabilidad a SOC 2, ISO 27001, PCI DSS, HIPAA, o cualquier otro framework de compliance.
+
+## Filosofía Template-First
+- **Schema como Receptor**: El schema está diseñado para RECIBIR información, no para definirla
+- **Placeholders Universales**: Usar `[VARIABLE]` para todos los valores específicos del proyecto
+- **Adaptabilidad Total**: Funciona para cualquier framework de compliance o estándar de seguridad
+- **Mejores Prácticas Generales**: Incorpora patrones universales de compliance sin prescribir frameworks específicos
 
 ## Contexto del Schema
 

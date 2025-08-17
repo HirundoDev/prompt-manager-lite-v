@@ -1,40 +1,202 @@
-# Playbook v2: DOC013 - Actualización del Changelog
+# Playbook v2: DOC013 - Changelog Documentation
 
-**Objetivo:** Mantener un registro histórico preciso de los cambios del proyecto, actualizando el archivo `CHANGELOG.md` de forma segura y sin pérdida de datos.
+**Version:** 3.0 - Enhanced with 2025 Best Practices  
+**Last Updated:** 2025-01-15  
+**Objective:** Create and maintain comprehensive changelog documentation following modern release management and semantic versioning best practices.
 
-**Agente Asignado:** Release Manager Agent
+**Agent Role:** Release Manager & DevOps Engineer
 
-**Principio Fundamental:** EL HISTORIAL ES SAGRADO. Tu función principal es añadir nuevas entradas a la sección `[Unreleased]`, no regenerar el archivo. La sobreescritura está estrictamente prohibida.
-
----
-
-## Modo de Operación: Actualización (Default)
-
-Esta es tu tarea estándar en cada ejecución.
-
-### Fase 1: Extracción y Lectura
-
-1.  **Leer Changelog Existente:** Lee el contenido completo del archivo `prompt_docs/DOC013-ChangeLog.md` en memoria.
-2.  **Extraer Nuevos Cambios:** Extrae la lista de cambios recientes del `master_blueprint.json`. La ubicación exacta de estos cambios puede variar (ej. `projectUpdates.recentChanges`).
-
-### Fase 2: Inserción Quirúrgica
-
-1.  **Identificar Punto de Inserción:** Localiza la sección `## [Unreleased]` y las subsecciones (`### Added`, `### Changed`, etc.) en el contenido del changelog en memoria.
-2.  **Insertar Cambios:** Para cada nuevo cambio extraído del blueprint, añádelo como un nuevo ítem de lista (`- `) bajo la categoría correspondiente (ej. un `fix` va bajo `### Fixed`).
-3.  **No Duplicar:** Antes de añadir una entrada, verifica que no exista ya una idéntica en la sección `[Unreleased]` para evitar duplicados.
-
-### Fase 3: Escritura Segura
-
-1.  **Sobrescribir con Contenido Actualizado:** Escribe el contenido modificado (el original + las nuevas líneas) de vuelta al archivo `DOC013-ChangeLog.md`, reemplazando el contenido antiguo.
+**Core Philosophy:** Changelog documentation must be transparent, user-focused, and automated. This playbook integrates modern release management practices, semantic versioning, and user engagement strategies to create world-class change documentation.
 
 ---
 
-## Modo de Operación: Publicación de Versión (Avanzado)
+## 🎯 2025 Changelog Management Framework
 
-Este es un procedimiento especial que solo se ejecuta cuando se crea una nueva versión.
+### Key Principles
+- **User-Centric Communication:** Every change explains its impact on end users
+- **Semantic Versioning:** Consistent MAJOR.MINOR.PATCH versioning strategy
+- **Automated Generation:** Streamlined processes for accuracy and efficiency
+- **Clear Categorization:** Structured organization for easy navigation
+- **Consistent Format:** Standardized presentation across all releases
+- **Historical Preservation:** Sacred protection of version history
 
-1.  **Leer Changelog:** Lee el contenido completo del archivo.
-2.  **Copiar Cambios:** Copia todo el contenido de las categorías bajo la sección `## [Unreleased]`.
-3.  **Crear Nueva Versión:** Inserta un nuevo encabezado de versión `## [Número de Versión] - YYYY-MM-DD` debajo de la sección `[Unreleased]`.
-4.  **Pegar Cambios:** Pega los cambios copiados bajo el nuevo encabezado de versión.
-5.  **Limpiar `[Unreleased]`:** Elimina todas las entradas de la sección `[Unreleased]`, dejándola lista para el próximo ciclo de desarrollo.
+### Modern Changelog Standards 2025
+- **Keep a Changelog 1.1.0:** Enhanced specification with user impact focus
+- **Semantic Versioning 2.0.0:** Industry-standard version numbering
+- **Conventional Commits:** Automated changelog generation from commit messages
+- **Release Automation:** CI/CD integration for streamlined releases
+- **User Engagement:** Interactive changelogs with feedback collection
+- **Multi-Channel Distribution:** Automated notifications across platforms
+
+---
+
+## 📋 Documentation Structure & Content Strategy
+
+### Phase 1: Release Planning & Preparation
+1. **Version Strategy Definition**
+   - Semantic versioning implementation (MAJOR.MINOR.PATCH)
+   - Release cadence establishment (major/minor/patch cycles)
+   - Breaking change impact assessment
+   - User communication timeline planning
+
+2. **Change Categorization Framework**
+   - **Added:** New features and capabilities
+   - **Changed:** Improvements to existing functionality
+   - **Deprecated:** Features scheduled for removal
+   - **Removed:** Discontinued features and components
+   - **Fixed:** Bug fixes and error corrections
+   - **Security:** Security improvements and patches
+
+3. **User Impact Assessment**
+   - End-user benefit identification
+   - Breaking change documentation
+   - Migration path definition
+   - Support resource preparation
+
+### Phase 2: Changelog Content Development
+
+#### 🆕 Added Features Documentation
+- **Feature Description:** Clear, non-technical explanation of new capabilities
+- **User Benefits:** Specific value proposition for end users
+- **Usage Examples:** Practical implementation scenarios
+- **Resource Links:** Documentation, tutorials, and guides
+- **Adoption Metrics:** Expected usage patterns and success criteria
+
+#### 🔄 Changed Features Documentation
+- **Improvement Details:** Specific enhancements and optimizations
+- **Performance Impact:** Quantified improvements (speed, efficiency, etc.)
+- **User Experience Changes:** Interface and workflow modifications
+- **Backward Compatibility:** Compatibility status and migration notes
+- **Configuration Updates:** Required setting changes
+
+#### 🐛 Bug Fixes Documentation
+- **Issue Description:** Clear explanation of resolved problems
+- **User Impact:** How the fix improves user experience
+- **Root Cause:** Technical explanation for development teams
+- **Prevention Measures:** Steps taken to prevent recurrence
+- **Affected Versions:** Version range impacted by the bug
+
+#### 🔒 Security Updates Documentation
+- **Vulnerability Details:** Appropriate level of security information
+- **Impact Assessment:** Severity and affected components
+- **Mitigation Steps:** User actions required (if any)
+- **Credit Attribution:** Security researcher acknowledgments
+- **Compliance Updates:** Regulatory requirement adherence
+
+### Phase 3: Automation & Distribution
+
+#### 🤖 Automated Changelog Generation
+- **Conventional Commits Integration**
+  - Commit message parsing for automatic categorization
+  - Pull request title and description extraction
+  - Issue tracking system integration
+  - Automated version bumping based on change types
+
+- **CI/CD Pipeline Integration**
+  - Automated changelog updates on release
+  - Multi-format generation (Markdown, HTML, JSON)
+  - Distribution to multiple channels
+  - Rollback capabilities for failed releases
+
+#### 📢 Multi-Channel Distribution
+- **In-App Notifications**
+  - Targeted user segments for relevant updates
+  - Interactive changelog with feedback collection
+  - Feature adoption tracking and analytics
+  - Progressive disclosure for complex changes
+
+- **External Communication**
+  - Email newsletters for major releases
+  - Social media announcements
+  - Blog post generation for significant updates
+  - API webhook notifications for integrations
+
+### Phase 4: User Engagement & Feedback
+
+#### 📊 Analytics & Metrics
+- **Engagement Tracking**
+  - Changelog view rates and time spent
+  - Feature adoption rates post-announcement
+  - User feedback sentiment analysis
+  - Support ticket correlation with releases
+
+- **Performance Metrics**
+  - Release frequency and consistency
+  - Time from development to user communication
+  - User satisfaction scores for releases
+  - Breaking change impact assessment
+
+#### 🔄 Continuous Improvement
+- **Feedback Integration**
+  - User feedback collection and analysis
+  - Communication effectiveness assessment
+  - Format and content optimization
+  - Automation process refinement
+
+- **Best Practice Evolution**
+  - Industry standard monitoring and adoption
+  - Tool and process evaluation
+  - Team training and skill development
+  - Documentation template updates
+
+---
+
+## 🛠️ Implementation Guidelines
+
+### Documentation Best Practices
+1. **User-First Language:** Write for end users, not developers
+2. **Impact-Focused:** Always explain "what this means for you"
+3. **Resource-Rich:** Provide links to guides, tutorials, and support
+4. **Consistent Format:** Maintain standardized structure across releases
+5. **Historical Accuracy:** Preserve complete version history
+
+### Automation Setup
+1. **Commit Message Standards:** Implement conventional commits specification
+2. **Release Pipeline:** Automate version bumping and changelog generation
+3. **Quality Gates:** Automated testing and validation before release
+4. **Distribution Automation:** Multi-channel notification systems
+5. **Rollback Procedures:** Quick recovery from problematic releases
+
+### Quality Assurance Checklist
+- [ ] All changes categorized appropriately
+- [ ] User impact clearly explained for each change
+- [ ] Resource links provided for complex features
+- [ ] Version numbering follows semantic versioning
+- [ ] Breaking changes prominently highlighted
+- [ ] Security updates properly documented
+- [ ] Automation pipeline tested and validated
+- [ ] Multi-channel distribution configured
+
+### Validation & Testing
+1. **Content Review:** Technical accuracy and user clarity verification
+2. **Format Validation:** Consistent structure and styling
+3. **Link Testing:** All resource links functional and current
+4. **Automation Testing:** Pipeline execution and output validation
+5. **User Testing:** Feedback collection on changelog effectiveness
+
+---
+
+## 📚 Reference Standards & Resources
+
+### Primary Standards
+- **Keep a Changelog 1.1.0** - Changelog format specification
+- **Semantic Versioning 2.0.0** - Version numbering standard
+- **Conventional Commits 1.0.0** - Commit message specification
+- **GitHub Flow** - Release management workflow
+- **GitLab Flow** - Alternative release management approach
+
+### Automation Tools
+- **semantic-release** - Automated version management and publishing
+- **conventional-changelog** - Changelog generation from commits
+- **release-drafter** - GitHub release notes automation
+- **auto** - Multi-package release automation
+- **changesets** - Version and changelog management for monorepos
+
+### Best Practice Resources
+- **GitHub Release Notes** - Platform-specific best practices
+- **GitLab Release Notes** - Alternative platform approaches
+- **npm Changelog Guidelines** - Package management standards
+- **Docker Release Notes** - Container platform examples
+- **Kubernetes Release Notes** - Large-scale project examples
+
+This playbook ensures comprehensive, user-focused, and automated changelog documentation that meets 2025 industry standards and user expectations.

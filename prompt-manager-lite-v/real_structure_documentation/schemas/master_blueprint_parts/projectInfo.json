@@ -1,23 +1,1457 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://schemas.promptmanager.dev/project-info/v3.0.0",
     "$comment": "Playbook: prompt_playbooks/schemas_playbooks/playbook_schema-projectInfo.md",
-    "title": "Project Info",
-    "description": "High-level metadata about the project.",
+    "title": "Universal Project Information Schema Template",
+    "description": "Universal template for documenting project information that works across any project type, methodology, or technology stack. This schema provides a structured approach to project documentation using placeholders that can be adapted to software development, infrastructure projects, research initiatives, or any other project domain. Follows modern project management practices and documentation standards for 2025.",
     "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "projectBasics",
+        "projectScope",
+        "stakeholders",
+        "timeline"
+    ],
     "properties": {
-        "projectName": {
-            "type": "string",
-            "description": "The official name of the project."
+        "projectBasics": {
+            "type": "object",
+            "description": "Basic project information and metadata",
+            "required": [
+                "projectName",
+                "projectId",
+                "description",
+                "projectType"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "projectName": {
+                    "type": "string",
+                    "description": "Project name - use placeholder [PROJECT_NAME]",
+                    "examples": [
+                        "[PROJECT_NAME]",
+                        "[SYSTEM_NAME]",
+                        "[INITIATIVE_NAME]"
+                    ]
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Project identifier - use placeholder [PROJECT_ID]",
+                    "examples": [
+                        "[PROJECT_ID]",
+                        "[PROJECT_CODE]",
+                        "[INITIATIVE_ID]"
+                    ]
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Project description - use placeholder [PROJECT_DESCRIPTION]",
+                    "examples": [
+                        "[PROJECT_DESCRIPTION]",
+                        "[PROJECT_PURPOSE]",
+                        "[INITIATIVE_SUMMARY]"
+                    ]
+                },
+                "projectType": {
+                    "type": "string",
+                    "description": "Project type - use placeholder [PROJECT_TYPE]",
+                    "examples": [
+                        "[PROJECT_TYPE]",
+                        "Software Development",
+                        "Infrastructure",
+                        "Research",
+                        "Marketing Campaign",
+                        "Process Improvement",
+                        "[CUSTOM_PROJECT_TYPE]"
+                    ]
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Project version - use placeholder [PROJECT_VERSION]",
+                    "examples": [
+                        "[PROJECT_VERSION]",
+                        "[MAJOR].[MINOR].[PATCH]"
+                    ]
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Project status - use placeholder [PROJECT_STATUS]",
+                    "examples": [
+                        "[PROJECT_STATUS]",
+                        "Planning",
+                        "In Progress",
+                        "On Hold",
+                        "Completed",
+                        "Cancelled",
+                        "[CUSTOM_STATUS]"
+                    ]
+                },
+                "priority": {
+                    "type": "string",
+                    "description": "Project priority - use placeholder [PROJECT_PRIORITY]",
+                    "examples": [
+                        "[PROJECT_PRIORITY]",
+                        "Critical",
+                        "High",
+                        "Medium",
+                        "Low",
+                        "[CUSTOM_PRIORITY]"
+                    ]
+                },
+                "category": {
+                    "type": "string",
+                    "description": "Project category - use placeholder [PROJECT_CATEGORY]",
+                    "examples": [
+                        "[PROJECT_CATEGORY]",
+                        "[BUSINESS_DOMAIN]",
+                        "[FUNCTIONAL_AREA]"
+                    ]
+                },
+                "tags": {
+                    "type": "array",
+                    "description": "Project tags using placeholders",
+                    "items": {
+                        "type": "string",
+                        "examples": [
+                            "[PROJECT_TAG]",
+                            "[KEYWORD]",
+                            "[CLASSIFICATION]"
+                        ]
+                    }
+                },
+                "createdDate": {
+                    "type": "string",
+                    "description": "Project creation date - use placeholder [CREATED_DATE]",
+                    "examples": [
+                        "[CREATED_DATE]",
+                        "[START_DATE]"
+                    ]
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "description": "Last update date - use placeholder [LAST_UPDATED]",
+                    "examples": [
+                        "[LAST_UPDATED]",
+                        "[MODIFICATION_DATE]"
+                    ]
+                }
+            }
         },
-        "projectDescription": {
-            "type": "string",
-            "description": "A concise summary of the project's purpose and goals."
+        "projectScope": {
+            "type": "object",
+            "description": "Project scope and objectives using placeholders",
+            "required": [
+                "objectives",
+                "deliverables"
+            ],
+            "properties": {
+                "objectives": {
+                    "type": "array",
+                    "description": "Project objectives using placeholders",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "objectiveId": {
+                                "type": "string",
+                                "examples": [
+                                    "[OBJECTIVE_ID]",
+                                    "[GOAL_ID]"
+                                ]
+                            },
+                            "title": {
+                                "type": "string",
+                                "examples": [
+                                    "[OBJECTIVE_TITLE]",
+                                    "[GOAL_NAME]"
+                                ]
+                            },
+                            "description": {
+                                "type": "string",
+                                "examples": [
+                                    "[OBJECTIVE_DESCRIPTION]",
+                                    "[GOAL_DETAILS]"
+                                ]
+                            },
+                            "priority": {
+                                "type": "string",
+                                "examples": [
+                                    "[OBJECTIVE_PRIORITY]",
+                                    "Must Have",
+                                    "Should Have",
+                                    "Could Have",
+                                    "Won't Have"
+                                ]
+                            },
+                            "successCriteria": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "examples": [
+                                        "[SUCCESS_CRITERION]",
+                                        "[ACCEPTANCE_CRITERIA]"
+                                    ]
+                                }
+                            },
+                            "measurableOutcome": {
+                                "type": "string",
+                                "examples": [
+                                    "[MEASURABLE_OUTCOME]",
+                                    "[KPI_TARGET]"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "deliverables": {
+                    "type": "array",
+                    "description": "Project deliverables using placeholders",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "deliverableId": {
+                                "type": "string",
+                                "examples": [
+                                    "[DELIVERABLE_ID]",
+                                    "[OUTPUT_ID]"
+                                ]
+                            },
+                            "name": {
+                                "type": "string",
+                                "examples": [
+                                    "[DELIVERABLE_NAME]",
+                                    "[OUTPUT_NAME]"
+                                ]
+                            },
+                            "description": {
+                                "type": "string",
+                                "examples": [
+                                    "[DELIVERABLE_DESCRIPTION]",
+                                    "[OUTPUT_DETAILS]"
+                                ]
+                            },
+                            "type": {
+                                "type": "string",
+                                "examples": [
+                                    "[DELIVERABLE_TYPE]",
+                                    "Software",
+                                    "Document",
+                                    "Process",
+                                    "Training",
+                                    "[CUSTOM_TYPE]"
+                                ]
+                            },
+                            "format": {
+                                "type": "string",
+                                "examples": [
+                                    "[DELIVERABLE_FORMAT]",
+                                    "[OUTPUT_FORMAT]"
+                                ]
+                            },
+                            "dueDate": {
+                                "type": "string",
+                                "examples": [
+                                    "[DUE_DATE]",
+                                    "[DELIVERY_DATE]"
+                                ]
+                            },
+                            "owner": {
+                                "type": "string",
+                                "examples": [
+                                    "[DELIVERABLE_OWNER]",
+                                    "[RESPONSIBLE_PERSON]"
+                                ]
+                            },
+                            "dependencies": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "examples": [
+                                        "[DEPENDENCY_NAME]",
+                                        "[PREREQUISITE]"
+                                    ]
+                                }
+                            },
+                            "acceptanceCriteria": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "examples": [
+                                        "[ACCEPTANCE_CRITERION]",
+                                        "[QUALITY_STANDARD]"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "scope": {
+                    "type": "object",
+                    "description": "Project scope boundaries using placeholders",
+                    "properties": {
+                        "inScope": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "examples": [
+                                    "[IN_SCOPE_ITEM]",
+                                    "[INCLUDED_FEATURE]"
+                                ]
+                            }
+                        },
+                        "outOfScope": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "examples": [
+                                    "[OUT_OF_SCOPE_ITEM]",
+                                    "[EXCLUDED_FEATURE]"
+                                ]
+                            }
+                        },
+                        "assumptions": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "examples": [
+                                    "[PROJECT_ASSUMPTION]",
+                                    "[PLANNING_ASSUMPTION]"
+                                ]
+                            }
+                        },
+                        "constraints": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "examples": [
+                                            "[CONSTRAINT_TYPE]",
+                                            "Budget",
+                                            "Time",
+                                            "Resource",
+                                            "Technical",
+                                            "[CUSTOM_CONSTRAINT]"
+                                        ]
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "examples": [
+                                            "[CONSTRAINT_DESCRIPTION]",
+                                            "[LIMITATION_DETAILS]"
+                                        ]
+                                    },
+                                    "impact": {
+                                        "type": "string",
+                                        "examples": [
+                                            "[CONSTRAINT_IMPACT]",
+                                            "High",
+                                            "Medium",
+                                            "Low"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "businessCase": {
+                    "type": "object",
+                    "description": "Business case using placeholders",
+                    "properties": {
+                        "problemStatement": {
+                            "type": "string",
+                            "examples": [
+                                "[PROBLEM_STATEMENT]",
+                                "[BUSINESS_PROBLEM]"
+                            ]
+                        },
+                        "proposedSolution": {
+                            "type": "string",
+                            "examples": [
+                                "[PROPOSED_SOLUTION]",
+                                "[SOLUTION_APPROACH]"
+                            ]
+                        },
+                        "expectedBenefits": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "benefit": {
+                                        "type": "string",
+                                        "examples": [
+                                            "[BENEFIT_DESCRIPTION]",
+                                            "[VALUE_PROPOSITION]"
+                                        ]
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "examples": [
+                                            "[BENEFIT_TYPE]",
+                                            "Financial",
+                                            "Operational",
+                                            "Strategic",
+                                            "Risk Reduction",
+                                            "[CUSTOM_BENEFIT]"
+                                        ]
+                                    },
+                                    "quantification": {
+                                        "type": "string",
+                                        "examples": [
+                                            "[BENEFIT_QUANTIFICATION]",
+                                            "[MEASURABLE_VALUE]"
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "roi": {
+                            "type": "object",
+                            "properties": {
+                                "expectedRoi": {
+                                    "type": "string",
+                                    "examples": [
+                                        "[EXPECTED_ROI]",
+                                        "[ROI_PERCENTAGE]"
+                                    ]
+                                },
+                                "paybackPeriod": {
+                                    "type": "string",
+                                    "examples": [
+                                        "[PAYBACK_PERIOD]",
+                                        "[BREAK_EVEN_TIME]"
+                                    ]
+                                },
+                                "costBenefitAnalysis": {
+                                    "type": "string",
+                                    "examples": [
+                                        "[COST_BENEFIT_ANALYSIS]",
+                                        "[FINANCIAL_ANALYSIS]"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         },
-        "version": {
-            "type": "string",
-            "description": "The current version of the blueprint document.",
-            "default": "3.0.0"
+        "stakeholders": {
+            "type": "array",
+            "description": "Project stakeholders using placeholders",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "required": [
+                    "name",
+                    "role",
+                    "responsibilities"
+                ],
+                "properties": {
+                    "stakeholderId": {
+                        "type": "string",
+                        "examples": [
+                            "[STAKEHOLDER_ID]",
+                            "[PERSON_ID]"
+                        ]
+                    },
+                    "name": {
+                        "type": "string",
+                        "examples": [
+                            "[STAKEHOLDER_NAME]",
+                            "[PERSON_NAME]"
+                        ]
+                    },
+                    "role": {
+                        "type": "string",
+                        "examples": [
+                            "[STAKEHOLDER_ROLE]",
+                            "Project Manager",
+                            "Product Owner",
+                            "Developer",
+                            "Business Analyst",
+                            "[CUSTOM_ROLE]"
+                        ]
+                    },
+                    "title": {
+                        "type": "string",
+                        "examples": [
+                            "[JOB_TITLE]",
+                            "[POSITION_TITLE]"
+                        ]
+                    },
+                    "organization": {
+                        "type": "string",
+                        "examples": [
+                            "[ORGANIZATION_NAME]",
+                            "[DEPARTMENT_NAME]"
+                        ]
+                    },
+                    "contactInfo": {
+                        "type": "object",
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "examples": [
+                                    "[EMAIL_ADDRESS]",
+                                    "[CONTACT_EMAIL]"
+                                ]
+                            },
+                            "phone": {
+                                "type": "string",
+                                "examples": [
+                                    "[PHONE_NUMBER]",
+                                    "[CONTACT_PHONE]"
+                                ]
+                            },
+                            "location": {
+                                "type": "string",
+                                "examples": [
+                                    "[LOCATION]",
+                                    "[OFFICE_LOCATION]"
+                                ]
+                            }
+                        }
+                    },
+                    "responsibilities": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "examples": [
+                                "[RESPONSIBILITY]",
+                                "[DUTY_DESCRIPTION]"
+                            ]
+                        }
+                    },
+                    "authority": {
+                        "type": "string",
+                        "examples": [
+                            "[AUTHORITY_LEVEL]",
+                            "[DECISION_MAKING_POWER]"
+                        ]
+                    },
+                    "influence": {
+                        "type": "string",
+                        "examples": [
+                            "[INFLUENCE_LEVEL]",
+                            "High",
+                            "Medium",
+                            "Low"
+                        ]
+                    },
+                    "interest": {
+                        "type": "string",
+                        "examples": [
+                            "[INTEREST_LEVEL]",
+                            "High",
+                            "Medium",
+                            "Low"
+                        ]
+                    },
+                    "communicationPreference": {
+                        "type": "string",
+                        "examples": [
+                            "[COMMUNICATION_PREFERENCE]",
+                            "Email",
+                            "Meetings",
+                            "Slack",
+                            "[CUSTOM_CHANNEL]"
+                        ]
+                    },
+                    "availability": {
+                        "type": "object",
+                        "properties": {
+                            "timeZone": {
+                                "type": "string",
+                                "examples": [
+                                    "[TIME_ZONE]",
+                                    "[WORKING_TIMEZONE]"
+                                ]
+                            },
+                            "workingHours": {
+                                "type": "string",
+                                "examples": [
+                                    "[WORKING_HOURS]",
+                                    "[AVAILABILITY_SCHEDULE]"
+                                ]
+                            },
+                            "allocation": {
+                                "type": "string",
+                                "examples": [
+                                    "[TIME_ALLOCATION]",
+                                    "[PERCENTAGE_COMMITMENT]"
+                                ]
+                            }
+                        }
+                    },
+                    "escalationPath": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "examples": [
+                                "[ESCALATION_CONTACT]",
+                                "[MANAGER_NAME]"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "timeline": {
+            "type": "object",
+            "description": "Project timeline using placeholders",
+            "required": [
+                "startDate",
+                "endDate",
+                "phases"
+            ],
+            "properties": {
+                "startDate": {
+                    "type": "string",
+                    "description": "Project start date - use placeholder [START_DATE]",
+                    "examples": [
+                        "[START_DATE]",
+                        "[PROJECT_KICKOFF]"
+                    ]
+                },
+                "endDate": {
+                    "type": "string",
+                    "description": "Project end date - use placeholder [END_DATE]",
+                    "examples": [
+                        "[END_DATE]",
+                        "[PROJECT_COMPLETION]"
+                    ]
+                },
+                "duration": {
+                    "type": "string",
+                    "description": "Project duration - use placeholder [PROJECT_DURATION]",
+                    "examples": [
+                        "[PROJECT_DURATION]",
+                        "[TOTAL_TIME]"
+                    ]
+                },
+                "phases": {
+                    "type": "array",
+                    "description": "Project phases using placeholders",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "phaseId": {
+                                "type": "string",
+                                "examples": [
+                                    "[PHASE_ID]",
+                                    "[STAGE_ID]"
+                                ]
+                            },
+                            "phaseName": {
+                                "type": "string",
+                                "examples": [
+                                    "[PHASE_NAME]",
+                                    "Planning",
+                                    "Design",
+                                    "Development",
+                                    "Testing",
+                                    "Deployment",
+                                    "[CUSTOM_PHASE]"
+                                ]
+                            },
+                            "description": {
+                                "type": "string",
+                                "examples": [
+                                    "[PHASE_DESCRIPTION]",
+                                    "[STAGE_PURPOSE]"
+                                ]
+                            },
+                            "startDate": {
+                                "type": "string",
+                                "examples": [
+                                    "[PHASE_START_DATE]",
+                                    "[STAGE_START]"
+                                ]
+                            },
+                            "endDate": {
+                                "type": "string",
+                                "examples": [
+                                    "[PHASE_END_DATE]",
+                                    "[STAGE_END]"
+                                ]
+                            },
+                            "duration": {
+                                "type": "string",
+                                "examples": [
+                                    "[PHASE_DURATION]",
+                                    "[STAGE_LENGTH]"
+                                ]
+                            },
+                            "status": {
+                                "type": "string",
+                                "examples": [
+                                    "[PHASE_STATUS]",
+                                    "Not Started",
+                                    "In Progress",
+                                    "Completed",
+                                    "On Hold",
+                                    "[CUSTOM_STATUS]"
+                                ]
+                            },
+                            "deliverables": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "examples": [
+                                        "[PHASE_DELIVERABLE]",
+                                        "[STAGE_OUTPUT]"
+                                    ]
+                                }
+                            },
+                            "milestones": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "milestoneId": {
+                                            "type": "string",
+                                            "examples": [
+                                                "[MILESTONE_ID]",
+                                                "[CHECKPOINT_ID]"
+                                            ]
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "examples": [
+                                                "[MILESTONE_NAME]",
+                                                "[CHECKPOINT_NAME]"
+                                            ]
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "examples": [
+                                                "[MILESTONE_DESCRIPTION]",
+                                                "[CHECKPOINT_DETAILS]"
+                                            ]
+                                        },
+                                        "dueDate": {
+                                            "type": "string",
+                                            "examples": [
+                                                "[MILESTONE_DATE]",
+                                                "[CHECKPOINT_DATE]"
+                                            ]
+                                        },
+                                        "criteria": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "examples": [
+                                                    "[MILESTONE_CRITERION]",
+                                                    "[COMPLETION_REQUIREMENT]"
+                                                ]
+                                            }
+                                        },
+                                        "owner": {
+                                            "type": "string",
+                                            "examples": [
+                                                "[MILESTONE_OWNER]",
+                                                "[RESPONSIBLE_PERSON]"
+                                            ]
+                                        }
+                                    }
+                                }
+                            },
+                            "dependencies": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "dependencyType": {
+                                            "type": "string",
+                                            "examples": [
+                                                "[DEPENDENCY_TYPE]",
+                                                "Finish-to-Start",
+                                                "Start-to-Start",
+                                                "Finish-to-Finish",
+                                                "[CUSTOM_DEPENDENCY]"
+                                            ]
+                                        },
+                                        "dependsOn": {
+                                            "type": "string",
+                                            "examples": [
+                                                "[DEPENDS_ON]",
+                                                "[PREREQUISITE_PHASE]"
+                                            ]
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "examples": [
+                                                "[DEPENDENCY_DESCRIPTION]",
+                                                "[RELATIONSHIP_DETAILS]"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "criticalPath": {
+                    "type": "array",
+                    "description": "Critical path activities using placeholders",
+                    "items": {
+                        "type": "string",
+                        "examples": [
+                            "[CRITICAL_ACTIVITY]",
+                            "[CRITICAL_TASK]"
+                        ]
+                    }
+                },
+                "bufferTime": {
+                    "type": "string",
+                    "description": "Buffer time allocation - use placeholder [BUFFER_TIME]",
+                    "examples": [
+                        "[BUFFER_TIME]",
+                        "[CONTINGENCY_TIME]"
+                    ]
+                }
+            }
+        },
+        "budget": {
+            "type": "object",
+            "description": "Project budget using placeholders",
+            "properties": {
+                "totalBudget": {
+                    "type": "string",
+                    "description": "Total project budget - use placeholder [TOTAL_BUDGET]",
+                    "examples": [
+                        "[TOTAL_BUDGET]",
+                        "[PROJECT_COST]"
+                    ]
+                },
+                "currency": {
+                    "type": "string",
+                    "description": "Budget currency - use placeholder [CURRENCY]",
+                    "examples": [
+                        "[CURRENCY]",
+                        "USD",
+                        "EUR",
+                        "GBP",
+                        "[LOCAL_CURRENCY]"
+                    ]
+                },
+                "budgetBreakdown": {
+                    "type": "array",
+                    "description": "Budget breakdown using placeholders",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "category": {
+                                "type": "string",
+                                "examples": [
+                                    "[BUDGET_CATEGORY]",
+                                    "Personnel",
+                                    "Equipment",
+                                    "Software",
+                                    "Training",
+                                    "[CUSTOM_CATEGORY]"
+                                ]
+                            },
+                            "amount": {
+                                "type": "string",
+                                "examples": [
+                                    "[BUDGET_AMOUNT]",
+                                    "[CATEGORY_COST]"
+                                ]
+                            },
+                            "percentage": {
+                                "type": "string",
+                                "examples": [
+                                    "[BUDGET_PERCENTAGE]",
+                                    "[ALLOCATION_PERCENT]"
+                                ]
+                            },
+                            "description": {
+                                "type": "string",
+                                "examples": [
+                                    "[BUDGET_DESCRIPTION]",
+                                    "[COST_JUSTIFICATION]"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "fundingSource": {
+                    "type": "string",
+                    "description": "Funding source - use placeholder [FUNDING_SOURCE]",
+                    "examples": [
+                        "[FUNDING_SOURCE]",
+                        "[BUDGET_SPONSOR]"
+                    ]
+                },
+                "approvalStatus": {
+                    "type": "string",
+                    "description": "Budget approval status - use placeholder [APPROVAL_STATUS]",
+                    "examples": [
+                        "[APPROVAL_STATUS]",
+                        "Pending",
+                        "Approved",
+                        "Rejected",
+                        "[CUSTOM_STATUS]"
+                    ]
+                },
+                "contingency": {
+                    "type": "object",
+                    "properties": {
+                        "percentage": {
+                            "type": "string",
+                            "examples": [
+                                "[CONTINGENCY_PERCENTAGE]",
+                                "[BUFFER_PERCENT]"
+                            ]
+                        },
+                        "amount": {
+                            "type": "string",
+                            "examples": [
+                                "[CONTINGENCY_AMOUNT]",
+                                "[BUFFER_AMOUNT]"
+                            ]
+                        },
+                        "justification": {
+                            "type": "string",
+                            "examples": [
+                                "[CONTINGENCY_JUSTIFICATION]",
+                                "[RISK_MITIGATION]"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "riskManagement": {
+            "type": "object",
+            "description": "Risk management using placeholders",
+            "properties": {
+                "riskAssessment": {
+                    "type": "array",
+                    "description": "Risk assessment using placeholders",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "riskId": {
+                                "type": "string",
+                                "examples": [
+                                    "[RISK_ID]",
+                                    "[RISK_IDENTIFIER]"
+                                ]
+                            },
+                            "riskName": {
+                                "type": "string",
+                                "examples": [
+                                    "[RISK_NAME]",
+                                    "[RISK_TITLE]"
+                                ]
+                            },
+                            "description": {
+                                "type": "string",
+                                "examples": [
+                                    "[RISK_DESCRIPTION]",
+                                    "[RISK_DETAILS]"
+                                ]
+                            },
+                            "category": {
+                                "type": "string",
+                                "examples": [
+                                    "[RISK_CATEGORY]",
+                                    "Technical",
+                                    "Financial",
+                                    "Operational",
+                                    "External",
+                                    "[CUSTOM_CATEGORY]"
+                                ]
+                            },
+                            "probability": {
+                                "type": "string",
+                                "examples": [
+                                    "[RISK_PROBABILITY]",
+                                    "High",
+                                    "Medium",
+                                    "Low",
+                                    "[CUSTOM_PROBABILITY]"
+                                ]
+                            },
+                            "impact": {
+                                "type": "string",
+                                "examples": [
+                                    "[RISK_IMPACT]",
+                                    "High",
+                                    "Medium",
+                                    "Low",
+                                    "[CUSTOM_IMPACT]"
+                                ]
+                            },
+                            "riskLevel": {
+                                "type": "string",
+                                "examples": [
+                                    "[RISK_LEVEL]",
+                                    "Critical",
+                                    "High",
+                                    "Medium",
+                                    "Low"
+                                ]
+                            },
+                            "mitigation": {
+                                "type": "object",
+                                "properties": {
+                                    "strategy": {
+                                        "type": "string",
+                                        "examples": [
+                                            "[MITIGATION_STRATEGY]",
+                                            "Avoid",
+                                            "Mitigate",
+                                            "Transfer",
+                                            "Accept",
+                                            "[CUSTOM_STRATEGY]"
+                                        ]
+                                    },
+                                    "actions": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "examples": [
+                                                "[MITIGATION_ACTION]",
+                                                "[PREVENTIVE_MEASURE]"
+                                            ]
+                                        }
+                                    },
+                                    "owner": {
+                                        "type": "string",
+                                        "examples": [
+                                            "[RISK_OWNER]",
+                                            "[RESPONSIBLE_PERSON]"
+                                        ]
+                                    },
+                                    "dueDate": {
+                                        "type": "string",
+                                        "examples": [
+                                            "[MITIGATION_DATE]",
+                                            "[ACTION_DEADLINE]"
+                                        ]
+                                    }
+                                }
+                            },
+                            "contingencyPlan": {
+                                "type": "string",
+                                "examples": [
+                                    "[CONTINGENCY_PLAN]",
+                                    "[BACKUP_PLAN]"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "riskMonitoring": {
+                    "type": "object",
+                    "properties": {
+                        "reviewFrequency": {
+                            "type": "string",
+                            "examples": [
+                                "[REVIEW_FREQUENCY]",
+                                "Weekly",
+                                "Bi-weekly",
+                                "Monthly",
+                                "[CUSTOM_FREQUENCY]"
+                            ]
+                        },
+                        "escalationCriteria": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "examples": [
+                                    "[ESCALATION_CRITERION]",
+                                    "[ALERT_CONDITION]"
+                                ]
+                            }
+                        },
+                        "reportingProcess": {
+                            "type": "string",
+                            "examples": [
+                                "[REPORTING_PROCESS]",
+                                "[COMMUNICATION_PROTOCOL]"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "communication": {
+            "type": "object",
+            "description": "Communication plan using placeholders",
+            "properties": {
+                "communicationPlan": {
+                    "type": "array",
+                    "description": "Communication activities using placeholders",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "communicationType": {
+                                "type": "string",
+                                "examples": [
+                                    "[COMMUNICATION_TYPE]",
+                                    "Status Meeting",
+                                    "Progress Report",
+                                    "Stakeholder Update",
+                                    "[CUSTOM_TYPE]"
+                                ]
+                            },
+                            "frequency": {
+                                "type": "string",
+                                "examples": [
+                                    "[COMMUNICATION_FREQUENCY]",
+                                    "Daily",
+                                    "Weekly",
+                                    "Monthly",
+                                    "[CUSTOM_FREQUENCY]"
+                                ]
+                            },
+                            "audience": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "examples": [
+                                        "[AUDIENCE_MEMBER]",
+                                        "[STAKEHOLDER_GROUP]"
+                                    ]
+                                }
+                            },
+                            "method": {
+                                "type": "string",
+                                "examples": [
+                                    "[COMMUNICATION_METHOD]",
+                                    "Email",
+                                    "Meeting",
+                                    "Dashboard",
+                                    "Report",
+                                    "[CUSTOM_METHOD]"
+                                ]
+                            },
+                            "owner": {
+                                "type": "string",
+                                "examples": [
+                                    "[COMMUNICATION_OWNER]",
+                                    "[RESPONSIBLE_PERSON]"
+                                ]
+                            },
+                            "content": {
+                                "type": "string",
+                                "examples": [
+                                    "[COMMUNICATION_CONTENT]",
+                                    "[MESSAGE_CONTENT]"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "reportingStructure": {
+                    "type": "object",
+                    "properties": {
+                        "statusReports": {
+                            "type": "object",
+                            "properties": {
+                                "frequency": {
+                                    "type": "string",
+                                    "examples": [
+                                        "[REPORT_FREQUENCY]",
+                                        "[REPORTING_SCHEDULE]"
+                                    ]
+                                },
+                                "recipients": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "examples": [
+                                            "[REPORT_RECIPIENT]",
+                                            "[STAKEHOLDER_NAME]"
+                                        ]
+                                    }
+                                },
+                                "format": {
+                                    "type": "string",
+                                    "examples": [
+                                        "[REPORT_FORMAT]",
+                                        "[DOCUMENT_TYPE]"
+                                    ]
+                                }
+                            }
+                        },
+                        "escalationMatrix": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "level": {
+                                        "type": "string",
+                                        "examples": [
+                                            "[ESCALATION_LEVEL]",
+                                            "Level 1",
+                                            "Level 2",
+                                            "Executive",
+                                            "[CUSTOM_LEVEL]"
+                                        ]
+                                    },
+                                    "contact": {
+                                        "type": "string",
+                                        "examples": [
+                                            "[ESCALATION_CONTACT]",
+                                            "[ESCALATION_PERSON]"
+                                        ]
+                                    },
+                                    "criteria": {
+                                        "type": "string",
+                                        "examples": [
+                                            "[ESCALATION_CRITERIA]",
+                                            "[TRIGGER_CONDITION]"
+                                        ]
+                                    },
+                                    "timeframe": {
+                                        "type": "string",
+                                        "examples": [
+                                            "[ESCALATION_TIMEFRAME]",
+                                            "[RESPONSE_TIME]"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "qualityManagement": {
+            "type": "object",
+            "description": "Quality management using placeholders",
+            "properties": {
+                "qualityStandards": {
+                    "type": "array",
+                    "description": "Quality standards using placeholders",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "standard": {
+                                "type": "string",
+                                "examples": [
+                                    "[QUALITY_STANDARD]",
+                                    "[COMPLIANCE_REQUIREMENT]"
+                                ]
+                            },
+                            "description": {
+                                "type": "string",
+                                "examples": [
+                                    "[STANDARD_DESCRIPTION]",
+                                    "[REQUIREMENT_DETAILS]"
+                                ]
+                            },
+                            "measurementCriteria": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "examples": [
+                                        "[MEASUREMENT_CRITERION]",
+                                        "[QUALITY_METRIC]"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "qualityAssurance": {
+                    "type": "object",
+                    "properties": {
+                        "qaProcess": {
+                            "type": "string",
+                            "examples": [
+                                "[QA_PROCESS]",
+                                "[QUALITY_PROCESS]"
+                            ]
+                        },
+                        "reviewPoints": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "reviewPoint": {
+                                        "type": "string",
+                                        "examples": [
+                                            "[REVIEW_POINT]",
+                                            "[CHECKPOINT_NAME]"
+                                        ]
+                                    },
+                                    "criteria": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "examples": [
+                                                "[REVIEW_CRITERION]",
+                                                "[QUALITY_CHECK]"
+                                            ]
+                                        }
+                                    },
+                                    "reviewers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "examples": [
+                                                "[REVIEWER_NAME]",
+                                                "[QA_PERSON]"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "successMetrics": {
+                    "type": "array",
+                    "description": "Success metrics using placeholders",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "metricName": {
+                                "type": "string",
+                                "examples": [
+                                    "[METRIC_NAME]",
+                                    "[KPI_NAME]"
+                                ]
+                            },
+                            "description": {
+                                "type": "string",
+                                "examples": [
+                                    "[METRIC_DESCRIPTION]",
+                                    "[KPI_DETAILS]"
+                                ]
+                            },
+                            "target": {
+                                "type": "string",
+                                "examples": [
+                                    "[METRIC_TARGET]",
+                                    "[KPI_GOAL]"
+                                ]
+                            },
+                            "measurementMethod": {
+                                "type": "string",
+                                "examples": [
+                                    "[MEASUREMENT_METHOD]",
+                                    "[TRACKING_APPROACH]"
+                                ]
+                            },
+                            "frequency": {
+                                "type": "string",
+                                "examples": [
+                                    "[MEASUREMENT_FREQUENCY]",
+                                    "[TRACKING_SCHEDULE]"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "documentation": {
+            "type": "object",
+            "description": "Project documentation using placeholders",
+            "properties": {
+                "documentRepository": {
+                    "type": "object",
+                    "properties": {
+                        "location": {
+                            "type": "string",
+                            "examples": [
+                                "[DOCUMENT_LOCATION]",
+                                "[REPOSITORY_URL]"
+                            ]
+                        },
+                        "accessControl": {
+                            "type": "string",
+                            "examples": [
+                                "[ACCESS_CONTROL]",
+                                "[PERMISSION_MODEL]"
+                            ]
+                        },
+                        "versionControl": {
+                            "type": "string",
+                            "examples": [
+                                "[VERSION_CONTROL]",
+                                "[VERSIONING_SYSTEM]"
+                            ]
+                        }
+                    }
+                },
+                "documentTypes": {
+                    "type": "array",
+                    "description": "Document types using placeholders",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "documentType": {
+                                "type": "string",
+                                "examples": [
+                                    "[DOCUMENT_TYPE]",
+                                    "Requirements",
+                                    "Design",
+                                    "Test Plan",
+                                    "[CUSTOM_TYPE]"
+                                ]
+                            },
+                            "template": {
+                                "type": "string",
+                                "examples": [
+                                    "[DOCUMENT_TEMPLATE]",
+                                    "[TEMPLATE_LOCATION]"
+                                ]
+                            },
+                            "owner": {
+                                "type": "string",
+                                "examples": [
+                                    "[DOCUMENT_OWNER]",
+                                    "[RESPONSIBLE_PERSON]"
+                                ]
+                            },
+                            "reviewProcess": {
+                                "type": "string",
+                                "examples": [
+                                    "[REVIEW_PROCESS]",
+                                    "[APPROVAL_WORKFLOW]"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "knowledgeManagement": {
+                    "type": "object",
+                    "properties": {
+                        "lessonsLearned": {
+                            "type": "string",
+                            "examples": [
+                                "[LESSONS_LEARNED_PROCESS]",
+                                "[KNOWLEDGE_CAPTURE]"
+                            ]
+                        },
+                        "bestPractices": {
+                            "type": "string",
+                            "examples": [
+                                "[BEST_PRACTICES_REPOSITORY]",
+                                "[KNOWLEDGE_BASE]"
+                            ]
+                        },
+                        "knowledgeTransfer": {
+                            "type": "string",
+                            "examples": [
+                                "[KNOWLEDGE_TRANSFER_PLAN]",
+                                "[HANDOVER_PROCESS]"
+                            ]
+                        }
+                    }
+                }
+            }
         }
-    },
-    "required": ["projectName", "projectDescription"]
+    }
 }
