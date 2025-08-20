@@ -1,51 +1,337 @@
-# Guía de Uso de Playbooks de Schemas
+# 🔧 Guía Completa de Uso de Playbooks de Schemas - Framework 2025
 
-Propósito
-- Explicar cómo usar los playbooks de schemas para crear/expandir schemas con máxima compatibilidad y trazabilidad.
-- Establecer el flujo de trabajo recomendado: leer playbook → editar schema → validar integridad → alinear docs.
+> **📌 REFERENCIA PRINCIPAL:** Para el contexto completo del ecosistema, consulta **[MASTER_GUIDE_2025.md](./MASTER_GUIDE_2025.md)** - La fuente definitiva del sistema Prompt Manager Lite V.
 
-Ubicación
-- Playbooks de schemas: `prompt_playbooks/schemas_playbooks/playbook_schema-*.md`
-- Schemas: `real_structure_documentation/schemas/master_blueprint_parts/*.json` y `real_structure_documentation/schemas/design_system_schema.json`
-- Herramientas: `tools/verify_integrity.py` (validación) y `combine_schemas.py` (ensamble final cuando corresponda)
+## 🎯 Propósito y Visión 2025
 
-Principios clave
-- Retrocompatibilidad: añadir solo campos opcionales al extender schemas existentes.
-- Identificadores estables: preferir `id`/`slug` para referencias cruzadas (ej.: `componentLibrary`).
-- Enlaces cruzados: mantener `$comment` en cada schema apuntando a su playbook.
-- Separación de concerns: alinear pero no mezclar dominios (frontend/backend/infrastructure/devex).
-- Normalización: describir campos con `description`, usar `enum` y `format` cuando aplique.
+Esta guía establece el framework completo para usar los **playbooks de schemas** con validación avanzada y automatización, proporcionando:
+- **Workflow automatizado** para creación y extensión de schemas
+- **Validación continua** con herramientas de integridad avanzadas
+- **Compatibilidad garantizada** con versionado semántico
+- **Trazabilidad completa** entre schemas, playbooks y documentación
+- **Mejores prácticas 2025** para desarrollo schema-driven
 
-Flujo recomendado (por schema)
-1) Abrir el playbook correspondiente (ej.: `playbook_schema-apiContract.md`).
-2) Revisar objetivos, campos, ejemplos y checklist del playbook.
-3) Editar el schema asociado en `real_structure_documentation/schemas/**.json` siguiendo las recomendaciones.
-   - Añadir nuevos campos como opcionales.
-   - Incluir `description`, `enum` y `format` para validación fuerte.
-   - Mantener `$comment` hacia el playbook.
-4) Validar:
-   - Ejecutar `python3 tools/verify_integrity.py` (comprueba esquema y vínculos básicos).
-5) Alinear con documentos consumidores (ver `guides/CONEXION_SCHEMAS_DOCS.md`).
-6) Cuando todos los schemas estén completos, generar el combinado con `combine_schemas.py` (si aplica en tu flujo).
+## 📁 Estructura del Sistema
 
-Convenciones y patrones
-- Referencias UI:
-  - `componentLibrary.components[].{id,slug,name}` → usados por `visualBlueprint.pages[].componentRefs[]`. Preferir `id/slug`.
-- API ↔ Arquitectura:
-  - Introducir/usar una `referenceKey` común entre `apiContract.endpoints[]` y `architecture.integrationPoints[]`.
-- Modelo de datos:
-  - Alinear `dataModel.namingConventions` con `dataModelDictionary`.
-- Testing ↔ Deployment:
-  - `testingStrategy.environments` y gates coherentes con `deploymentStrategy.pipelines`.
-- Design System:
-  - Canónico: `real_structure_documentation/schemas/design_system_schema.json` (especificación operativa). `master_blueprint_parts/designSystem.json` se mantiene por compatibilidad.
+### **Arquitectura de Schemas y Playbooks:**
+```bash
+prompt-manager-lite-v/
+├── prompt_playbooks/
+│   └── schemas_playbooks/                # 🎯 Playbooks de schemas
+│       ├── playbook_schema-apiContract.md
+│       ├── playbook_schema-dataModel.md
+│       ├── playbook_schema-architecture.md
+│       └── [28 playbooks totales]
+├── real_structure_documentation/
+│   └── schemas/                          # 🔧 Schemas JSON
+│       ├── master_blueprint_parts/       # Schemas modulares
+│       │   ├── apiContract.json
+│       │   ├── dataModel.json
+│       │   └── [26 schemas core]
+│       ├── design_system_schema.json     # Schema canónico
+│       └── master_blueprint_schema.json  # Schema maestro
+└── tools/
+    ├── schema_validator.py               # ✅ Validador avanzado
+    ├── schema_generator.py               # 🤖 Generador automático
+    ├── compatibility_checker.py         # 🔄 Verificador de compatibilidad
+    ├── cross_reference_analyzer.py      # 🔗 Analizador de referencias
+    └── schema_merger.py                 # 🔧 Combinador de schemas
+```
 
-Taxonomía de campos recomendada (al extender schemas)
-- Siempre opcionales: nuevos campos deben ser `optional` para preservar retrocompatibilidad.
-- Documentación: incluir `description` y ejemplos representativos.
-- Validación: usar `enum`, `pattern`, `minimum/maximum`, `format` (`uri`, `date-time`, etc.) cuando aplique.
-- Versionado: añadir `version` a entidades clave cuando afecte contratos.
-- Trazabilidad: considerar `docRefs[]` para enlazar DOCs relevantes.
+## 🎯 Principios Fundamentales 2025
+
+### **Compatibilidad y Versionado:**
+- **🔄 Retrocompatibilidad:** Añadir solo campos opcionales al extender schemas existentes
+- **📌 Versionado Semántico:** Major.Minor.Patch para cambios breaking/features/fixes
+- **🔗 Referencias Estables:** Preferir `id`/`slug` para referencias cruzadas
+- **📚 Trazabilidad:** Mantener `$comment` enlazando a playbooks correspondientes
+
+### **Arquitectura y Diseño:**
+- **🏗️ Separación de Concerns:** Alinear sin mezclar dominios (frontend/backend/infra)
+- **📊 Normalización:** Usar `description`, `enum`, `format` para validación robusta
+- **🔍 Validación Estricta:** Implementar constraints y patterns apropiados
+- **🤖 Automatización:** Maximizar generación y validación automática
+
+## 🚀 Workflow Automatizado 2025
+
+### **Comandos de Automatización:**
+```bash
+# 1. Validación completa de schemas
+python3 tools/schema_validator.py --validate-all --strict
+
+# 2. Verificación de compatibilidad
+python3 tools/compatibility_checker.py --check-breaking-changes
+
+# 3. Análisis de referencias cruzadas
+python3 tools/cross_reference_analyzer.py --report --fix-broken
+
+# 4. Generación automática desde playbook
+python3 tools/schema_generator.py --from-playbook apiContract --validate
+
+# 5. Combinación de schemas
+python3 tools/schema_merger.py --output master_blueprint_combined.json
+
+# 6. Pipeline completo
+./scripts/schema_validation_pipeline.sh --full-check
+```
+
+### **Flujo Detallado por Schema:**
+1. **📋 Preparación:** Abrir playbook correspondiente (ej.: `playbook_schema-apiContract.md`)
+2. **🔍 Análisis:** Revisar objetivos, campos, ejemplos y checklist del playbook
+3. **🔧 Edición:** Modificar schema siguiendo principios de compatibilidad
+4. **✅ Validación:** Ejecutar suite completa de validaciones
+5. **🔗 Verificación:** Analizar referencias cruzadas y dependencias
+6. **📊 Alineación:** Sincronizar con documentos consumidores
+7. **🔄 Integración:** Ejecutar pipeline CI/CD para validación continua
+
+## 🔗 Patrones de Referencias Cruzadas
+
+### **Referencias UI/UX:**
+```yaml
+component_references:
+  source: "componentLibrary.components[].{id,slug,name}"
+  target: "visualBlueprint.pages[].componentRefs[]"
+  strategy: "Preferir id/slug para estabilidad"
+  validation: "Verificar que todos los componentRefs resuelvan"
+```
+
+### **API ↔ Arquitectura:**
+```yaml
+api_architecture_sync:
+  common_key: "referenceKey"
+  endpoints: "apiContract.endpoints[].referenceKey"
+  integration: "architecture.integrationPoints[].referenceKey"
+  validation: "Sincronización bidireccional obligatoria"
+```
+
+### **Modelo de Datos:**
+```yaml
+data_model_consistency:
+  conventions: "dataModel.namingConventions"
+  dictionary: "dataModelDictionary.terms[]"
+  validation: "Terminología coherente entre ambos"
+```
+
+### **Testing ↔ Deployment:**
+```yaml
+testing_deployment_alignment:
+  environments: "testingStrategy.environments[]"
+  pipelines: "deploymentStrategy.pipelines[].stages[]"
+  gates: "Coherencia en gates y ambientes"
+```
+
+### **Design System (Canónico):**
+```yaml
+design_system_hierarchy:
+  canonical: "design_system_schema.json"
+  legacy: "master_blueprint_parts/designSystem.json"
+  status: "Migrar gradualmente al canónico"
+```
+
+## 🔧 Herramientas de Validación Avanzada
+
+### **Validador de Schemas:**
+```python
+# tools/schema_validator.py
+import json
+import jsonschema
+from pathlib import Path
+from typing import Dict, List, Any
+
+class SchemaValidator:
+    def __init__(self, schemas_dir: str):
+        self.schemas_dir = Path(schemas_dir)
+        self.meta_schema = self._load_meta_schema()
+    
+    def validate_all_schemas(self) -> Dict[str, Any]:
+        """Valida todos los schemas contra JSON Schema 2020-12"""
+        results = {
+            "total": 0,
+            "valid": 0,
+            "invalid": 0,
+            "errors": [],
+            "warnings": []
+        }
+        
+        for schema_file in self.schemas_dir.rglob("*.json"):
+            try:
+                with open(schema_file) as f:
+                    schema = json.load(f)
+                
+                # Validar contra meta-schema
+                jsonschema.validate(schema, self.meta_schema)
+                
+                # Validaciones custom
+                self._validate_custom_rules(schema, schema_file.name)
+                
+                results["valid"] += 1
+            except Exception as e:
+                results["invalid"] += 1
+                results["errors"].append({
+                    "file": str(schema_file),
+                    "error": str(e)
+                })
+            
+            results["total"] += 1
+        
+        return results
+    
+    def _validate_custom_rules(self, schema: Dict, filename: str):
+        """Validaciones específicas del framework"""
+        # Verificar $comment presente
+        if "$comment" not in schema:
+            raise ValueError(f"Missing $comment linking to playbook")
+        
+        # Verificar versionado
+        if "version" not in schema.get("properties", {}):
+            self.warnings.append(f"{filename}: Consider adding version field")
+        
+        # Verificar descriptions
+        self._check_descriptions(schema, filename)
+
+# Uso
+validator = SchemaValidator("real_structure_documentation/schemas/")
+results = validator.validate_all_schemas()
+print(f"Schemas válidos: {results['valid']}/{results['total']}")
+```
+
+### **Verificador de Compatibilidad:**
+```python
+# tools/compatibility_checker.py
+from typing import Dict, List, Tuple
+import json
+from deepdiff import DeepDiff
+
+class CompatibilityChecker:
+    def __init__(self):
+        self.breaking_changes = []
+        self.safe_changes = []
+    
+    def check_compatibility(self, old_schema: Dict, new_schema: Dict) -> Dict:
+        """Verifica compatibilidad entre versiones de schema"""
+        diff = DeepDiff(old_schema, new_schema, ignore_order=True)
+        
+        breaking_changes = []
+        safe_changes = []
+        
+        # Analizar cambios
+        if "dictionary_item_removed" in diff:
+            for removed in diff["dictionary_item_removed"]:
+                if self._is_required_field(removed, old_schema):
+                    breaking_changes.append(f"Removed required field: {removed}")
+                else:
+                    safe_changes.append(f"Removed optional field: {removed}")
+        
+        if "dictionary_item_added" in diff:
+            for added in diff["dictionary_item_added"]:
+                if self._is_required_field(added, new_schema):
+                    breaking_changes.append(f"Added required field: {added}")
+                else:
+                    safe_changes.append(f"Added optional field: {added}")
+        
+        return {
+            "is_compatible": len(breaking_changes) == 0,
+            "breaking_changes": breaking_changes,
+            "safe_changes": safe_changes,
+            "recommended_version_bump": self._suggest_version_bump(breaking_changes, safe_changes)
+        }
+    
+    def _suggest_version_bump(self, breaking: List, safe: List) -> str:
+        """Sugiere incremento de versión basado en cambios"""
+        if breaking:
+            return "major"
+        elif safe:
+            return "minor"
+        else:
+            return "patch"
+```
+
+### **Analizador de Referencias Cruzadas:**
+```python
+# tools/cross_reference_analyzer.py
+class CrossReferenceAnalyzer:
+    def __init__(self, schemas_dir: str):
+        self.schemas_dir = Path(schemas_dir)
+        self.schemas = self._load_all_schemas()
+    
+    def analyze_references(self) -> Dict[str, Any]:
+        """Analiza todas las referencias cruzadas entre schemas"""
+        results = {
+            "valid_references": [],
+            "broken_references": [],
+            "orphaned_entities": [],
+            "circular_dependencies": []
+        }
+        
+        # Verificar referencias UI
+        self._check_ui_references(results)
+        
+        # Verificar referencias API-Arquitectura
+        self._check_api_architecture_sync(results)
+        
+        # Verificar modelo de datos
+        self._check_data_model_consistency(results)
+        
+        # Detectar dependencias circulares
+        self._detect_circular_dependencies(results)
+        
+        return results
+    
+    def _check_ui_references(self, results: Dict):
+        """Verifica referencias entre componentLibrary y visualBlueprint"""
+        component_lib = self.schemas.get("componentLibrary.json", {})
+        visual_blueprint = self.schemas.get("visualBlueprint.json", {})
+        
+        # Obtener IDs de componentes disponibles
+        available_components = set()
+        for component in component_lib.get("components", []):
+            if "id" in component:
+                available_components.add(component["id"])
+            if "slug" in component:
+                available_components.add(component["slug"])
+        
+        # Verificar referencias en páginas
+        for page in visual_blueprint.get("pages", []):
+            for ref in page.get("componentRefs", []):
+                if ref not in available_components:
+                    results["broken_references"].append({
+                        "type": "ui_component",
+                        "reference": ref,
+                        "location": f"visualBlueprint.pages[].componentRefs"
+                    })
+                else:
+                    results["valid_references"].append({
+                        "type": "ui_component",
+                        "reference": ref
+                    })
+```
+
+## 📊 Taxonomía de Campos Recomendada
+
+### **Campos Obligatorios para Extensiones:**
+```yaml
+compatibilidad:
+  nuevos_campos: "SIEMPRE opcionales"
+  campos_existentes: "NO modificar si son requeridos"
+  
+documentacion:
+  description: "Obligatorio para todos los campos"
+  examples: "Recomendado para campos complejos"
+  
+validacion:
+  enum: "Para valores predefinidos"
+  pattern: "Para formatos específicos"
+  format: "uri, email, date-time, uuid, etc."
+  constraints: "minimum, maximum, minLength, maxLength"
+  
+versionado:
+  version: "Para entidades que afecten contratos"
+  deprecated: "Para campos obsoletos"
+  
+trazabilidad:
+  $comment: "Enlace al playbook correspondiente"
+  docRefs: "Referencias a documentación relacionada"
+```
 
 Recetas de enlaces cruzados
 - UI: `visualBlueprint.pages[].componentRefs[]` ↔ `componentLibrary.components[].{id,slug}`.

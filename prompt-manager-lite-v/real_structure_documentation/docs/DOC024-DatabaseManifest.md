@@ -40,41 +40,41 @@
 
 ### Data Catalog Philosophy
 
-Our database catalog follows modern data governance principles and serves as the single source of truth for all data assets. This catalog enables:
+[DATABASE_CATALOG_DESCRIPTION] follows [DATA_GOVERNANCE_PRINCIPLES] and serves as [CATALOG_PURPOSE]. This catalog enables:
 
-#### 🔍 **Data Discovery & Understanding**
-- **Comprehensive metadata** for all database entities and attributes
-- **Business context** and semantic meaning of data elements
-- **Data lineage tracking** from source to consumption
-- **Impact analysis** for schema changes and dependencies
+#### 🔍 **[DATA_DISCOVERY_CATEGORY_TITLE]**
+- **[DISCOVERY_FEATURE_1]** for [FEATURE_1_SCOPE]
+- **[DISCOVERY_FEATURE_2]** and [FEATURE_2_PURPOSE]
+- **[DISCOVERY_FEATURE_3]** from [FEATURE_3_SOURCE] to [FEATURE_3_TARGET]
+- **[DISCOVERY_FEATURE_4]** for [FEATURE_4_CHANGES] and [FEATURE_4_DEPENDENCIES]
 
-#### 🛡️ **Data Governance & Compliance**
-- **Data classification** and sensitivity labeling
-- **Privacy controls** and GDPR/CCPA compliance
-- **Access controls** and audit trails
-- **Data retention** and lifecycle management
+#### 🛡️ **[DATA_GOVERNANCE_CATEGORY_TITLE]**
+- **[GOVERNANCE_FEATURE_1]** and [FEATURE_1_CLASSIFICATION]
+- **[GOVERNANCE_FEATURE_2]** and [FEATURE_2_ACCESS]
+- **[GOVERNANCE_FEATURE_3]** and [FEATURE_3_MONITORING]
+- **[GOVERNANCE_FEATURE_4]** and [FEATURE_4_ARCHIVING]
 
-#### 📊 **Data Quality & Reliability**
-- **Data quality metrics** and monitoring
-- **Schema validation** and constraint enforcement
-- **Data profiling** and anomaly detection
-- **Performance optimization** and indexing strategies
+#### 📊 **[DATA_QUALITY_CATEGORY_TITLE]**
+- **[QUALITY_FEATURE_1]** and [FEATURE_1_MONITORING]
+- **[QUALITY_FEATURE_2]** and [FEATURE_2_ENFORCEMENT]
+- **[QUALITY_FEATURE_3]** and [FEATURE_3_DETECTION]
+- **[QUALITY_FEATURE_4]** and [FEATURE_4_STRATEGIES]
 
 ### Database Classification
 
-Our databases are organized by purpose, sensitivity, and operational characteristics:
+[DATABASE_ORGANIZATION_DESCRIPTION]:
 
-#### **Database Tiers**
-- **Tier 1 (Critical):** Production transactional databases with 99.9% availability
-- **Tier 2 (Important):** Analytics and reporting databases with 99.5% availability
-- **Tier 3 (Standard):** Development and testing databases with 99% availability
-- **Tier 4 (Archive):** Historical and backup databases with 95% availability
+#### **[DATABASE_TIERS_TITLE]**
+- **[DB_TIER_1_NAME]:** [DB_TIER_1_DESCRIPTION] with [DB_TIER_1_AVAILABILITY]
+- **[DB_TIER_2_NAME]:** [DB_TIER_2_DESCRIPTION] with [DB_TIER_2_AVAILABILITY]
+- **[DB_TIER_3_NAME]:** [DB_TIER_3_DESCRIPTION] with [DB_TIER_3_AVAILABILITY]
+- **[DB_TIER_4_NAME]:** [DB_TIER_4_DESCRIPTION] with [DB_TIER_4_AVAILABILITY]
 
-#### **Data Classification Levels**
-- **Public:** Non-sensitive data available for general use
-- **Internal:** Company-internal data with standard access controls
-- **Confidential:** Sensitive business data with restricted access
-- **Restricted:** Highly sensitive data with strict access controls and encryption
+#### **[DATA_CLASSIFICATION_TITLE]**
+- **[CLASSIFICATION_LEVEL_1]:** [LEVEL_1_DESCRIPTION]
+- **[CLASSIFICATION_LEVEL_2]:** [LEVEL_2_DESCRIPTION]
+- **[CLASSIFICATION_LEVEL_3]:** [LEVEL_3_DESCRIPTION]
+- **[CLASSIFICATION_LEVEL_4]:** [LEVEL_4_DESCRIPTION]
 
 ---
 
@@ -82,74 +82,74 @@ Our databases are organized by purpose, sensitivity, and operational characteris
 
 ### Database Infrastructure Overview
 
-Our database architecture follows modern cloud-native principles with high availability and scalability:
+[DATABASE_ARCHITECTURE_DESCRIPTION] follows [ARCHITECTURE_PRINCIPLES] with [ARCHITECTURE_CHARACTERISTICS]:
 
-#### **Primary Database Cluster**
+#### **[PRIMARY_CLUSTER_TITLE]**
 ```yaml
-cluster_name: production-postgresql-cluster
-database_engine: PostgreSQL 15.4
-cluster_type: Primary-Replica with Read Replicas
-high_availability: Multi-AZ deployment with automatic failover
-backup_strategy: Continuous WAL archiving + Point-in-time recovery
-encryption: AES-256 encryption at rest and in transit
+cluster_name: [CLUSTER_NAME]
+database_engine: [DATABASE_ENGINE]
+cluster_type: [CLUSTER_TYPE]
+high_availability: [HA_STRATEGY]
+backup_strategy: [BACKUP_STRATEGY]
+encryption: [ENCRYPTION_DETAILS]
 
 instances:
   primary:
-    instance_type: db.r6g.2xlarge
-    storage: 2TB GP3 SSD
+    instance_type: [PRIMARY_INSTANCE_TYPE]
+    storage: [PRIMARY_STORAGE]
     iops: 12000
     
   read_replicas:
-    count: 3
-    instance_type: db.r6g.xlarge
-    storage: 2TB GP3 SSD
-    regions: [us-east-1a, us-east-1b, us-east-1c]
+    count: [REPLICA_COUNT]
+    instance_type: [REPLICA_INSTANCE_TYPE]
+    storage: [REPLICA_STORAGE]
+    regions: [[REGION_1], [REGION_2], [REGION_3]]
 
 connection_pooling:
-  tool: PgBouncer
-  max_connections: 1000
-  pool_mode: transaction
+  tool: [CONNECTION_POOLING_TOOL]
+  max_connections: [MAX_CONNECTIONS]
+  pool_mode: [POOL_MODE]
 ```
 
-#### **Analytics Database**
+#### **[ANALYTICS_DATABASE_TITLE]**
 ```yaml
-cluster_name: analytics-data-warehouse
-database_engine: Amazon Redshift
-cluster_type: Multi-node cluster
-node_type: ra3.4xlarge
-node_count: 6
-storage: Managed storage with automatic scaling
+cluster_name: [ANALYTICS_CLUSTER_NAME]
+database_engine: [ANALYTICS_ENGINE]
+cluster_type: [ANALYTICS_CLUSTER_TYPE]
+node_type: [ANALYTICS_NODE_TYPE]
+node_count: [ANALYTICS_NODE_COUNT]
+storage: [ANALYTICS_STORAGE]
 
 features:
-  - Columnar storage optimization
-  - Automatic workload management
-  - Result caching
-  - Spectrum for S3 data lake queries
-  - Concurrency scaling
+  - [ANALYTICS_FEATURE_1]
+  - [ANALYTICS_FEATURE_2]
+  - [ANALYTICS_FEATURE_3]
+  - [ANALYTICS_FEATURE_4]
+  - [ANALYTICS_FEATURE_5]
 
 security:
-  encryption_at_rest: AES-256
-  encryption_in_transit: SSL/TLS
-  vpc_security: Private subnets with security groups
-  audit_logging: Comprehensive query and connection logging
+  encryption_at_rest: [ENCRYPTION_AT_REST]
+  encryption_in_transit: [ENCRYPTION_IN_TRANSIT]
+  vpc_security: [VPC_SECURITY]
+  audit_logging: [AUDIT_LOGGING]
 ```
 
-#### **Cache Layer**
+#### **[CACHE_LAYER_TITLE]**
 ```yaml
-cache_cluster: redis-production-cluster
-engine: Redis 7.2
-cluster_mode: Enabled with sharding
-nodes: 6 (3 shards, 2 replicas each)
-instance_type: cache.r7g.xlarge
-memory_per_node: 26.32 GB
-total_memory: 157.92 GB
+cache_cluster: [CACHE_CLUSTER_NAME]
+engine: [CACHE_ENGINE]
+cluster_mode: [CACHE_CLUSTER_MODE]
+nodes: [CACHE_NODE_COUNT]
+instance_type: [CACHE_INSTANCE_TYPE]
+memory_per_node: [MEMORY_PER_NODE]
+total_memory: [TOTAL_MEMORY]
 
 features:
-  - Automatic failover
-  - Multi-AZ deployment
-  - Backup and restore
-  - In-transit and at-rest encryption
-  - CloudWatch monitoring
+  - [CACHE_FEATURE_1]
+  - [CACHE_FEATURE_2]
+  - [CACHE_FEATURE_3]
+  - [CACHE_FEATURE_4]
+  - [CACHE_FEATURE_5]
 ```
 
 ---
@@ -158,335 +158,323 @@ features:
 
 ### Business Domain Entities
 
-#### **User Management Domain**
+#### **[DOMAIN_1_NAME]**
 
-##### **Users Table**
+##### **[TABLE_1_NAME]**
 ```sql
--- Primary user entity storing core user information
-CREATE TABLE users (
-    user_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    email VARCHAR(255) UNIQUE NOT NULL,
-    username VARCHAR(50) UNIQUE NOT NULL,
-    password_hash VARCHAR(255) NOT NULL,
-    first_name VARCHAR(100) NOT NULL,
-    last_name VARCHAR(100) NOT NULL,
-    date_of_birth DATE,
-    phone_number VARCHAR(20),
-    profile_image_url TEXT,
-    email_verified BOOLEAN DEFAULT FALSE,
-    phone_verified BOOLEAN DEFAULT FALSE,
-    account_status user_status_enum DEFAULT 'active',
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    last_login_at TIMESTAMP WITH TIME ZONE,
+-- [TABLE_1_DESCRIPTION]
+CREATE TABLE [TABLE_1_NAME_LOWER] (
+    [PRIMARY_KEY_FIELD] [PRIMARY_KEY_TYPE] PRIMARY KEY DEFAULT [PRIMARY_KEY_DEFAULT],
+    [FIELD_1] [FIELD_1_TYPE] [FIELD_1_CONSTRAINTS],
+    [FIELD_2] [FIELD_2_TYPE] [FIELD_2_CONSTRAINTS],
+    [FIELD_3] [FIELD_3_TYPE] [FIELD_3_CONSTRAINTS],
+    [FIELD_4] [FIELD_4_TYPE] [FIELD_4_CONSTRAINTS],
+    [FIELD_5] [FIELD_5_TYPE] [FIELD_5_CONSTRAINTS],
+    [FIELD_6] [FIELD_6_TYPE],
+    [FIELD_7] [FIELD_7_TYPE],
+    [FIELD_8] [FIELD_8_TYPE],
+    [FIELD_9] [FIELD_9_TYPE] DEFAULT [FIELD_9_DEFAULT],
+    [FIELD_10] [FIELD_10_TYPE] DEFAULT [FIELD_10_DEFAULT],
+    [STATUS_FIELD] [STATUS_ENUM_TYPE] DEFAULT '[STATUS_DEFAULT]',
+    [CREATED_AT_FIELD] TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    [UPDATED_AT_FIELD] TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    [LAST_ACCESS_FIELD] TIMESTAMP WITH TIME ZONE,
     
     -- Audit fields
-    created_by UUID REFERENCES users(user_id),
-    updated_by UUID REFERENCES users(user_id),
+    [CREATED_BY_FIELD] [REFERENCE_TYPE] REFERENCES [REFERENCE_TABLE]([REFERENCE_FIELD]),
+    [UPDATED_BY_FIELD] [REFERENCE_TYPE] REFERENCES [REFERENCE_TABLE]([REFERENCE_FIELD]),
     
     -- Soft delete
-    deleted_at TIMESTAMP WITH TIME ZONE,
+    [DELETED_AT_FIELD] TIMESTAMP WITH TIME ZONE,
     
     -- Constraints
-    CONSTRAINT users_email_format CHECK (email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'),
-    CONSTRAINT users_username_format CHECK (username ~* '^[a-zA-Z0-9_]{3,50}$'),
-    CONSTRAINT users_age_check CHECK (date_of_birth IS NULL OR date_of_birth <= CURRENT_DATE - INTERVAL '13 years')
+    CONSTRAINT [CONSTRAINT_1_NAME] CHECK ([CONSTRAINT_1_CONDITION]),
+    CONSTRAINT [CONSTRAINT_2_NAME] CHECK ([CONSTRAINT_2_CONDITION]),
+    CONSTRAINT [CONSTRAINT_3_NAME] CHECK ([CONSTRAINT_3_CONDITION])
 );
 
 -- Indexes for performance
-CREATE INDEX idx_users_email ON users(email) WHERE deleted_at IS NULL;
-CREATE INDEX idx_users_username ON users(username) WHERE deleted_at IS NULL;
-CREATE INDEX idx_users_status ON users(account_status) WHERE deleted_at IS NULL;
-CREATE INDEX idx_users_created_at ON users(created_at);
-CREATE INDEX idx_users_last_login ON users(last_login_at);
+CREATE INDEX [INDEX_1_NAME] ON [TABLE_1_NAME_LOWER]([INDEX_1_FIELD]) WHERE [INDEX_1_CONDITION];
+CREATE INDEX [INDEX_2_NAME] ON [TABLE_1_NAME_LOWER]([INDEX_2_FIELD]) WHERE [INDEX_2_CONDITION];
+CREATE INDEX [INDEX_3_NAME] ON [TABLE_1_NAME_LOWER]([INDEX_3_FIELD]) WHERE [INDEX_3_CONDITION];
+CREATE INDEX [INDEX_4_NAME] ON [TABLE_1_NAME_LOWER]([INDEX_4_FIELD]);
+CREATE INDEX [INDEX_5_NAME] ON [TABLE_1_NAME_LOWER]([INDEX_5_FIELD]);
 ```
 
-**Entity Metadata:**
+**[ENTITY_METADATA_TITLE]:**
 ```yaml
-entity_name: users
-domain: user_management
-tier: 1
-data_classification: confidential
-pii_data: true
-gdpr_applicable: true
-retention_period: 7_years_after_account_closure
+entity_name: [ENTITY_NAME]
+domain: [ENTITY_DOMAIN]
+tier: [ENTITY_TIER]
+data_classification: [DATA_CLASSIFICATION]
+pii_data: [PII_DATA_FLAG]
+gdpr_applicable: [GDPR_APPLICABLE_FLAG]
+retention_period: [RETENTION_PERIOD]
 
-business_purpose: "Core user identity and profile management"
-data_owner: "Identity Team"
-technical_owner: "Platform Engineering"
+business_purpose: "[BUSINESS_PURPOSE]"
+data_owner: "[DATA_OWNER_TEAM]"
+technical_owner: "[TECHNICAL_OWNER_TEAM]"
 steward: "[DATA_STEWARD_NAME]"
 
 compliance_requirements:
-  - GDPR (EU users)
-  - CCPA (California users)
-  - SOC2 Type II
-  - ISO 27001
+  - [COMPLIANCE_REQ_1]
+  - [COMPLIANCE_REQ_2]
+  - [COMPLIANCE_REQ_3]
+  - [COMPLIANCE_REQ_4]
 
 data_quality_rules:
-  - email_uniqueness: "Email addresses must be unique across active users"
-  - email_format: "Valid email format required"
-  - username_uniqueness: "Usernames must be unique across active users"
-  - age_verification: "Users must be at least 13 years old"
+  - [QUALITY_RULE_1]: "[QUALITY_RULE_1_DESCRIPTION]"
+  - [QUALITY_RULE_2]: "[QUALITY_RULE_2_DESCRIPTION]"
+  - [QUALITY_RULE_3]: "[QUALITY_RULE_3_DESCRIPTION]"
+  - [QUALITY_RULE_4]: "[QUALITY_RULE_4_DESCRIPTION]"
 
 monitoring:
-  row_count_alert: "> 10% change in 24h"
-  data_quality_score: "> 95%"
-  query_performance: "< 100ms for primary key lookups"
+  row_count_alert: "[ROW_COUNT_ALERT_THRESHOLD]"
+  data_quality_score: "[DATA_QUALITY_THRESHOLD]"
+  query_performance: "[QUERY_PERFORMANCE_THRESHOLD]"
 ```
 
-##### **User Profiles Table**
+##### **[TABLE_2_NAME]**
 ```sql
--- Extended user profile information
-CREATE TABLE user_profiles (
-    profile_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id UUID NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
-    bio TEXT,
-    website_url TEXT,
-    location VARCHAR(255),
-    timezone VARCHAR(50),
-    language_preference VARCHAR(10) DEFAULT 'en',
-    currency_preference VARCHAR(3) DEFAULT 'USD',
-    notification_preferences JSONB DEFAULT '{}',
-    privacy_settings JSONB DEFAULT '{}',
-    marketing_consent BOOLEAN DEFAULT FALSE,
-    analytics_consent BOOLEAN DEFAULT FALSE,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+-- [TABLE_2_DESCRIPTION]
+CREATE TABLE [TABLE_2_NAME_LOWER] (
+    [TABLE_2_PRIMARY_KEY] [PRIMARY_KEY_TYPE] PRIMARY KEY DEFAULT [PRIMARY_KEY_DEFAULT],
+    [FOREIGN_KEY_FIELD] [FOREIGN_KEY_TYPE] NOT NULL REFERENCES [PARENT_TABLE]([PARENT_KEY]) ON DELETE CASCADE,
+    [TEXT_FIELD_1] TEXT,
+    [TEXT_FIELD_2] TEXT,
+    [VARCHAR_FIELD_1] VARCHAR([VARCHAR_LENGTH]),
+    [VARCHAR_FIELD_2] VARCHAR([VARCHAR_LENGTH_2]),
+    [PREFERENCE_FIELD_1] VARCHAR([PREF_LENGTH]) DEFAULT '[DEFAULT_VALUE_1]',
+    [PREFERENCE_FIELD_2] VARCHAR([PREF_LENGTH_2]) DEFAULT '[DEFAULT_VALUE_2]',
+    [JSON_FIELD_1] JSONB DEFAULT '{}',
+    [JSON_FIELD_2] JSONB DEFAULT '{}',
+    [BOOLEAN_FIELD_1] BOOLEAN DEFAULT [BOOLEAN_DEFAULT_1],
+    [BOOLEAN_FIELD_2] BOOLEAN DEFAULT [BOOLEAN_DEFAULT_2],
+    [CREATED_AT_FIELD] TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    [UPDATED_AT_FIELD] TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     
     -- Constraints
-    CONSTRAINT user_profiles_user_unique UNIQUE(user_id),
-    CONSTRAINT user_profiles_website_format CHECK (website_url IS NULL OR website_url ~* '^https?://'),
-    CONSTRAINT user_profiles_language_format CHECK (language_preference ~* '^[a-z]{2}(-[A-Z]{2})?$'),
-    CONSTRAINT user_profiles_currency_format CHECK (currency_preference ~* '^[A-Z]{3}$')
+    CONSTRAINT [UNIQUE_CONSTRAINT_NAME] UNIQUE([UNIQUE_FIELD]),
+    CONSTRAINT [FORMAT_CONSTRAINT_1] CHECK ([FORMAT_CHECK_1]),
+    CONSTRAINT [FORMAT_CONSTRAINT_2] CHECK ([FORMAT_CHECK_2]),
+    CONSTRAINT [FORMAT_CONSTRAINT_3] CHECK ([FORMAT_CHECK_3])
 );
 
 -- Indexes
-CREATE INDEX idx_user_profiles_user_id ON user_profiles(user_id);
-CREATE INDEX idx_user_profiles_location ON user_profiles(location) WHERE location IS NOT NULL;
-CREATE INDEX idx_user_profiles_language ON user_profiles(language_preference);
+CREATE INDEX [TABLE_2_INDEX_1] ON [TABLE_2_NAME_LOWER]([INDEX_FIELD_1]);
+CREATE INDEX [TABLE_2_INDEX_2] ON [TABLE_2_NAME_LOWER]([INDEX_FIELD_2]) WHERE [INDEX_CONDITION];
+CREATE INDEX [TABLE_2_INDEX_3] ON [TABLE_2_NAME_LOWER]([INDEX_FIELD_3]);
 ```
 
-#### **E-Commerce Domain**
+#### **[DOMAIN_2_NAME]**
 
-##### **Products Table**
+##### **[TABLE_3_NAME]**
 ```sql
--- Product catalog entity
-CREATE TABLE products (
-    product_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    sku VARCHAR(100) UNIQUE NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    description TEXT,
-    short_description VARCHAR(500),
-    category_id UUID REFERENCES product_categories(category_id),
-    brand_id UUID REFERENCES brands(brand_id),
-    price DECIMAL(10,2) NOT NULL,
-    cost DECIMAL(10,2),
-    weight DECIMAL(8,3),
-    dimensions JSONB, -- {length, width, height, unit}
-    status product_status_enum DEFAULT 'draft',
-    visibility product_visibility_enum DEFAULT 'private',
-    featured BOOLEAN DEFAULT FALSE,
-    digital BOOLEAN DEFAULT FALSE,
-    downloadable BOOLEAN DEFAULT FALSE,
-    inventory_tracked BOOLEAN DEFAULT TRUE,
-    stock_quantity INTEGER DEFAULT 0,
-    low_stock_threshold INTEGER DEFAULT 10,
-    meta_title VARCHAR(255),
-    meta_description VARCHAR(500),
-    search_keywords TEXT[],
-    tags TEXT[],
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    published_at TIMESTAMP WITH TIME ZONE,
+-- [TABLE_3_DESCRIPTION]
+CREATE TABLE [TABLE_3_NAME_LOWER] (
+    [TABLE_3_PRIMARY_KEY] [PRIMARY_KEY_TYPE] PRIMARY KEY DEFAULT [PRIMARY_KEY_DEFAULT],
+    [UNIQUE_IDENTIFIER] VARCHAR([IDENTIFIER_LENGTH]) UNIQUE NOT NULL,
+    [NAME_FIELD] VARCHAR([NAME_LENGTH]) NOT NULL,
+    [DESCRIPTION_FIELD] TEXT,
+    [SHORT_DESC_FIELD] VARCHAR([SHORT_DESC_LENGTH]),
+    [CATEGORY_FK] [FOREIGN_KEY_TYPE] REFERENCES [CATEGORY_TABLE]([CATEGORY_KEY]),
+    [BRAND_FK] [FOREIGN_KEY_TYPE] REFERENCES [BRAND_TABLE]([BRAND_KEY]),
+    [PRICE_FIELD] DECIMAL([PRICE_PRECISION],[PRICE_SCALE]) NOT NULL,
+    [COST_FIELD] DECIMAL([COST_PRECISION],[COST_SCALE]),
+    [WEIGHT_FIELD] DECIMAL([WEIGHT_PRECISION],[WEIGHT_SCALE]),
+    [DIMENSIONS_FIELD] JSONB, -- [DIMENSIONS_COMMENT]
+    [STATUS_FIELD] [STATUS_ENUM] DEFAULT '[STATUS_DEFAULT]',
+    [VISIBILITY_FIELD] [VISIBILITY_ENUM] DEFAULT '[VISIBILITY_DEFAULT]',
+    [FEATURED_FIELD] BOOLEAN DEFAULT [FEATURED_DEFAULT],
+    [DIGITAL_FIELD] BOOLEAN DEFAULT [DIGITAL_DEFAULT],
+    [DOWNLOADABLE_FIELD] BOOLEAN DEFAULT [DOWNLOADABLE_DEFAULT],
+    [INVENTORY_TRACKED_FIELD] BOOLEAN DEFAULT [INVENTORY_TRACKED_DEFAULT],
+    [STOCK_FIELD] INTEGER DEFAULT [STOCK_DEFAULT],
+    [THRESHOLD_FIELD] INTEGER DEFAULT [THRESHOLD_DEFAULT],
+    [META_TITLE_FIELD] VARCHAR([META_TITLE_LENGTH]),
+    [META_DESC_FIELD] VARCHAR([META_DESC_LENGTH]),
+    [KEYWORDS_FIELD] TEXT[],
+    [TAGS_FIELD] TEXT[],
+    [CREATED_AT_FIELD] TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    [UPDATED_AT_FIELD] TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    [PUBLISHED_AT_FIELD] TIMESTAMP WITH TIME ZONE,
     
     -- Audit fields
-    created_by UUID REFERENCES users(user_id),
-    updated_by UUID REFERENCES users(user_id),
+    [CREATED_BY_FIELD] [REFERENCE_TYPE] REFERENCES [REFERENCE_TABLE]([REFERENCE_FIELD]),
+    [UPDATED_BY_FIELD] [REFERENCE_TYPE] REFERENCES [REFERENCE_TABLE]([REFERENCE_FIELD]),
     
     -- Soft delete
-    deleted_at TIMESTAMP WITH TIME ZONE,
+    [DELETED_AT_FIELD] TIMESTAMP WITH TIME ZONE,
     
     -- Constraints
-    CONSTRAINT products_price_positive CHECK (price >= 0),
-    CONSTRAINT products_cost_positive CHECK (cost IS NULL OR cost >= 0),
-    CONSTRAINT products_weight_positive CHECK (weight IS NULL OR weight >= 0),
-    CONSTRAINT products_stock_non_negative CHECK (stock_quantity >= 0),
-    CONSTRAINT products_threshold_positive CHECK (low_stock_threshold >= 0)
+    CONSTRAINT [PRICE_CONSTRAINT] CHECK ([PRICE_CHECK_CONDITION]),
+    CONSTRAINT [COST_CONSTRAINT] CHECK ([COST_CHECK_CONDITION]),
+    CONSTRAINT [WEIGHT_CONSTRAINT] CHECK ([WEIGHT_CHECK_CONDITION]),
+    CONSTRAINT [STOCK_CONSTRAINT] CHECK ([STOCK_CHECK_CONDITION]),
+    CONSTRAINT [THRESHOLD_CONSTRAINT] CHECK ([THRESHOLD_CHECK_CONDITION])
 );
 
 -- Indexes for performance and search
-CREATE INDEX idx_products_sku ON products(sku) WHERE deleted_at IS NULL;
-CREATE INDEX idx_products_category ON products(category_id) WHERE deleted_at IS NULL;
-CREATE INDEX idx_products_brand ON products(brand_id) WHERE deleted_at IS NULL;
-CREATE INDEX idx_products_status ON products(status) WHERE deleted_at IS NULL;
-CREATE INDEX idx_products_featured ON products(featured) WHERE featured = TRUE AND deleted_at IS NULL;
-CREATE INDEX idx_products_price ON products(price) WHERE deleted_at IS NULL;
-CREATE INDEX idx_products_stock ON products(stock_quantity) WHERE inventory_tracked = TRUE AND deleted_at IS NULL;
-CREATE INDEX idx_products_search_keywords ON products USING GIN(search_keywords) WHERE deleted_at IS NULL;
-CREATE INDEX idx_products_tags ON products USING GIN(tags) WHERE deleted_at IS NULL;
-CREATE INDEX idx_products_text_search ON products USING GIN(to_tsvector('english', name || ' ' || COALESCE(description, '')));
+CREATE INDEX [TABLE_3_INDEX_1] ON [TABLE_3_NAME_LOWER]([INDEX_FIELD_1]) WHERE [INDEX_CONDITION_1];
+CREATE INDEX [TABLE_3_INDEX_2] ON [TABLE_3_NAME_LOWER]([INDEX_FIELD_2]) WHERE [INDEX_CONDITION_2];
+CREATE INDEX [TABLE_3_INDEX_3] ON [TABLE_3_NAME_LOWER]([INDEX_FIELD_3]) WHERE [INDEX_CONDITION_3];
+CREATE INDEX [TABLE_3_INDEX_4] ON [TABLE_3_NAME_LOWER]([INDEX_FIELD_4]) WHERE [INDEX_CONDITION_4];
+CREATE INDEX [TABLE_3_INDEX_5] ON [TABLE_3_NAME_LOWER]([INDEX_FIELD_5]) WHERE [INDEX_CONDITION_5];
+CREATE INDEX [TABLE_3_INDEX_6] ON [TABLE_3_NAME_LOWER]([INDEX_FIELD_6]) WHERE [INDEX_CONDITION_6];
+CREATE INDEX [TABLE_3_INDEX_7] ON [TABLE_3_NAME_LOWER]([INDEX_FIELD_7]) WHERE [INDEX_CONDITION_7];
+CREATE INDEX [TABLE_3_INDEX_8] ON [TABLE_3_NAME_LOWER] USING GIN([GIN_INDEX_FIELD_1]) WHERE [GIN_INDEX_CONDITION_1];
+CREATE INDEX [TABLE_3_INDEX_9] ON [TABLE_3_NAME_LOWER] USING GIN([GIN_INDEX_FIELD_2]) WHERE [GIN_INDEX_CONDITION_2];
+CREATE INDEX [TABLE_3_INDEX_10] ON [TABLE_3_NAME_LOWER] USING GIN([TEXT_SEARCH_EXPRESSION]);
 ```
 
-**Entity Metadata:**
+**[ENTITY_METADATA_TITLE_2]:**
 ```yaml
-entity_name: products
-domain: ecommerce
-tier: 1
-data_classification: internal
-pii_data: false
-gdpr_applicable: false
-retention_period: indefinite
+entity_name: [ENTITY_NAME_2]
+domain: [ENTITY_DOMAIN_2]
+tier: [ENTITY_TIER_2]
+data_classification: [DATA_CLASSIFICATION_2]
+pii_data: [PII_DATA_FLAG_2]
+gdpr_applicable: [GDPR_APPLICABLE_FLAG_2]
+retention_period: [RETENTION_PERIOD_2]
 
-business_purpose: "Product catalog and inventory management"
-data_owner: "E-Commerce Team"
-technical_owner: "Product Engineering"
-steward: "[PRODUCT_DATA_STEWARD]"
+business_purpose: "[BUSINESS_PURPOSE_2]"
+data_owner: "[DATA_OWNER_TEAM_2]"
+technical_owner: "[TECHNICAL_OWNER_TEAM_2]"
+steward: "[DATA_STEWARD_NAME_2]"
 
 data_quality_rules:
-  - sku_uniqueness: "SKU must be unique across all products"
-  - price_validation: "Price must be positive"
-  - inventory_consistency: "Stock quantity must be non-negative"
-  - category_reference: "Category must exist and be active"
+  - [QUALITY_RULE_2_1]: "[QUALITY_RULE_2_1_DESCRIPTION]"
+  - [QUALITY_RULE_2_2]: "[QUALITY_RULE_2_2_DESCRIPTION]"
+  - [QUALITY_RULE_2_3]: "[QUALITY_RULE_2_3_DESCRIPTION]"
+  - [QUALITY_RULE_2_4]: "[QUALITY_RULE_2_4_DESCRIPTION]"
 
 search_optimization:
-  - full_text_search: "Name and description indexed for search"
-  - keyword_search: "Search keywords array for enhanced discoverability"
-  - tag_based_filtering: "Tags for faceted search and filtering"
+  - [SEARCH_OPT_1]: "[SEARCH_OPT_1_DESCRIPTION]"
+  - [SEARCH_OPT_2]: "[SEARCH_OPT_2_DESCRIPTION]"
+  - [SEARCH_OPT_3]: "[SEARCH_OPT_3_DESCRIPTION]"
 ```
 
-##### **Orders Table**
+##### **[TABLE_4_NAME]**
 ```sql
--- Order management entity
-CREATE TABLE orders (
-    order_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    order_number VARCHAR(50) UNIQUE NOT NULL,
-    user_id UUID REFERENCES users(user_id),
-    guest_email VARCHAR(255),
-    status order_status_enum DEFAULT 'pending',
-    payment_status payment_status_enum DEFAULT 'pending',
-    fulfillment_status fulfillment_status_enum DEFAULT 'unfulfilled',
+-- [TABLE_4_DESCRIPTION]
+CREATE TABLE [TABLE_4_NAME_LOWER] (
+    [TABLE_4_PRIMARY_KEY] [PRIMARY_KEY_TYPE] PRIMARY KEY DEFAULT [PRIMARY_KEY_DEFAULT],
+    [ORDER_NUMBER_FIELD] VARCHAR([ORDER_NUMBER_LENGTH]) UNIQUE NOT NULL,
+    [USER_FK_FIELD] [FOREIGN_KEY_TYPE] REFERENCES [USER_TABLE]([USER_KEY]),
+    [GUEST_EMAIL_FIELD] VARCHAR([EMAIL_LENGTH]),
+    [STATUS_FIELD] [ORDER_STATUS_ENUM] DEFAULT '[STATUS_DEFAULT]',
+    [PAYMENT_STATUS_FIELD] [PAYMENT_STATUS_ENUM] DEFAULT '[PAYMENT_STATUS_DEFAULT]',
+    [FULFILLMENT_STATUS_FIELD] [FULFILLMENT_STATUS_ENUM] DEFAULT '[FULFILLMENT_STATUS_DEFAULT]',
     
     -- Financial information
-    subtotal DECIMAL(10,2) NOT NULL,
-    tax_amount DECIMAL(10,2) DEFAULT 0,
-    shipping_amount DECIMAL(10,2) DEFAULT 0,
-    discount_amount DECIMAL(10,2) DEFAULT 0,
-    total_amount DECIMAL(10,2) NOT NULL,
-    currency VARCHAR(3) DEFAULT 'USD',
+    [SUBTOTAL_FIELD] DECIMAL([DECIMAL_PRECISION],[DECIMAL_SCALE]) NOT NULL,
+    [TAX_FIELD] DECIMAL([DECIMAL_PRECISION],[DECIMAL_SCALE]) DEFAULT [TAX_DEFAULT],
+    [SHIPPING_FIELD] DECIMAL([DECIMAL_PRECISION],[DECIMAL_SCALE]) DEFAULT [SHIPPING_DEFAULT],
+    [DISCOUNT_FIELD] DECIMAL([DECIMAL_PRECISION],[DECIMAL_SCALE]) DEFAULT [DISCOUNT_DEFAULT],
+    [TOTAL_FIELD] DECIMAL([DECIMAL_PRECISION],[DECIMAL_SCALE]) NOT NULL,
+    [CURRENCY_FIELD] VARCHAR([CURRENCY_LENGTH]) DEFAULT '[CURRENCY_DEFAULT]',
     
     -- Addresses
-    billing_address JSONB NOT NULL,
-    shipping_address JSONB,
+    [BILLING_ADDRESS_FIELD] JSONB NOT NULL,
+    [SHIPPING_ADDRESS_FIELD] JSONB,
     
     -- Shipping information
-    shipping_method VARCHAR(100),
-    tracking_number VARCHAR(100),
-    estimated_delivery_date DATE,
-    actual_delivery_date DATE,
+    [SHIPPING_METHOD_FIELD] VARCHAR([SHIPPING_METHOD_LENGTH]),
+    [TRACKING_NUMBER_FIELD] VARCHAR([TRACKING_LENGTH]),
+    [ESTIMATED_DELIVERY_FIELD] DATE,
+    [ACTUAL_DELIVERY_FIELD] DATE,
     
     -- Metadata
-    source VARCHAR(50) DEFAULT 'web',
-    referrer_url TEXT,
-    utm_source VARCHAR(100),
-    utm_medium VARCHAR(100),
-    utm_campaign VARCHAR(100),
+    [SOURCE_FIELD] VARCHAR([SOURCE_LENGTH]) DEFAULT '[SOURCE_DEFAULT]',
+    [REFERRER_FIELD] TEXT,
+    [UTM_SOURCE_FIELD] VARCHAR([UTM_LENGTH]),
+    [UTM_MEDIUM_FIELD] VARCHAR([UTM_LENGTH]),
+    [UTM_CAMPAIGN_FIELD] VARCHAR([UTM_LENGTH]),
     
     -- Timestamps
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    confirmed_at TIMESTAMP WITH TIME ZONE,
-    shipped_at TIMESTAMP WITH TIME ZONE,
-    delivered_at TIMESTAMP WITH TIME ZONE,
-    cancelled_at TIMESTAMP WITH TIME ZONE,
+    [CREATED_AT_FIELD] TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    [UPDATED_AT_FIELD] TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    [CONFIRMED_AT_FIELD] TIMESTAMP WITH TIME ZONE,
+    [SHIPPED_AT_FIELD] TIMESTAMP WITH TIME ZONE,
+    [DELIVERED_AT_FIELD] TIMESTAMP WITH TIME ZONE,
+    [CANCELLED_AT_FIELD] TIMESTAMP WITH TIME ZONE,
     
     -- Audit
-    created_by UUID REFERENCES users(user_id),
-    updated_by UUID REFERENCES users(user_id),
+    [CREATED_BY_FIELD] [REFERENCE_TYPE] REFERENCES [REFERENCE_TABLE]([REFERENCE_FIELD]),
+    [UPDATED_BY_FIELD] [REFERENCE_TYPE] REFERENCES [REFERENCE_TABLE]([REFERENCE_FIELD]),
     
     -- Constraints
-    CONSTRAINT orders_user_or_guest CHECK (user_id IS NOT NULL OR guest_email IS NOT NULL),
-    CONSTRAINT orders_amounts_positive CHECK (
-        subtotal >= 0 AND 
-        tax_amount >= 0 AND 
-        shipping_amount >= 0 AND 
-        discount_amount >= 0 AND 
-        total_amount >= 0
-    ),
-    CONSTRAINT orders_total_calculation CHECK (
-        total_amount = subtotal + tax_amount + shipping_amount - discount_amount
-    ),
-    CONSTRAINT orders_delivery_dates CHECK (
-        estimated_delivery_date IS NULL OR 
-        actual_delivery_date IS NULL OR 
-        actual_delivery_date >= estimated_delivery_date - INTERVAL '7 days'
-    )
+    CONSTRAINT [USER_OR_GUEST_CONSTRAINT] CHECK ([USER_OR_GUEST_CONDITION]),
+    CONSTRAINT [AMOUNTS_POSITIVE_CONSTRAINT] CHECK ([AMOUNTS_POSITIVE_CONDITION]),
+    CONSTRAINT [TOTAL_CALCULATION_CONSTRAINT] CHECK ([TOTAL_CALCULATION_CONDITION]),
+    CONSTRAINT [DELIVERY_DATES_CONSTRAINT] CHECK ([DELIVERY_DATES_CONDITION])
 );
 
 -- Indexes for performance
-CREATE INDEX idx_orders_user_id ON orders(user_id) WHERE user_id IS NOT NULL;
-CREATE INDEX idx_orders_guest_email ON orders(guest_email) WHERE guest_email IS NOT NULL;
-CREATE INDEX idx_orders_status ON orders(status);
-CREATE INDEX idx_orders_payment_status ON orders(payment_status);
-CREATE INDEX idx_orders_created_at ON orders(created_at);
-CREATE INDEX idx_orders_total_amount ON orders(total_amount);
-CREATE INDEX idx_orders_tracking ON orders(tracking_number) WHERE tracking_number IS NOT NULL;
+CREATE INDEX [TABLE_4_INDEX_1] ON [TABLE_4_NAME_LOWER]([INDEX_FIELD_1]) WHERE [INDEX_CONDITION_1];
+CREATE INDEX [TABLE_4_INDEX_2] ON [TABLE_4_NAME_LOWER]([INDEX_FIELD_2]) WHERE [INDEX_CONDITION_2];
+CREATE INDEX [TABLE_4_INDEX_3] ON [TABLE_4_NAME_LOWER]([INDEX_FIELD_3]);
+CREATE INDEX [TABLE_4_INDEX_4] ON [TABLE_4_NAME_LOWER]([INDEX_FIELD_4]);
+CREATE INDEX [TABLE_4_INDEX_5] ON [TABLE_4_NAME_LOWER]([INDEX_FIELD_5]);
+CREATE INDEX [TABLE_4_INDEX_6] ON [TABLE_4_NAME_LOWER]([INDEX_FIELD_6]);
+CREATE INDEX [TABLE_4_INDEX_7] ON [TABLE_4_NAME_LOWER]([INDEX_FIELD_7]) WHERE [INDEX_CONDITION_7];
 ```
 
-#### **Analytics Domain**
+#### **[DOMAIN_3_NAME]**
 
-##### **User Events Table**
+##### **[TABLE_5_NAME]**
 ```sql
--- User behavior tracking for analytics
-CREATE TABLE user_events (
-    event_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id UUID REFERENCES users(user_id),
-    session_id VARCHAR(100) NOT NULL,
-    event_type VARCHAR(100) NOT NULL,
-    event_name VARCHAR(100) NOT NULL,
-    page_url TEXT,
-    referrer_url TEXT,
-    user_agent TEXT,
-    ip_address INET,
-    country_code VARCHAR(2),
-    city VARCHAR(100),
-    device_type VARCHAR(50),
-    browser VARCHAR(50),
-    operating_system VARCHAR(50),
+-- [TABLE_5_DESCRIPTION]
+CREATE TABLE [TABLE_5_NAME_LOWER] (
+    [TABLE_5_PRIMARY_KEY] [PRIMARY_KEY_TYPE] PRIMARY KEY DEFAULT [PRIMARY_KEY_DEFAULT],
+    [USER_FK_FIELD] [FOREIGN_KEY_TYPE] REFERENCES [USER_TABLE]([USER_KEY]),
+    [SESSION_ID_FIELD] VARCHAR([SESSION_ID_LENGTH]) NOT NULL,
+    [EVENT_TYPE_FIELD] VARCHAR([EVENT_TYPE_LENGTH]) NOT NULL,
+    [EVENT_NAME_FIELD] VARCHAR([EVENT_NAME_LENGTH]) NOT NULL,
+    [PAGE_URL_FIELD] TEXT,
+    [REFERRER_URL_FIELD] TEXT,
+    [USER_AGENT_FIELD] TEXT,
+    [IP_ADDRESS_FIELD] INET,
+    [COUNTRY_CODE_FIELD] VARCHAR([COUNTRY_CODE_LENGTH]),
+    [CITY_FIELD] VARCHAR([CITY_LENGTH]),
+    [DEVICE_TYPE_FIELD] VARCHAR([DEVICE_TYPE_LENGTH]),
+    [BROWSER_FIELD] VARCHAR([BROWSER_LENGTH]),
+    [OS_FIELD] VARCHAR([OS_LENGTH]),
     
     -- Event properties
-    properties JSONB DEFAULT '{}',
+    [PROPERTIES_FIELD] JSONB DEFAULT '{}',
     
-    -- E-commerce specific
-    product_id UUID,
-    category_id UUID,
-    revenue DECIMAL(10,2),
-    currency VARCHAR(3),
+    -- Domain specific
+    [PRODUCT_ID_FIELD] [FOREIGN_KEY_TYPE],
+    [CATEGORY_ID_FIELD] [FOREIGN_KEY_TYPE],
+    [REVENUE_FIELD] DECIMAL([REVENUE_PRECISION],[REVENUE_SCALE]),
+    [CURRENCY_FIELD] VARCHAR([CURRENCY_LENGTH]),
     
     -- Timestamps
-    event_timestamp TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    server_timestamp TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    [EVENT_TIMESTAMP_FIELD] TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    [SERVER_TIMESTAMP_FIELD] TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     
     -- Partitioning key
-    event_date DATE GENERATED ALWAYS AS (event_timestamp::DATE) STORED,
+    [EVENT_DATE_FIELD] DATE GENERATED ALWAYS AS ([EVENT_TIMESTAMP_FIELD]::DATE) STORED,
     
     -- Constraints
-    CONSTRAINT user_events_revenue_positive CHECK (revenue IS NULL OR revenue >= 0),
-    CONSTRAINT user_events_timestamps CHECK (event_timestamp <= server_timestamp + INTERVAL '1 hour')
-) PARTITION BY RANGE (event_date);
+    CONSTRAINT [REVENUE_POSITIVE_CONSTRAINT] CHECK ([REVENUE_POSITIVE_CONDITION]),
+    CONSTRAINT [TIMESTAMPS_CONSTRAINT] CHECK ([TIMESTAMPS_CONDITION])
+) PARTITION BY RANGE ([PARTITION_FIELD]);
 
--- Create partitions for current and future months
-CREATE TABLE user_events_2025_01 PARTITION OF user_events
-    FOR VALUES FROM ('2025-01-01') TO ('2025-02-01');
-CREATE TABLE user_events_2025_02 PARTITION OF user_events
-    FOR VALUES FROM ('2025-02-01') TO ('2025-03-01');
--- ... additional partitions
+-- Create partitions for current and future periods
+CREATE TABLE [PARTITION_TABLE_1] PARTITION OF [TABLE_5_NAME_LOWER]
+    FOR VALUES FROM ('[PARTITION_START_1]') TO ('[PARTITION_END_1]');
+CREATE TABLE [PARTITION_TABLE_2] PARTITION OF [TABLE_5_NAME_LOWER]
+    FOR VALUES FROM ('[PARTITION_START_2]') TO ('[PARTITION_END_2]');
+-- ... [ADDITIONAL_PARTITIONS_COMMENT]
 
 -- Indexes for analytics queries
-CREATE INDEX idx_user_events_user_id ON user_events(user_id, event_timestamp);
-CREATE INDEX idx_user_events_session ON user_events(session_id, event_timestamp);
-CREATE INDEX idx_user_events_type ON user_events(event_type, event_name, event_timestamp);
-CREATE INDEX idx_user_events_product ON user_events(product_id, event_timestamp) WHERE product_id IS NOT NULL;
-CREATE INDEX idx_user_events_properties ON user_events USING GIN(properties);
+CREATE INDEX [TABLE_5_INDEX_1] ON [TABLE_5_NAME_LOWER]([INDEX_FIELD_1], [INDEX_FIELD_2]);
+CREATE INDEX [TABLE_5_INDEX_2] ON [TABLE_5_NAME_LOWER]([INDEX_FIELD_3], [INDEX_FIELD_4]);
+CREATE INDEX [TABLE_5_INDEX_3] ON [TABLE_5_NAME_LOWER]([INDEX_FIELD_5], [INDEX_FIELD_6], [INDEX_FIELD_7]);
+CREATE INDEX [TABLE_5_INDEX_4] ON [TABLE_5_NAME_LOWER]([INDEX_FIELD_8], [INDEX_FIELD_9]) WHERE [INDEX_CONDITION_4];
+CREATE INDEX [TABLE_5_INDEX_5] ON [TABLE_5_NAME_LOWER] USING GIN([GIN_INDEX_FIELD]);
 ```
 
 ---
@@ -497,76 +485,76 @@ CREATE INDEX idx_user_events_properties ON user_events USING GIN(properties);
 
 ```mermaid
 erDiagram
-    USERS ||--o{ USER_PROFILES : has
-    USERS ||--o{ ORDERS : places
-    USERS ||--o{ USER_EVENTS : generates
-    USERS ||--o{ USER_SESSIONS : creates
+    [ENTITY_1] ||--o{ [ENTITY_2] : [RELATIONSHIP_1]
+    [ENTITY_1] ||--o{ [ENTITY_3] : [RELATIONSHIP_2]
+    [ENTITY_1] ||--o{ [ENTITY_4] : [RELATIONSHIP_3]
+    [ENTITY_1] ||--o{ [ENTITY_5] : [RELATIONSHIP_4]
     
-    PRODUCTS ||--o{ ORDER_ITEMS : contains
-    PRODUCTS }o--|| PRODUCT_CATEGORIES : belongs_to
-    PRODUCTS }o--|| BRANDS : manufactured_by
-    PRODUCTS ||--o{ PRODUCT_IMAGES : has
-    PRODUCTS ||--o{ PRODUCT_REVIEWS : receives
+    [ENTITY_6] ||--o{ [ENTITY_7] : [RELATIONSHIP_5]
+    [ENTITY_6] }o--|| [ENTITY_8] : [RELATIONSHIP_6]
+    [ENTITY_6] }o--|| [ENTITY_9] : [RELATIONSHIP_7]
+    [ENTITY_6] ||--o{ [ENTITY_10] : [RELATIONSHIP_8]
+    [ENTITY_6] ||--o{ [ENTITY_11] : [RELATIONSHIP_9]
     
-    ORDERS ||--o{ ORDER_ITEMS : contains
-    ORDERS ||--o{ ORDER_PAYMENTS : has
-    ORDERS ||--o{ ORDER_SHIPMENTS : has
+    [ENTITY_3] ||--o{ [ENTITY_7] : [RELATIONSHIP_10]
+    [ENTITY_3] ||--o{ [ENTITY_12] : [RELATIONSHIP_11]
+    [ENTITY_3] ||--o{ [ENTITY_13] : [RELATIONSHIP_12]
     
-    PRODUCT_CATEGORIES ||--o{ PRODUCT_CATEGORIES : parent_child
+    [ENTITY_8] ||--o{ [ENTITY_8] : [SELF_RELATIONSHIP]
     
-    USER_EVENTS }o--|| PRODUCTS : tracks
-    USER_EVENTS }o--|| PRODUCT_CATEGORIES : tracks
+    [ENTITY_4] }o--|| [ENTITY_6] : [RELATIONSHIP_13]
+    [ENTITY_4] }o--|| [ENTITY_8] : [RELATIONSHIP_14]
 ```
 
 ### Relationship Specifications
 
-#### **User Domain Relationships**
+#### **[DOMAIN_1_NAME] Relationships**
 ```yaml
-user_to_profile:
-  type: one_to_one
-  constraint: CASCADE DELETE
-  description: "Each user has exactly one profile"
+[RELATIONSHIP_SPEC_1]:
+  type: [RELATIONSHIP_TYPE_1]
+  constraint: [CONSTRAINT_TYPE_1]
+  description: "[RELATIONSHIP_DESCRIPTION_1]"
   
-user_to_orders:
-  type: one_to_many
-  constraint: SET NULL ON DELETE
-  description: "Users can have multiple orders, orders preserved if user deleted"
+[RELATIONSHIP_SPEC_2]:
+  type: [RELATIONSHIP_TYPE_2]
+  constraint: [CONSTRAINT_TYPE_2]
+  description: "[RELATIONSHIP_DESCRIPTION_2]"
   
-user_to_events:
-  type: one_to_many
-  constraint: SET NULL ON DELETE
-  description: "Users generate multiple events, events preserved for analytics"
+[RELATIONSHIP_SPEC_3]:
+  type: [RELATIONSHIP_TYPE_3]
+  constraint: [CONSTRAINT_TYPE_3]
+  description: "[RELATIONSHIP_DESCRIPTION_3]"
 ```
 
-#### **Product Domain Relationships**
+#### **[DOMAIN_2_NAME] Relationships**
 ```yaml
-product_to_category:
-  type: many_to_one
-  constraint: RESTRICT DELETE
-  description: "Products belong to categories, prevent category deletion if products exist"
+[RELATIONSHIP_SPEC_4]:
+  type: [RELATIONSHIP_TYPE_4]
+  constraint: [CONSTRAINT_TYPE_4]
+  description: "[RELATIONSHIP_DESCRIPTION_4]"
   
-product_to_brand:
-  type: many_to_one
-  constraint: RESTRICT DELETE
-  description: "Products have brands, prevent brand deletion if products exist"
+[RELATIONSHIP_SPEC_5]:
+  type: [RELATIONSHIP_TYPE_5]
+  constraint: [CONSTRAINT_TYPE_5]
+  description: "[RELATIONSHIP_DESCRIPTION_5]"
   
-category_hierarchy:
-  type: self_referencing
-  constraint: CASCADE DELETE
-  description: "Categories can have parent-child relationships"
+[RELATIONSHIP_SPEC_6]:
+  type: [RELATIONSHIP_TYPE_6]
+  constraint: [CONSTRAINT_TYPE_6]
+  description: "[RELATIONSHIP_DESCRIPTION_6]"
 ```
 
-#### **Order Domain Relationships**
+#### **[DOMAIN_3_NAME] Relationships**
 ```yaml
-order_to_items:
-  type: one_to_many
-  constraint: CASCADE DELETE
-  description: "Orders contain multiple items, items deleted with order"
+[RELATIONSHIP_SPEC_7]:
+  type: [RELATIONSHIP_TYPE_7]
+  constraint: [CONSTRAINT_TYPE_7]
+  description: "[RELATIONSHIP_DESCRIPTION_7]"
   
-order_to_payments:
-  type: one_to_many
-  constraint: CASCADE DELETE
-  description: "Orders can have multiple payment attempts"
+[RELATIONSHIP_SPEC_8]:
+  type: [RELATIONSHIP_TYPE_8]
+  constraint: [CONSTRAINT_TYPE_8]
+  description: "[RELATIONSHIP_DESCRIPTION_8]"
 ```
 
 ---
@@ -575,131 +563,131 @@ order_to_payments:
 
 ### Data Classification Framework
 
-#### **Personal Identifiable Information (PII)**
+#### **[PII_SECTION_TITLE]**
 ```yaml
-pii_categories:
-  direct_identifiers:
-    - email addresses
-    - phone numbers
-    - full names
-    - government IDs
+[PII_CATEGORIES_KEY]:
+  [DIRECT_IDENTIFIERS_KEY]:
+    - [DIRECT_IDENTIFIER_1]
+    - [DIRECT_IDENTIFIER_2]
+    - [DIRECT_IDENTIFIER_3]
+    - [DIRECT_IDENTIFIER_4]
     
-  quasi_identifiers:
-    - date of birth
-    - postal codes
-    - IP addresses
-    - device identifiers
+  [QUASI_IDENTIFIERS_KEY]:
+    - [QUASI_IDENTIFIER_1]
+    - [QUASI_IDENTIFIER_2]
+    - [QUASI_IDENTIFIER_3]
+    - [QUASI_IDENTIFIER_4]
     
-  sensitive_attributes:
-    - financial information
-    - health data
-    - biometric data
-    - location data
+  [SENSITIVE_ATTRIBUTES_KEY]:
+    - [SENSITIVE_ATTRIBUTE_1]
+    - [SENSITIVE_ATTRIBUTE_2]
+    - [SENSITIVE_ATTRIBUTE_3]
+    - [SENSITIVE_ATTRIBUTE_4]
 
-protection_measures:
-  encryption_at_rest: "AES-256 encryption for all PII fields"
-  encryption_in_transit: "TLS 1.3 for all data transmission"
-  access_controls: "Role-based access with principle of least privilege"
-  audit_logging: "All PII access logged and monitored"
+[PROTECTION_MEASURES_KEY]:
+  [ENCRYPTION_AT_REST_KEY]: "[ENCRYPTION_AT_REST_VALUE]"
+  [ENCRYPTION_IN_TRANSIT_KEY]: "[ENCRYPTION_IN_TRANSIT_VALUE]"
+  [ACCESS_CONTROLS_KEY]: "[ACCESS_CONTROLS_VALUE]"
+  [AUDIT_LOGGING_KEY]: "[AUDIT_LOGGING_VALUE]"
 ```
 
-#### **Data Masking and Anonymization**
+#### **[DATA_MASKING_SECTION_TITLE]**
 ```sql
--- Data masking functions for non-production environments
-CREATE OR REPLACE FUNCTION mask_email(email TEXT)
+-- [MASKING_FUNCTIONS_COMMENT]
+CREATE OR REPLACE FUNCTION [MASK_EMAIL_FUNCTION]([EMAIL_PARAM] TEXT)
 RETURNS TEXT AS $$
 BEGIN
     RETURN CASE 
-        WHEN email IS NULL THEN NULL
-        ELSE 'user' || abs(hashtext(email)) % 10000 || '@example.com'
+        WHEN [EMAIL_PARAM] IS NULL THEN NULL
+        ELSE '[MASKED_EMAIL_PREFIX]' || abs(hashtext([EMAIL_PARAM])) % [HASH_MODULO] || '[MASKED_EMAIL_SUFFIX]'
     END;
 END;
 $$ LANGUAGE plpgsql IMMUTABLE;
 
-CREATE OR REPLACE FUNCTION mask_phone(phone TEXT)
+CREATE OR REPLACE FUNCTION [MASK_PHONE_FUNCTION]([PHONE_PARAM] TEXT)
 RETURNS TEXT AS $$
 BEGIN
     RETURN CASE 
-        WHEN phone IS NULL THEN NULL
-        ELSE '+1-555-' || LPAD((abs(hashtext(phone)) % 10000)::TEXT, 4, '0')
+        WHEN [PHONE_PARAM] IS NULL THEN NULL
+        ELSE '[MASKED_PHONE_PREFIX]' || LPAD((abs(hashtext([PHONE_PARAM])) % [PHONE_HASH_MODULO])::TEXT, [PHONE_PAD_LENGTH], '[PHONE_PAD_CHAR]')
     END;
 END;
 $$ LANGUAGE plpgsql IMMUTABLE;
 
--- Anonymization view for analytics
-CREATE VIEW users_anonymized AS
+-- [ANONYMIZATION_VIEW_COMMENT]
+CREATE VIEW [ANONYMIZED_VIEW_NAME] AS
 SELECT 
-    user_id,
-    mask_email(email) as email,
-    'User' || (abs(hashtext(first_name || last_name)) % 10000) as display_name,
-    EXTRACT(YEAR FROM date_of_birth) as birth_year,
-    account_status,
-    created_at,
-    last_login_at
-FROM users
-WHERE deleted_at IS NULL;
+    [USER_ID_FIELD],
+    [MASK_EMAIL_FUNCTION]([EMAIL_FIELD]) as [EMAIL_ALIAS],
+    '[DISPLAY_NAME_PREFIX]' || (abs(hashtext([FIRST_NAME_FIELD] || [LAST_NAME_FIELD])) % [DISPLAY_NAME_MODULO]) as [DISPLAY_NAME_ALIAS],
+    EXTRACT(YEAR FROM [DOB_FIELD]) as [BIRTH_YEAR_ALIAS],
+    [ACCOUNT_STATUS_FIELD],
+    [CREATED_AT_FIELD],
+    [LAST_LOGIN_FIELD]
+FROM [SOURCE_TABLE]
+WHERE [FILTER_CONDITION];
 ```
 
 ### Access Control Matrix
 
-#### **Role-Based Access Control (RBAC)**
+#### **[RBAC_SECTION_TITLE]**
 ```yaml
-roles:
-  data_analyst:
-    permissions:
-      - SELECT on anonymized views
-      - SELECT on aggregated data
-    restrictions:
-      - No access to PII
-      - No access to individual user records
+[ROLES_KEY]:
+  [ROLE_1_NAME]:
+    [PERMISSIONS_KEY]:
+      - [PERMISSION_1_1]
+      - [PERMISSION_1_2]
+    [RESTRICTIONS_KEY]:
+      - [RESTRICTION_1_1]
+      - [RESTRICTION_1_2]
       
-  application_service:
-    permissions:
-      - SELECT, INSERT, UPDATE on application tables
-      - No DELETE permissions (soft delete only)
-    restrictions:
-      - Row-level security enforced
-      - Audit logging required
+  [ROLE_2_NAME]:
+    [PERMISSIONS_KEY]:
+      - [PERMISSION_2_1]
+      - [PERMISSION_2_2]
+    [RESTRICTIONS_KEY]:
+      - [RESTRICTION_2_1]
+      - [RESTRICTION_2_2]
       
-  data_engineer:
-    permissions:
-      - SELECT on all tables
-      - DDL operations on development schemas
-    restrictions:
-      - No production data modification
-      - Masked data in non-production
+  [ROLE_3_NAME]:
+    [PERMISSIONS_KEY]:
+      - [PERMISSION_3_1]
+      - [PERMISSION_3_2]
+    [RESTRICTIONS_KEY]:
+      - [RESTRICTION_3_1]
+      - [RESTRICTION_3_2]
       
-  dba:
-    permissions:
-      - Full database administration
-      - Schema modifications
-      - Performance tuning
-    restrictions:
-      - All actions logged and monitored
-      - Requires approval for production changes
+  [ROLE_4_NAME]:
+    [PERMISSIONS_KEY]:
+      - [PERMISSION_4_1]
+      - [PERMISSION_4_2]
+      - [PERMISSION_4_3]
+    [RESTRICTIONS_KEY]:
+      - [RESTRICTION_4_1]
+      - [RESTRICTION_4_2]
 ```
 
-#### **Row-Level Security (RLS)**
+#### **[RLS_SECTION_TITLE]**
 ```sql
--- Enable RLS on sensitive tables
-ALTER TABLE users ENABLE ROW LEVEL SECURITY;
-ALTER TABLE user_profiles ENABLE ROW LEVEL SECURITY;
-ALTER TABLE orders ENABLE ROW LEVEL SECURITY;
+-- [RLS_ENABLE_COMMENT]
+ALTER TABLE [TABLE_1_NAME] ENABLE ROW LEVEL SECURITY;
+ALTER TABLE [TABLE_2_NAME] ENABLE ROW LEVEL SECURITY;
+ALTER TABLE [TABLE_3_NAME] ENABLE ROW LEVEL SECURITY;
 
--- Policy for application services
-CREATE POLICY app_service_users_policy ON users
-    FOR ALL TO app_service_role
-    USING (deleted_at IS NULL);
+-- [POLICY_1_COMMENT]
+CREATE POLICY [POLICY_1_NAME] ON [POLICY_1_TABLE]
+    FOR [POLICY_1_OPERATION] TO [POLICY_1_ROLE]
+    USING ([POLICY_1_CONDITION]);
 
--- Policy for user self-access
-CREATE POLICY user_self_access_policy ON users
-    FOR SELECT TO authenticated_user_role
-    USING (user_id = current_setting('app.current_user_id')::UUID);
+-- [POLICY_2_COMMENT]
+CREATE POLICY [POLICY_2_NAME] ON [POLICY_2_TABLE]
+    FOR [POLICY_2_OPERATION] TO [POLICY_2_ROLE]
+    USING ([POLICY_2_CONDITION]);
 
--- Policy for data analysts (anonymized access only)
-CREATE POLICY analyst_users_policy ON users
-    FOR SELECT TO data_analyst_role
-    USING (FALSE); -- Force use of anonymized views
+-- [POLICY_3_COMMENT]
+CREATE POLICY [POLICY_3_NAME] ON [POLICY_3_TABLE]
+    FOR [POLICY_3_OPERATION] TO [POLICY_3_ROLE]
+    USING ([POLICY_3_CONDITION]);
 ```
 
 ---
@@ -708,131 +696,131 @@ CREATE POLICY analyst_users_policy ON users
 
 ### Data Flow Architecture
 
-#### **Data Pipeline Overview**
+#### **[DATA_PIPELINE_TITLE]**
 ```mermaid
 graph TD
-    A[Application Database] --> B[Change Data Capture]
-    B --> C[Message Queue - Kafka]
-    C --> D[Stream Processing - Kafka Streams]
-    D --> E[Data Warehouse - Redshift]
-    D --> F[Real-time Analytics - ClickHouse]
-    E --> G[Business Intelligence - Tableau]
-    F --> H[Real-time Dashboards]
+    A[[SOURCE_SYSTEM_1]] --> B[[CAPTURE_SYSTEM]]
+    B --> C[[MESSAGE_QUEUE_SYSTEM]]
+    C --> D[[STREAM_PROCESSING_SYSTEM]]
+    D --> E[[DATA_WAREHOUSE_SYSTEM]]
+    D --> F[[REALTIME_ANALYTICS_SYSTEM]]
+    E --> G[[BI_TOOL_SYSTEM]]
+    F --> H[[DASHBOARD_SYSTEM]]
     
-    I[External APIs] --> J[API Gateway]
-    J --> K[Data Ingestion Service]
+    I[[EXTERNAL_API_SYSTEM]] --> J[[API_GATEWAY_SYSTEM]]
+    J --> K[[INGESTION_SERVICE_SYSTEM]]
     K --> C
     
-    L[User Events] --> M[Event Tracking Service]
+    L[[EVENT_SOURCE_SYSTEM]] --> M[[EVENT_TRACKING_SYSTEM]]
     M --> C
 ```
 
-#### **Data Lineage Tracking**
+#### **[DATA_LINEAGE_TITLE]**
 ```yaml
-lineage_metadata:
-  source_systems:
-    - name: "PostgreSQL Production"
-      type: "OLTP Database"
-      tables: ["users", "products", "orders", "user_events"]
+[LINEAGE_METADATA_KEY]:
+  [SOURCE_SYSTEMS_KEY]:
+    - name: "[SOURCE_SYSTEM_1_NAME]"
+      type: "[SOURCE_SYSTEM_1_TYPE]"
+      tables: ["[SOURCE_TABLE_1]", "[SOURCE_TABLE_2]", "[SOURCE_TABLE_3]", "[SOURCE_TABLE_4]"]
       
-    - name: "External Payment API"
-      type: "REST API"
-      endpoints: ["/payments", "/refunds"]
+    - name: "[SOURCE_SYSTEM_2_NAME]"
+      type: "[SOURCE_SYSTEM_2_TYPE]"
+      endpoints: ["[ENDPOINT_1]", "[ENDPOINT_2]"]
       
-    - name: "User Analytics Events"
-      type: "Event Stream"
-      topics: ["user.events", "product.events", "order.events"]
+    - name: "[SOURCE_SYSTEM_3_NAME]"
+      type: "[SOURCE_SYSTEM_3_TYPE]"
+      topics: ["[TOPIC_1]", "[TOPIC_2]", "[TOPIC_3]"]
 
-  transformation_layers:
-    - name: "CDC Processing"
-      tool: "Debezium + Kafka Connect"
-      transformations: ["Schema evolution", "Data enrichment"]
+  [TRANSFORMATION_LAYERS_KEY]:
+    - name: "[TRANSFORMATION_1_NAME]"
+      tool: "[TRANSFORMATION_1_TOOL]"
+      transformations: ["[TRANSFORMATION_1_1]", "[TRANSFORMATION_1_2]"]
       
-    - name: "Stream Processing"
-      tool: "Kafka Streams"
-      transformations: ["Aggregation", "Windowing", "Joins"]
+    - name: "[TRANSFORMATION_2_NAME]"
+      tool: "[TRANSFORMATION_2_TOOL]"
+      transformations: ["[TRANSFORMATION_2_1]", "[TRANSFORMATION_2_2]", "[TRANSFORMATION_2_3]"]
       
-    - name: "ETL Pipeline"
-      tool: "Apache Airflow"
-      transformations: ["Data cleaning", "Normalization", "Dimension modeling"]
+    - name: "[TRANSFORMATION_3_NAME]"
+      tool: "[TRANSFORMATION_3_TOOL]"
+      transformations: ["[TRANSFORMATION_3_1]", "[TRANSFORMATION_3_2]", "[TRANSFORMATION_3_3]"]
 
-  target_systems:
-    - name: "Data Warehouse"
-      type: "Amazon Redshift"
-      purpose: "Historical analytics and reporting"
+  [TARGET_SYSTEMS_KEY]:
+    - name: "[TARGET_SYSTEM_1_NAME]"
+      type: "[TARGET_SYSTEM_1_TYPE]"
+      purpose: "[TARGET_SYSTEM_1_PURPOSE]"
       
-    - name: "Real-time Analytics"
-      type: "ClickHouse"
-      purpose: "Real-time dashboards and monitoring"
+    - name: "[TARGET_SYSTEM_2_NAME]"
+      type: "[TARGET_SYSTEM_2_TYPE]"
+      purpose: "[TARGET_SYSTEM_2_PURPOSE]"
       
-    - name: "Search Index"
-      type: "Elasticsearch"
-      purpose: "Product search and recommendations"
+    - name: "[TARGET_SYSTEM_3_NAME]"
+      type: "[TARGET_SYSTEM_3_TYPE]"
+      purpose: "[TARGET_SYSTEM_3_PURPOSE]"
 ```
 
 ### Data Quality Monitoring
 
 #### **Data Quality Rules**
 ```sql
--- Data quality monitoring functions
-CREATE OR REPLACE FUNCTION check_data_quality()
+-- [DATA_QUALITY_FUNCTIONS_COMMENT]
+CREATE OR REPLACE FUNCTION [DATA_QUALITY_FUNCTION_NAME]()
 RETURNS TABLE(
-    table_name TEXT,
-    check_name TEXT,
-    status TEXT,
-    error_count BIGINT,
-    total_count BIGINT,
-    quality_score DECIMAL(5,2)
+    [TABLE_NAME_COLUMN] TEXT,
+    [CHECK_NAME_COLUMN] TEXT,
+    [STATUS_COLUMN] TEXT,
+    [ERROR_COUNT_COLUMN] BIGINT,
+    [TOTAL_COUNT_COLUMN] BIGINT,
+    [QUALITY_SCORE_COLUMN] DECIMAL([SCORE_PRECISION],[SCORE_SCALE])
 ) AS $$
 BEGIN
-    -- Email format validation
+    -- [VALIDATION_1_COMMENT]
     RETURN QUERY
     SELECT 
-        'users'::TEXT,
-        'email_format'::TEXT,
-        CASE WHEN error_cnt = 0 THEN 'PASS' ELSE 'FAIL' END,
+        '[TABLE_1_NAME]'::TEXT,
+        '[CHECK_1_NAME]'::TEXT,
+        CASE WHEN error_cnt = 0 THEN '[PASS_STATUS]' ELSE '[FAIL_STATUS]' END,
         error_cnt,
         total_cnt,
-        ROUND((total_cnt - error_cnt) * 100.0 / NULLIF(total_cnt, 0), 2)
+        ROUND((total_cnt - error_cnt) * [PERCENTAGE_MULTIPLIER] / NULLIF(total_cnt, 0), [ROUND_PRECISION])
     FROM (
         SELECT 
-            COUNT(*) FILTER (WHERE email !~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$') as error_cnt,
+            COUNT(*) FILTER (WHERE [FIELD_1] !~* '[VALIDATION_REGEX_1]') as error_cnt,
             COUNT(*) as total_cnt
-        FROM users 
-        WHERE deleted_at IS NULL
+        FROM [TABLE_1_NAME] 
+        WHERE [FILTER_CONDITION_1]
     ) q;
     
-    -- Price validation
+    -- [VALIDATION_2_COMMENT]
     RETURN QUERY
     SELECT 
-        'products'::TEXT,
-        'price_positive'::TEXT,
-        CASE WHEN error_cnt = 0 THEN 'PASS' ELSE 'FAIL' END,
+        '[TABLE_2_NAME]'::TEXT,
+        '[CHECK_2_NAME]'::TEXT,
+        CASE WHEN error_cnt = 0 THEN '[PASS_STATUS]' ELSE '[FAIL_STATUS]' END,
         error_cnt,
         total_cnt,
-        ROUND((total_cnt - error_cnt) * 100.0 / NULLIF(total_cnt, 0), 2)
+        ROUND((total_cnt - error_cnt) * [PERCENTAGE_MULTIPLIER] / NULLIF(total_cnt, 0), [ROUND_PRECISION])
     FROM (
         SELECT 
-            COUNT(*) FILTER (WHERE price <= 0) as error_cnt,
+            COUNT(*) FILTER (WHERE [FIELD_2] [VALIDATION_CONDITION_2]) as error_cnt,
             COUNT(*) as total_cnt
-        FROM products 
-        WHERE deleted_at IS NULL
+        FROM [TABLE_2_NAME] 
+        WHERE [FILTER_CONDITION_2]
     ) q;
     
-    -- Order total consistency
+    -- [VALIDATION_3_COMMENT]
     RETURN QUERY
     SELECT 
-        'orders'::TEXT,
-        'total_calculation'::TEXT,
-        CASE WHEN error_cnt = 0 THEN 'PASS' ELSE 'FAIL' END,
+        '[TABLE_3_NAME]'::TEXT,
+        '[CHECK_3_NAME]'::TEXT,
+        CASE WHEN error_cnt = 0 THEN '[PASS_STATUS]' ELSE '[FAIL_STATUS]' END,
         error_cnt,
         total_cnt,
-        ROUND((total_cnt - error_cnt) * 100.0 / NULLIF(total_cnt, 0), 2)
+        ROUND((total_cnt - error_cnt) * [PERCENTAGE_MULTIPLIER] / NULLIF(total_cnt, 0), [ROUND_PRECISION])
     FROM (
         SELECT 
-            COUNT(*) FILTER (WHERE ABS(total_amount - (subtotal + tax_amount + shipping_amount - discount_amount)) > 0.01) as error_cnt,
+            COUNT(*) FILTER (WHERE [VALIDATION_EXPRESSION_3]) as error_cnt,
             COUNT(*) as total_cnt
-        FROM orders
+        FROM [TABLE_3_NAME]
     ) q;
 END;
 $$ LANGUAGE plpgsql;
@@ -844,52 +832,52 @@ $$ LANGUAGE plpgsql;
 
 ### Regulatory Compliance Framework
 
-#### **GDPR Compliance Implementation**
+#### **[COMPLIANCE_FRAMEWORK_TITLE]**
 ```yaml
-gdpr_compliance:
-  lawful_basis:
-    users_table: "Contract performance (Art. 6(1)(b))"
-    user_profiles: "Legitimate interest (Art. 6(1)(f))"
-    user_events: "Consent (Art. 6(1)(a))"
+[COMPLIANCE_KEY]:
+  [LAWFUL_BASIS_KEY]:
+    [TABLE_1_COMPLIANCE]: "[LAWFUL_BASIS_1]"
+    [TABLE_2_COMPLIANCE]: "[LAWFUL_BASIS_2]"
+    [TABLE_3_COMPLIANCE]: "[LAWFUL_BASIS_3]"
     
-  data_subject_rights:
-    right_of_access:
-      implementation: "User portal + API endpoint"
-      response_time: "Within 30 days"
+  [DATA_SUBJECT_RIGHTS_KEY]:
+    [RIGHT_OF_ACCESS_KEY]:
+      [IMPLEMENTATION_KEY]: "[ACCESS_IMPLEMENTATION]"
+      [RESPONSE_TIME_KEY]: "[ACCESS_RESPONSE_TIME]"
       
-    right_to_rectification:
-      implementation: "User profile editing + admin tools"
-      automated: true
+    [RIGHT_TO_RECTIFICATION_KEY]:
+      [IMPLEMENTATION_KEY]: "[RECTIFICATION_IMPLEMENTATION]"
+      [AUTOMATED_KEY]: [RECTIFICATION_AUTOMATED]
       
-    right_to_erasure:
-      implementation: "Automated deletion workflow"
-      retention_override: "Legal obligations (7 years for financial records)"
+    [RIGHT_TO_ERASURE_KEY]:
+      [IMPLEMENTATION_KEY]: "[ERASURE_IMPLEMENTATION]"
+      [RETENTION_OVERRIDE_KEY]: "[ERASURE_RETENTION_OVERRIDE]"
       
-    right_to_portability:
-      implementation: "Data export API (JSON format)"
-      scope: "User-provided data only"
+    [RIGHT_TO_PORTABILITY_KEY]:
+      [IMPLEMENTATION_KEY]: "[PORTABILITY_IMPLEMENTATION]"
+      [SCOPE_KEY]: "[PORTABILITY_SCOPE]"
       
-    right_to_object:
-      implementation: "Opt-out mechanisms + preference center"
-      marketing: "Immediate effect"
-      analytics: "Next processing cycle"
+    [RIGHT_TO_OBJECT_KEY]:
+      [IMPLEMENTATION_KEY]: "[OBJECTION_IMPLEMENTATION]"
+      [MARKETING_KEY]: "[OBJECTION_MARKETING_EFFECT]"
+      [ANALYTICS_KEY]: "[OBJECTION_ANALYTICS_EFFECT]"
 
-  technical_measures:
-    pseudonymization:
-      - "User IDs are UUIDs, not sequential"
-      - "Analytics data uses hashed identifiers"
+  [TECHNICAL_MEASURES_KEY]:
+    [PSEUDONYMIZATION_KEY]:
+      - "[PSEUDONYMIZATION_MEASURE_1]"
+      - "[PSEUDONYMIZATION_MEASURE_2]"
       
-    encryption:
-      - "AES-256 encryption at rest"
-      - "TLS 1.3 encryption in transit"
+    [ENCRYPTION_KEY]:
+      - "[ENCRYPTION_AT_REST_MEASURE]"
+      - "[ENCRYPTION_IN_TRANSIT_MEASURE]"
       
-    access_controls:
-      - "Role-based access control (RBAC)"
-      - "Multi-factor authentication for admin access"
+    [ACCESS_CONTROLS_KEY]:
+      - "[ACCESS_CONTROL_MEASURE_1]"
+      - "[ACCESS_CONTROL_MEASURE_2]"
       
-    audit_logging:
-      - "All data access logged"
-      - "Retention period: 7 years"
+    [AUDIT_LOGGING_KEY]:
+      - "[AUDIT_LOGGING_MEASURE]"
+      - "[AUDIT_RETENTION_MEASURE]"
 ```
 
 #### **Data Retention Policies**

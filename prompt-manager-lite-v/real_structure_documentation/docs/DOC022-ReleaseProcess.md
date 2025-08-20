@@ -40,35 +40,35 @@
 
 ### Modern Release Principles
 
-Our release philosophy is built on 2025 industry best practices that prioritize safety, speed, and reliability:
+[RELEASE_PHILOSOPHY_DESCRIPTION] is built on [INDUSTRY_PRACTICES] that prioritize [PHILOSOPHY_PRIORITIES]:
 
-#### 🚀 **Continuous Delivery Over Big Bang Releases**
-- **Small, frequent releases** reduce risk and accelerate feedback
-- **Automated pipelines** ensure consistency and reliability
-- **Progressive delivery** minimizes blast radius of potential issues
-- **Feature flags** decouple deployment from feature activation
+#### 🚀 **[PRINCIPLE_1_TITLE]**
+- **[PRINCIPLE_1_FEATURE_1]** reduce [FEATURE_1_BENEFIT]
+- **[PRINCIPLE_1_FEATURE_2]** ensure [FEATURE_2_OUTCOME]
+- **[PRINCIPLE_1_FEATURE_3]** minimizes [FEATURE_3_IMPACT]
+- **[PRINCIPLE_1_FEATURE_4]** decouple [FEATURE_4_SEPARATION]
 
-#### 🛡️ **Safety Through Automation**
-- **Automated quality gates** prevent defective code from reaching production
-- **Comprehensive testing** at every stage of the pipeline
-- **Automated rollbacks** provide immediate recovery from issues
-- **Monitoring-driven decisions** based on real-time data
+#### 🛡️ **[PRINCIPLE_2_TITLE]**
+- **[PRINCIPLE_2_FEATURE_1]** prevent [FEATURE_1_PREVENTION]
+- **[PRINCIPLE_2_FEATURE_2]** at [FEATURE_2_SCOPE]
+- **[PRINCIPLE_2_FEATURE_3]** provide [FEATURE_3_RECOVERY]
+- **[PRINCIPLE_2_FEATURE_4]** based on [FEATURE_4_DATA_SOURCE]
 
-#### 📈 **Data-Driven Release Decisions**
-- **Metrics-based promotion** through deployment stages
-- **A/B testing integration** for feature validation
-- **Performance monitoring** to ensure system health
-- **Business impact tracking** to measure release success
+#### 📈 **[PRINCIPLE_3_TITLE]**
+- **[PRINCIPLE_3_FEATURE_1]** through [FEATURE_1_STAGES]
+- **[PRINCIPLE_3_FEATURE_2]** for [FEATURE_2_PURPOSE]
+- **[PRINCIPLE_3_FEATURE_3]** to ensure [FEATURE_3_GOAL]
+- **[PRINCIPLE_3_FEATURE_4]** to measure [FEATURE_4_METRICS]
 
-#### 🤝 **Collaborative Release Culture**
-- **Shared ownership** between development and operations
-- **Transparent processes** with clear visibility for all stakeholders
-- **Blameless postmortems** focused on system improvement
-- **Continuous learning** from both successes and failures
+#### 🤝 **[PRINCIPLE_4_TITLE]**
+- **[PRINCIPLE_4_FEATURE_1]** between [FEATURE_1_TEAMS]
+- **[PRINCIPLE_4_FEATURE_2]** with [FEATURE_2_VISIBILITY]
+- **[PRINCIPLE_4_FEATURE_3]** focused on [FEATURE_3_FOCUS]
+- **[PRINCIPLE_4_FEATURE_4]** from [FEATURE_4_SOURCES]
 
 ### Release Success Metrics
 
-We measure release success across multiple dimensions:
+[METRICS_MEASUREMENT_DESCRIPTION]:
 
 | Metric | Target | Current | Industry Benchmark |
 |--------|--------|---------|-------------------|
@@ -83,75 +83,75 @@ We measure release success across multiple dimensions:
 
 ### Release Types and Cadence
 
-We support multiple release types to balance speed with stability:
+[RELEASE_TYPES_DESCRIPTION] to balance [BALANCE_FACTORS]:
 
-#### 🔄 **Continuous Deployment (Recommended)**
-- **Trigger:** Every merge to main branch
-- **Automation Level:** Fully automated with quality gates
-- **Deployment Strategy:** Progressive delivery with canary releases
-- **Rollback:** Automated based on monitoring signals
-- **Best For:** Feature development, bug fixes, performance improvements
+#### 🔄 **[RELEASE_TYPE_1_NAME]**
+- **Trigger:** [TYPE_1_TRIGGER]
+- **Automation Level:** [TYPE_1_AUTOMATION]
+- **Deployment Strategy:** [TYPE_1_STRATEGY]
+- **Rollback:** [TYPE_1_ROLLBACK]
+- **Best For:** [TYPE_1_USE_CASES]
 
-#### 📅 **Scheduled Releases**
-- **Trigger:** Time-based (daily, weekly, bi-weekly)
-- **Automation Level:** Automated with manual approval gates
-- **Deployment Strategy:** Blue-green or rolling deployments
-- **Rollback:** Manual or automated based on severity
-- **Best For:** Coordinated feature releases, dependency updates
+#### 📅 **[RELEASE_TYPE_2_NAME]**
+- **Trigger:** [TYPE_2_TRIGGER]
+- **Automation Level:** [TYPE_2_AUTOMATION]
+- **Deployment Strategy:** [TYPE_2_STRATEGY]
+- **Rollback:** [TYPE_2_ROLLBACK]
+- **Best For:** [TYPE_2_USE_CASES]
 
-#### 🚨 **Hotfix Releases**
-- **Trigger:** Critical production issues
-- **Automation Level:** Fast-track pipeline with essential gates only
-- **Deployment Strategy:** Direct deployment with immediate monitoring
-- **Rollback:** Immediate rollback capability required
-- **Best For:** Security patches, critical bug fixes
+#### 🚨 **[RELEASE_TYPE_3_NAME]**
+- **Trigger:** [TYPE_3_TRIGGER]
+- **Automation Level:** [TYPE_3_AUTOMATION]
+- **Deployment Strategy:** [TYPE_3_STRATEGY]
+- **Rollback:** [TYPE_3_ROLLBACK]
+- **Best For:** [TYPE_3_USE_CASES]
 
-#### 🎯 **Feature Releases**
-- **Trigger:** Major feature completion
-- **Automation Level:** Full pipeline with extended testing
-- **Deployment Strategy:** Feature flags with gradual rollout
-- **Rollback:** Feature flag toggle or full rollback
-- **Best For:** New features, major UI changes, API updates
+#### 🎯 **[RELEASE_TYPE_4_NAME]**
+- **Trigger:** [TYPE_4_TRIGGER]
+- **Automation Level:** [TYPE_4_AUTOMATION]
+- **Deployment Strategy:** [TYPE_4_STRATEGY]
+- **Rollback:** [TYPE_4_ROLLBACK]
+- **Best For:** [TYPE_4_USE_CASES]
 
 ### Environment Promotion Strategy
 
-Our environments follow a progressive promotion model:
+[ENVIRONMENT_PROMOTION_DESCRIPTION]:
 
 ```mermaid
 graph LR
-    A[Development] --> B[Staging]
-    B --> C[Pre-Production]
-    C --> D[Production]
+    A[[ENVIRONMENT_1]] --> B[[ENVIRONMENT_2]]
+    B --> C[[ENVIRONMENT_3]]
+    C --> D[[ENVIRONMENT_4]]
     
-    A --> |Feature Branches| A
-    B --> |Integration Testing| B
-    C --> |Performance Testing| C
-    D --> |Progressive Rollout| D
+    A --> |[FLOW_1_LABEL]| A
+    B --> |[FLOW_2_LABEL]| B
+    C --> |[FLOW_3_LABEL]| C
+    D --> |[FLOW_4_LABEL]| D
 ```
 
-#### **Development Environment**
-- **Purpose:** Feature development and initial testing
-- **Deployment:** Automatic on feature branch updates
-- **Data:** Synthetic test data
-- **Monitoring:** Basic health checks
+#### **[ENVIRONMENT_1_NAME]**
+- **Purpose:** [ENV_1_PURPOSE]
+- **Deployment:** [ENV_1_DEPLOYMENT]
+- **Data:** [ENV_1_DATA]
+- **Monitoring:** [ENV_1_MONITORING]
 
-#### **Staging Environment**
-- **Purpose:** Integration testing and QA validation
-- **Deployment:** Automatic on main branch updates
-- **Data:** Production-like test data
-- **Monitoring:** Full monitoring stack
+#### **[ENVIRONMENT_2_NAME]**
+- **Purpose:** [ENV_2_PURPOSE]
+- **Deployment:** [ENV_2_DEPLOYMENT]
+- **Data:** [ENV_2_DATA]
+- **Monitoring:** [ENV_2_MONITORING]
 
-#### **Pre-Production Environment**
-- **Purpose:** Performance testing and final validation
-- **Deployment:** Manual promotion from staging
-- **Data:** Production data subset (anonymized)
-- **Monitoring:** Production-equivalent monitoring
+#### **[ENVIRONMENT_3_NAME]**
+- **Purpose:** [ENV_3_PURPOSE]
+- **Deployment:** [ENV_3_DEPLOYMENT]
+- **Data:** [ENV_3_DATA]
+- **Monitoring:** [ENV_3_MONITORING]
 
-#### **Production Environment**
-- **Purpose:** Live user traffic
-- **Deployment:** Progressive delivery strategies
-- **Data:** Live production data
-- **Monitoring:** Comprehensive observability
+#### **[ENVIRONMENT_4_NAME]**
+- **Purpose:** [ENV_4_PURPOSE]
+- **Deployment:** [ENV_4_DEPLOYMENT]
+- **Data:** [ENV_4_DATA]
+- **Monitoring:** [ENV_4_MONITORING]
 
 ---
 
@@ -159,78 +159,78 @@ graph LR
 
 ### Semantic Versioning Strategy
 
-We follow [Semantic Versioning 2.0.0](https://semver.org/) with automated version management:
+[VERSIONING_STRATEGY_DESCRIPTION] follows [VERSIONING_STANDARD] with [VERSION_MANAGEMENT_TYPE]:
 
-#### **Version Format: MAJOR.MINOR.PATCH**
+#### **[VERSION_FORMAT_TITLE]**
 
 ```
-MAJOR: Breaking changes that require user action
-MINOR: New features that are backward compatible
-PATCH: Bug fixes and security patches
+[VERSION_COMPONENT_1]: [COMPONENT_1_DESCRIPTION]
+[VERSION_COMPONENT_2]: [COMPONENT_2_DESCRIPTION]
+[VERSION_COMPONENT_3]: [COMPONENT_3_DESCRIPTION]
 ```
 
-#### **Pre-release Identifiers**
-- **Alpha:** `1.2.3-alpha.1` - Early development versions
-- **Beta:** `1.2.3-beta.1` - Feature-complete but potentially unstable
-- **RC:** `1.2.3-rc.1` - Release candidates ready for production
+#### **[PRERELEASE_IDENTIFIERS_TITLE]**
+- **[PRERELEASE_TYPE_1]:** `[PRERELEASE_FORMAT_1]` - [PRERELEASE_DESC_1]
+- **[PRERELEASE_TYPE_2]:** `[PRERELEASE_FORMAT_2]` - [PRERELEASE_DESC_2]
+- **[PRERELEASE_TYPE_3]:** `[PRERELEASE_FORMAT_3]` - [PRERELEASE_DESC_3]
 
 ### Automated Versioning with Conventional Commits
 
-We use [Conventional Commits](https://www.conventionalcommits.org/) to automate version bumping:
+[COMMIT_CONVENTION_DESCRIPTION] uses [COMMIT_STANDARD] to automate [AUTOMATION_SCOPE]:
 
-#### **Commit Message Format**
+#### **[COMMIT_FORMAT_TITLE]**
 ```
-<type>[optional scope]: <description>
+[COMMIT_FORMAT_PATTERN]
 
-[optional body]
+[COMMIT_BODY_PATTERN]
 
-[optional footer(s)]
+[COMMIT_FOOTER_PATTERN]
 ```
 
-#### **Version Bump Rules**
-- **BREAKING CHANGE:** Major version bump
-- **feat:** Minor version bump
-- **fix:** Patch version bump
-- **docs, style, refactor, test, chore:** No version bump
+#### **[VERSION_BUMP_RULES_TITLE]**
+- **[BUMP_TRIGGER_1]:** [BUMP_TYPE_1]
+- **[BUMP_TRIGGER_2]:** [BUMP_TYPE_2]
+- **[BUMP_TRIGGER_3]:** [BUMP_TYPE_3]
+- **[BUMP_TRIGGER_4]:** [BUMP_TYPE_4]
 
-#### **Example Commit Messages**
+#### **[COMMIT_EXAMPLES_TITLE]**
 ```bash
-# Patch release (1.0.0 → 1.0.1)
-fix(auth): resolve login timeout issue
+# [EXAMPLE_1_TYPE] ([EXAMPLE_1_VERSION_CHANGE])
+[EXAMPLE_1_COMMIT_MESSAGE]
 
-# Minor release (1.0.1 → 1.1.0)
-feat(api): add user profile endpoints
+# [EXAMPLE_2_TYPE] ([EXAMPLE_2_VERSION_CHANGE])
+[EXAMPLE_2_COMMIT_MESSAGE]
 
-# Major release (1.1.0 → 2.0.0)
-feat(auth)!: migrate to OAuth 2.0
+# [EXAMPLE_3_TYPE] ([EXAMPLE_3_VERSION_CHANGE])
+[EXAMPLE_3_COMMIT_MESSAGE]
 
-BREAKING CHANGE: Authentication now requires OAuth 2.0 tokens
+[BREAKING_CHANGE_EXAMPLE]
 ```
 
 ### Automated Release Tools
 
-#### **Semantic Release Configuration**
+#### **[RELEASE_CONFIG_TITLE]**
 ```json
 {
-  "branches": ["main"],
+  "branches": ["[RELEASE_BRANCH]"],
   "plugins": [
-    "@semantic-release/commit-analyzer",
-    "@semantic-release/release-notes-generator",
-    "@semantic-release/changelog",
-    "@semantic-release/npm",
-    "@semantic-release/github",
-    "@semantic-release/git"
+    "[PLUGIN_1]",
+    "[PLUGIN_2]",
+    "[PLUGIN_3]",
+    "[PLUGIN_4]",
+    "[PLUGIN_5]",
+    "[PLUGIN_6]"
   ]
 }
 ```
 
-#### **Release Automation Features**
-- **Automatic version calculation** based on commit messages
-- **Changelog generation** from commit history
-- **Git tag creation** with proper annotations
-- **Package publishing** to registries
-- **GitHub/GitLab release creation** with release notes
-- **Slack/Teams notifications** for release announcements
+#### **[AUTOMATION_FEATURES_TITLE]**
+- **[AUTOMATION_FEATURE_1]** based on [FEATURE_1_SOURCE]
+- **[AUTOMATION_FEATURE_2]** from [FEATURE_2_SOURCE]
+- **[AUTOMATION_FEATURE_3]** with [FEATURE_3_DETAILS]
+- **[AUTOMATION_FEATURE_4]** to [FEATURE_4_TARGET]
+- **[AUTOMATION_FEATURE_5]** with [FEATURE_5_CONTENT]
+- **[AUTOMATION_FEATURE_6]** for [FEATURE_6_PURPOSE]
 
 ---
 
@@ -238,24 +238,24 @@ BREAKING CHANGE: Authentication now requires OAuth 2.0 tokens
 
 ### Canary Deployments
 
-Canary deployments gradually expose new versions to increasing percentages of users:
+[CANARY_DEPLOYMENT_DESCRIPTION] gradually expose [DEPLOYMENT_SCOPE] to [EXPOSURE_STRATEGY]:
 
-#### **Canary Rollout Schedule**
+#### **[CANARY_ROLLOUT_TITLE]**
 ```yaml
 stages:
-  - name: "Initial Canary"
-    traffic_percentage: 5%
-    duration: 15m
+  - name: "[STAGE_1_NAME]"
+    traffic_percentage: [STAGE_1_TRAFFIC]%
+    duration: [STAGE_1_DURATION]
     success_criteria:
-      - error_rate < 0.1%
-      - response_time_p95 < 500ms
+      - [STAGE_1_CRITERIA_1]
+      - [STAGE_1_CRITERIA_2]
       
-  - name: "Expanded Canary"
-    traffic_percentage: 25%
-    duration: 30m
+  - name: "[STAGE_2_NAME]"
+    traffic_percentage: [STAGE_2_TRAFFIC]%
+    duration: [STAGE_2_DURATION]
     success_criteria:
-      - error_rate < 0.05%
-      - response_time_p95 < 400ms
+      - [STAGE_2_CRITERIA_1]
+      - [STAGE_2_CRITERIA_2]
       
   - name: "Full Rollout"
     traffic_percentage: 100%

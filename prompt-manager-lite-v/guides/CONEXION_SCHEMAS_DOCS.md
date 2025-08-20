@@ -1,25 +1,86 @@
-# Guía de Conexión entre Schemas y Docs
+# 🔗 Guía Completa de Conexión: JSON Schemas ↔️ Documentación - 2025
 
-Objetivo
-- Explicar claramente qué documento (DOCxxx) se alimenta de qué schema(s), cómo extraer la información y cómo validar consistencia.
-- Servir como referencia única para mappings, convenciones y verificación.
+> **📌 REFERENCIA PRINCIPAL:** Para el contexto completo del ecosistema, consulta **[MASTER_GUIDE_2025.md](./MASTER_GUIDE_2025.md)** - La fuente definitiva del sistema Prompt Manager Lite V.
 
-Rutas clave
-- Schemas: `real_structure_documentation/schemas/master_blueprint_parts/*.json` y `real_structure_documentation/schemas/design_system_schema.json`
-- Playbooks de schemas: `prompt_playbooks/schemas_playbooks/playbook_schema-*.md`
-- Playbooks de docs: `prompt_playbooks/documentation_playbooks/playbook-v2-DOC***.md`
-- Documentos: `real_structure_documentation/docs/DOC***.md`
-- Manifest meta (schema): `real_structure_documentation/schemas/master_blueprint_parts/documentationManifest.json`
+## 🎯 Propósito y Visión 2025
 
-Convenciones de referencia
-- Componentes UI: usar `componentLibrary.components[].id` o `slug` como identificador estable.
-- Visual Blueprint: `pages[].componentRefs[]` debe referenciar ids/slug/nombres existentes en `componentLibrary` (preferir id/slug).
-- API ↔ Arquitectura: alinear `apiContract.endpoints[]` con `architecture.integrationPoints[]` (usa una clave común, por ejemplo `referenceKey`).
-- Diccionario ↔ Data Model: asegurar que `dataModel.namingConventions` y `dataModelDictionary` estén sincronizados.
-- Testing ↔ Deployment: `testingStrategy.environments` y gates deben reflejar `deploymentStrategy.pipelines`.
-- Design System: canónico `real_structure_documentation/schemas/design_system_schema.json` (rol operativo); `master_blueprint_parts/designSystem.json` se mantiene por compatibilidad.
+Esta guía establece el framework completo de mapeo bidireccional entre JSON schemas y documentación, proporcionando:
+- **Mapeo exhaustivo** de cada documento (DOCxxx) con sus schemas correspondientes
+- **Workflows automatizados** para extracción, transformación y validación de datos
+- **Herramientas de sincronización** para mantener consistencia en tiempo real
+- **Mejores prácticas 2025** para schema-driven documentation
 
-Mapa Doc → Schemas (núcleo)
+## 📁 Estructura y Organización
+
+### **Arquitectura de Schemas y Documentación:**
+```bash
+prompt-manager-lite-v/
+├── real_structure_documentation/
+│   ├── schemas/
+│   │   ├── master_blueprint_parts/     # Schemas modulares
+│   │   │   ├── apiContract.json        # Contratos API
+│   │   │   ├── architecture.json       # Arquitectura del sistema
+│   │   │   ├── componentLibrary.json   # Biblioteca de componentes
+│   │   │   ├── dataModel.json          # Modelo de datos
+│   │   │   ├── deploymentStrategy.json # Estrategia de despliegue
+│   │   │   ├── testingStrategy.json    # Estrategia de testing
+│   │   │   └── [30+ schemas más]
+│   │   └── design_system_schema.json   # Schema del sistema de diseño
+│   └── docs/
+│       └── DOC***.md                   # Documentos generados/mantenidos
+├── prompt_playbooks/
+│   ├── schemas_playbooks/              # Playbooks para schemas
+│   │   └── playbook_schema-*.md
+│   └── documentation_playbooks/        # Playbooks para docs
+│       └── playbook-v2-DOC***.md
+├── manifests/
+│   └── documentation_manifest.json     # Manifest de documentación
+└── tools/
+    ├── schema_to_doc.py               # Generador de docs desde schemas
+    ├── doc_to_schema.py               # Extractor de schemas desde docs
+    ├── sync_validator.py              # Validador de sincronización
+    └── mapping_analyzer.py            # Analizador de mapeos
+```
+
+## 🔑 Convenciones y Estándares 2025
+
+### **Sistema de Referencias Universal:**
+```yaml
+identificadores:
+  componentes:
+    primary: "id"          # UUID único
+    secondary: "slug"      # Nombre readable
+    fallback: "name"       # Nombre humano
+  
+  endpoints:
+    primary: "referenceKey" # Clave única compartida
+    secondary: "path"       # Ruta del endpoint
+    
+  entidades:
+    primary: "entityId"    # ID de entidad
+    secondary: "tableName"  # Nombre de tabla
+    
+  features:
+    primary: "featureId"   # ID de feature
+    secondary: "featureKey" # Clave de feature flag
+
+convenciones_mapeo:
+  - "Use bracketed placeholders: [PLACEHOLDER_NAME]"
+  - "Maintain bidirectional references"
+  - "Version all schema changes"
+  - "Document breaking changes"
+```
+
+### **Reglas de Sincronización:**
+1. **Componentes UI:** `componentLibrary.components[].id` → `visualBlueprint.componentRefs[]`
+2. **API ↔ Arquitectura:** `apiContract.endpoints[].referenceKey` ↔ `architecture.integrationPoints[].referenceKey`
+3. **Data Model:** `dataModel.namingConventions` ↔ `dataModelDictionary.terms[]`
+4. **Testing ↔ Deployment:** `testingStrategy.environments[]` ↔ `deploymentStrategy.pipelines[].stages[]`
+5. **Design System:** `design_system_schema.json` (canonical) → `componentLibrary.components[].designTokens`
+
+## 📊 Matriz Completa de Mapeo Doc → Schemas
+
+### **Mapeo Detallado con Ejemplos:**
  - DOC000-ProjectBrief → `projectInfo.json` (+ `projectManagement.json` para snapshot; manifest para owners/reviews)
  - DOC001-ProjectREADME → `projectInfo.json`
  - DOC002-ProductDefinition → `businessLogic.json`, `definitions.json`, `projectInfo.json`
@@ -54,7 +115,9 @@ Mapa Doc → Schemas (núcleo)
  - DOC032-FrontendScreenFlow → `visualBlueprint.json` + `wireframeStates.json` + `componentLibrary.json`
  - DOC033-SOC2Compliance → `soc2Compliance.json` (+ `architecture.json`, `forensicAudit.json`)
 
-Recetas de extracción (resumen)
+## 🔧 Workflows de Extracción y Transformación
+
+### **Proceso Automatizado de Generación:**
 - DOC008 (API):
   - Endpoints: `apiContract.endpoints[]` (método, path, summary, params, requestBody, responses)
   - Políticas: `authentication`, `rateLimiting`, `caching`, `tracing`, `versioning`
@@ -126,16 +189,44 @@ Recetas de extracción (resumen)
   - Checklist de onboarding, accesos, owners (opcional `projectManagement`)
 - DOC000 (Brief): `projectInfo.*`
 
-Validación y coherencia
-1) Ejecutar: `python3 tools/verify_integrity.py`
-2) Chequeos manuales:
-  - ¿Todos los `componentRefs` resuelven a `componentLibrary`?
-  - ¿Endpoints ↔ integrationPoints sincronizados?
-  - ¿`namingConventions` concuerda con `dataModelDictionary`?
-  - ¿Testing envs/gates reflejan pipelines?
-3) Al final: generar `master_blueprint_combined.json` con `combine_schemas.py` y revalidar.
+## ✅ Validación y Testing Automatizado
 
-Matriz inversa Schemas → Docs (resumen)
+### **Suite Completa de Validación:**
+```bash
+# 1. Validación de integridad básica
+python3 tools/verify_integrity.py --full
+
+# 2. Análisis de mapeos
+python3 tools/mapping_analyzer.py --report
+
+# 3. Validación de referencias cruzadas
+python3 tools/sync_validator.py --check-all
+
+# 4. Generación de reporte de cobertura
+python3 tools/schema_coverage.py --output coverage.html
+
+# 5. Validación de schemas contra JSON Schema
+python3 tools/validate_schemas.py --strict
+
+# 6. Generación de blueprint combinado
+python3 tools/combine_schemas.py --output master_blueprint_combined.json
+
+# 7. Validación final del blueprint
+python3 tools/validate_blueprint.py master_blueprint_combined.json
+```
+
+### **Checklist de Validación Manual:**
+- [ ] Todos los `componentRefs` resuelven a `componentLibrary`
+- [ ] Endpoints y integrationPoints sincronizados vía `referenceKey`
+- [ ] `namingConventions` consistente con `dataModelDictionary`
+- [ ] Testing environments alineados con deployment pipelines
+- [ ] Versiones de schemas documentadas
+- [ ] Breaking changes identificados
+- [ ] Placeholders universales aplicados
+
+## 🔄 Matriz Inversa: Schemas → Documentación
+
+### **Mapeo Completo con Impacto:**
  - projectInfo.json → DOC000, DOC001
  - businessLogic.json → DOC002
  - definitions.json → DOC002
@@ -166,7 +257,9 @@ Matriz inversa Schemas → Docs (resumen)
  - master_blueprint_schema.json (meta) → combinador/estructura general (no directo a un DOC)
  - documentationManifest.json (meta) → índice/owners/dependencias de todos los DOCs
 
-Extracción paso a paso (ejemplos prácticos)
+## 📝 Ejemplos Prácticos de Extracción
+
+### **Workflows Detallados con Comandos:**
 - DOC008-APISpecification desde apiContract.json
   1) Lista de endpoints: leer `endpoints[]` y tabular `method`, `path`, `summary`.
   2) Parámetros y cuerpos: para cada endpoint, usar `parameters[]`, `requestBody`, `responses`.
@@ -196,37 +289,320 @@ Extracción paso a paso (ejemplos prácticos)
   3) Estados/wireframes: `wireframeStates.states[]` por `viewName` y árbol de nodos.
   4) Activos/temas: `assets[]`, `themes[]`, `breakpoints[]` si aplica.
 
-Consejos de consistencia
-- Usa ids/slug estables para todos los cruces UI.
-- Documenta `referenceKey` compartido entre API y Arquitectura para mapear endpoints↔integrationPoints.
-- Mantén un apéndice de términos desde `dataModelDictionary` para homogeneidad semántica.
-- Declara dependencias en el manifest (cuando tengas una instancia) para poder auditar cobertura documental.
+## 🚀 Scripts de Automatización
 
-Referencias directas
-- Schemas (ejemplos):
-  - `real_structure_documentation/schemas/master_blueprint_parts/apiContract.json`
-  - `real_structure_documentation/schemas/master_blueprint_parts/architecture.json`
-  - `real_structure_documentation/schemas/master_blueprint_parts/componentLibrary.json`
-  - `real_structure_documentation/schemas/master_blueprint_parts/visualBlueprint.json`
-  - `real_structure_documentation/schemas/master_blueprint_parts/testingStrategy.json`
-  - `real_structure_documentation/schemas/master_blueprint_parts/deploymentStrategy.json`
-  - `real_structure_documentation/schemas/master_blueprint_parts/dataModel.json`
-  - `real_structure_documentation/schemas/master_blueprint_parts/dataModelDictionary.json`
-  - `real_structure_documentation/schemas/master_blueprint_parts/designPatterns.json`
-  - `real_structure_documentation/schemas/design_system_schema.json`
-- Docs (ejemplos):
-  - `real_structure_documentation/docs/DOC008-APISpecification.md`, `real_structure_documentation/docs/DOC009-DataModel.md`, `real_structure_documentation/docs/DOC010-Deployment.md`, `real_structure_documentation/docs/DOC011-TestingStrategy.md`, `real_structure_documentation/docs/DOC032-FrontendScreenFlow.md`
-- Playbooks (schemas): `prompt_playbooks/schemas_playbooks/playbook_schema-*.md`
-- Playbooks (docs): `prompt_playbooks/documentation_playbooks/playbook-v2-DOC***.md`
+### **Generador de Documentación desde Schemas:**
+```python
+# tools/schema_to_doc.py
+import json
+import yaml
+from pathlib import Path
 
-## Relación con el manifest de documentación
+def generate_doc_from_schema(schema_path, doc_template, output_path):
+    """
+    Genera documentación desde un schema JSON
+    """
+    with open(schema_path) as f:
+        schema = json.load(f)
+    
+    # Transform schema to documentation
+    doc_content = transform_schema_to_doc(schema, doc_template)
+    
+    # Write documentation
+    with open(output_path, 'w') as f:
+        f.write(doc_content)
+    
+    return output_path
 
-- Esta guía establece el mapeo vivo Schemas ↔ Docs. Para trazabilidad formal, cada DOC puede declarar `schemaRefs` en su frontmatter y, además, el `documentation_manifest.json` consolida esas mismas rutas a nivel de inventario.
-- Uso recomendado:
-  - Mantén este documento como fuente narrativa y de extracción.
-  - Replica las referencias en `manifests/documentation_manifest.json` bajo `documents[].schemaRefs` para auditoría.
-  - El verificador (`tools/verify_docs_and_schemas.py`) alerta cuándo un schema bajo `real_structure_documentation/schemas/**` no aparece ni en esta guía ni en `schemaRefs` del manifest.
+# Uso:
+# python3 tools/schema_to_doc.py apiContract.json DOC008-template.md DOC008-APISpecification.md
+```
 
-Enlaces
-- Manifest (instancia): `manifests/documentation_manifest.json`
-- Manifest (schema): `real_structure_documentation/schemas/master_blueprint_parts/documentationManifest.json`
+### **Sincronizador Bidireccional:**
+```python
+# tools/bidirectional_sync.py
+def sync_schema_and_doc(schema_path, doc_path):
+    """
+    Mantiene schemas y docs sincronizados
+    """
+    # Detect changes
+    schema_changes = detect_schema_changes(schema_path)
+    doc_changes = detect_doc_changes(doc_path)
+    
+    # Apply bidirectional sync
+    if schema_changes:
+        update_doc_from_schema(schema_changes, doc_path)
+    
+    if doc_changes:
+        update_schema_from_doc(doc_changes, schema_path)
+    
+    # Validate consistency
+    validate_sync(schema_path, doc_path)
+```
+
+### **Analizador de Cobertura:**
+```bash
+# Comando para análisis de cobertura
+python3 tools/coverage_analyzer.py \
+  --schemas real_structure_documentation/schemas/ \
+  --docs real_structure_documentation/docs/ \
+  --output coverage_report.json
+
+# Genera dashboard HTML
+python3 tools/coverage_dashboard.py coverage_report.json
+```
+
+## 💡 Mejores Prácticas 2025
+
+### **DO's:**
+- ✅ Mantener mapeos bidireccionales actualizados
+- ✅ Versionar todos los cambios de schema
+- ✅ Usar placeholders universales [PLACEHOLDER]
+- ✅ Automatizar validación en CI/CD
+- ✅ Documentar breaking changes
+- ✅ Generar docs desde schemas cuando sea posible
+- ✅ Mantener un source of truth único
+
+### **DON'Ts:**
+- ❌ Duplicar información manualmente
+- ❌ Ignorar warnings de validación
+- ❌ Hacer cambios sin actualizar mapeos
+- ❌ Usar referencias hardcodeadas
+- ❌ Omitir tests de sincronización
+
+## 📈 Métricas y Monitoreo
+
+### **KPIs de Sincronización:**
+```yaml
+metricas:
+  cobertura:
+    target: ">95% de docs con schemas"
+    actual: "[COVERAGE_PERCENTAGE]"
+  
+  consistencia:
+    target: "100% referencias válidas"
+    actual: "[CONSISTENCY_PERCENTAGE]"
+  
+  automatizacion:
+    target: ">80% generación automática"
+    actual: "[AUTOMATION_PERCENTAGE]"
+  
+  validacion:
+    target: "0 errores en CI/CD"
+    actual: "[VALIDATION_ERRORS]"
+```
+
+### **Dashboard de Estado:**
+```markdown
+## 📊 Schema-Doc Sync Status
+
+| Document | Schema Coverage | Last Sync | Status |
+|----------|----------------|-----------|--------|
+| DOC008-API | 100% | 2025-01-18 | ✅ Synced |
+| DOC009-DataModel | 95% | 2025-01-17 | ⚠️ Needs Update |
+| DOC010-Deployment | 100% | 2025-01-18 | ✅ Synced |
+```
+
+## 🔍 Troubleshooting Común
+
+### **Problema: Referencias rotas**
+```bash
+# Diagnóstico
+python3 tools/find_broken_refs.py --fix
+
+# Solución automática
+python3 tools/repair_references.py --auto
+```
+
+### **Problema: Schemas desincronizados**
+```bash
+# Detectar diferencias
+python3 tools/diff_detector.py schema.json doc.md
+
+# Aplicar sincronización
+python3 tools/sync_apply.py --force-schema-to-doc
+```
+
+### **Problema: Validación fallida**
+```bash
+# Debug detallado
+python3 tools/validate_debug.py --verbose
+
+# Generar reporte
+python3 tools/validation_report.py --format html
+```
+
+## 🛠️ Herramientas y Utilidades
+
+### **CLI para Gestión de Mapeos:**
+```bash
+# Schema Manager CLI
+schema-manager [command] [options]
+
+Commands:
+  validate    Validate schema-doc mappings
+  sync        Synchronize schemas and docs
+  generate    Generate docs from schemas
+  analyze     Analyze coverage and consistency
+  report      Generate status reports
+  fix         Auto-fix common issues
+
+Examples:
+  schema-manager validate --all
+  schema-manager sync DOC008 apiContract.json
+  schema-manager generate --schema dataModel.json --output DOC009.md
+  schema-manager analyze --coverage --output report.html
+  schema-manager fix --broken-refs --auto
+```
+
+### **GitHub Actions Workflow:**
+```yaml
+# .github/workflows/schema-doc-sync.yml
+name: Schema-Doc Synchronization
+on:
+  push:
+    paths:
+      - 'real_structure_documentation/schemas/**'
+      - 'real_structure_documentation/docs/**'
+  pull_request:
+    paths:
+      - 'real_structure_documentation/schemas/**'
+      - 'real_structure_documentation/docs/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      
+      - name: Validate mappings
+        run: python3 tools/mapping_analyzer.py --ci
+      
+      - name: Check sync status
+        run: python3 tools/sync_validator.py --check-all
+      
+      - name: Generate coverage report
+        run: python3 tools/schema_coverage.py --output coverage.json
+      
+      - name: Upload coverage
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage.json
+      
+      - name: Comment PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const coverage = require('./coverage.json');
+            // Post coverage stats as PR comment
+```
+
+## 📋 Integración con Manifest de Documentación
+
+### **Estructura del Manifest:**
+```json
+{
+  "version": "2.0",
+  "lastUpdated": "[TIMESTAMP]",
+  "documents": [
+    {
+      "id": "DOC008",
+      "title": "API Specification",
+      "path": "real_structure_documentation/docs/DOC008-APISpecification.md",
+      "schemaRefs": [
+        "real_structure_documentation/schemas/master_blueprint_parts/apiContract.json",
+        "real_structure_documentation/schemas/master_blueprint_parts/architecture.json"
+      ],
+      "coverage": "100%",
+      "lastSync": "[TIMESTAMP]",
+      "status": "synced"
+    }
+  ],
+  "schemas": [
+    {
+      "path": "real_structure_documentation/schemas/master_blueprint_parts/apiContract.json",
+      "version": "1.0.0",
+      "documentRefs": ["DOC008", "DOC012"],
+      "lastModified": "[TIMESTAMP]"
+    }
+  ],
+  "mappings": [
+    {
+      "type": "bidirectional",
+      "source": "apiContract.endpoints",
+      "target": "DOC008.endpoints",
+      "syncStrategy": "automatic",
+      "validation": "required"
+    }
+  ]
+}
+```
+
+### **Comandos de Gestión del Manifest:**
+```bash
+# Actualizar manifest
+python3 tools/update_manifest.py --scan-all
+
+# Validar manifest
+python3 tools/validate_manifest.py manifests/documentation_manifest.json
+
+# Generar reporte desde manifest
+python3 tools/manifest_report.py --format markdown > MANIFEST_STATUS.md
+```
+
+## 🎯 Casos de Uso Avanzados
+
+### **1. Generación Automática de API Docs:**
+```bash
+# Desde OpenAPI/Swagger
+python3 tools/openapi_to_schema.py swagger.yaml apiContract.json
+python3 tools/schema_to_doc.py apiContract.json DOC008-APISpecification.md
+```
+
+### **2. Sincronización con Base de Datos:**
+```bash
+# Desde DDL SQL
+python3 tools/sql_to_schema.py database.sql dataModel.json
+python3 tools/schema_to_doc.py dataModel.json DOC009-DataModel.md
+```
+
+### **3. Integración con Design Systems:**
+```bash
+# Desde Figma/Storybook
+python3 tools/design_system_sync.py --source figma --output design_system_schema.json
+python3 tools/schema_to_doc.py design_system_schema.json DOC003-DesignSystem.md
+```
+
+## 📚 Referencias y Recursos
+
+### **Documentación Principal:**
+- **Master Guide:** [MASTER_GUIDE_2025.md](./MASTER_GUIDE_2025.md)
+- **JSON Schemas Guide:** [MASTER_JSON_SCHEMAS_GUIDE.md](./MASTER_JSON_SCHEMAS_GUIDE.md)
+- **Manifest Documentation:** `manifests/documentation_manifest.json`
+
+### **Herramientas:**
+- **Verificador Principal:** `tools/verify_docs_and_schemas.py`
+- **Sincronizador:** `tools/sync_validator.py`
+- **Generador:** `tools/schema_to_doc.py`
+- **Analizador:** `tools/mapping_analyzer.py`
+
+### **Schemas Clave:**
+- `real_structure_documentation/schemas/master_blueprint_parts/*.json`
+- `real_structure_documentation/schemas/design_system_schema.json`
+- `real_structure_documentation/schemas/master_blueprint_schema.json`
+
+---
+
+**Última Actualización:** 2025-01-18
+**Versión:** 3.0 (Enhanced con automatización y mejores prácticas 2025)
+**Próxima Revisión:** Quincenal para mantener sincronización

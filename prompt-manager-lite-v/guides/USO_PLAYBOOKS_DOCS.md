@@ -1,25 +1,96 @@
-# Guía de Uso de Playbooks de Documentación (DOC)
+# 📚 Guía Completa de Uso de Playbooks de Documentación - Framework 2025
 
-Propósito
-- Establecer cómo usar los playbooks de documentación para completar cada `real_structure_documentation/docs/DOC***.md` de forma consistente, trazable y repetible.
+> **📌 REFERENCIA PRINCIPAL:** Para el contexto completo del ecosistema, consulta **[MASTER_GUIDE_2025.md](./MASTER_GUIDE_2025.md)** - La fuente definitiva del sistema Prompt Manager Lite V.
 
-Dónde están
-- Playbooks de documentación: `prompt_playbooks/documentation_playbooks/playbook-v2-DOC***.md`
-- Documentos destino: `real_structure_documentation/docs/DOC***.md`
-- Schemas fuente (para extraer datos): `real_structure_documentation/schemas/**` (principalmente `real_structure_documentation/schemas/master_blueprint_parts/*.json` y `real_structure_documentation/schemas/design_system_schema.json`)
+## 🎯 Propósito y Visión 2025
 
-Flujo recomendado por documento
-1) Abrir el playbook correspondiente (ej.: `playbook-v2-DOC008-APISpecification.md`).
-2) Completar el doc `real_structure_documentation/docs/DOC008-APISpecification.md` siguiendo secciones, ejemplos y checklists del playbook.
-3) Extraer datos de los schemas mapeados en la guía de conexión (ver `guides/CONEXION_SCHEMAS_DOCS.md`).
-4) Añadir referencias cruzadas en el doc (opcional): frontmatter `schemaRefs: [ ... ]`.
-5) Validar con `python3 tools/verify_integrity.py` (para asegurar que no se rompió consistencia global) y revisar el checklist final del playbook.
+Esta guía establece el framework completo para usar los **playbooks de documentación universales** con placeholders adaptativos, proporcionando:
+- **Workflow automatizado** para generación de documentación schema-driven
+- **Templates universales** con 2,593+ placeholders validados
+- **Herramientas de validación** y verificación de integridad
+- **Integración CI/CD** para documentación continua
+- **Mejores prácticas 2025** para documentación técnica moderna
 
-Buenas prácticas
-- Mantener la narrativa mínima; priorizar datos provenientes de schemas.
-- Usar identificación estable (ids/slug) cuando referencies componentes, endpoints o entidades.
-- Mantener consistencia terminológica con `dataModelDictionary`.
-- Si el playbook indica ejemplos, adáptalos al dominio y enlaza a la fuente (`schema` o `codeRef`).
+## 📁 Estructura del Sistema
+
+### **Arquitectura de Playbooks y Documentación:**
+```bash
+prompt-manager-lite-v/
+├── prompt_playbooks/
+│   └── documentation_playbooks/          # 🎯 Playbooks universales
+│       ├── playbook-v2-DOC000-ProjectBrief.md
+│       ├── playbook-v2-DOC008-APISpecification.md
+│       ├── playbook-v2-DOC032-FrontendScreenFlow.md
+│       └── [34 playbooks totales]
+├── real_structure_documentation/
+│   ├── docs/                             # 📄 Documentos generados
+│   │   ├── DOC000-ProjectBrief.md
+│   │   ├── DOC008-APISpecification.md
+│   │   └── [34 documentos objetivo]
+│   └── schemas/                          # 🔧 Schemas fuente
+│       ├── master_blueprint_parts/       # Schemas modulares
+│       └── design_system_schema.json     # Schema canónico de diseño
+├── manifests/
+│   └── documentation_manifest.json       # 📋 Manifest centralizado
+└── tools/
+    ├── doc_generator.py                  # 🤖 Generador automático
+    ├── placeholder_validator.py          # ✅ Validador de placeholders
+    └── integrity_checker.py              # 🔍 Verificador de integridad
+```
+
+## 🚀 Workflow Automatizado 2025
+
+### **Comandos de Automatización:**
+```bash
+# 1. Generación automática desde schemas
+python3 tools/doc_generator.py --playbook DOC008 --auto-extract
+
+# 2. Validación completa
+python3 tools/integrity_checker.py --full --fix-placeholders
+
+# 3. Actualización de manifest
+python3 tools/manifest_updater.py --sync-all
+
+# 4. Pipeline completo
+./scripts/generate_docs_pipeline.sh --target DOC008 --validate
+```
+
+### **Flujo Detallado por Documento:**
+1. **📋 Preparación:** Abrir playbook correspondiente (ej.: `playbook-v2-DOC008-APISpecification.md`)
+2. **🔧 Extracción:** Extraer datos automáticamente desde schemas mapeados
+3. **📝 Generación:** Completar documento siguiendo template universal
+4. **🎨 Personalización:** Adaptar placeholders al contexto específico
+5. **✅ Validación:** Verificar integridad y consistencia
+6. **📊 Registro:** Actualizar manifest con referencias y metadatos
+7. **🔄 Integración:** Ejecutar pipeline CI/CD para validación continua
+
+## 🎯 Mejores Prácticas 2025
+
+### **Principios Fundamentales:**
+- **📊 Schema-First:** Priorizar datos provenientes de schemas sobre narrativa manual
+- **🔗 Referencias Estables:** Usar identificación estable (IDs/slugs) para componentes, endpoints, entidades
+- **📚 Consistencia Terminológica:** Mantener coherencia con `dataModelDictionary.json`
+- **🎨 Placeholders Universales:** Usar formato `[PLACEHOLDER_NAME]` para adaptabilidad
+- **🔄 Automatización:** Maximizar generación automática, minimizar trabajo manual
+- **✅ Validación Continua:** Implementar verificación automática en cada cambio
+
+### **Convenciones de Placeholders:**
+```yaml
+formato_placeholders:
+  sintaxis: "[UPPERCASE_WITH_UNDERSCORES]"
+  ejemplos:
+    proyecto: "[PROJECT_NAME]"
+    ambiente: "[ENVIRONMENT]"
+    url_api: "[API_BASE_URL]"
+    version: "[VERSION]"
+    equipo: "[TEAM_NAME]"
+  
+reglas:
+  - Un placeholder por campo
+  - Nombres descriptivos y específicos
+  - Consistencia entre documentos
+  - Validación automática
+```
 
 Guía rápida por algunos DOCs comunes
 - DOC008-APISpecification: seguir secciones de endpoints, auth, rate limiting, caching, tracing; poblar principalmente desde `apiContract.json`.
@@ -28,18 +99,62 @@ Guía rápida por algunos DOCs comunes
 - DOC011-TestingStrategy: seguir pirámide, targets, datos de prueba, entornos desde `testingStrategy.json` y gates de `deploymentStrategy`.
 - DOC032-FrontendScreenFlow: poblar flujo/páginas/estados desde `visualBlueprint.json` + `wireframeStates.json`, y validar componentes con `componentLibrary.json`.
 
-Plantilla de frontmatter recomendada
+## 📋 Template de Frontmatter Avanzado 2025
+
 ```yaml
 ---
-docId: DOCxxx-Nombre
-ownerAgent: equipo-o-persona
-status: draft|review|approved
-lastUpdated: YYYY-MM-DD
+# Identificación del Documento
+docId: "DOC[XXX]-[DOCUMENT_NAME]"
+title: "[DOCUMENT_TITLE]"
+version: "[VERSION]"
+status: "draft|review|approved|deprecated"
+
+# Ownership y Responsabilidad
+ownerAgent: "[TEAM_NAME]|[PERSON_NAME]"
+maintainers:
+  - "[MAINTAINER_1]"
+  - "[MAINTAINER_2]"
+reviewers:
+  - "[REVIEWER_1]"
+  - "[REVIEWER_2]"
+
+# Metadatos Temporales
+createdDate: "[CREATION_DATE]"
+lastUpdated: "[LAST_UPDATE_DATE]"
+nextReview: "[NEXT_REVIEW_DATE]"
+
+# Referencias a Schemas
 schemaRefs:
-  - real_structure_documentation/schemas/master_blueprint_parts/...
-  - real_structure_documentation/schemas/design_system_schema.json
+  primary:
+    - "real_structure_documentation/schemas/master_blueprint_parts/[PRIMARY_SCHEMA].json"
+  secondary:
+    - "real_structure_documentation/schemas/master_blueprint_parts/[SECONDARY_SCHEMA].json"
+    - "real_structure_documentation/schemas/design_system_schema.json"
+
+# Documentos Relacionados
 relatedDocs:
-  - DOC0yy-OtroDocumento
+  dependencies:
+    - "DOC[YYY]-[DEPENDENCY_DOC]"
+  references:
+    - "DOC[ZZZ]-[REFERENCE_DOC]"
+
+# Configuración de Generación
+generationConfig:
+  autoExtract: true
+  validatePlaceholders: true
+  updateManifest: true
+  
+# Tags para Categorización
+tags:
+  - "[DOMAIN_TAG]"
+  - "[TECHNOLOGY_TAG]"
+  - "[PRIORITY_TAG]"
+
+# Métricas de Calidad
+quality:
+  completeness: "[COMPLETENESS_PERCENTAGE]%"
+  placeholderCount: [PLACEHOLDER_COUNT]
+  lastValidation: "[LAST_VALIDATION_DATE]"
 ---
 ```
 

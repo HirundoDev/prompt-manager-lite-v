@@ -42,36 +42,36 @@
 
 ### Component-Driven Development Philosophy
 
-Our frontend architecture follows modern component-driven development principles, emphasizing reusability, maintainability, and scalability:
+[FRONTEND_ARCHITECTURE_DESCRIPTION] follows [DEVELOPMENT_PRINCIPLES], emphasizing [ARCHITECTURE_GOALS]:
 
-#### 🔍 **Component Discovery & Organization**
-- **Atomic Design methodology** with atoms, molecules, organisms, templates, and pages
-- **Design system integration** with Storybook for component documentation
-- **Component library** with versioned, reusable UI components
-- **Pattern library** documenting common interaction patterns and layouts
+#### 🔍 **[COMPONENT_DISCOVERY_TITLE]**
+- **[DISCOVERY_METHODOLOGY]** with [METHODOLOGY_STRUCTURE]
+- **[DISCOVERY_INTEGRATION]** with [INTEGRATION_TOOL] for [INTEGRATION_PURPOSE]
+- **[DISCOVERY_LIBRARY]** with [LIBRARY_CHARACTERISTICS]
+- **[DISCOVERY_PATTERN_LIBRARY]** documenting [PATTERN_SCOPE]
 
-#### 🎨 **Design System Integration**
-- **Design tokens** for consistent spacing, colors, typography, and animations
-- **Component variants** supporting different sizes, states, and themes
-- **Accessibility standards** built into every component (WCAG 2.1 AA)
-- **Responsive design** with mobile-first approach and breakpoint system
+#### 🎨 **[DESIGN_SYSTEM_TITLE]**
+- **[DESIGN_TOKENS]** for [TOKEN_SCOPE]
+- **[COMPONENT_VARIANTS]** supporting [VARIANT_OPTIONS]
+- **[ACCESSIBILITY_STANDARDS]** built into [ACCESSIBILITY_SCOPE]
+- **[RESPONSIVE_DESIGN]** with [DESIGN_APPROACH] and [BREAKPOINT_SYSTEM]
 
-#### 📊 **Performance & Optimization**
-- **Code splitting** at component and route levels
-- **Lazy loading** for non-critical components and images
-- **Bundle optimization** with tree shaking and dead code elimination
-- **Runtime performance** monitoring with Core Web Vitals tracking
+#### 📊 **[PERFORMANCE_TITLE]**
+- **[PERFORMANCE_FEATURE_1]** at [FEATURE_1_LEVELS]
+- **[PERFORMANCE_FEATURE_2]** for [FEATURE_2_SCOPE]
+- **[PERFORMANCE_FEATURE_3]** with [FEATURE_3_TECHNIQUES]
+- **[PERFORMANCE_FEATURE_4]** with [FEATURE_4_TRACKING]
 
 ### Component Classification
 
-Our components are organized by complexity and purpose:
+[COMPONENT_ORGANIZATION_DESCRIPTION]:
 
-#### **Component Hierarchy**
-- **Atoms:** Basic building blocks (buttons, inputs, icons)
-- **Molecules:** Simple combinations of atoms (search box, card header)
-- **Organisms:** Complex UI sections (navigation, product grid)
-- **Templates:** Page-level layouts without specific content
-- **Pages:** Complete views with real content and data
+#### **[COMPONENT_HIERARCHY_TITLE]**
+- **[HIERARCHY_LEVEL_1]:** [LEVEL_1_DESCRIPTION]
+- **[HIERARCHY_LEVEL_2]:** [LEVEL_2_DESCRIPTION]
+- **[HIERARCHY_LEVEL_3]:** [LEVEL_3_DESCRIPTION]
+- **[HIERARCHY_LEVEL_4]:** [LEVEL_4_DESCRIPTION]
+- **[HIERARCHY_LEVEL_5]:** [LEVEL_5_DESCRIPTION]
 
 #### **Component Categories**
 - **Design System:** Foundational UI components following design standards

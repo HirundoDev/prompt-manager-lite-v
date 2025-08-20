@@ -1,56 +1,700 @@
-# Guía Maestra de JSON Schemas - Prompt Manager Lite V
+# 📋 Guía Maestra de JSON Schemas - Framework 2025
 
-**Propósito:** Documentación completa de todos los schemas JSON del sistema, sus propósitos específicos, cómo leerlos e interpretarlos, y mejores prácticas contextuales basadas en estándares de la industria 2025.
+> **📌 REFERENCIA PRINCIPAL:** Para el contexto completo del ecosistema, consulta **[MASTER_GUIDE_2025.md](./MASTER_GUIDE_2025.md)** - La fuente definitiva del sistema Prompt Manager Lite V.
+
+## 🎯 Propósito y Alcance
+
+**Propósito:** Framework completo de JSON Schemas con automatización, validación avanzada, y mejores prácticas 2025 para desarrollo schema-driven.
 
 **Fecha de Creación:** 2025-12-08  
-**Versión:** 1.0  
-**Basado en:** Investigación de mejores prácticas JSON Schema 2025
+**Versión:** 2.0 (Enhanced 2025)  
+**Basado en:** JSON Schema 2020-12, OpenAPI 3.1, Industry Best Practices 2025
 
-## 🎯 Introducción
+## 🎯 Introducción y Visión 2025
 
-Esta guía proporciona una comprensión completa de los **26 schemas JSON** que forman el núcleo del sistema Prompt Manager Lite V. Cada schema está diseñado para un propósito específico y sigue patrones modernos de la industria.
+Esta guía establece el framework completo para trabajar con los **26+ schemas JSON** del sistema Prompt Manager Lite V, proporcionando:
+- **Catálogo exhaustivo** de todos los schemas con ejemplos prácticos
+- **Herramientas de automatización** para generación y validación
+- **Workflows CI/CD** para integración continua
+- **Dashboards y monitoreo** para salud del sistema
+- **Mejores prácticas 2025** para desarrollo schema-driven
 
-### 📋 Inventario Completo de Schemas
+### 📋 Inventario Completo de Schemas con Estado 2025
 
-| # | Schema | Dominio | Propósito | Complejidad |
-|---|--------|---------|-----------|-------------|
-| 1 | `apiContract.json` | API | Especificación completa de contratos API | Alta |
-| 2 | `architecture.json` | Arquitectura | Definición de patrones arquitectónicos | Alta |
-| 3 | `dataModel.json` | Datos | Modelado de entidades y relaciones | Alta |
-| 4 | `testingStrategy.json` | Testing | Estrategias y niveles de pruebas | Media |
-| 5 | `deploymentStrategy.json` | DevOps | Estrategias de despliegue y ambientes | Media |
-| 6 | `componentLibrary.json` | UI/UX | Inventario de componentes UI | Media |
-| 7 | `visualBlueprint.json` | UI/UX | Blueprints visuales y wireframes | Media |
-| 8 | `projectInfo.json` | Gestión | Información básica del proyecto | Baja |
-| 9 | `projectManagement.json` | Gestión | Gestión de proyectos y equipos | Media |
-| 10 | `businessLogic.json` | Negocio | Lógica de negocio y reglas | Media |
-| 11 | `operationalStrategy.json` | Operaciones | Estrategias operativas y runbooks | Media |
-| 12 | `soc2Compliance.json` | Seguridad | Marco de cumplimiento SOC 2 | Alta |
-| 13 | `forensicAudit.json` | Auditoría | Auditoría y análisis forense | Media |
-| 14 | `qualityGoals.json` | Calidad | Objetivos y métricas de calidad | Baja |
-| 15 | `designPatterns.json` | Arquitectura | Patrones de diseño aplicados | Media |
-| 16 | `designSystem.json` | UI/UX | Sistema de diseño (legacy) | Baja |
-| 17 | `stateManagementPlan.json` | Frontend | Gestión de estado en frontend | Media |
-| 18 | `wireframeStates.json` | UI/UX | Estados de wireframes y flujos | Baja |
-| 19 | `featureManifest.json` | Gestión | Inventario de features | Baja |
-| 20 | `featureLifecycle.json` | Gestión | Ciclo de vida de features | Baja |
-| 21 | `bugLifecycle.json` | Gestión | Ciclo de vida de bugs | Baja |
-| 22 | `fileExecutionMap.json` | Operaciones | Mapeo de archivos y ejecución | Baja |
-| 23 | `dataModelDictionary.json` | Datos | Diccionario de términos de datos | Baja |
-| 24 | `deepLogicAnalysis.json` | Análisis | Análisis profundo de lógica | Media |
-| 25 | `definitions.json` | Meta | Definiciones y términos globales | Baja |
-| 26 | `documentationManifest.json` | Meta | Manifest de documentación | Baja |
+| # | Schema | Dominio | Propósito | Complejidad | Estado | Versión |
+|---|--------|---------|-----------|-------------|--------|---------|
+| 1 | `apiContract.json` | API | Especificación completa de contratos API | Alta | ✅ Active | 1.2.0 |
+| 2 | `architecture.json` | Arquitectura | Definición de patrones arquitectónicos | Alta | ✅ Active | 2.0.0 |
+| 3 | `dataModel.json` | Datos | Modelado de entidades y relaciones | Alta | ✅ Active | 1.5.0 |
+| 4 | `testingStrategy.json` | Testing | Estrategias y niveles de pruebas | Media | ✅ Active | 1.1.0 |
+| 5 | `deploymentStrategy.json` | DevOps | Estrategias de despliegue y ambientes | Media | ✅ Active | 1.3.0 |
+| 6 | `componentLibrary.json` | UI/UX | Inventario de componentes UI | Media | ✅ Active | 2.1.0 |
+| 7 | `visualBlueprint.json` | UI/UX | Blueprints visuales y wireframes | Media | ✅ Active | 1.0.0 |
+| 8 | `projectInfo.json` | Gestión | Información básica del proyecto | Baja | ✅ Active | 1.0.0 |
+| 9 | `projectManagement.json` | Gestión | Gestión de proyectos y equipos | Media | ✅ Active | 1.2.0 |
+| 10 | `businessLogic.json` | Negocio | Lógica de negocio y reglas | Media | ✅ Active | 1.1.0 |
+| 11 | `operationalStrategy.json` | Operaciones | Estrategias operativas y runbooks | Media | ✅ Active | 1.0.0 |
+| 12 | `soc2Compliance.json` | Seguridad | Marco de cumplimiento SOC 2 | Alta | ✅ Active | 1.0.0 |
+| 13 | `forensicAudit.json` | Auditoría | Auditoría y análisis forense | Media | ✅ Active | 1.0.0 |
+| 14 | `qualityGoals.json` | Calidad | Objetivos y métricas de calidad | Baja | ✅ Active | 1.0.0 |
+| 15 | `designPatterns.json` | Arquitectura | Patrones de diseño aplicados | Media | ✅ Active | 1.1.0 |
+| 16 | `designSystem.json` | UI/UX | Sistema de diseño (legacy) | Baja | ⚠️ Deprecated | 1.0.0 |
+| 17 | `stateManagementPlan.json` | Frontend | Gestión de estado en frontend | Media | ✅ Active | 1.0.0 |
+| 18 | `wireframeStates.json` | UI/UX | Estados de wireframes y flujos | Baja | ✅ Active | 1.0.0 |
+| 19 | `featureManifest.json` | Gestión | Inventario de features | Baja | ✅ Active | 1.0.0 |
+| 20 | `featureLifecycle.json` | Gestión | Ciclo de vida de features | Baja | ✅ Active | 1.0.0 |
+| 21 | `bugLifecycle.json` | Gestión | Ciclo de vida de bugs | Baja | ✅ Active | 1.0.0 |
+| 22 | `fileExecutionMap.json` | Operaciones | Mapeo de archivos y ejecución | Baja | ✅ Active | 1.0.0 |
+| 23 | `dataModelDictionary.json` | Datos | Diccionario de términos de datos | Baja | ✅ Active | 1.0.0 |
+| 24 | `deepLogicAnalysis.json` | Análisis | Análisis profundo de lógica | Media | ✅ Active | 1.0.0 |
+| 25 | `definitions.json` | Meta | Definiciones y términos globales | Baja | ✅ Active | 1.0.0 |
+| 26 | `documentationManifest.json` | Meta | Manifest de documentación | Baja | ✅ Active | 1.0.0 |
+| 27 | `design_system_schema.json` | UI/UX | Sistema de diseño canónico | Alta | ✅ Active | 2.0.0 |
+| 28 | `master_blueprint_schema.json` | Meta | Schema maestro combinado | Alta | ✅ Active | 1.0.0 |
+
+### 📊 Métricas del Sistema
+- **Total Schemas:** 28 (26 core + 2 meta)
+- **Schemas Activos:** 27 (96.4%)
+- **Schemas Deprecated:** 1 (3.6%)
+- **Cobertura de Dominios:** 8 dominios principales
+- **Última Actualización:** 2025-01-18
+
+## 🤖 Herramientas de Automatización 2025
+
+### **Schema Manager CLI**
+```bash
+# Instalación
+npm install -g @prompt-manager/schema-cli
+
+# Comandos principales
+schema-manager validate --all                    # Validar todos los schemas
+schema-manager generate --from apiContract.json  # Generar documentación
+schema-manager sync --check                      # Verificar sincronización
+schema-manager lint --fix                        # Corregir problemas automáticamente
+schema-manager dashboard --port 3000             # Dashboard web
+schema-manager migrate --from 1.0.0 --to 2.0.0  # Migración de versiones
+```
+
+### **Scripts de Automatización**
+```python
+# tools/schema_automation.py
+import json
+import yaml
+from pathlib import Path
+from typing import Dict, List, Any
+
+class SchemaManager:
+    def __init__(self, schemas_dir: str):
+        self.schemas_dir = Path(schemas_dir)
+        self.schemas = self._load_all_schemas()
+    
+    def validate_all(self) -> Dict[str, Any]:
+        """Valida todos los schemas y retorna reporte"""
+        results = {
+            "total": len(self.schemas),
+            "valid": 0,
+            "invalid": 0,
+            "errors": []
+        }
+        
+        for schema_name, schema_data in self.schemas.items():
+            try:
+                self._validate_schema(schema_data)
+                results["valid"] += 1
+            except Exception as e:
+                results["invalid"] += 1
+                results["errors"].append({
+                    "schema": schema_name,
+                    "error": str(e)
+                })
+        
+        return results
+    
+    def generate_dashboard_data(self) -> Dict[str, Any]:
+        """Genera datos para dashboard de monitoreo"""
+        return {
+            "schemas": self._get_schema_stats(),
+            "health": self._calculate_health_score(),
+            "dependencies": self._analyze_dependencies(),
+            "coverage": self._calculate_coverage()
+        }
+
+# Uso
+manager = SchemaManager("real_structure_documentation/schemas/")
+results = manager.validate_all()
+print(f"Schemas válidos: {results['valid']}/{results['total']}")
+```
+
+### **GitHub Actions Workflow**
+```yaml
+# .github/workflows/schema-validation.yml
+name: Schema Validation & Documentation
+
+on:
+  push:
+    paths:
+      - 'real_structure_documentation/schemas/**'
+      - 'real_structure_documentation/docs/**'
+  pull_request:
+    paths:
+      - 'real_structure_documentation/schemas/**'
+      - 'real_structure_documentation/docs/**'
+
+jobs:
+  validate-schemas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install Schema Tools
+        run: |
+          npm install -g @prompt-manager/schema-cli
+          npm install -g ajv-cli
+      
+      - name: Validate All Schemas
+        run: |
+          schema-manager validate --all --format json > validation-results.json
+          echo "VALIDATION_PASSED=$(jq '.valid == .total' validation-results.json)" >> $GITHUB_ENV
+      
+      - name: Generate Documentation
+        if: env.VALIDATION_PASSED == 'true'
+        run: |
+          schema-manager generate --all --output docs/generated/
+      
+      - name: Check Schema-Doc Sync
+        run: |
+          schema-manager sync --check --report sync-report.json
+      
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: schema-reports
+          path: |
+            validation-results.json
+            sync-report.json
+            docs/generated/
+      
+      - name: Comment PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const validation = JSON.parse(fs.readFileSync('validation-results.json'));
+            const sync = JSON.parse(fs.readFileSync('sync-report.json'));
+            
+            const comment = `## 📋 Schema Validation Report
+            
+            **Validation Results:**
+            - ✅ Valid Schemas: ${validation.valid}/${validation.total}
+            - ❌ Invalid Schemas: ${validation.invalid}
+            
+            **Sync Status:**
+            - 🔄 Schemas in Sync: ${sync.synced}
+            - ⚠️ Needs Update: ${sync.outdated}
+            
+            ${validation.invalid > 0 ? '❌ **Action Required:** Fix validation errors before merging' : '✅ **All Good:** Ready to merge'}`;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+```
+
+### **Dashboard de Monitoreo**
+```typescript
+// dashboard/schema-monitor.tsx
+import React, { useEffect, useState } from 'react';
+import { Card, Progress, Alert, Table } from 'antd';
+
+interface SchemaHealth {
+  name: string;
+  status: 'healthy' | 'warning' | 'error';
+  version: string;
+  lastUpdated: string;
+  validationScore: number;
+}
+
+export const SchemaDashboard: React.FC = () => {
+  const [schemas, setSchemas] = useState<SchemaHealth[]>([]);
+  const [overallHealth, setOverallHealth] = useState(0);
+
+  useEffect(() => {
+    fetchSchemaHealth();
+  }, []);
+
+  const fetchSchemaHealth = async () => {
+    const response = await fetch('/api/schemas/health');
+    const data = await response.json();
+    setSchemas(data.schemas);
+    setOverallHealth(data.overallHealth);
+  };
+
+  const columns = [
+    {
+      title: 'Schema',
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      key: 'status',
+      render: (status: string) => {
+        const colors = {
+          healthy: 'success',
+          warning: 'warning',
+          error: 'error'
+        };
+        return <Alert message={status} type={colors[status]} showIcon />;
+      }
+    },
+    {
+      title: 'Version',
+      dataIndex: 'version',
+      key: 'version',
+    },
+    {
+      title: 'Health Score',
+      dataIndex: 'validationScore',
+      key: 'validationScore',
+      render: (score: number) => <Progress percent={score} size="small" />
+    }
+  ];
+
+  return (
+    <div className="schema-dashboard">
+      <Card title="Schema System Health" className="mb-4">
+        <Progress 
+          percent={overallHealth} 
+          status={overallHealth >= 90 ? 'success' : overallHealth >= 70 ? 'normal' : 'exception'}
+          strokeColor={{
+            '0%': '#ff4d4f',
+            '50%': '#faad14',
+            '100%': '#52c41a',
+          }}
+        />
+      </Card>
+      
+      <Card title="Schema Details">
+        <Table 
+          dataSource={schemas} 
+          columns={columns} 
+          rowKey="name"
+          pagination={false}
+        />
+      </Card>
+    </div>
+  );
+};
+```
+
+## 📝 Ejemplos Prácticos de Schemas 2025
+
+### **Ejemplo Completo: apiContract.json**
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.promptmanager.dev/apiContract/v1.2.0",
+  "title": "API Contract Schema",
+  "description": "Comprehensive API specification following OpenAPI 3.1 patterns",
+  "type": "object",
+  "required": ["info", "servers", "endpoints"],
+  "additionalProperties": false,
+  "properties": {
+    "info": {
+      "type": "object",
+      "required": ["title", "version", "description"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "description": { "type": "string" },
+        "contact": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "email": { "type": "string", "format": "email" },
+            "url": { "type": "string", "format": "uri" }
+          }
+        }
+      }
+    },
+    "servers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["url", "description"],
+        "properties": {
+          "url": { "type": "string", "format": "uri" },
+          "description": { "type": "string" },
+          "environment": {
+            "type": "string",
+            "enum": ["development", "staging", "production"]
+          }
+        }
+      }
+    },
+    "endpoints": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/endpoint"
+      }
+    },
+    "authentication": {
+      "$ref": "#/$defs/authentication"
+    },
+    "policies": {
+      "$ref": "#/$defs/policies"
+    }
+  },
+  "$defs": {
+    "endpoint": {
+      "type": "object",
+      "required": ["method", "path", "summary"],
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD"]
+        },
+        "path": {
+          "type": "string",
+          "pattern": "^/.*"
+        },
+        "summary": { "type": "string" },
+        "description": { "type": "string" },
+        "parameters": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/parameter" }
+        },
+        "requestBody": { "$ref": "#/$defs/requestBody" },
+        "responses": {
+          "type": "object",
+          "patternProperties": {
+            "^[1-5]\\d{2}$": { "$ref": "#/$defs/response" }
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "security": {
+          "type": "array",
+          "items": { "type": "object" }
+        }
+      }
+    },
+    "parameter": {
+      "type": "object",
+      "required": ["name", "in", "schema"],
+      "properties": {
+        "name": { "type": "string" },
+        "in": {
+          "type": "string",
+          "enum": ["query", "header", "path", "cookie"]
+        },
+        "required": { "type": "boolean", "default": false },
+        "schema": { "$ref": "#/$defs/schemaObject" },
+        "description": { "type": "string" },
+        "example": {}
+      }
+    },
+    "authentication": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["jwt", "oauth2", "apiKey", "basic", "bearer"]
+        },
+        "configuration": {
+          "type": "object",
+          "properties": {
+            "issuer": { "type": "string", "format": "uri" },
+            "audience": { "type": "string" },
+            "algorithms": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "tokenUrl": { "type": "string", "format": "uri" },
+            "scopes": {
+              "type": "object",
+              "additionalProperties": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "policies": {
+      "type": "object",
+      "properties": {
+        "rateLimit": {
+          "type": "object",
+          "properties": {
+            "requests": { "type": "integer", "minimum": 1 },
+            "window": { "type": "string", "pattern": "^\\d+[smhd]$" },
+            "burst": { "type": "integer", "minimum": 1 }
+          }
+        },
+        "caching": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "ttl": { "type": "integer", "minimum": 0 },
+            "varyHeaders": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "cors": {
+          "type": "object",
+          "properties": {
+            "allowOrigins": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "allowMethods": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "allowHeaders": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "maxAge": { "type": "integer" }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### **Ejemplo Completo: dataModel.json**
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.promptmanager.dev/dataModel/v1.5.0",
+  "title": "Data Model Schema",
+  "description": "Comprehensive data modeling with entities, relationships, and constraints",
+  "type": "object",
+  "required": ["entities", "relationships", "namingConventions"],
+  "properties": {
+    "entities": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/entity" }
+    },
+    "relationships": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/relationship" }
+    },
+    "constraints": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/constraint" }
+    },
+    "namingConventions": { "$ref": "#/$defs/namingConventions" },
+    "dictionaryRef": {
+      "type": "string",
+      "description": "Reference to dataModelDictionary.json"
+    }
+  },
+  "$defs": {
+    "entity": {
+      "type": "object",
+      "required": ["name", "attributes"],
+      "properties": {
+        "name": { "type": "string", "pattern": "^[A-Z][a-zA-Z0-9]*$" },
+        "tableName": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+        "description": { "type": "string" },
+        "attributes": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/attribute" }
+        },
+        "indexes": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/index" }
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "isAuditEnabled": { "type": "boolean", "default": true },
+            "isSoftDeleteEnabled": { "type": "boolean", "default": false },
+            "cacheable": { "type": "boolean", "default": false },
+            "dataClassification": {
+              "type": "string",
+              "enum": ["public", "internal", "confidential", "restricted"]
+            }
+          }
+        }
+      }
+    },
+    "attribute": {
+      "type": "object",
+      "required": ["name", "type"],
+      "properties": {
+        "name": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]*$" },
+        "columnName": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+        "type": {
+          "type": "string",
+          "enum": ["string", "integer", "decimal", "boolean", "date", "datetime", "uuid", "json", "text"]
+        },
+        "length": { "type": "integer", "minimum": 1 },
+        "precision": { "type": "integer", "minimum": 1 },
+        "scale": { "type": "integer", "minimum": 0 },
+        "nullable": { "type": "boolean", "default": true },
+        "defaultValue": {},
+        "description": { "type": "string" },
+        "validation": {
+          "type": "object",
+          "properties": {
+            "pattern": { "type": "string" },
+            "minLength": { "type": "integer" },
+            "maxLength": { "type": "integer" },
+            "minimum": { "type": "number" },
+            "maximum": { "type": "number" },
+            "enum": { "type": "array" }
+          }
+        },
+        "privacy": {
+          "type": "object",
+          "properties": {
+            "isPII": { "type": "boolean", "default": false },
+            "encryptionRequired": { "type": "boolean", "default": false },
+            "maskingPattern": { "type": "string" }
+          }
+        }
+      }
+    },
+    "relationship": {
+      "type": "object",
+      "required": ["name", "sourceEntity", "targetEntity", "cardinality"],
+      "properties": {
+        "name": { "type": "string" },
+        "sourceEntity": { "type": "string" },
+        "targetEntity": { "type": "string" },
+        "cardinality": {
+          "type": "string",
+          "enum": ["one-to-one", "one-to-many", "many-to-one", "many-to-many"]
+        },
+        "foreignKey": {
+          "type": "object",
+          "properties": {
+            "sourceAttribute": { "type": "string" },
+            "targetAttribute": { "type": "string" },
+            "onDelete": {
+              "type": "string",
+              "enum": ["cascade", "restrict", "set-null", "no-action"]
+            },
+            "onUpdate": {
+              "type": "string",
+              "enum": ["cascade", "restrict", "set-null", "no-action"]
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+## 🔍 Patrones de Validación Avanzada
+
+### **Validación Condicional**
+```json
+{
+  "type": "object",
+  "properties": {
+    "type": { "enum": ["user", "admin", "service"] },
+    "permissions": { "type": "array" },
+    "apiKey": { "type": "string" }
+  },
+  "if": {
+    "properties": { "type": { "const": "service" } }
+  },
+  "then": {
+    "required": ["apiKey"],
+    "properties": {
+      "apiKey": { "pattern": "^sk_[a-zA-Z0-9]{32}$" }
+    }
+  },
+  "else": {
+    "required": ["permissions"]
+  }
+}
+```
+
+### **Validación de Dependencias**
+```json
+{
+  "type": "object",
+  "properties": {
+    "environment": { "enum": ["development", "staging", "production"] },
+    "debugMode": { "type": "boolean" },
+    "logLevel": { "enum": ["debug", "info", "warn", "error"] }
+  },
+  "dependentSchemas": {
+    "debugMode": {
+      "if": {
+        "properties": { "debugMode": { "const": true } }
+      },
+      "then": {
+        "properties": {
+          "logLevel": { "enum": ["debug", "info"] }
+        }
+      }
+    }
+  },
+  "not": {
+    "allOf": [
+      { "properties": { "environment": { "const": "production" } } },
+      { "properties": { "debugMode": { "const": true } } }
+    ]
+  }
+}
+```
+
+### **Validación de Placeholders Universales**
+```json
+{
+  "type": "object",
+  "properties": {
+    "projectName": {
+      "type": "string",
+      "pattern": "^\\[PROJECT_NAME\\]$|^[a-z][a-z0-9-]*[a-z0-9]$",
+      "description": "Use [PROJECT_NAME] placeholder or actual project name"
+    },
+    "environment": {
+      "type": "string",
+      "pattern": "^\\[ENVIRONMENT\\]$|^(development|staging|production)$"
+    },
+    "apiUrl": {
+      "type": "string",
+      "pattern": "^\\[API_BASE_URL\\]$|^https?://.*",
+      "format": "uri"
+    }
+  },
+  "patternProperties": {
+    ".*": {
+      "if": { "type": "string" },
+      "then": {
+        "pattern": "^(?!.*\\[\\w+\\].*\\[\\w+\\]).*$",
+        "description": "No more than one placeholder per field"
+      }
+    }
+  }
+}
+```
 
 ## 🏗️ Categorización por Dominios
-
-### 🔌 **Dominio API (1 schema)**
-Schemas relacionados con especificación y documentación de APIs.
-
-#### `apiContract.json` - Especificación de Contratos API
-**Propósito:** Define la especificación completa de una API REST siguiendo patrones OpenAPI 3.1.
-
-**Estructura Clave:**
-- `endpoints[]` - Lista de endpoints con métodos, parámetros, y respuestas
 - `authentication` - Configuración de autenticación (JWT, OAuth2, API Key)
 - `policies` - Políticas transversales (rate limiting, caching, CORS)
 - `components` - Componentes reutilizables (schemas, parámetros, respuestas)

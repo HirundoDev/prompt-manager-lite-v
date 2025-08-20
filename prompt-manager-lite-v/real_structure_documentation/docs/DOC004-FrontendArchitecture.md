@@ -1,11 +1,11 @@
-# Frontend Architecture Documentation
+# [PROJECT_NAME] Frontend Architecture Documentation
 
-> **Purpose:** Comprehensive frontend architecture documentation following 2025 best practices. This document provides clear, layered views of frontend architecture using modern frameworks, performance optimization techniques, and scalable architectural patterns for building exceptional user experiences with React 19, Next.js 15, and cutting-edge web technologies.
+> **Purpose:** Comprehensive frontend architecture documentation following 2025 best practices. This document provides clear, layered views of frontend architecture using modern frameworks, performance optimization techniques, and scalable architectural patterns for building exceptional user experiences with [PRIMARY_FRAMEWORK], [SECONDARY_FRAMEWORK], and cutting-edge web technologies.
 
 **Document Type:** Frontend Architecture Documentation  
-**Version:** 3.0  
-**Last Updated:** 2025-01-15  
-**Template Status:** Production Ready - Enhanced with 2025 Best Practices  
+**Version:** [VERSION]  
+**Last Updated:** [LAST_UPDATED_DATE]  
+**Template Status:** [TEMPLATE_STATUS] - Enhanced with 2025 Best Practices  
 
 ---
 
@@ -14,13 +14,15 @@
 | Field | Value |
 |-------|-------|
 | **Project Name** | [PROJECT_NAME] |
-| **Architecture Version** | [VERSION] |
-| **Status** | Draft / Review / Live / Deprecated |
-| **Frontend Architect** | [ARCHITECT_NAME] |
+| **Architecture Version** | [ARCHITECTURE_VERSION] |
+| **Status** | [DOCUMENT_STATUS] |
+| **Frontend Architect** | [FRONTEND_ARCHITECT_NAME] |
 | **Tech Lead** | [TECH_LEAD_NAME] |
-| **Last Updated** | [YYYY-MM-DD] |
-| **Next Review** | [YYYY-MM-DD] |
-| **Repository** | [GITHUB_REPO_URL] |
+| **Last Updated** | [LAST_UPDATED_DATE] |
+| **Next Review** | [NEXT_REVIEW_DATE] |
+| **Repository** | [REPOSITORY_URL] |
+| **Live URL** | [PRODUCTION_URL] |
+| **Staging URL** | [STAGING_URL] |
 
 ---
 
@@ -45,75 +47,75 @@
 ## 🎯 Architecture Overview
 
 ### Executive Summary
-The frontend architecture for [PROJECT_NAME] is designed to deliver exceptional user experiences through modern frameworks, performance optimization, and scalable architectural patterns. Built with [PRIMARY_FRAMEWORK], the architecture emphasizes performance, maintainability, and developer experience.
+The frontend architecture for [PROJECT_NAME] is designed to deliver exceptional user experiences through modern frameworks, performance optimization, and scalable architectural patterns. Built with [PRIMARY_FRAMEWORK] and [SECONDARY_FRAMEWORK], the architecture emphasizes [ARCHITECTURE_PRINCIPLE_1], [ARCHITECTURE_PRINCIPLE_2], and [ARCHITECTURE_PRINCIPLE_3].
 
 ### Architecture Philosophy
-- **Performance First:** Core Web Vitals optimization with LCP < 2.5s, INP < 200ms, CLS < 0.1
-- **Component-Driven:** Atomic design with React 19 Server Components and auto-memoization
-- **Progressive Enhancement:** Works across all devices with network-aware optimizations
-- **Developer Experience:** Fast development cycles with React Compiler and modern tooling
-- **Accessibility First:** WCAG 2.1 AA compliance by design with automated testing
-- **"Don't Make Me Wait":** Zero-latency interactions through hybrid rendering strategies
+- **[PHILOSOPHY_PRINCIPLE_1]:** [PHILOSOPHY_DESCRIPTION_1]
+- **[PHILOSOPHY_PRINCIPLE_2]:** [PHILOSOPHY_DESCRIPTION_2]
+- **[PHILOSOPHY_PRINCIPLE_3]:** [PHILOSOPHY_DESCRIPTION_3]
+- **[PHILOSOPHY_PRINCIPLE_4]:** [PHILOSOPHY_DESCRIPTION_4]
+- **[PHILOSOPHY_PRINCIPLE_5]:** [PHILOSOPHY_DESCRIPTION_5]
+- **[PHILOSOPHY_PRINCIPLE_6]:** [PHILOSOPHY_DESCRIPTION_6]
 
-### Key Metrics & Goals (2025 Core Web Vitals)
+### Key Metrics & Goals ([METRICS_YEAR] [METRICS_STANDARD])
 | Metric | Target | Current | Status |
 |--------|--------|---------|--------|
-| **Largest Contentful Paint (LCP)** | < 2.5s | [CURRENT] | [STATUS] |
-| **Interaction to Next Paint (INP)** | < 200ms | [CURRENT] | [STATUS] |
-| **Cumulative Layout Shift (CLS)** | < 0.1 | [CURRENT] | [STATUS] |
-| **First Contentful Paint (FCP)** | < 1.8s | [CURRENT] | [STATUS] |
-| **Time to First Byte (TTFB)** | < 800ms | [CURRENT] | [STATUS] |
-| **Bundle Size (Initial)** | < 200KB | [CURRENT] | [STATUS] |
-| **Bundle Size (Total)** | < 1MB | [CURRENT] | [STATUS] |
+| **[METRIC_1_NAME]** | [METRIC_1_TARGET] | [METRIC_1_CURRENT] | [METRIC_1_STATUS] |
+| **[METRIC_2_NAME]** | [METRIC_2_TARGET] | [METRIC_2_CURRENT] | [METRIC_2_STATUS] |
+| **[METRIC_3_NAME]** | [METRIC_3_TARGET] | [METRIC_3_CURRENT] | [METRIC_3_STATUS] |
+| **[METRIC_4_NAME]** | [METRIC_4_TARGET] | [METRIC_4_CURRENT] | [METRIC_4_STATUS] |
+| **[METRIC_5_NAME]** | [METRIC_5_TARGET] | [METRIC_5_CURRENT] | [METRIC_5_STATUS] |
+| **[METRIC_6_NAME]** | [METRIC_6_TARGET] | [METRIC_6_CURRENT] | [METRIC_6_STATUS] |
+| **[METRIC_7_NAME]** | [METRIC_7_TARGET] | [METRIC_7_CURRENT] | [METRIC_7_STATUS] |
 
 ---
 
 ## 🏗️ Architectural Drivers
 
 ### Functional Requirements
-- **User Experience:** Intuitive, responsive, and accessible interface
-- **Performance:** Fast loading and smooth interactions across devices
-- **Scalability:** Support for growing user base and feature set
-- **Maintainability:** Clean, modular code that's easy to update
-- **Cross-Platform:** Consistent experience across browsers and devices
+- **[FUNCTIONAL_REQ_1_NAME]:** [FUNCTIONAL_REQ_1_DESCRIPTION]
+- **[FUNCTIONAL_REQ_2_NAME]:** [FUNCTIONAL_REQ_2_DESCRIPTION]
+- **[FUNCTIONAL_REQ_3_NAME]:** [FUNCTIONAL_REQ_3_DESCRIPTION]
+- **[FUNCTIONAL_REQ_4_NAME]:** [FUNCTIONAL_REQ_4_DESCRIPTION]
+- **[FUNCTIONAL_REQ_5_NAME]:** [FUNCTIONAL_REQ_5_DESCRIPTION]
 
 ### Quality Attributes
 
-#### Performance Requirements (2025 Standards)
-- **Core Web Vitals:** LCP < 2.5s, INP < 200ms, CLS < 0.1 (Google's 2025 thresholds)
-- **Runtime Performance:** 60 FPS interactions with React 19 concurrent features
-- **Bundle Optimization:** Route-based splitting, React.lazy(), and dynamic imports
-- **Caching Strategy:** Stale-while-revalidate (SWR) with Next.js App Router caching
-- **Network Awareness:** Adaptive loading based on connection quality
+#### Performance Requirements ([PERFORMANCE_STANDARDS_YEAR] Standards)
+- **[PERF_REQ_1_NAME]:** [PERF_REQ_1_DESCRIPTION]
+- **[PERF_REQ_2_NAME]:** [PERF_REQ_2_DESCRIPTION]
+- **[PERF_REQ_3_NAME]:** [PERF_REQ_3_DESCRIPTION]
+- **[PERF_REQ_4_NAME]:** [PERF_REQ_4_DESCRIPTION]
+- **[PERF_REQ_5_NAME]:** [PERF_REQ_5_DESCRIPTION]
 
 #### Scalability Requirements
-- **Component Reusability:** 80%+ component reuse with design system integration
-- **Team Scalability:** Micro-frontend architecture for multiple development teams
-- **Feature Scalability:** Server Components and streaming for incremental loading
-- **Performance Scalability:** Maintains Core Web Vitals as app grows
-- **State Management:** Granular state with React 19 use() hook and context optimization
+- **[SCALABILITY_REQ_1_NAME]:** [SCALABILITY_REQ_1_DESCRIPTION]
+- **[SCALABILITY_REQ_2_NAME]:** [SCALABILITY_REQ_2_DESCRIPTION]
+- **[SCALABILITY_REQ_3_NAME]:** [SCALABILITY_REQ_3_DESCRIPTION]
+- **[SCALABILITY_REQ_4_NAME]:** [SCALABILITY_REQ_4_DESCRIPTION]
+- **[SCALABILITY_REQ_5_NAME]:** [SCALABILITY_REQ_5_DESCRIPTION]
 
 #### Maintainability Requirements
-- **Code Quality:** TypeScript 5.x strict mode with React 19 types
-- **Documentation:** Living documentation with Storybook 8.x and automated component docs
-- **Refactoring Safety:** 80%+ test coverage with React Testing Library and Playwright
-- **Dependency Management:** Automated security scanning with Dependabot and npm audit
-- **Code Standards:** ESLint 9.x, Prettier 3.x, and React Compiler integration
+- **[MAINTAINABILITY_REQ_1_NAME]:** [MAINTAINABILITY_REQ_1_DESCRIPTION]
+- **[MAINTAINABILITY_REQ_2_NAME]:** [MAINTAINABILITY_REQ_2_DESCRIPTION]
+- **[MAINTAINABILITY_REQ_3_NAME]:** [MAINTAINABILITY_REQ_3_DESCRIPTION]
+- **[MAINTAINABILITY_REQ_4_NAME]:** [MAINTAINABILITY_REQ_4_DESCRIPTION]
+- **[MAINTAINABILITY_REQ_5_NAME]:** [MAINTAINABILITY_REQ_5_DESCRIPTION]
 
 ### Technical Constraints
-- **Browser Support:** Modern browsers with ES2022+ support (Chrome 100+, Firefox 100+, Safari 15+, Edge 100+)
-- **Device Support:** Desktop, tablet, mobile with responsive design and touch optimization
-- **Network Conditions:** Works on 3G networks with offline-first PWA capabilities
-- **Accessibility:** WCAG 2.1 AA compliance with automated axe-core testing
-- **SEO Requirements:** Server-side rendering with Next.js App Router and metadata API
-- **Performance Budget:** Lighthouse scores 90+ across all metrics
+- **[TECH_CONSTRAINT_1_NAME]:** [TECH_CONSTRAINT_1_DESCRIPTION]
+- **[TECH_CONSTRAINT_2_NAME]:** [TECH_CONSTRAINT_2_DESCRIPTION]
+- **[TECH_CONSTRAINT_3_NAME]:** [TECH_CONSTRAINT_3_DESCRIPTION]
+- **[TECH_CONSTRAINT_4_NAME]:** [TECH_CONSTRAINT_4_DESCRIPTION]
+- **[TECH_CONSTRAINT_5_NAME]:** [TECH_CONSTRAINT_5_DESCRIPTION]
+- **[TECH_CONSTRAINT_6_NAME]:** [TECH_CONSTRAINT_6_DESCRIPTION]
 
 ### Business Constraints
-- **Development Timeline:** [TIMELINE_CONSTRAINT]
-- **Team Size:** [TEAM_SIZE] frontend developers
-- **Budget:** [BUDGET_CONSTRAINT]
-- **Compliance:** [REGULATORY_REQUIREMENTS]
-- **Integration:** Must integrate with [EXISTING_SYSTEMS]
+- **[BUSINESS_CONSTRAINT_1_NAME]:** [BUSINESS_CONSTRAINT_1_DESCRIPTION]
+- **[BUSINESS_CONSTRAINT_2_NAME]:** [BUSINESS_CONSTRAINT_2_DESCRIPTION]
+- **[BUSINESS_CONSTRAINT_3_NAME]:** [BUSINESS_CONSTRAINT_3_DESCRIPTION]
+- **[BUSINESS_CONSTRAINT_4_NAME]:** [BUSINESS_CONSTRAINT_4_DESCRIPTION]
+- **[BUSINESS_CONSTRAINT_5_NAME]:** [BUSINESS_CONSTRAINT_5_DESCRIPTION]
 
 ---
 
