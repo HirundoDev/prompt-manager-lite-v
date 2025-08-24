@@ -1,7 +1,66 @@
-# **MANDATO DE RECONSTRUCCIÓN: [TÍTULO DE LA MISIÓN]**
+# **MANDATO DE RECONSTRUCCIÓN: Backend API Development**
 
-Versión: [VERSION] (con Checklists)  
-Fecha: [FECHA]
+Versión: 1.0 (con Checklists)  
+Fecha: 2025-01-20
+Tema: BACKEND-API-SETUP
+
+---
+
+## **⚠️ INSTRUCCIÓN OBLIGATORIA DE CREACIÓN DE ARCHIVOS**
+
+**ESTE TEMPLATE DEBE GENERAR ARCHIVOS DIARIOS TEMÁTICOS:**
+
+### **Formato de Nombre de Archivo:**
+`pending-tasks-YYYY-MM-DD_TEMA-PRINCIPAL.md`
+
+**Ejemplos:**
+- `pending-tasks-2024-01-15_BACKEND-API-SETUP.md`
+- `pending-tasks-2024-01-16_FRONTEND-COMPONENTS.md`
+- `pending-tasks-2024-01-17_DATABASE-SCHEMA.md`
+- `pending-tasks-2024-01-18_DEPLOYMENT-CONFIG.md`
+
+### **Estructura de Carpetas:**
+```
+daily-work/
+└── YYYY-MM-DD_TEMA-PRINCIPAL/
+    ├── pending-tasks-YYYY-MM-DD_TEMA-PRINCIPAL.md  ← ESTE ARCHIVO
+    ├── support-docs/                           ← Documentos de apoyo
+    │   ├── backend-architecture-guide.md
+    │   ├── api-contract-guide.md
+    │   └── component-library-guide.md
+    └── assets/                                 ← Screenshots, logs, evidencias
+        ├── screenshots/
+        └── logs/
+```
+
+**❗ REGLA FUNDAMENTAL:** Cada día de trabajo requiere un archivo separado con tema específico para mantener organización y evitar archivos gigantes.
+
+---
+
+## **📁 INFORMACIÓN DE ARCHIVOS COMPLEMENTARIOS**
+
+### **UBICACIÓN DE DOCUMENTOS DE APOYO:**
+
+**Ubicación relativa:** `support-docs/`
+
+**Documentos disponibles según área:**
+- **BACKEND:** `support-docs/backend-architecture-guide.md`, `support-docs/business-logic-guide.md`
+- **API:** `support-docs/api-contract-guide.md`, `support-docs/data-model-guide.md`
+- **FRONTEND:** `support-docs/component-library-guide.md`, `support-docs/frontend-architecture-guide.md`
+- **DATABASE:** `support-docs/data-model-guide.md`, `support-docs/data-dictionary-guide.md`
+- **TESTING:** `support-docs/testing-strategy-guide.md`
+- **DEPLOYMENT:** `support-docs/deployment-guide.md`
+- **CLI:** `support-docs/cli-schema-guide.md`
+
+### **CÓMO USAR DOCUMENTOS DE APOYO:**
+
+1. **Durante la misión:** Consultar documentos de apoyo para obtener contexto técnico detallado
+2. **Al completar tareas:** Referenciar ubicación de archivos creados en `assets/`
+3. **En validación:** Usar guías como referencia para pruebas
+
+**⚠️ IMPORTANTE:** Los documentos de apoyo son **GUÍAS COMPLEMENTARIAS**, no se copian literal, sino que proporcionan contexto y mejores prácticas.
+
+---
 
 ### **REGLA MANDATORIA: EL CICLO DE VIDA DE ESTE MANDATO**
 
@@ -56,17 +115,17 @@ Este documento es la **fuente única de verdad** para la reconstrucción del eco
 
 ## **ESTADO ACTUAL EN TIEMPO REAL**
 
-**ESTADO GENERAL DE LA MISIÓN: [PORCENTAJE]% COMPLETADO**
+**ESTADO GENERAL DE LA MISIÓN: 85% COMPLETADO**
 
-**MISIÓN ACTUAL EN PROGRESO:** [Número de misión activa]
+**MISIÓN ACTUAL EN PROGRESO:** MISIÓN 3
 
 **ACTUALMENTE TRABAJANDO EN:**
-- **ID:** [CATEGORIA-NN.X.N] 
-- **Tarea:** [Nombre específico de la tarea en progreso]
-- **Iniciado:** [YYYY-MM-DD HH:mm:ss]
-- **Estimado completar:** [YYYY-MM-DD HH:mm:ss]
-- **Progreso:** [Descripción del avance actual]
-- **Bloqueadores:** [Ninguno / Lista de bloqueadores]
+- **ID:** BACKEND-03.2.1
+- **Tarea:** Implementar autenticación JWT en API Gateway
+- **Iniciado:** 2025-01-20 09:30:00
+- **Estimado completar:** 2025-01-20 16:00:00
+- **Progreso:** Configuración básica completada, implementando middleware
+- **Bloqueadores:** Ninguno
 
 **PRÓXIMO EN COLA:**
 - [ID-SIGUIENTE] [Descripción de la siguiente tarea]

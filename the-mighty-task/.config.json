@@ -1,0 +1,56 @@
+{
+  "system": {
+    "name": "The Mighty Task",
+    "version": "1.0.0",
+    "created": "2025-01-22",
+    "last_updated": "2025-01-22"
+  },
+  "paths": {
+    "daily_work": "daily-work",
+    "reports": "reports",
+    "mission_resumes": "mission-resumes",
+    "scripts": "scripts",
+    "playbooks": "playbooks/documentation_playbooks"
+  },
+  "settings": {
+    "default_theme": "BACKEND-API-SETUP",
+    "auto_cleanup": false,
+    "generate_reports": true,
+    "tracking_enabled": true,
+    "consistency_checks": true
+  },
+  "logging": {
+    "level": "INFO",
+    "console_colors": true,
+    "file_logging": false,
+    "log_file": "logs/mighty-task.log"
+  },
+  "maintenance": {
+    "auto_consistency_check": false,
+    "check_frequency_days": 7,
+    "auto_backup": false,
+    "backup_retention_days": 30
+  },
+  "templates": {
+    "base_template": "template-pendingtask.md",
+    "custom_templates_dir": "templates",
+    "allow_template_override": true
+  },
+  "validation": {
+    "strict_date_format": true,
+    "require_theme_validation": true,
+    "validate_playbook_references": true,
+    "check_file_encoding": "utf-8"
+  },
+  "performance": {
+    "cache_playbook_parsing": false,
+    "parallel_processing": false,
+    "max_concurrent_operations": 3
+  },
+  "integration": {
+    "git_integration": false,
+    "auto_commit": false,
+    "commit_message_template": "feat: session {date}_{theme}",
+    "webhook_notifications": false
+  }
+}

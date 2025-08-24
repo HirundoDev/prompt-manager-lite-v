@@ -2,6 +2,65 @@
 
 Versión: [VERSION] (con Checklists)  
 Fecha: [FECHA]
+Tema: [TEMA_PRINCIPAL] (ej: BACKEND-API-SETUP, FRONTEND-COMPONENTS)
+
+---
+
+## **⚠️ INSTRUCCIÓN OBLIGATORIA DE CREACIÓN DE ARCHIVOS**
+
+**ESTE TEMPLATE DEBE GENERAR ARCHIVOS DIARIOS TEMÁTICOS:**
+
+### **Formato de Nombre de Archivo:**
+`pending-tasks-YYYY-MM-DD_TEMA-PRINCIPAL.md`
+
+**Ejemplos:**
+- `pending-tasks-2024-01-15_BACKEND-API-SETUP.md`
+- `pending-tasks-2024-01-16_FRONTEND-COMPONENTS.md`
+- `pending-tasks-2024-01-17_DATABASE-SCHEMA.md`
+- `pending-tasks-2024-01-18_DEPLOYMENT-CONFIG.md`
+
+### **Estructura de Carpetas:**
+```
+daily-work/
+└── YYYY-MM-DD_TEMA-PRINCIPAL/
+    ├── pending-tasks-YYYY-MM-DD_TEMA-PRINCIPAL.md  ← ESTE ARCHIVO
+    ├── support-docs/                           ← Documentos de apoyo
+    │   ├── backend-architecture-guide.md
+    │   ├── api-contract-guide.md
+    │   └── component-library-guide.md
+    └── assets/                                 ← Screenshots, logs, evidencias
+        ├── screenshots/
+        └── logs/
+```
+
+**❗ REGLA FUNDAMENTAL:** Cada día de trabajo requiere un archivo separado con tema específico para mantener organización y evitar archivos gigantes.
+
+---
+
+## **📁 INFORMACIÓN DE ARCHIVOS COMPLEMENTARIOS**
+
+### **UBICACIÓN DE DOCUMENTOS DE APOYO:**
+
+**Ubicación relativa:** `support-docs/`
+
+**Documentos disponibles según área:**
+- **BACKEND:** `support-docs/backend-architecture-guide.md`, `support-docs/business-logic-guide.md`
+- **API:** `support-docs/api-contract-guide.md`, `support-docs/data-model-guide.md`
+- **FRONTEND:** `support-docs/component-library-guide.md`, `support-docs/frontend-architecture-guide.md`
+- **DATABASE:** `support-docs/data-model-guide.md`, `support-docs/data-dictionary-guide.md`
+- **TESTING:** `support-docs/testing-strategy-guide.md`
+- **DEPLOYMENT:** `support-docs/deployment-guide.md`
+- **CLI:** `support-docs/cli-schema-guide.md`
+
+### **CÓMO USAR DOCUMENTOS DE APOYO:**
+
+1. **Durante la misión:** Consultar documentos de apoyo para obtener contexto técnico detallado
+2. **Al completar tareas:** Referenciar ubicación de archivos creados en `assets/`
+3. **En validación:** Usar guías como referencia para pruebas
+
+**⚠️ IMPORTANTE:** Los documentos de apoyo son **GUÍAS COMPLEMENTARIAS**, no se copian literal, sino que proporcionan contexto y mejores prácticas.
+
+---
 
 ### **REGLA MANDATORIA: EL CICLO DE VIDA DE ESTE MANDATO**
 

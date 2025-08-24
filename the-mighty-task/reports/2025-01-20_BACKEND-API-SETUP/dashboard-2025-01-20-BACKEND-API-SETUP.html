@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Dashboard - BACKEND-API-SETUP</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .dashboard { 
+            max-width: 1600px; margin: 0 auto; padding: 20px;
+            background: rgba(255,255,255,0.1); border-radius: 20px;
+            backdrop-filter: blur(10px); margin-top: 20px;
+        }
+        .header { 
+            text-align: center; color: white; margin-bottom: 40px;
+        }
+        .header h1 { font-size: 3em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .kpi-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px; margin-bottom: 40px;
+        }
+        .kpi-card { 
+            background: rgba(255,255,255,0.95); border-radius: 15px;
+            padding: 30px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease; border-top: 5px solid #667eea;
+        }
+        .kpi-card:hover { transform: translateY(-10px); }
+        .kpi-icon { font-size: 3em; color: #667eea; margin-bottom: 15px; }
+        .kpi-value { 
+            font-size: 3.5em; font-weight: bold; color: #2c3e50;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .kpi-label { color: #7f8c8d; font-size: 1.1em; margin-top: 10px; }
+        .charts-container { 
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 30px; margin-bottom: 30px;
+        }
+        .chart-card { 
+            background: rgba(255,255,255,0.95); border-radius: 15px;
+            padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            height: 350px;
+        }
+        .chart-card canvas {
+            max-height: 250px !important;
+            width: 100% !important;
+        }
+        .chart-title { 
+            font-size: 1.5em; color: #2c3e50; margin-bottom: 20px;
+            text-align: center; border-bottom: 2px solid #667eea; padding-bottom: 10px;
+        }
+        .status-indicators { 
+            display: flex; justify-content: space-around; flex-wrap: wrap;
+            background: rgba(255,255,255,0.95); border-radius: 15px;
+            padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .status-item { 
+            text-align: center; padding: 15px; min-width: 120px;
+        }
+        .status-icon { 
+            font-size: 2.5em; margin-bottom: 10px;
+        }
+        .status-text { font-weight: bold; color: #2c3e50; }
+        @media (max-width: 768px) {
+            .charts-container { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <h1><i class="fas fa-tachometer-alt"></i> Dashboard de Productividad</h1>
+            <p style="font-size: 1.2em; opacity: 0.9;">BACKEND-API-SETUP | 2025-01-20</p>
+        </div>
+        
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-icon"><i class="fas fa-percentage"></i></div>
+                <div class="kpi-value">85</div>
+                <div class="kpi-label">% Completitud</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon"><i class="fas fa-check-circle"></i></div>
+                <div class="kpi-value">0</div>
+                <div class="kpi-label">Tareas Completadas</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon"><i class="fas fa-clock"></i></div>
+                <div class="kpi-value">2</div>
+                <div class="kpi-label">Tareas Pendientes</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon"><i class="fas fa-vial"></i></div>
+                <div class="kpi-value">3</div>
+                <div class="kpi-label">Tests Exitosos</div>
+            </div>
+        </div>
+        
+        <div class="charts-container">
+            <div class="chart-card">
+                <div class="chart-title"><i class="fas fa-chart-pie"></i> Distribución de Tareas</div>
+                <canvas id="tasksChart" width="400" height="200"></canvas>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title"><i class="fas fa-chart-bar"></i> Estado de Tests</div>
+                <canvas id="testsChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+        
+        <div class="status-indicators">
+            <div class="status-item">
+                <div class="status-icon" style="color: #28a745;"><i class="fas fa-smile"></i></div>
+                <div class="status-text">Estado General</div>
+            </div>
+            <div class="status-item">
+                <div class="status-icon" style="color: #dc3545;"><i class="fas fa-pause"></i></div>
+                <div class="status-text">Productividad</div>
+            </div>
+            <div class="status-item">
+                <div class="status-icon" style="color: #28a745;"><i class="fas fa-shield-alt"></i></div>
+                <div class="status-text">Calidad</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Gráfico de distribución de tareas
+        const tasksCtx = document.getElementById('tasksChart').getContext('2d');
+        new Chart(tasksCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Completadas', 'Pendientes'],
+                datasets: [{
+                    data: [0, 2],
+                    backgroundColor: ['#28a745', '#ffc107'],
+                    borderWidth: 3,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+        
+        // Gráfico de tests
+        const testsCtx = document.getElementById('testsChart').getContext('2d');
+        new Chart(testsCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Exitosos', 'Fallidos'],
+                datasets: [{
+                    label: 'Tests',
+                    data: [3, 0],
+                    backgroundColor: ['#28a745', '#dc3545'],
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { beginAtZero: true }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

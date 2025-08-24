@@ -1,0 +1,60 @@
+{
+  "general_completion": 85,
+  "current_task": {
+    "id": "BACKEND-03.2.1",
+    "task": "Implementar autenticación JWT en API Gateway",
+    "started": "2025-01-20 09:30:00"
+  },
+  "completed_tasks": [],
+  "pending_tasks": [
+    {
+      "id": "CAT-01",
+      "task": "[Categoría Principal]",
+      "status": "NO_INICIADO"
+    },
+    {
+      "id": "CAT-02",
+      "task": "[Otra Categoría]",
+      "status": "NO_INICIADO"
+    }
+  ],
+  "history_entries": [
+    {
+      "timestamp": "YYYY-MM-DD HH:mm:ss",
+      "action": "CAMBIO DE ESTADO",
+      "details": "- **ID:** [CATEGORIA-NN.X.N]\n- **Estado:** [ANTERIOR] → [NUEVO]\n- **Agente:** [nombre-del-agente-ai]\n- **Contexto:** [Razón específica del cambio]\n- **Estimación:** [tiempo estimado si aplica]\n- **Archivos involucrados:** [lista de archivos afectados]\n- **Notas:** [observaciones importantes]"
+    },
+    {
+      "timestamp": "YYYY-MM-DD HH:mm:ss",
+      "action": "TAREA COMPLETADA",
+      "details": "- **ID:** [CATEGORIA-NN.X.N]\n- **Estado:** EN_PROGRESO → COMPLETADO\n- **Agente:** [nombre-del-agente-ai]\n- **Tiempo real invertido:** [Xh] (vs [Yh] estimado)\n- **Prueba de completitud:** [evidencia tangible]\n- **Artefactos generados:** [archivos/commits creados]"
+    },
+    {
+      "timestamp": "YYYY-MM-DD HH:mm:ss",
+      "action": "NUEVA TAREA DESCUBIERTA",
+      "details": "- **ID:** [CATEGORIA-NN.X.N] (NUEVO)\n- **Descripción:** [qué tarea se agregó]\n- **Agente:** [nombre-del-agente-ai]\n- **Razón:** [por qué se descubrió esta tarea]\n- **Prioridad:** [ALTA/MEDIA/BAJA]\n- **Estimación:** [tiempo estimado]"
+    }
+  ],
+  "test_results": [
+    {
+      "name": "[NOMBRE_PRUEBA]",
+      "command": "`[comando-exacto-ejecutado]`",
+      "status": "✅ PASÓ",
+      "date": "[YYYY-MM-DD HH:mm:ss]"
+    },
+    {
+      "name": "[OTRA_PRUEBA]",
+      "command": "`[comando-exacto-ejecutado]`",
+      "status": "✅ PASÓ",
+      "date": "[YYYY-MM-DD HH:mm:ss]"
+    },
+    {
+      "name": "[VALIDACIÓN_FUNCIONAL]",
+      "command": "`[comando-exacto-ejecutado]`",
+      "status": "✅ PASÓ",
+      "date": "[YYYY-MM-DD HH:mm:ss]"
+    }
+  ],
+  "missions": [],
+  "bloqueadores": []
+}

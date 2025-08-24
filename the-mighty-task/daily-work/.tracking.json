@@ -1,0 +1,103 @@
+{
+  "processed_dates": [
+    {
+      "date": "2025-01-20",
+      "theme": "BACKEND-API-SETUP",
+      "playbooks_used": [
+        "DOC006",
+        "DOC007",
+        "DOC008"
+      ],
+      "files_created": [
+        "/home/hirundodev/development/prompt-manager-lite-v/the-mighty-task/daily-work/2025-01-20_BACKEND-API-SETUP/pending-tasks-2025-01-20_BACKEND-API-SETUP.md",
+        "/home/hirundodev/development/prompt-manager-lite-v/the-mighty-task/daily-work/2025-01-20_BACKEND-API-SETUP/support-docs/README.md",
+        "/home/hirundodev/development/prompt-manager-lite-v/the-mighty-task/daily-work/2025-01-20_BACKEND-API-SETUP/assets/README.md"
+      ],
+      "directories_created": [
+        "/home/hirundodev/development/prompt-manager-lite-v/the-mighty-task/daily-work/2025-01-20_BACKEND-API-SETUP"
+      ],
+      "status": "universal_templates_generated",
+      "created_at": "2025-08-23T21:39:59.050721",
+      "last_updated": "2025-08-23T21:47:12.871274",
+      "templates_generated": [
+        "/home/hirundodev/development/prompt-manager-lite-v/the-mighty-task/daily-work/2025-01-20_BACKEND-API-SETUP/support-docs/DOC006-BackendArchitecture.md",
+        "/home/hirundodev/development/prompt-manager-lite-v/the-mighty-task/daily-work/2025-01-20_BACKEND-API-SETUP/support-docs/DOC007-BackendDependencies.md",
+        "/home/hirundodev/development/prompt-manager-lite-v/the-mighty-task/daily-work/2025-01-20_BACKEND-API-SETUP/support-docs/DOC008-APISpecification.md"
+      ],
+      "templates_failed": [],
+      "template_generation_date": "2025-08-23T21:47:12.871258",
+      "template_type": "universal_templates"
+    },
+    {
+      "date": "2025-01-21",
+      "theme": "FRONTEND-COMPONENTS",
+      "playbooks_used": [
+        "DOC003",
+        "DOC004"
+      ],
+      "files_created": [
+        "/home/hirundodev/development/prompt-manager-lite-v/the-mighty-task/daily-work/2025-01-21_FRONTEND-COMPONENTS/pending-tasks-2025-01-21_FRONTEND-COMPONENTS.md",
+        "/home/hirundodev/development/prompt-manager-lite-v/the-mighty-task/daily-work/2025-01-21_FRONTEND-COMPONENTS/support-docs/README.md",
+        "/home/hirundodev/development/prompt-manager-lite-v/the-mighty-task/daily-work/2025-01-21_FRONTEND-COMPONENTS/assets/README.md"
+      ],
+      "directories_created": [
+        "/home/hirundodev/development/prompt-manager-lite-v/the-mighty-task/daily-work/2025-01-21_FRONTEND-COMPONENTS"
+      ],
+      "status": "universal_templates_generated",
+      "created_at": "2025-08-23T23:18:44.222555",
+      "last_updated": "2025-08-23T23:18:52.819215",
+      "templates_generated": [
+        "/home/hirundodev/development/prompt-manager-lite-v/the-mighty-task/daily-work/2025-01-21_FRONTEND-COMPONENTS/support-docs/DOC003-DesignSystem.md",
+        "/home/hirundodev/development/prompt-manager-lite-v/the-mighty-task/daily-work/2025-01-21_FRONTEND-COMPONENTS/support-docs/DOC004-FrontendArchitecture.md"
+      ],
+      "templates_failed": [],
+      "template_generation_date": "2025-08-23T23:18:52.819199",
+      "template_type": "universal_templates"
+    },
+    {
+      "date": "2025-01-22",
+      "theme": "DATABASE-SCHEMA",
+      "playbooks_used": [
+        "DOC009"
+      ],
+      "files_created": [
+        "/home/hirundodev/development/prompt-manager-lite-v/the-mighty-task/daily-work/2025-01-22_DATABASE-SCHEMA/pending-tasks-2025-01-22_DATABASE-SCHEMA.md",
+        "/home/hirundodev/development/prompt-manager-lite-v/the-mighty-task/daily-work/2025-01-22_DATABASE-SCHEMA/support-docs/README.md",
+        "/home/hirundodev/development/prompt-manager-lite-v/the-mighty-task/daily-work/2025-01-22_DATABASE-SCHEMA/assets/README.md"
+      ],
+      "directories_created": [
+        "/home/hirundodev/development/prompt-manager-lite-v/the-mighty-task/daily-work/2025-01-22_DATABASE-SCHEMA"
+      ],
+      "status": "universal_templates_generated",
+      "created_at": "2025-08-24T10:36:01.685983",
+      "last_updated": "2025-08-24T10:36:14.158868",
+      "templates_generated": [
+        "/home/hirundodev/development/prompt-manager-lite-v/the-mighty-task/daily-work/2025-01-22_DATABASE-SCHEMA/support-docs/DOC009-DataModel.md"
+      ],
+      "templates_failed": [],
+      "template_generation_date": "2025-08-24T10:36:14.158852",
+      "template_type": "universal_templates"
+    }
+  ],
+  "playbook_usage": {
+    "DOC006": 1,
+    "DOC007": 1,
+    "DOC008": 1,
+    "DOC003": 1,
+    "DOC004": 1,
+    "DOC009": 1
+  },
+  "consistency_checks": {
+    "last_check": "2025-08-23T21:53:24.801203",
+    "issues_found": 7,
+    "total_files_checked": 13,
+    "total_sessions": 1,
+    "valid_sessions": 1,
+    "invalid_sessions": 0
+  },
+  "statistics": {
+    "total_sessions": 3,
+    "most_used_theme": null,
+    "created_at": "2025-08-23T21:39:59.050716"
+  }
+}

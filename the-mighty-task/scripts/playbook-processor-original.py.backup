@@ -1,0 +1,1295 @@
+#!/usr/bin/env python3
+"""
+The Mighty Task - Playbook Processor
+====================================
+
+Parsea playbooks originales y genera templates específicos para cada sesión.
+
+Uso:
+    python scripts/playbook-processor.py --date="2024-01-15" --theme="BACKEND-API-SETUP"
+    python scripts/playbook-processor.py --playbook="DOC006" --output-dir="/path/to/session/"
+    python scripts/playbook-processor.py --scan-all --list-playbooks
+
+Autor: The Mighty Task System
+Fecha: 2025-01-22
+"""
+
+import os
+import sys
+import json
+import argparse
+import re
+from datetime import datetime
+from pathlib import Path
+
+# Mapeo de temas a playbooks (igual que en generate-daily.py)
+THEME_PLAYBOOK_MAPPING = {
+    'FRONTEND-ARCHITECTURE': ['DOC004'],
+    'FRONTEND-COMPONENTS': ['DOC003', 'DOC004'],
+    'FRONTEND-DEPENDENCIES': ['DOC005'],
+    'DESIGN-SYSTEM': ['DOC003'],
+    'BACKEND-API-SETUP': ['DOC006', 'DOC007', 'DOC008'],
+    'BACKEND-ARCHITECTURE': ['DOC006', 'DOC007'],
+    'API-DESIGN': ['DOC008'],
+    'DATABASE-SCHEMA': ['DOC009'],
+    'DATA-MODELING': ['DOC009'],
+    'DEPLOYMENT-CONFIG': ['DOC010'],
+    'DEVOPS-SETUP': ['DOC010'],
+    'TESTING-STRATEGY': ['DOC011'],
+    'CLI-DEVELOPMENT': ['DOC019']
+}
+
+# Mapeo de códigos DOC a nombres de archivos
+PLAYBOOK_FILE_MAPPING = {
+    'DOC003': 'DOC003-DesignSystem.md',
+    'DOC004': 'DOC004-FrontendArchitecture.md',
+    'DOC005': 'DOC005-FrontendDependencies.md',
+    'DOC006': 'DOC006-BackendArchitecture.md',
+    'DOC007': 'DOC007-BackendDependencies.md',
+    'DOC008': 'DOC008-APISpecification.md',
+    'DOC009': 'DOC009-DataModel.md',
+    'DOC010': 'DOC010-Deployment.md',
+    'DOC011': 'DOC011-TestingStrategy.md',
+    'DOC019': 'DOC019-CLI-Command-Reference.md'
+}
+
+class ColoredOutput:
+    """Clase para output con colores en terminal."""
+    COLORS = {
+        'RED': '\033[91m',
+        'GREEN': '\033[92m',
+        'YELLOW': '\033[93m',
+        'BLUE': '\033[94m',
+        'MAGENTA': '\033[95m',
+        'CYAN': '\033[96m',
+        'WHITE': '\033[97m',
+        'BOLD': '\033[1m',
+        'UNDERLINE': '\033[4m',
+        'END': '\033[0m'
+    }
+    
+    @classmethod
+    def print(cls, text, color='WHITE', bold=False, underline=False):
+        """Imprime texto con formato."""
+        prefix = ""
+        if bold:
+            prefix += cls.COLORS['BOLD']
+        if underline:
+            prefix += cls.COLORS['UNDERLINE']
+        if color in cls.COLORS:
+            prefix += cls.COLORS[color]
+        
+        print(f"{prefix}{text}{cls.COLORS['END']}")
+    
+    @classmethod
+    def success(cls, text):
+        cls.print(f"✅ {text}", 'GREEN', bold=True)
+    
+    @classmethod
+    def error(cls, text):
+        cls.print(f"❌ {text}", 'RED', bold=True)
+    
+    @classmethod
+    def warning(cls, text):
+        cls.print(f"⚠️  {text}", 'YELLOW', bold=True)
+    
+    @classmethod
+    def info(cls, text):
+        cls.print(f"ℹ️  {text}", 'CYAN')
+    
+    @classmethod
+    def header(cls, text):
+        cls.print(f"\n{'=' * 60}", 'BLUE')
+        cls.print(f"  {text}", 'BLUE', bold=True, underline=True)
+        cls.print(f"{'=' * 60}\n", 'BLUE')
+
+class PlaybookProcessor:
+    """Procesador de playbooks que genera templates específicos."""
+    
+    def __init__(self, base_path=None):
+        self.base_path = Path(base_path or os.getcwd())
+        self.playbooks_dir = self.base_path / 'playbooks' / 'documentation_playbooks'
+        self.daily_work_dir = self.base_path / 'daily-work'
+        self.tracking_file = self.daily_work_dir / '.tracking.json'
+        
+        # Verificar estructura del proyecto
+        if not (self.base_path / 'PLAN-COMPLETO.md').exists():
+            ColoredOutput.error("No estás en el directorio raíz de The Mighty Task")
+            ColoredOutput.info("Ejecuta este script desde el directorio que contiene PLAN-COMPLETO.md")
+            sys.exit(1)
+        
+        if not self.playbooks_dir.exists():
+            ColoredOutput.error(f"Directorio de playbooks no encontrado: {self.playbooks_dir}")
+            sys.exit(1)
+    
+    def load_tracking_data(self):
+        """Carga los datos de tracking existentes."""
+        if self.tracking_file.exists():
+            try:
+                with open(self.tracking_file, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+            except (json.JSONDecodeError, FileNotFoundError):
+                ColoredOutput.warning("Archivo de tracking corrupto o no encontrado")
+        
+        return {"processed_dates": [], "playbook_usage": {}, "consistency_checks": {}}
+    
+    def save_tracking_data(self, data):
+        """Guarda los datos de tracking."""
+        try:
+            self.tracking_file.parent.mkdir(parents=True, exist_ok=True)
+            with open(self.tracking_file, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+            return True
+        except Exception as e:
+            ColoredOutput.error(f"Error guardando tracking: {e}")
+            return False
+    
+    def find_session_directory(self, date_str, theme):
+        """Encuentra el directorio de sesión basado en fecha y tema."""
+        session_name = f"{date_str}_{theme}"
+        session_dir = self.daily_work_dir / session_name
+        
+        if not session_dir.exists():
+            ColoredOutput.error(f"Sesión no encontrada: {session_name}")
+            ColoredOutput.info("Ejecuta primero: python scripts/generate-daily.py")
+            return None
+        
+        support_docs_dir = session_dir / 'support-docs'
+        if not support_docs_dir.exists():
+            ColoredOutput.error(f"Directorio support-docs no encontrado en: {session_dir}")
+            return None
+        
+        return session_dir
+    
+    def get_available_playbooks(self):
+        """Obtiene la lista de playbooks disponibles."""
+        available = []
+        for playbook_code, filename in PLAYBOOK_FILE_MAPPING.items():
+            playbook_path = self.playbooks_dir / filename
+            if playbook_path.exists():
+                available.append((playbook_code, filename, playbook_path))
+            else:
+                ColoredOutput.warning(f"Playbook no encontrado: {filename}")
+        
+        return available
+    
+    def load_playbook(self, playbook_path):
+        """Carga y parsea un playbook desde archivo."""
+        try:
+            with open(playbook_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            return self.parse_playbook_structure(content, playbook_path.name)
+        except Exception as e:
+            ColoredOutput.error(f"Error cargando playbook {playbook_path}: {e}")
+            return None
+    
+    def parse_playbook_structure(self, content, filename):
+        """Parsea la estructura de un playbook y extrae información relevante."""
+        
+        # Extraer metadatos del header
+        metadata = self.extract_metadata(content)
+        
+        # Extraer estructura de headers
+        headers = self.extract_header_structure(content)
+        
+        # Extraer secciones principales
+        sections = self.extract_sections(content, headers)
+        
+        return {
+            'filename': filename,
+            'metadata': metadata,
+            'headers': headers,
+            'sections': sections,
+            'content_length': len(content),
+            'parsed_at': datetime.now().isoformat()
+        }
+    
+    def extract_metadata(self, content):
+        """Extrae metadatos del header del playbook."""
+        metadata = {
+            'title': 'Sin título',
+            'description': 'Sin descripción',
+            'version': '1.0',
+            'author': 'The Mighty Task',
+            'creation_date': None,
+            'last_update': None
+        }
+        
+        # Buscar título (primera línea con #)
+        title_match = re.search(r'^#\s+(.+)$', content, re.MULTILINE)
+        if title_match:
+            metadata['title'] = title_match.group(1).strip()
+        
+        # Buscar descripción en las primeras líneas
+        lines = content.split('\n')
+        for i, line in enumerate(lines[:20]):  # Solo primeras 20 líneas
+            if line.startswith('**Descripción:**') or line.startswith('**Description:**'):
+                if i + 1 < len(lines):
+                    metadata['description'] = lines[i + 1].strip()
+                break
+            elif 'descripción' in line.lower() and not line.startswith('#'):
+                metadata['description'] = line.strip()
+                break
+        
+        # Buscar versión
+        version_match = re.search(r'\*\*Versión:\*\*\s*(.+)', content, re.IGNORECASE)
+        if version_match:
+            metadata['version'] = version_match.group(1).strip()
+        
+        return metadata
+    
+    def extract_header_structure(self, content):
+        """Extrae la estructura jerárquica de headers."""
+        headers = []
+        
+        # Patrón para headers de markdown (# ## ### etc.)
+        header_pattern = r'^(#{1,6})\s+(.+)$'
+        
+        for match in re.finditer(header_pattern, content, re.MULTILINE):
+            level = len(match.group(1))  # Número de #
+            title = match.group(2).strip()
+            position = match.start()
+            
+            headers.append({
+                'level': level,
+                'title': title,
+                'position': position,
+                'anchor': self.create_anchor(title)
+            })
+        
+        return headers
+    
+    def create_anchor(self, title):
+        """Crea un anchor para navegación interna."""
+        # Convertir a formato anchor de markdown
+        anchor = title.lower()
+        anchor = re.sub(r'[^\w\s-]', '', anchor)  # Quitar caracteres especiales
+        anchor = re.sub(r'\s+', '-', anchor)  # Espacios a guiones
+        return anchor
+    
+    def extract_sections(self, content, headers):
+        """Extrae el contenido de cada sección basado en headers."""
+        sections = []
+        
+        for i, header in enumerate(headers):
+            start_pos = header['position']
+            
+            # Encontrar el final de esta sección (siguiente header del mismo nivel o superior)
+            end_pos = len(content)
+            for next_header in headers[i + 1:]:
+                if next_header['level'] <= header['level']:
+                    end_pos = next_header['position']
+                    break
+            
+            # Extraer contenido de la sección
+            section_content = content[start_pos:end_pos].strip()
+            
+            # Analizar tipo de contenido
+            content_analysis = self.analyze_section_content(section_content)
+            
+            sections.append({
+                'header': header,
+                'content': section_content,
+                'length': len(section_content),
+                'analysis': content_analysis
+            })
+        
+        return sections
+    
+    def analyze_section_content(self, section_content):
+        """Analiza el tipo de contenido en una sección."""
+        analysis = {
+            'has_code_blocks': bool(re.search(r'```', section_content)),
+            'has_tables': bool(re.search(r'\|.*\|', section_content)),
+            'has_lists': bool(re.search(r'^[\*\-\+]\s', section_content, re.MULTILINE)),
+            'has_checkboxes': bool(re.search(r'- \[ \]', section_content)),
+            'has_links': bool(re.search(r'\[.+\]\(.+\)', section_content)),
+            'has_images': bool(re.search(r'!\[.+\]\(.+\)', section_content)),
+            'paragraph_count': len([p for p in section_content.split('\n\n') if p.strip()]),
+            'content_type': 'mixed'
+        }
+        
+        # Determinar tipo predominante de contenido
+        if analysis['has_code_blocks']:
+            analysis['content_type'] = 'code-heavy'
+        elif analysis['has_tables']:
+            analysis['content_type'] = 'table-heavy'
+        elif analysis['has_lists'] or analysis['has_checkboxes']:
+            analysis['content_type'] = 'list-heavy'
+        elif analysis['paragraph_count'] > 3:
+            analysis['content_type'] = 'text-heavy'
+        
+        return analysis
+    
+    def generate_template_from_playbook(self, playbook_data, theme, date_str):
+        """Genera un template basado en la estructura del playbook."""
+        
+        template_content = []
+        
+        # Header del template
+        template_content.append(f"# {playbook_data['metadata']['title']}")
+        template_content.append("")
+        template_content.append(f"**Generado automáticamente para:** {theme} - {date_str}")
+        template_content.append(f"**Basado en:** {playbook_data['filename']}")
+        template_content.append(f"**Fecha de generación:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        template_content.append("")
+        template_content.append("---")
+        template_content.append("")
+        
+        # Nota importante
+        template_content.append("## 📋 Instrucciones de Uso")
+        template_content.append("")
+        template_content.append("Este archivo es un **TEMPLATE** generado automáticamente.")
+        template_content.append("- ✅ **SÍ completa** las secciones marcadas con `[TODO]`")
+        template_content.append("- ✅ **SÍ agrega** información específica de tu trabajo")
+        template_content.append("- ❌ **NO modifiques** el playbook original")
+        template_content.append("- 📚 **Usa el playbook original** como guía y referencia")
+        template_content.append("")
+        template_content.append(f"📖 **Playbook original:** `playbooks/documentation_playbooks/{playbook_data['filename']}`")
+        template_content.append("")
+        template_content.append("---")
+        template_content.append("")
+        
+        # Generar estructura basada en headers
+        for section in playbook_data['sections']:
+            header = section['header']
+            analysis = section['analysis']
+            
+            # Solo procesar headers de nivel 1-3 para evitar demasiado detalle
+            if header['level'] <= 3:
+                template_content.append('#' * header['level'] + ' ' + header['title'])
+                template_content.append("")
+                
+                # Generar contenido específico basado en el análisis
+                todo_content = self.generate_todo_content(header['title'], analysis, theme)
+                template_content.extend(todo_content)
+                template_content.append("")
+        
+        # Footer del template
+        template_content.append("---")
+        template_content.append("")
+        template_content.append("## ✅ Checklist de Completitud")
+        template_content.append("")
+        template_content.append("- [ ] Todas las secciones [TODO] completadas")
+        template_content.append("- [ ] Información específica del proyecto agregada")
+        template_content.append("- [ ] Referencias y enlaces actualizados")
+        template_content.append("- [ ] Ejemplos de código incluidos (si aplica)")
+        template_content.append("- [ ] Documentación revisada y validada")
+        template_content.append("")
+        template_content.append("---")
+        template_content.append(f"*Template generado automáticamente por The Mighty Task System*  ")
+        template_content.append(f"*Para más información, consultar: `playbooks/documentation_playbooks/{playbook_data['filename']}`*")
+        
+        return '\n'.join(template_content)
+    
+    def determine_template_type(self, filename):
+        """Determina el tipo de template según el DOC"""
+        doc_mapping = {
+            'DOC003-DesignSystem.md': 'design_system',
+            'DOC004-FrontendArchitecture.md': 'frontend_architecture',
+            'DOC005-FrontendDependencies.md': 'frontend_dependencies',
+            'DOC006-BackendArchitecture.md': 'backend_architecture',
+            'DOC007-BackendDependencies.md': 'backend_dependencies',
+            'DOC008-APISpecification.md': 'api_specification',
+            'DOC009-DataModel.md': 'data_model',
+            'DOC010-Deployment.md': 'deployment',
+            'DOC011-TestingStrategy.md': 'testing_strategy',
+            'DOC019-CLI-Command-Reference.md': 'cli_reference'
+        }
+        return doc_mapping.get(filename, 'generic')
+    
+    def create_universal_template(self, template_type, theme, date_str, filename):
+        """Crea un marco de referencia universal según el tipo"""
+        templates = {
+            'design_system': self.create_design_system_template,
+            'frontend_architecture': self.create_frontend_architecture_template,
+            'frontend_dependencies': self.create_frontend_dependencies_template,
+            'backend_architecture': self.create_backend_architecture_template,
+            'backend_dependencies': self.create_backend_dependencies_template,
+            'api_specification': self.create_api_specification_template,
+            'data_model': self.create_data_model_template,
+            'deployment': self.create_deployment_template,
+            'testing_strategy': self.create_testing_strategy_template,
+            'cli_reference': self.create_cli_reference_template
+        }
+        
+        template_func = templates.get(template_type, self.create_generic_template)
+        return template_func(theme, date_str, filename)
+
+    def generate_todo_content(self, section_title, analysis, theme):
+        """Genera contenido TODO específico basado en la sección y tema."""
+        todo_content = []
+        
+        # Personalizar según el tipo de sección
+        section_lower = section_title.lower()
+        
+        if any(keyword in section_lower for keyword in ['arquitectura', 'architecture', 'estructura', 'structure']):
+            todo_content = [
+                f"[TODO] Definir la arquitectura específica para {theme}:",
+                "",
+                "### Componentes Principales",
+                "- [TODO] Componente 1: Descripción y responsabilidades",
+                "- [TODO] Componente 2: Descripción y responsabilidades", 
+                "- [TODO] Componente 3: Descripción y responsabilidades",
+                "",
+                "### Patrones de Diseño",
+                "- [TODO] Patrón principal utilizado",
+                "- [TODO] Justificación de la elección",
+                "",
+                "### Dependencias",
+                "- [TODO] Listar dependencias externas",
+                "- [TODO] Especificar versiones requeridas",
+            ]
+        
+        elif any(keyword in section_lower for keyword in ['instalación', 'installation', 'setup', 'configuración']):
+            todo_content = [
+                f"[TODO] Configurar entorno para {theme}:",
+                "",
+                "### Prerrequisitos",
+                "```bash",
+                "# [TODO] Comandos de instalación de prerrequisitos",
+                "```",
+                "",
+                "### Pasos de Instalación",
+                "1. [TODO] Paso 1 con comando específico",
+                "2. [TODO] Paso 2 con comando específico",
+                "3. [TODO] Paso 3 con comando específico",
+                "",
+                "### Verificación",
+                "```bash",
+                "# [TODO] Comandos para verificar instalación",
+                "```",
+            ]
+        
+        elif any(keyword in section_lower for keyword in ['ejemplos', 'examples', 'uso', 'usage']):
+            todo_content = [
+                f"[TODO] Ejemplos específicos para {theme}:",
+                "",
+                "### Ejemplo Básico",
+                "```bash",
+                "# [TODO] Ejemplo de uso básico",
+                "```",
+                "",
+                "### Ejemplo Avanzado", 
+                "```bash",
+                "# [TODO] Ejemplo de uso avanzado",
+                "```",
+                "",
+                "### Casos de Uso Comunes",
+                "- [TODO] Caso de uso 1",
+                "- [TODO] Caso de uso 2",
+                "- [TODO] Caso de uso 3",
+            ]
+        
+        elif any(keyword in section_lower for keyword in ['api', 'endpoints', 'rutas', 'routes']):
+            todo_content = [
+                f"[TODO] Definir APIs para {theme}:",
+                "",
+                "### Endpoints Principales",
+                "",
+                "#### GET /[TODO-endpoint]",
+                "- **Descripción:** [TODO] Descripción del endpoint",
+                "- **Parámetros:** [TODO] Listar parámetros",
+                "- **Respuesta:** [TODO] Estructura de respuesta",
+                "",
+                "#### POST /[TODO-endpoint]",
+                "- **Descripción:** [TODO] Descripción del endpoint",
+                "- **Body:** [TODO] Estructura del body",
+                "- **Respuesta:** [TODO] Estructura de respuesta",
+                "",
+                "### Autenticación",
+                "- [TODO] Método de autenticación",
+                "- [TODO] Headers requeridos",
+            ]
+        
+        elif any(keyword in section_lower for keyword in ['testing', 'pruebas', 'tests']):
+            todo_content = [
+                f"[TODO] Estrategia de testing para {theme}:",
+                "",
+                "### Tests Unitarios",
+                "- [TODO] Framework de testing elegido",
+                "- [TODO] Cobertura objetivo (%)",
+                "",
+                "### Tests de Integración",
+                "- [TODO] Herramientas para tests de integración",
+                "- [TODO] Scenarios principales a testear",
+                "",
+                "### Tests End-to-End",
+                "- [TODO] Herramientas E2E",
+                "- [TODO] Flows críticos a testear",
+            ]
+        
+        else:
+            # Contenido genérico basado en el análisis
+            todo_content = [
+                f"[TODO] Completar información para: {section_title}",
+                "",
+                "### Información Principal",
+                "- [TODO] Punto clave 1",
+                "- [TODO] Punto clave 2", 
+                "- [TODO] Punto clave 3",
+                ""
+            ]
+            
+            if analysis.get('has_code_blocks', False):
+                todo_content.extend([
+                    "### Ejemplos de Código",
+                    "```bash",
+                    "# [TODO] Agregar ejemplos de código específicos",
+                    "```",
+                    ""
+                ])
+            
+            if analysis.get('has_tables', False):
+                todo_content.extend([
+                    "### Información Tabular",
+                    "",
+                    "| Campo | Valor | Descripción |",
+                    "|-------|-------|-------------|",
+                    "| [TODO] | [TODO] | [TODO] |",
+                    ""
+                ])
+        
+        return todo_content
+    
+    # =====================================================================
+    # TEMPLATES UNIVERSALES - MARCOS DE REFERENCIA POR TIPO
+    # =====================================================================
+    
+    def create_design_system_template(self, theme, date_str, filename):
+        """Marco de referencia para sistemas de diseño"""
+        return f'''# Sistema de Diseño - Marco de Referencia
+
+**Sesión:** {theme}  
+**Fecha:** {date_str}  
+**Marco Universal:** Sistema de Diseño  
+**Referencia:** [playbooks/documentation_playbooks/{filename}](../../../playbooks/documentation_playbooks/{filename})
+
+---
+
+## 🎯 Propósito del Marco
+
+Este documento sirve como **marco de referencia universal** para sistemas de diseño, adaptable a cualquier tecnología o framework.
+
+### Decisiones Clave a Capturar
+- **Filosofía de diseño** adoptada para el proyecto
+- **Tokens de diseño** definidos y su justificación
+- **Componentes base** y su jerarquía
+- **Patrones de interacción** establecidos
+- **Herramientas** elegidas y por qué
+
+---
+
+## 🏗️ Fundamentos del Sistema
+
+### Filosofía de Diseño
+**Decisión:** [Documentar la filosofía de diseño elegida]  
+**Opciones consideradas:**
+- Material Design, Human Interface Guidelines, Atomic Design, Custom
+- Razones para la elección
+- Principios rectores del proyecto
+
+### Tokens de Diseño
+**Decisión:** [Definir tokens fundamentales]  
+
+#### Colores
+```css
+/* Ejemplo - adaptar a tu stack */
+--primary: [DEFINIR];
+--secondary: [DEFINIR];
+--accent: [DEFINIR];
+```
+
+#### Tipografía
+- **Fuente principal:** [DECIDIR]
+- **Escala tipográfica:** [DEFINIR]
+- **Pesos utilizados:** [ESPECIFICAR]
+
+#### Espaciado
+```css
+/* Sistema de espaciado */
+--space-xs: [DEFINIR];
+--space-sm: [DEFINIR];
+--space-md: [DEFINIR];
+```
+
+---
+
+## 🧩 Arquitectura de Componentes
+
+### Componentes Atómicos
+**Decisión:** [Listar componentes base identificados]
+- Botones: [Variantes y estados]
+- Inputs: [Tipos y validaciones]
+- Typography: [Elementos y jerarquías]
+
+### Componentes Moleculares
+**Decisión:** [Componentes compuestos clave]
+- Forms: [Patrones de formulario]
+- Cards: [Tipos de tarjeta]
+- Navigation: [Patrones de navegación]
+
+### Plantillas y Páginas
+**Decisión:** [Layouts principales]
+- Layout principal: [Estructura]
+- Páginas tipo: [Patrones identificados]
+
+---
+
+## 🔧 Implementación Técnica
+
+### Stack Tecnológico
+**Decisión:** [Tecnologías elegidas para el design system]
+
+#### Herramientas de Diseño
+- **Design tool:** [Figma, Sketch, Adobe XD, etc.]
+- **Prototipado:** [Herramienta elegida]
+- **Documentación:** [Storybook, Docusaurus, custom]
+
+#### Stack de Desarrollo
+- **Framework:** [React, Vue, Angular, Web Components, etc.]
+- **Styling:** [CSS-in-JS, Sass, PostCSS, Tailwind, etc.]
+- **Bundler:** [Webpack, Vite, Parcel, etc.]
+
+### Arquitectura del Código
+```
+[DEFINIR estructura de carpetas y organización]
+```
+
+---
+
+## 📱 Responsive & Accessibility
+
+### Estrategia Responsive
+**Decisión:** [Enfoque responsive elegido]
+- **Breakpoints:** [Definir breakpoints]
+- **Mobile-first:** [Sí/No y justificación]
+- **Componentes adaptativos:** [Estrategia]
+
+### Accesibilidad
+**Decisión:** [Estándar de accesibilidad adoptado]
+- **WCAG Level:** [AA, AAA]
+- **Testing tools:** [Herramientas de testing]
+- **Checklist:** [Criterios específicos]
+
+---
+
+## 🚀 Implementación y Mantenimiento
+
+### Flujo de Desarrollo
+**Decisión:** [Proceso de contribución al design system]
+1. [Paso 1 del proceso]
+2. [Paso 2 del proceso]
+3. [Paso 3 del proceso]
+
+### Versionado
+**Decisión:** [Estrategia de versionado]
+- **Semantic versioning:** [Cómo se aplica]
+- **Breaking changes:** [Cómo se manejan]
+- **Migration guides:** [Proceso]
+
+### Testing
+**Decisión:** [Estrategia de testing para componentes]
+- **Unit tests:** [Framework y scope]
+- **Visual regression:** [Herramientas]
+- **Cross-browser:** [Estrategia]
+
+---
+
+## 📊 Métricas y Adopción
+
+### KPIs del Sistema
+**Decisión:** [Métricas para medir éxito]
+- Adopción por equipos: [Cómo medir]
+- Consistencia: [Métricas de consistencia]
+- Performance: [Benchmarks]
+
+### Gobernanza
+**Decisión:** [Modelo de gobierno del design system]
+- **Design System Team:** [Estructura]
+- **Contribución:** [Proceso de contribución]
+- **Evolución:** [Proceso de evolución]
+
+---
+
+## 🔄 Evolución y Roadmap
+
+### Fases de Implementación
+1. **Fase 1:** [Componentes base y tokens]
+2. **Fase 2:** [Componentes compuestos]
+3. **Fase 3:** [Templates y patrones]
+4. **Fase 4:** [Tooling y automatización]
+
+### Próximos Pasos
+- [ ] [Tarea inmediata 1]
+- [ ] [Tarea inmediata 2]
+- [ ] [Tarea inmediata 3]
+
+---
+
+*Marco generado por The Mighty Task System*  
+*Consultar playbook original: `playbooks/documentation_playbooks/{filename}`*
+'''
+    
+    def create_backend_architecture_template(self, theme, date_str, filename):
+        """Marco de referencia para arquitectura backend"""
+        return f'''# Arquitectura Backend - Marco de Referencia
+
+**Sesión:** {theme}  
+**Fecha:** {date_str}  
+**Marco Universal:** Arquitectura Backend  
+**Referencia:** [playbooks/documentation_playbooks/{filename}](../../../playbooks/documentation_playbooks/{filename})
+
+---
+
+## 🎯 Propósito del Marco
+
+Este documento sirve como **marco de referencia universal** para arquitecturas backend, adaptable a cualquier stack tecnológico.
+
+### Decisiones Clave a Capturar
+- **Patrón arquitectónico** elegido y justificación
+- **Stack tecnológico** y razones de elección
+- **Estrategia de datos** y persistencia
+- **Escalabilidad** y performance
+- **Seguridad** y autenticación
+
+---
+
+## 🏗️ Patrón Arquitectónico
+
+### Arquitectura Elegida
+**Decisión:** [Patrón arquitectónico principal]
+
+**Opciones consideradas:**
+- Monolítico / Microservicios / Serverless
+- Layered / Hexagonal / Clean Architecture
+- Event-Driven / CQRS / Domain-Driven Design
+
+**Justificación:** [Por qué se eligió este patrón]
+
+### Estructura de Alto Nivel
+```
+[DEFINIR estructura general de la aplicación]
+```
+
+---
+
+## 💻 Stack Tecnológico
+
+### Runtime y Lenguaje
+**Decisión:** [Lenguaje y runtime elegidos]
+- **Lenguaje:** [Node.js, Python, Java, Go, Rust, etc.]
+- **Version:** [Versión específica]
+- **Justificación:** [Razones para la elección]
+
+### Framework Principal
+**Decisión:** [Framework web elegido]
+- **Framework:** [Express, FastAPI, Spring Boot, Gin, Actix, etc.]
+- **Alternativas consideradas:** [Otros frameworks evaluados]
+- **Razón de elección:** [Criterios de decisión]
+
+### Base de Datos
+**Decisión:** [Estrategia de persistencia]
+
+#### Base de Datos Principal
+- **Tipo:** [SQL, NoSQL, Graph, etc.]
+- **Motor:** [PostgreSQL, MongoDB, Redis, Neo4j, etc.]
+- **Justificación:** [Por qué esta elección]
+
+#### Caché y Performance
+- **Caché:** [Redis, Memcached, In-memory, etc.]
+- **Estrategia:** [Patrón de cache elegido]
+
+---
+
+## 🔌 APIs y Comunicación
+
+### Estilo de API
+**Decisión:** [Estilo de API adoptado]
+- **REST** / **GraphQL** / **gRPC** / **WebSockets**
+- **Justificación:** [Razones para la elección]
+
+### Formato de Datos
+**Decisión:** [Formato de intercambio]
+- **JSON** / **XML** / **Protocol Buffers** / **MessagePack**
+- **Estándares:** [JSON:API, OpenAPI, etc.]
+
+### Documentación de API
+**Decisión:** [Herramienta de documentación]
+- **Swagger/OpenAPI** / **Postman** / **Insomnia** / **Custom**
+- **Ubicación:** [Dónde se encuentra la documentación]
+
+---
+
+## 🔐 Seguridad y Autenticación
+
+### Estrategia de Autenticación
+**Decisión:** [Método de autenticación]
+- **JWT** / **OAuth 2.0** / **Session-based** / **API Keys**
+- **Provider:** [Auth0, Firebase, Custom, etc.]
+
+### Autorización
+**Decisión:** [Modelo de autorización]
+- **RBAC** / **ABAC** / **Custom permissions**
+- **Implementation:** [Cómo se implementa]
+
+### Seguridad de Datos
+**Decisión:** [Medidas de seguridad implementadas]
+- **Encriptación:** [En tránsito y en reposo]
+- **Validación:** [Esquemas y sanitización]
+- **Rate limiting:** [Estrategia anti-abuse]
+
+---
+
+## 📊 Datos y Persistencia
+
+### Modelo de Datos
+**Decisión:** [Estrategia de modelado]
+- **ORM/ODM:** [Prisma, SQLAlchemy, Mongoose, etc.]
+- **Migrations:** [Estrategia de migraciones]
+- **Seeding:** [Datos iniciales]
+
+### Backup y Recovery
+**Decisión:** [Estrategia de backup]
+- **Frecuencia:** [Cada cuánto se hace backup]
+- **Retención:** [Cuánto tiempo se conservan]
+- **Recovery:** [Proceso de recuperación]
+
+---
+
+## ⚡ Performance y Escalabilidad
+
+### Estrategia de Escalabilidad
+**Decisión:** [Cómo escalar la aplicación]
+- **Horizontal** / **Vertical** / **Híbrido**
+- **Load Balancing:** [Estrategia de balanceeo]
+- **Auto-scaling:** [Si aplica y cómo]
+
+### Optimizaciones
+**Decisión:** [Optimizaciones implementadas]
+- **Database indexing:** [Índices definidos]
+- **Query optimization:** [Estrategias]
+- **Caching layers:** [Niveles de caché]
+
+### Monitoring
+**Decisión:** [Herramientas de monitoreo]
+- **APM:** [New Relic, DataDog, Elastic APM, etc.]
+- **Logs:** [Structured logging, centralized]
+- **Metrics:** [Business y technical metrics]
+
+---
+
+## 🐳 Deployment y DevOps
+
+### Containerización
+**Decisión:** [Estrategia de contenedores]
+- **Docker:** [Sí/No y configuración]
+- **Orchestration:** [Kubernetes, Docker Compose, etc.]
+
+### CI/CD
+**Decisión:** [Pipeline de deployment]
+- **CI Tool:** [GitHub Actions, GitLab CI, Jenkins, etc.]
+- **Deployment strategy:** [Blue-green, Rolling, Canary]
+
+### Infrastructure
+**Decisión:** [Infraestructura elegida]
+- **Cloud Provider:** [AWS, GCP, Azure, Digital Ocean, etc.]
+- **IaC:** [Terraform, CloudFormation, Pulumi]
+
+---
+
+## 🧪 Testing
+
+### Estrategia de Testing
+**Decisión:** [Niveles de testing implementados]
+
+#### Unit Tests
+- **Framework:** [Jest, PyTest, JUnit, etc.]
+- **Coverage target:** [Porcentaje objetivo]
+- **Mocking strategy:** [Cómo se mockea]
+
+#### Integration Tests
+- **Database:** [Cómo se testea persistencia]
+- **External APIs:** [Estrategia para APIs externas]
+- **End-to-end:** [Si aplica]
+
+### Test Environment
+**Decisión:** [Ambiente de testing]
+- **Database:** [Testing database strategy]
+- **External services:** [Mocks vs real services]
+
+---
+
+## 🔄 Próximos Pasos y Roadmap
+
+### Implementación Inmediata
+- [ ] [Tarea 1: Setup inicial]
+- [ ] [Tarea 2: Configuración base]
+- [ ] [Tarea 3: Primer endpoint]
+
+### Fase de Desarrollo
+- [ ] [Milestone 1]
+- [ ] [Milestone 2]
+- [ ] [Milestone 3]
+
+### Optimización y Scaling
+- [ ] [Performance tuning]
+- [ ] [Security audit]
+- [ ] [Monitoring setup]
+
+---
+
+*Marco generado por The Mighty Task System*  
+*Consultar playbook original: `playbooks/documentation_playbooks/{filename}`*
+'''
+    
+    def create_generic_template(self, theme, date_str, filename):
+        """Template genérico para casos no específicos"""
+        return f'''# Marco de Referencia - {filename.split('.')[0]}
+
+**Sesión:** {theme}  
+**Fecha:** {date_str}  
+**Marco Universal:** {filename.split('.')[0]}  
+**Referencia:** [playbooks/documentation_playbooks/{filename}](../../../playbooks/documentation_playbooks/{filename})
+
+---
+
+## 🎯 Propósito del Marco
+
+Este documento sirve como **marco de referencia universal**, adaptable a diferentes tecnologías y contextos.
+
+### Decisiones Clave a Documentar
+- [Identificar decisiones principales para esta área]
+- [Listar opciones técnicas relevantes]
+- [Capturar justificaciones y trade-offs]
+- [Documentar patrones y estándares]
+
+---
+
+## 🔧 Decisiones Técnicas
+
+### Decisión Principal 1
+**Decisión:** [Describir la decisión tomada]
+**Opciones consideradas:** [Listar alternativas]
+**Justificación:** [Razón de la elección]
+
+### Decisión Principal 2
+**Decisión:** [Describir la decisión tomada]
+**Opciones consideradas:** [Listar alternativas]
+**Justificación:** [Razón de la elección]
+
+### Decisión Principal 3
+**Decisión:** [Describir la decisión tomada]
+**Opciones consideradas:** [Listar alternativas]
+**Justificación:** [Razón de la elección]
+
+---
+
+## 🏗️ Implementación
+
+### Configuración Base
+```bash
+# Comandos de setup y configuración
+[COMPLETAR con comandos específicos]
+```
+
+### Estructura del Proyecto
+```
+[DEFINIR estructura de carpetas y organización]
+```
+
+### Herramientas y Dependencies
+- **Principal:** [Herramienta o framework principal]
+- **Supporting:** [Herramientas de soporte]
+- **Development:** [Herramientas de desarrollo]
+
+---
+
+## 📋 Checklist de Implementación
+
+### Setup Inicial
+- [ ] [Tarea de setup 1]
+- [ ] [Tarea de setup 2]
+- [ ] [Tarea de setup 3]
+
+### Desarrollo
+- [ ] [Tarea de desarrollo 1]
+- [ ] [Tarea de desarrollo 2]
+- [ ] [Tarea de desarrollo 3]
+
+### Testing y Validación
+- [ ] [Tarea de testing 1]
+- [ ] [Tarea de testing 2]
+- [ ] [Tarea de testing 3]
+
+---
+
+## 🔄 Próximos Pasos
+
+1. [Paso inmediato 1]
+2. [Paso inmediato 2]
+3. [Paso inmediato 3]
+
+### Consideraciones Futuras
+- [Consideración 1]
+- [Consideración 2]
+- [Consideración 3]
+
+---
+
+*Marco generado por The Mighty Task System*  
+*Consultar playbook original: `playbooks/documentation_playbooks/{filename}`*
+'''
+    
+    def process_theme_playbooks(self, theme, date_str):
+        """Procesa todos los playbooks relevantes para un tema."""
+        
+        ColoredOutput.header(f"Procesando Playbooks para: {theme} - {date_str}")
+        
+        # Encontrar directorio de sesión
+        session_dir = self.find_session_directory(date_str, theme)
+        if not session_dir:
+            return False
+        
+        support_docs_dir = session_dir / 'support-docs'
+        
+        # Obtener playbooks para este tema
+        playbooks_to_process = THEME_PLAYBOOK_MAPPING.get(theme, [])
+        if not playbooks_to_process:
+            ColoredOutput.warning(f"No hay playbooks mapeados para el tema: {theme}")
+            return False
+        
+        ColoredOutput.info(f"Playbooks a procesar: {', '.join(playbooks_to_process)}")
+        
+        processed_files = []
+        failed_files = []
+        
+        for playbook_code in playbooks_to_process:
+            if playbook_code not in PLAYBOOK_FILE_MAPPING:
+                ColoredOutput.warning(f"Playbook {playbook_code} no está en el mapeo")
+                failed_files.append(playbook_code)
+                continue
+            
+            playbook_filename = PLAYBOOK_FILE_MAPPING[playbook_code]
+            playbook_path = self.playbooks_dir / playbook_filename
+            
+            if not playbook_path.exists():
+                ColoredOutput.error(f"Playbook no encontrado: {playbook_path}")
+                failed_files.append(playbook_code)
+                continue
+            
+            # Cargar y parsear playbook
+            ColoredOutput.info(f"Procesando {playbook_code}: {playbook_filename}")
+            playbook_data = self.load_playbook(playbook_path)
+            
+            if not playbook_data:
+                failed_files.append(playbook_code)
+                continue
+            
+            # Generar template
+            template_content = self.generate_template_from_playbook(playbook_data, theme, date_str)
+            
+            # Guardar template
+            template_filename = playbook_filename  # Mantener mismo nombre
+            template_path = support_docs_dir / template_filename
+            
+            try:
+                with open(template_path, 'w', encoding='utf-8') as f:
+                    f.write(template_content)
+                
+                processed_files.append(str(template_path))
+                ColoredOutput.success(f"Template creado: {template_filename}")
+                
+            except Exception as e:
+                ColoredOutput.error(f"Error guardando template {template_filename}: {e}")
+                failed_files.append(playbook_code)
+        
+        # Actualizar tracking
+        self.update_processing_tracking(theme, date_str, processed_files, failed_files)
+        
+        # Mostrar resumen
+        self.show_processing_summary(processed_files, failed_files, theme, date_str)
+        
+        return len(failed_files) == 0
+    
+    def update_processing_tracking(self, theme, date_str, processed_files, failed_files):
+        """Actualiza el tracking con información de procesamiento."""
+        tracking_data = self.load_tracking_data()
+        
+        # Buscar sesión existente
+        session_entry = None
+        for session in tracking_data.get('processed_dates', []):
+            if session['date'] == date_str and session['theme'] == theme:
+                session_entry = session
+                break
+        
+        if session_entry:
+            # Actualizar sesión existente
+            session_entry['templates_generated'] = processed_files
+            session_entry['templates_failed'] = failed_files
+            session_entry['template_generation_date'] = datetime.now().isoformat()
+            session_entry['status'] = 'templates_generated'
+            session_entry['last_updated'] = datetime.now().isoformat()
+            
+            self.save_tracking_data(tracking_data)
+            ColoredOutput.success("Tracking actualizado correctamente")
+        else:
+            ColoredOutput.warning("No se encontró la sesión en el tracking para actualizar")
+    
+    def show_processing_summary(self, processed_files, failed_files, theme, date_str):
+        """Muestra resumen del procesamiento."""
+        
+        ColoredOutput.header("Resumen de Procesamiento")
+        
+        print(f"📅 **Fecha:** {date_str}")
+        print(f"🎯 **Tema:** {theme}")
+        print(f"✅ **Templates generados:** {len(processed_files)}")
+        print(f"❌ **Errores:** {len(failed_files)}")
+        
+        if processed_files:
+            ColoredOutput.info("\n📄 Archivos generados:")
+            for file_path in processed_files:
+                print(f"  • {Path(file_path).name}")
+        
+        if failed_files:
+            ColoredOutput.warning(f"\n⚠️  Playbooks con errores: {', '.join(failed_files)}")
+        
+        ColoredOutput.info(f"\n📁 Ubicación: daily-work/{date_str}_{theme}/support-docs/")
+        
+        if processed_files:
+            ColoredOutput.info("\nPróximos pasos:")
+            print("1. Revisar los templates generados")
+            print("2. Completar las secciones marcadas con [TODO]")
+            print("3. Usar los playbooks originales como referencia")
+            print("4. Validar la información agregada")
+    
+    def list_available_playbooks(self):
+        """Lista todos los playbooks disponibles."""
+        
+        ColoredOutput.header("Playbooks Disponibles")
+        
+        available_playbooks = self.get_available_playbooks()
+        
+        print("📚 **Playbooks en el sistema:**\n")
+        
+        for playbook_code, filename, path in available_playbooks:
+            # Cargar metadatos básicos
+            try:
+                with open(path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                metadata = self.extract_metadata(content)
+                
+                print(f"🎯 **{playbook_code}** - {filename}")
+                print(f"   📝 {metadata['title']}")
+                print(f"   📄 {metadata['description']}")
+                print(f"   📂 {path.relative_to(self.base_path)}")
+                print()
+                
+            except Exception as e:
+                print(f"🎯 **{playbook_code}** - {filename}")
+                print(f"   ❌ Error leyendo archivo: {e}")
+                print()
+        
+        print(f"**Total playbooks disponibles:** {len(available_playbooks)}")
+        
+        # Mostrar mapeo de temas
+        ColoredOutput.header("Mapeo de Temas a Playbooks")
+        
+        for theme, playbooks in THEME_PLAYBOOK_MAPPING.items():
+            print(f"🎯 **{theme}**")
+            print(f"   📚 Playbooks: {', '.join(playbooks)}")
+            print()
+
+def main():
+    """Función principal."""
+    parser = argparse.ArgumentParser(
+        description='The Mighty Task - Procesador de Playbooks',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Ejemplos de uso:
+
+  # Procesar playbooks para un tema y fecha específicos
+  python scripts/playbook-processor.py --date="2024-01-15" --theme="BACKEND-API-SETUP"
+  
+  # Procesar un playbook específico
+  python scripts/playbook-processor.py --playbook="DOC006" --output-dir="daily-work/2024-01-15_BACKEND-API-SETUP/support-docs"
+  
+  # Listar todos los playbooks disponibles
+  python scripts/playbook-processor.py --list-playbooks
+  
+  # Escanear y mostrar estado de todos los playbooks
+  python scripts/playbook-processor.py --scan-all
+
+Playbooks disponibles: """ + ", ".join(PLAYBOOK_FILE_MAPPING.keys())
+    )
+    
+    parser.add_argument('--date', 
+                       type=str,
+                       help='Fecha de la sesión (formato YYYY-MM-DD)')
+    
+    parser.add_argument('--theme',
+                       type=str, 
+                       help='Tema de la sesión (ej: BACKEND-API-SETUP)')
+    
+    parser.add_argument('--playbook',
+                       type=str,
+                       help='Código específico de playbook a procesar (ej: DOC006)')
+    
+    parser.add_argument('--output-dir',
+                       type=str,
+                       help='Directorio de salida para templates (usado con --playbook)')
+    
+    parser.add_argument('--list-playbooks',
+                       action='store_true',
+                       help='Listar todos los playbooks disponibles')
+    
+    parser.add_argument('--scan-all',
+                       action='store_true', 
+                       help='Escanear todos los playbooks y mostrar estado')
+    
+    parser.add_argument('--base-path',
+                       type=str,
+                       help='Ruta base del proyecto (default: directorio actual)')
+    
+    args = parser.parse_args()
+    
+    # Crear procesador
+    try:
+        processor = PlaybookProcessor(args.base_path)
+    except SystemExit:
+        return 1
+    
+    # Listar playbooks
+    if args.list_playbooks or args.scan_all:
+        processor.list_available_playbooks()
+        return 0
+    
+    # Procesar playbook específico
+    if args.playbook:
+        if not args.output_dir:
+            ColoredOutput.error("--output-dir es requerido cuando usas --playbook")
+            return 1
+        
+        # TODO: Implementar procesamiento de playbook específico
+        ColoredOutput.info("Funcionalidad de playbook específico por implementar")
+        return 0
+    
+    # Procesar por tema y fecha
+    if args.date and args.theme:
+        success = processor.process_theme_playbooks(args.theme, args.date)
+        
+        if success:
+            ColoredOutput.success("¡Procesamiento completado exitosamente!")
+            return 0
+        else:
+            ColoredOutput.error("Errores durante el procesamiento")
+            return 1
+    
+    # Si no hay argumentos válidos
+    ColoredOutput.error("Debes especificar --date y --theme, o usar --list-playbooks")
+    parser.print_help()
+    return 1
+
+if __name__ == '__main__':
+    sys.exit(main())
