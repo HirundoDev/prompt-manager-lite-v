@@ -1,1 +1,0 @@
-API Performance Tests\nEndpoint: POST /api/auth/login\nResponse Time: 152ms\nStatus: 200 OK\nThroughput: 850 requests/sec
