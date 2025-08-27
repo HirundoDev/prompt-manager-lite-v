@@ -2,6 +2,29 @@
 
 Guía maestra para usar Prompt Manager Lite V: dónde están los archivos, qué guía leer en cada caso y el flujo recomendado para documentar con trazabilidad.
 
+## 🆕 **SISTEMA MODULAR DE ERROR TRACKING IMPLEMENTADO (v3.3)**
+
+**Fecha actualización:** 2025-08-25  
+**Estado:** Sistema modular completamente funcional con error tracking integrado
+
+### **Nuevos Archivos Disponibles:**
+- ✅ **`playbooks/DOC035-ErrorTracking.md`** - Framework universal para tracking de errores
+- ✅ **`playbooks/DOC036-ErrorCodes.md`** - Sistema de códigos únicos de error
+- ✅ **`template-web-research.md`** - Template completo para investigaciones web
+- ✅ **`template-operations.md`** - Template modular para operaciones/instalaciones
+- ✅ **`template-pendingtask.md`** - Actualizado con sección de error tracking
+
+### **Comandos Modulares Disponibles:**
+```bash
+# Crear sesiones con diferentes templates
+python3 scripts/generate-daily.py --theme "BACKEND-API-SETUP" --template development
+python3 scripts/generate-daily.py --theme "DEPLOYMENT-CONFIG" --template operations  
+python3 scripts/generate-daily.py --theme "TECH-RESEARCH" --template research
+
+# Web-guides con template de investigación
+python3 scripts/web-guide-manager.py --create "study-name" --session "session-name" --use-research-template
+```
+
 > Regla local (Windsurf/Cascade): este repositorio usa reglas de uso del asistente. Ver `guides/windsurf_cascade_rules.md`. Seguir esta guía al pie de la letra y presentar resultados de verificación en formato simple (✔/✖ por archivo), abriendo `verification_report.md` como checklist visual.
 
 ## 🧭 Mapa Rápido

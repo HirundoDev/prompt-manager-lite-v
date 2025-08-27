@@ -35,6 +35,10 @@ from .testing import (
 from .cli import (
     create_cli_reference_template
 )
+from .operations import (
+    create_error_tracking_template,
+    create_error_codes_template
+)
 from .base import create_generic_template
 
 # Registry de templates por tipo
@@ -49,6 +53,8 @@ TEMPLATE_REGISTRY = {
     'deployment': create_deployment_template,
     'testing_strategy': create_testing_strategy_template,
     'cli_reference': create_cli_reference_template,
+    'error_tracking': create_error_tracking_template,
+    'error_codes': create_error_codes_template,
     'generic': create_generic_template
 }
 
@@ -77,5 +83,7 @@ __all__ = [
     'create_deployment_template',
     'create_testing_strategy_template',
     'create_cli_reference_template',
+    'create_error_tracking_template',
+    'create_error_codes_template',
     'create_generic_template'
 ]

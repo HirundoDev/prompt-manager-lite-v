@@ -1,8 +1,8 @@
 # The Mighty Task - Flujo Completo del Sistema
 
-**Fecha:** 2025-08-22  
-**Versión:** 1.0  
-**Estado:** Guía definitiva
+**Fecha:** 2025-08-26  
+**Versión:** 4.0  
+**Estado:** Sistema Modular con Guías Operacionales Independientes Implementado
 
 ---
 
@@ -14,6 +14,10 @@
 3. **Genera reportes HTML/Markdown** del progreso de cada sesión
 4. **Consolida múltiples sesiones** fusionando playbooks inteligentemente
 5. **Mantiene consistencia** y evita duplicación a través del tiempo
+6. **🆕 Sistema modular** con templates especializados (desarrollo, operaciones, investigación)
+7. **🆕 Error tracking integrado** con códigos únicos y metodología universal
+8. **🆕 Guías operacionales independientes** con gestión modular y tracking separado
+9. **🆕 Temas operacionales** para instalaciones, investigación, planificación y análisis
 
 ---
 
@@ -21,8 +25,11 @@
 
 ```
 the-mighty-task/
-├── 📄 PLAN-COMPLETO.md                    # Plan maestro del sistema
-├── 📄 template-pendingtask.md             # Template base para tareas
+├── 📄 PLAN-MEJORAS-SISTEMA.md             # Plan maestro del sistema modular
+├── 📄 template-pendingtask.md             # Template para desarrollo (con error tracking)
+├── 📄 template-operations.md              # Template para operaciones/instalaciones
+├── 📄 template-operations-modular.md      # 🆕 Template modular para operaciones v4.0
+├── 📄 template-web-research.md            # Template para investigaciones web
 ├── 📄 README.md                           # Documentación principal
 │
 ├── 📂 playbooks/                          # Playbooks originales (NUNCA se modifican)
@@ -36,7 +43,9 @@ the-mighty-task/
 │       ├── DOC009-DataModel.md            # Guía para Database
 │       ├── DOC010-Deployment.md           # Guía para Deploy
 │       ├── DOC011-TestingStrategy.md      # Guía para Testing
-│       └── DOC019-CLI-Command-Reference.md# Guía para CLI
+│       ├── DOC019-CLI-Command-Reference.md# Guía para CLI
+│       ├── DOC035-ErrorTracking.md        # 🆕 Framework universal de errores
+│       └── DOC036-ErrorCodes.md           # 🆕 Sistema de códigos únicos
 │
 ├── 📂 daily-work/                         # Sesiones de trabajo por fecha+tema
 │   ├── 📁 2024-01-15_BACKEND-API-SETUP/   # Ejemplo de sesión
@@ -65,10 +74,25 @@ the-mighty-task/
 │   ├── consolidation-log.json                            # Log de consolidación
 │   └── consolidation-resume.md                           # Resumen final
 │
-├── 📂 guides/                             # Guías del sistema
-│   └── FLUJO-COMPLETO-SISTEMA.md                         # Esta guía
+├── 📂 operational-guides/                 # 🆕 Guías operacionales independientes (v4.0)
+│   ├── .operational-guides-tracking.json                 # Tracking independiente
+│   ├── docker-installation.md                            # Guía Docker Ubuntu
+│   ├── postgres-comparison.md                            # Comparación PostgreSQL
+│   ├── idea-planning-methodology.md                      # Metodología de ideas
+│   ├── service-setup-checklist.md                        # Checklist servicios
+│   └── technology-research-framework.md                  # Framework investigación
 │
-└── 📂 scripts/                            # Scripts de automatización (ARQUITECTURA MODULAR)
+├── 📂 guides/                             # Guías del sistema
+│   ├── FLUJO-COMPLETO-SISTEMA.md                         # Esta guía
+│   ├── DAILY-WORKFLOW-GUIDE.md                           # Workflow diario
+│   ├── REPORTING-GUIDE.md                                 # Guía de reportes
+│   ├── MISSION-RESUME-GUIDE.md                            # Consolidación
+│   ├── WEB-RESEARCH-GUIDE.md                              # Investigación web
+│   ├── DEDUPLICATION-GUIDE.md                             # Deduplicación
+│   ├── OPERATIONAL-GUIDES-SYSTEM.md                      # 🆕 Sistema guías operacionales
+│   └── MANUAL-COMANDOS-COMPLETO.md                        # Manual de comandos
+│
+└├── 📂 scripts/                            # Scripts de automatización (ARQUITECTURA MODULAR)
     ├── 📂 generate_daily/                               # Módulo de generación diaria
     │   ├── generator.py                                  # Lógica principal de generación
     │   ├── cli.py                                        # Interface de línea de comandos
@@ -98,6 +122,8 @@ the-mighty-task/
     ├── status-checker.py                                 # Entry point modular
     ├── playbook-processor.py                             # Parsear playbooks → templates
     ├── report-generator.py                               # Generar reportes HTML/MD
+    ├── web-guide-manager.py                              # Gestión de web-guides
+    ├── operation-guide-manager.py                        # 🆕 Gestión de guías operacionales (v4.0)
     ├── maintenance.py                                     # Herramientas de mantenimiento
     └── test-system.py                                     # Suite completa de testing
 ```
@@ -110,10 +136,15 @@ the-mighty-task/
 
 ```bash
 # Crear nueva sesión de trabajo (MODULAR)
-python3 scripts/generate-daily.py --theme="BACKEND-API-SETUP" --date="2024-01-15"
+python3 scripts/generate_daily/cli.py --theme="BACKEND-API-SETUP" --date="2024-01-15"
 
 # O usar fecha automática (recomendado)
-python3 scripts/generate-daily.py --theme="BACKEND-API-SETUP"
+python3 scripts/generate_daily/cli.py --theme="BACKEND-API-SETUP"
+
+# 🆕 Crear sesión con temas operacionales (v4.0)
+python3 scripts/generate_daily/cli.py --theme="SYSTEM-INSTALLATION" --template operations-modular
+python3 scripts/generate_daily/cli.py --theme="TECHNOLOGY-RESEARCH" --template operations-modular
+python3 scripts/generate_daily/cli.py --theme="IDEA-PLANNING" --template operations-modular
 ```
 
 **¿Qué hace? (SISTEMA MODULAR)**
@@ -219,7 +250,40 @@ python3 scripts/report-generator.py --date="2024-01-15" --theme="BACKEND-API-SET
 
 ---
 
-### **PASO 6: Consolidación Final (SISTEMA MODULAR INTELIGENTE)**
+### **PASO 6: Gestión de Web-Guides y Guías Operacionales (v4.0)**
+
+#### **Web-Guides (Investigación)**
+```bash
+# Crear web-guide para investigación
+python3 scripts/web-guide-manager.py --create "API-Authentication-Research" --session "2025-08-25_BACKEND-API-SETUP"
+
+# Buscar web-guides existentes
+python3 scripts/web-guide-manager.py --search "authentication"
+
+# Listar todos los web-guides
+python3 scripts/web-guide-manager.py --list
+
+# Consolidar web-guides similares
+python3 scripts/web-guide-manager.py --consolidate "auth,security"
+```
+
+#### **🆕 Guías Operacionales (v4.0)**
+```bash
+# Crear guía operacional independiente
+python3 scripts/operation-guide-manager.py --create "docker-installation" \
+  --title "Instalación Docker Ubuntu" \
+  --description "Guía completa para Docker en Ubuntu 22.04" \
+  --tags "docker,instalacion,ubuntu"
+
+# Buscar guías operacionales
+python3 scripts/operation-guide-manager.py --search --tags "docker"
+python3 scripts/operation-guide-manager.py --search --name "installation"
+
+# Listar todas las guías operacionales
+python3 scripts/operation-guide-manager.py --list
+```
+
+### **PASO 7: Consolidación Final (SISTEMA MODULAR INTELIGENTE)**
 
 ```bash
 # Consolidar y fusionar múltiples sesiones del mismo tema (MODULAR)
@@ -250,6 +314,7 @@ python3 scripts/mission-resumer.py --list-sessions
 
 ## 🎯 **MAPEO DE TEMAS A PLAYBOOKS**
 
+### **Temas de Desarrollo (Templates development)**
 | Tema | Playbooks Asociados | Descripción |
 |------|-------------------|-------------|
 | `BACKEND-API-SETUP` | DOC006, DOC007, DOC008 | Backend + APIs |
@@ -258,6 +323,17 @@ python3 scripts/mission-resumer.py --list-sessions
 | `DEPLOYMENT-CONFIG` | DOC010 | Deploy y DevOps |
 | `TESTING-STRATEGY` | DOC011 | Testing |
 | `DESIGN-SYSTEM` | DOC003 | Sistema de diseño |
+
+### **🆕 Temas Operacionales (Template operations-modular v4.0)**
+| Tema | Playbooks Asociados | Descripción |
+|------|-------------------|-------------|
+| `SYSTEM-INSTALLATION` | DOC035, DOC036 | Instalaciones de sistemas |
+| `TECHNOLOGY-RESEARCH` | DOC035, DOC036 | Investigación tecnológica |
+| `IDEA-PLANNING` | DOC035, DOC036 | Planificación de ideas |
+| `PROCESS-DESIGN` | DOC035, DOC036 | Diseño de procesos |
+| `COMPARISON-ANALYSIS` | DOC035, DOC036 | Análisis comparativo |
+| `SERVICE-SETUP` | DOC035, DOC036 | Configuración de servicios |
+| `INVESTIGATION-PLANNING` | DOC035, DOC036 | Planificación de investigaciones |
 
 ---
 
@@ -495,20 +571,31 @@ python3 --version
 ## 🚀 **COMANDOS DE REFERENCIA RÁPIDA**
 
 ```bash
-# Flujo completo típico
-python3 scripts/generate-daily.py --date="$(date +%Y-%m-%d)" --theme="BACKEND-API-SETUP"
+# Flujo completo típico - DESARROLLO
+python3 scripts/generate_daily/cli.py --date="$(date +%Y-%m-%d)" --theme="BACKEND-API-SETUP"
 python3 scripts/playbook-processor.py --date="$(date +%Y-%m-%d)" --theme="BACKEND-API-SETUP"
 # [Trabajar en la sesión]
 python3 scripts/report-generator.py --date="$(date +%Y-%m-%d)" --theme="BACKEND-API-SETUP"
-python3 scripts/mission-resumer.py --theme="BACKEND-API"
+python3 scripts/mission_resumer/cli.py --theme="BACKEND-API"
+
+# 🆕 Flujo completo típico - OPERACIONAL (v4.0)
+python3 scripts/operation-guide-manager.py --create "docker-setup" --title "Docker Setup" --tags "docker,setup"
+python3 scripts/generate_daily/cli.py --theme="SYSTEM-INSTALLATION" --template operations-modular
+# [Trabajar en la sesión operacional]
+python3 scripts/report-generator.py --date="$(date +%Y-%m-%d)" --theme="SYSTEM-INSTALLATION"
+python3 scripts/mission_resumer/cli.py --theme="SYSTEM-INSTALLATION"
 
 # Verificación y mantenimiento
-python3 scripts/status-checker.py           # Estado completo del sistema
-python3 scripts/consistency-checker.py --scan-all
-python3 scripts/test-system.py --full-test  # Suite completa de testing
-python3 scripts/maintenance.py --daily      # Mantenimiento diario
-python3 scripts/maintenance.py --weekly     # Mantenimiento semanal
-python3 scripts/maintenance.py --backup     # Backup completo
+python3 scripts/status_checker/cli.py           # Estado completo del sistema
+python3 scripts/consistency_checker/cli.py --scan-all
+python3 scripts/test-system.py --full-test      # Suite completa de testing
+python3 scripts/maintenance.py --daily          # Mantenimiento diario
+python3 scripts/maintenance.py --weekly         # Mantenimiento semanal
+python3 scripts/maintenance.py --backup         # Backup completo
+
+# 🆕 Gestión de guías operacionales (v4.0)
+python3 scripts/operation-guide-manager.py --list
+python3 scripts/operation-guide-manager.py --search --tags "installation"
 
 # Ver ayuda de cualquier script
 python3 scripts/[script-name].py --help

@@ -113,28 +113,34 @@ class StatusDisplay:
         
         print()
     
-    def _show_resumes_summary(self, resumes: Dict):
-        """Muestra resumen de mission resumes."""
+    def _show_mission_resumes_status(self, resumes_data: Dict):
+        """Muestra estado de los resúmenes de misión."""
         ColoredOutput.section("📋 Mission Resumes")
         
-        total = resumes['total_resumes']
-        print(f"📄 **Total resúmenes:** {total}")
+        print(f"Total resúmenes: {resumes_data['total_resumes']}")
         
-        if total > 0:
-            avg_sessions = resumes['avg_sessions_per_resume']
-            print(f"📊 **Sesiones promedio por resumen:** {avg_sessions:.1f}")
-            
-            # Distribución por tamaño
-            sizes = resumes['resumes_by_size']
-            print(f"📏 **Por tamaño:** Pequeños: {sizes['small']}, Medianos: {sizes['medium']}, Grandes: {sizes['large']}")
-            
-            # Resúmenes recientes
-            if resumes['recent_resumes']:
-                print(f"🕒 **Recientes:**")
-                for resume in resumes['recent_resumes'][:2]:
-                    sessions_info = f" ({resume['sessions_count']} sesiones)" if 'sessions_count' in resume else ""
-                    print(f"   • {resume['name']}{sessions_info}")
-        else:
+        # Mostrar sesiones con/sin mission-resume
+        if resumes_data.get('sessions_with_resume'):
+            ColoredOutput.success(f"✅ Sesiones con mission-resume ({len(resumes_data['sessions_with_resume'])}):")
+            for theme in resumes_data['sessions_with_resume']:
+                print(f"  • {theme}")
+        
+        if resumes_data.get('sessions_without_resume'):
+            ColoredOutput.warning(f"⚠️  Sesiones SIN mission-resume ({len(resumes_data['sessions_without_resume'])}):")
+            for theme in resumes_data['sessions_without_resume']:
+                print(f"  • {theme} - ⚡ Pendiente de consolidar")
+        
+        if resumes_data['resumes_by_theme']:
+            print("\n**Por tema:**")
+            for theme, count in resumes_data['resumes_by_theme'].items():
+                print(f"  • {theme}: {count}")
+        
+        if resumes_data['recent_resumes']:
+            print("\n**Resúmenes recientes:**")
+            for resume in resumes_data['recent_resumes'][:3]:
+                size_mb = resume['size'] / 1024 / 1024
+                print(f"  • {resume['name']} ({size_mb:.1f}MB)")
+                print(f"    Modificado: {resume['modified'][:10]}")
             ColoredOutput.info("No hay mission resumes creados aún")
         
         print()

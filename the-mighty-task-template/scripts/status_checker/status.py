@@ -257,69 +257,70 @@ class StatusChecker:
         return playbooks_data
     
     def analyze_mission_resumes(self) -> Dict:
-        """Analiza resúmenes de misión existentes."""
+        """Analiza resúmenes de misión disponibles."""
         resumes_data = {
             'total_resumes': 0,
             'recent_resumes': [],
-            'resumes_by_size': {'small': 0, 'medium': 0, 'large': 0},
-            'avg_sessions_per_resume': 0
+            'resumes_by_theme': defaultdict(int),
+            'sessions_with_resume': [],
+            'sessions_without_resume': []
         }
         
         if not self.mission_resumes_dir.exists():
             return resumes_data
         
-        resume_sessions_counts = []
-        recent_resumes = []
+        # Obtener temas de daily-work para comparar
+        daily_work_themes = set()
+        if self.daily_work_dir.exists():
+            for session_dir in self.daily_work_dir.iterdir():
+                if session_dir.is_dir() and not session_dir.name.startswith('.'):
+                    session_info = self._parse_session_info(session_dir)
+                    if session_info:
+                        daily_work_themes.add(session_info['theme'])
         
+        # Analizar mission-resumes existentes
+        resume_themes = set()
         for resume_dir in self.mission_resumes_dir.iterdir():
             if not resume_dir.is_dir():
                 continue
             
             resumes_data['total_resumes'] += 1
             
-            # Analizar contenido del resumen
+            # Buscar archivo consolidado
             consolidated_files = list(resume_dir.glob('*-CONSOLIDATED.md'))
-            log_files = list(resume_dir.glob('consolidation-log.json'))
-            
-            resume_info = {
-                'name': resume_dir.name,
-                'has_consolidated_file': len(consolidated_files) > 0,
-                'has_log': len(log_files) > 0,
-                'directory': str(resume_dir)
-            }
-            
-            # Obtener información del log si existe
-            if log_files:
+            if consolidated_files:
+                consolidated_file = consolidated_files[0]
                 try:
-                    with open(log_files[0], 'r', encoding='utf-8') as f:
-                        log_data = json.load(f)
+                    stat = consolidated_file.stat()
+                    resume_info = {
+                        'name': resume_dir.name,
+                        'file': consolidated_file.name,
+                        'size': stat.st_size,
+                        'modified': datetime.fromtimestamp(stat.st_mtime).isoformat()
+                    }
+                    resumes_data['recent_resumes'].append(resume_info)
                     
-                    sessions_count = log_data.get('sessions_processed', 0)
-                    resume_info['sessions_count'] = sessions_count
-                    resume_info['timestamp'] = log_data.get('consolidation_timestamp')
-                    
-                    resume_sessions_counts.append(sessions_count)
-                    
-                    # Clasificar por tamaño
-                    if sessions_count <= 2:
-                        resumes_data['resumes_by_size']['small'] += 1
-                    elif sessions_count <= 5:
-                        resumes_data['resumes_by_size']['medium'] += 1
-                    else:
-                        resumes_data['resumes_by_size']['large'] += 1
+                    # Extraer tema del nombre
+                    theme = self._extract_theme_from_resume_name(resume_dir.name)
+                    if theme:
+                        resumes_data['resumes_by_theme'][theme] += 1
+                        resume_themes.add(theme)
                         
                 except Exception:
                     pass
-            
-            recent_resumes.append(resume_info)
         
-        # Calcular promedio de sesiones por resumen
-        if resume_sessions_counts:
-            resumes_data['avg_sessions_per_resume'] = sum(resume_sessions_counts) / len(resume_sessions_counts)
+        # Identificar sesiones con/sin mission-resume
+        for theme in daily_work_themes:
+            if theme in resume_themes:
+                resumes_data['sessions_with_resume'].append(theme)
+            else:
+                resumes_data['sessions_without_resume'].append(theme)
         
-        # Ordenar por timestamp si está disponible
-        recent_resumes.sort(key=lambda x: x.get('timestamp', ''), reverse=True)
-        resumes_data['recent_resumes'] = recent_resumes[:3]
+        # Ordenar por fecha de modificación
+        resumes_data['recent_resumes'].sort(
+            key=lambda x: x['modified'], 
+            reverse=True
+        )
         
         return resumes_data
     

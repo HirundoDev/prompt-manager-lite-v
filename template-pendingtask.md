@@ -177,10 +177,31 @@ Este documento es la **fuente única de verdad** para la reconstrucción del eco
 - **Notas para futuro:** [Consideraciones importantes para próximas misiones]
 * **Checklist de Verificación de Misión:**  
   * [ ] **[CAT-01] [Categoría Principal]:** [Estado: NO_INICIADO] [Asignado: AGENTE] [Est: Xh]
-    * [ ] [CAT-01.A.1] [Acción específica verificable] [Estado: NO_INICIADO]
-    * [ ] [CAT-01.A.2] [Otra acción específica] [Estado: NO_INICIADO]
+    * [ ] **[CAT-01.A.1] [Título Específico]:** [Estado: NO_INICIADO]
+      * **Descripción:** [Descripción detallada de 2-3 líneas explicando QUÉ se hace exactamente]
+      * **Criterios de éxito:** [Criterios específicos y medibles]
+      * **Archivos involucrados:** [Lista de archivos que se crearán/modificarán]
+      * **Validación:** [Cómo verificar que está completo]
+      * **Estimación:** [Tiempo estimado: Xh]
+      * **Investigación web requerida:** [Temas a investigar antes de implementar]
+      * **Códigos de error únicos:** [Lista de códigos que implementará: PREFIX-MODULE-001, etc.]
+    * [ ] **[CAT-01.A.2] [Otro Título Específico]:** [Estado: NO_INICIADO]
+      * **Descripción:** [Descripción detallada de 2-3 líneas explicando QUÉ se hace exactamente]
+      * **Criterios de éxito:** [Criterios específicos y medibles]
+      * **Archivos involucrados:** [Lista de archivos que se crearán/modificarán]
+      * **Validación:** [Cómo verificar que está completo]
+      * **Estimación:** [Tiempo estimado: Xh]
+      * **Investigación web requerida:** [Temas a investigar antes de implementar]
+      * **Códigos de error únicos:** [Lista de códigos que implementará: PREFIX-MODULE-001, etc.]
   * [ ] **[CAT-02] [Otra Categoría]:** [Estado: NO_INICIADO] [Asignado: AGENTE] [Est: Yh]
-    * [ ] [CAT-02.B.1] [Más acciones verificables] [Estado: NO_INICIADO]
+    * [ ] **[CAT-02.B.1] [Título Específico]:** [Estado: NO_INICIADO]
+      * **Descripción:** [Descripción detallada de 2-3 líneas explicando QUÉ se hace exactamente]
+      * **Criterios de éxito:** [Criterios específicos y medibles]
+      * **Archivos involucrados:** [Lista de archivos que se crearán/modificarán]
+      * **Validación:** [Cómo verificar que está completo]
+      * **Estimación:** [Tiempo estimado: Xh]
+      * **Investigación web requerida:** [Temas a investigar antes de implementar]
+      * **Códigos de error únicos:** [Lista de códigos que implementará: PREFIX-MODULE-001, etc.]
 
 ### **FASE [NÚMERO]: [NOMBRE DE LA FASE]**
 
@@ -204,20 +225,50 @@ Este documento es la **fuente única de verdad** para la reconstrucción del eco
 - **Comandos Validados:** [Lista de comandos probados]
 - **Funcionalidad Confirmada:** [Resumen de funcionalidad verificada]
 
+### **TRACKING DE ERRORES Y CÓDIGOS ÚNICOS**
+
+**REGISTRO DE ERRORES IMPLEMENTADOS:**
+- **[ERROR-CODE-001]** - [Descripción del error] - [Archivo: ruta/archivo.ext] - [Función: nombreFuncion()]
+- **[ERROR-CODE-002]** - [Descripción del error] - [Archivo: ruta/archivo.ext] - [Función: otraFuncion()]
+
+**CONFIGURACIÓN DE ERROR TRACKING:**
+- **Herramienta:** [Sentry/Rollbar/Custom/etc.]
+- **DSN/Config:** [Configuración específica]
+- **Nivel de logging:** [DEBUG/INFO/WARN/ERROR]
+- **Integración con:** [DOC035-ErrorTracking.md]
+
+**VALIDACIÓN DE CÓDIGOS ÚNICOS:**
+- **Prefijo del proyecto:** [PREFIX]
+- **Módulos identificados:** [AUTH, API, DB, etc.]
+- **Último código asignado:** [PREFIX-MODULE-XXX]
+- **Script de validación:** [Comando para verificar unicidad]
+
+**MÉTRICAS DE ERRORES:**
+- **Errores detectados:** [0]
+- **Errores resueltos:** [0]
+- **Tiempo promedio resolución:** [N/A]
+- **Cobertura de error tracking:** [0%]
+
 ### **CRITERIOS DE FINALIZACIÓN TOTAL**
 
 * **Condiciones de Éxito:**
   1. [Criterio específico y medible]
   2. [Otro criterio]
   3. [Más criterios]
+  4. **Todos los códigos de error implementados y únicos**
+  5. **Error tracking configurado y funcionando**
 
 * **Pruebas de Aceptación:**
   1. [Test específico que debe pasar]
   2. [Otro test]
+  3. **Validación de códigos únicos ejecutada exitosamente**
+  4. **Error tracking capturando errores correctamente**
 
 * **Documentación Requerida:**
   1. [Documento que debe existir]
   2. [Otro documento]
+  3. **Registro completo de códigos de error en DOC036**
+  4. **Configuración de error tracking documentada**
 
 ### **MÉTRICAS DE ÉXITO**
 

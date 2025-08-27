@@ -29,6 +29,14 @@ class PlaybookRegistry:
         'CLI-DEVELOPMENT': ['DOC019'],
         'DATA-MODELING': ['DOC009'],
         'DEVOPS-SETUP': ['DOC010'],
+        # Nuevos temas operacionales v4.0
+        'SYSTEM-INSTALLATION': ['DOC035', 'DOC036'],
+        'TECHNOLOGY-RESEARCH': ['DOC035', 'DOC036'],
+        'IDEA-PLANNING': ['DOC035', 'DOC036'],
+        'PROCESS-DESIGN': ['DOC035', 'DOC036'],
+        'COMPARISON-ANALYSIS': ['DOC035', 'DOC036'],
+        'SERVICE-SETUP': ['DOC035', 'DOC036'],
+        'INVESTIGATION-PLANNING': ['DOC035', 'DOC036'],
     }
     
     # Mapeo de códigos a archivos
@@ -43,6 +51,9 @@ class PlaybookRegistry:
         'DOC010': 'DOC010-Deployment.md',
         'DOC011': 'DOC011-TestingStrategy.md',
         'DOC019': 'DOC019-CLI-Command-Reference.md',
+        # Playbooks operacionales v4.0
+        'DOC035': 'DOC035-ErrorTracking.md',
+        'DOC036': 'DOC036-ErrorCodes.md',
     }
     
     # Descripción de cada playbook
@@ -57,6 +68,9 @@ class PlaybookRegistry:
         'DOC010': 'Configuración de deployment y DevOps',
         'DOC011': 'Estrategias y implementación de testing',
         'DOC019': 'Referencia de comandos CLI',
+        # Playbooks operacionales v4.0
+        'DOC035': 'Framework universal para tracking de errores',
+        'DOC036': 'Metodología para códigos únicos de error',
     }
     
     def __init__(self, base_path: Optional[Path] = None):
@@ -282,6 +296,14 @@ class PlaybookRegistry:
             'CLI-DEVELOPMENT': 'Desarrollo de herramientas CLI',
             'DATA-MODELING': 'Modelado y estructuras de datos',
             'DEVOPS-SETUP': 'Configuración de herramientas DevOps',
+            # Temas operacionales v4.0
+            'SYSTEM-INSTALLATION': 'Instalación y configuración de sistemas',
+            'TECHNOLOGY-RESEARCH': 'Investigación y evaluación de tecnologías',
+            'IDEA-PLANNING': 'Planificación y estructuración de ideas',
+            'PROCESS-DESIGN': 'Diseño de procesos y metodologías',
+            'COMPARISON-ANALYSIS': 'Análisis comparativo de herramientas',
+            'SERVICE-SETUP': 'Configuración de servicios y aplicaciones',
+            'INVESTIGATION-PLANNING': 'Planificación de investigaciones técnicas',
         }
         return descriptions.get(theme, 'Tema personalizado')
     

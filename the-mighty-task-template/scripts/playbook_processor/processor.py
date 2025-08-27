@@ -21,6 +21,7 @@ class PlaybookProcessor:
     def __init__(self, base_path=None):
         self.base_path = Path(base_path or os.getcwd())
         self.playbooks_dir = self.base_path / 'playbooks' / 'documentation_playbooks'
+        self.main_playbooks_dir = self.base_path / 'playbooks'
         self.daily_work_dir = self.base_path / 'daily-work'
         self.tracking_file = self.daily_work_dir / '.tracking.json'
         
@@ -81,7 +82,11 @@ class PlaybookProcessor:
         """Obtiene la lista de playbooks disponibles."""
         available = []
         for playbook_code, filename in PLAYBOOK_FILE_MAPPING.items():
+            # Buscar primero en documentation_playbooks, luego en playbooks principal
             playbook_path = self.playbooks_dir / filename
+            if not playbook_path.exists():
+                playbook_path = self.main_playbooks_dir / filename
+            
             if playbook_path.exists():
                 available.append((playbook_code, filename, playbook_path))
             else:
@@ -250,7 +255,9 @@ class PlaybookProcessor:
             'DOC009-DataModel.md': 'data_model',
             'DOC010-Deployment.md': 'deployment',
             'DOC011-TestingStrategy.md': 'testing_strategy',
-            'DOC019-CLI-Command-Reference.md': 'cli_reference'
+            'DOC019-CLI-Command-Reference.md': 'cli_reference',
+            'DOC035-ErrorTracking.md': 'error_tracking',
+            'DOC036-ErrorCodes.md': 'error_codes'
         }
         return doc_mapping.get(filename, 'generic')
     
@@ -291,6 +298,10 @@ class PlaybookProcessor:
             
             playbook_filename = PLAYBOOK_FILE_MAPPING[playbook_code]
             playbook_path = self.playbooks_dir / playbook_filename
+            
+            # Si no existe en documentation_playbooks, buscar en playbooks principal
+            if not playbook_path.exists():
+                playbook_path = self.main_playbooks_dir / playbook_filename
             
             if not playbook_path.exists():
                 ColoredOutput.error(f"Playbook no encontrado: {playbook_path}")

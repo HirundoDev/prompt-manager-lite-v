@@ -25,13 +25,16 @@ def main():
         epilog="""
 Ejemplos de uso:
 
-  # Crear sesión para hoy con tema específico
-  python scripts/generate-daily.py --theme "BACKEND-API-SETUP"
+  # Crear sesión de desarrollo para hoy con tema específico
+  python scripts/generate-daily.py --theme "BACKEND-API-SETUP" --template development
   
-  # Crear sesión con fecha específica
-  python scripts/generate-daily.py --theme "FRONTEND-COMPONENTS" --date "2025-01-22"
+  # Crear sesión de operaciones con fecha específica
+  python scripts/generate-daily.py --theme "DEPLOYMENT-CONFIG" --template operations --date "2025-01-22"
   
-  # Modo automático (fecha actual + tema default)
+  # Crear sesión de investigación
+  python scripts/generate-daily.py --theme "TECH-RESEARCH" --template research
+  
+  # Modo automático (fecha actual + tema default + template development)
   python scripts/generate-daily.py --auto
   
   # Listar temas disponibles
@@ -57,6 +60,14 @@ Características v2.0:
         '--theme', 
         type=str,
         help='Tema de la sesión (ej: BACKEND-API-SETUP, FRONTEND-COMPONENTS)'
+    )
+    
+    parser.add_argument(
+        '--template',
+        type=str,
+        choices=['development', 'operations', 'operations-modular', 'research'],
+        default='development',
+        help='Tipo de template a usar (development, operations, operations-modular, research)'
     )
     
     parser.add_argument(
@@ -183,9 +194,9 @@ Características v2.0:
         
         # Crear sesión
         if not args.quiet:
-            ColoredOutput.progress(f"Creando sesión: {args.date}_{theme}")
+            ColoredOutput.progress(f"Creando sesión: {args.date}_{theme} (template: {args.template})")
         
-        result = generator.create_session_structure(args.date, theme, args.force)
+        result = generator.create_session_structure(args.date, theme, args.force, args.template)
         
         # Mostrar resultado
         if not args.quiet:

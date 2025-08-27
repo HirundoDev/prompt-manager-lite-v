@@ -1,27 +1,26 @@
-# The Mighty Task - Sistema Dinámico de Gestión de Tareas
+# The Mighty Task Template - Sistema de Gestión de Tareas Diarias
 
-**Versión:** 3.0 - Marcos Universales  
-**Estado:** Producción  
-**Autor:** The Mighty Task Development Team  
-**Fecha:** 2025-08-22  
+**Versión:** 3.1 - Con Web-Guides y Especificación Avanzada  
+**Estado:** 100% Funcional con Mejoras Implementadas  
+**Fecha:** 2025-08-25
 
 ---
 
-## 🎯 **Descripción General**
+## 🎯 **DESCRIPCIÓN GENERAL**
 
-The Mighty Task es un sistema completo de gestión de tareas diarias basado en playbooks, diseñado para desarrolladores y equipos técnicos que requieren trazabilidad, consistencia y automatización en sus procesos de trabajo.
+The Mighty Task es un sistema completo de gestión de tareas diarias basado en **playbooks universales** y **checklists como fuente de verdad**. Diseñado para maximizar la productividad mediante estructura, automatización y tracking granular.
 
-### **Características Principales**
-
-- ✅ **Generación automática de sesiones diarias** con estructura predefinida
-- 📚 **Marcos universales (v3.0)** - Playbooks adaptables a cualquier tecnología
-- 🔄 **Templates dinámicos** con decisiones técnicas estructuradas
-- 📊 **Tracking completo** con JSON para análisis y reportes
-- 🔍 **Verificación de consistencia** automática del sistema
-- 📈 **Reportes HTML/MD** para seguimiento del progreso
-- 🎨 **Output colorido** en terminal para mejor experiencia de usuario
-
-### **🌟 Novedades v3.0 - Marcos Universales**
+### **Características Principales:**
+- ✅ **Generación automática** de sesiones diarias temáticas
+- ✅ **Templates dinámicos** basados en playbooks universales
+- ✅ **Sistema de tracking** JSON completo con métricas
+- ✅ **Verificación de consistencia** automática
+- ✅ **Reportes HTML/MD** para seguimiento detallado
+- ✅ **Consolidación inteligente** de múltiples sesiones
+- ✅ **Arquitectura modular** v2.0 completamente funcional
+- 🆕 **Especificación detallada** de tareas con 6 campos obligatorios
+- 🆕 **Sistema web-guides** para reutilización de investigaciones
+- 🆕 **Guías de workflow** para uso correcto del sistema
 
 - 🎯 **Playbooks universales** adaptables a cualquier framework o tecnología
 - 📋 **Decisiones técnicas** estructuradas con placeholders claros
@@ -100,12 +99,13 @@ the-mighty-task/
 │
 ├── 📂 reports/                     # Reportes generados
 ├── 📂 mission-resumes/            # Resúmenes ejecutivos
-└── 📂 scripts/                    # Scripts de automatización
+└├── 📂 scripts/                    # Scripts de automatización
     ├── generate-daily.py          # Generar estructura diaria
     ├── playbook-processor.py      # Procesar playbooks → templates
     ├── consistency-checker.py     # Verificar consistencia
     ├── report-generator.py        # Generar reportes
-    └── mission-resumer.py         # Crear resúmenes
+    ├── mission-resumer.py         # Crear resúmenes
+    └── web-guide-manager.py       # 🆕 Gestionar web-guides
 ```
 
 ---
@@ -247,6 +247,23 @@ python scripts/consistency-checker.py --scan-all
 python scripts/report-generator.py --date="2025-01-22" --theme="BACKEND-API-SETUP"
 ```
 - 📈 Analiza métricas de progreso
+- 📊 Genera reportes HTML/MD detallados
+- 🎯 Incluye métricas de calidad y productividad
+
+### **🆕 Paso 6: Gestionar Web-Guides**
+```bash
+# Crear web-guide para investigación
+python scripts/web-guide-manager.py --create "express-setup" --session "2025-01-22_BACKEND-API-SETUP"
+
+# Buscar guides existentes
+python scripts/web-guide-manager.py --search "express"
+
+# Listar todos los guides
+python scripts/web-guide-manager.py --list-guides
+```
+- 🔍 Crea guides para investigaciones web
+- 📚 Reutiliza investigaciones entre sesiones
+- 🗂️ Organiza conocimiento por temas
 - 📄 Genera reporte HTML y MD
 - 📊 Incluye estadísticas detalladas
 - 🎯 Identifica áreas de mejora
@@ -304,6 +321,11 @@ Edita `template-pendingtask.md` para cambiar:
 1. Crea archivo `DOC0XX-NombreDelPlaybook.md` en `playbooks/documentation_playbooks/`
 2. Agrega mapeo en `PLAYBOOK_FILE_MAPPING` en `playbook-processor.py`
 3. Asocia con temas relevantes
+
+### **🆕 Personalizar Web-Guides**
+1. Modifica templates en `web-guide-manager.py`
+2. Agrega nuevos tags en `_extract_tags()`
+3. Personaliza estructura de consolidación
 
 ---
 

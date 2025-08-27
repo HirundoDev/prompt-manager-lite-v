@@ -1,0 +1,94 @@
+{
+  "guides": [
+    {
+      "name": "docker-installation",
+      "filename": "docker-installation.md",
+      "title": "Instalación Docker Ubuntu",
+      "description": "Guía completa para Docker en Ubuntu 22.04",
+      "tags": [
+        "docker",
+        "instalacion",
+        "ubuntu"
+      ],
+      "created_date": "2025-08-26T10:54:10.303740",
+      "last_updated": "2025-08-26T10:54:10.303750",
+      "usage_count": 0,
+      "status": "active"
+    },
+    {
+      "name": "postgres-comparison",
+      "filename": "postgres-comparison.md",
+      "title": "Comparación PostgreSQL vs MySQL",
+      "description": "Análisis comparativo de bases de datos relacionales",
+      "tags": [
+        "database",
+        "postgres",
+        "mysql",
+        "comparison"
+      ],
+      "created_date": "2025-08-26T10:56:20.254363",
+      "last_updated": "2025-08-26T10:56:20.254373",
+      "usage_count": 0,
+      "status": "active"
+    },
+    {
+      "name": "idea-planning-methodology",
+      "filename": "idea-planning-methodology.md",
+      "title": "Metodología de Planificación de Ideas",
+      "description": "Framework para planificar y estructurar nuevas ideas antes de implementar",
+      "tags": [
+        "planning",
+        "methodology",
+        "ideas",
+        "framework"
+      ],
+      "created_date": "2025-08-26T10:56:53.828335",
+      "last_updated": "2025-08-26T10:56:53.828347",
+      "usage_count": 0,
+      "status": "active"
+    },
+    {
+      "name": "service-setup-checklist",
+      "filename": "service-setup-checklist.md",
+      "title": "Checklist de Configuración de Servicios",
+      "description": "Lista de verificación para configurar servicios en producción",
+      "tags": [
+        "services",
+        "checklist",
+        "production",
+        "deployment"
+      ],
+      "created_date": "2025-08-26T10:58:06.656526",
+      "last_updated": "2025-08-26T10:58:06.656536",
+      "usage_count": 0,
+      "status": "active"
+    },
+    {
+      "name": "technology-research-framework",
+      "filename": "technology-research-framework.md",
+      "title": "Framework de Investigación Tecnológica",
+      "description": "Metodología para investigar y evaluar nuevas tecnologías",
+      "tags": [
+        "research",
+        "technology",
+        "framework",
+        "evaluation"
+      ],
+      "created_date": "2025-08-26T10:58:47.758339",
+      "last_updated": "2025-08-26T10:58:47.758350",
+      "usage_count": 0,
+      "status": "active"
+    }
+  ],
+  "metadata": {
+    "created_date": "2025-08-26",
+    "version": "1.0",
+    "total_guides": 5,
+    "last_updated": "2025-08-26T10:58:47.758353"
+  },
+  "settings": {
+    "auto_backup": true,
+    "validation_enabled": true,
+    "duplicate_check": true
+  }
+}

@@ -11,15 +11,15 @@ THEME_PLAYBOOK_MAPPING = {
     'FRONTEND-COMPONENTS': ['DOC003', 'DOC004'],
     'FRONTEND-DEPENDENCIES': ['DOC005'],
     'DESIGN-SYSTEM': ['DOC003'],
-    'BACKEND-API-SETUP': ['DOC006', 'DOC007', 'DOC008'],
-    'BACKEND-ARCHITECTURE': ['DOC006', 'DOC007'],
-    'API-DESIGN': ['DOC008'],
-    'DATABASE-SCHEMA': ['DOC009'],
-    'DATA-MODELING': ['DOC009'],
-    'DEPLOYMENT-CONFIG': ['DOC010'],
-    'DEVOPS-SETUP': ['DOC010'],
-    'TESTING-STRATEGY': ['DOC011'],
-    'CLI-DEVELOPMENT': ['DOC019']
+    'BACKEND-API-SETUP': ['DOC006', 'DOC007', 'DOC008', 'DOC035', 'DOC036'],
+    'BACKEND-ARCHITECTURE': ['DOC006', 'DOC007', 'DOC035', 'DOC036'],
+    'API-DESIGN': ['DOC008', 'DOC035', 'DOC036'],
+    'DATABASE-SCHEMA': ['DOC009', 'DOC035', 'DOC036'],
+    'DATA-MODELING': ['DOC009', 'DOC035', 'DOC036'],
+    'DEPLOYMENT-CONFIG': ['DOC010', 'DOC035', 'DOC036'],
+    'DEVOPS-SETUP': ['DOC010', 'DOC035', 'DOC036'],
+    'TESTING-STRATEGY': ['DOC011', 'DOC035', 'DOC036'],
+    'CLI-DEVELOPMENT': ['DOC019', 'DOC035', 'DOC036']
 }
 
 # Mapeo de códigos DOC a nombres de archivos
@@ -33,7 +33,9 @@ PLAYBOOK_FILE_MAPPING = {
     'DOC009': 'DOC009-DataModel.md',
     'DOC010': 'DOC010-Deployment.md',
     'DOC011': 'DOC011-TestingStrategy.md',
-    'DOC019': 'DOC019-CLI-Command-Reference.md'
+    'DOC019': 'DOC019-CLI-Command-Reference.md',
+    'DOC035': 'DOC035-ErrorTracking.md',
+    'DOC036': 'DOC036-ErrorCodes.md'
 }
 
 class ColoredOutput:

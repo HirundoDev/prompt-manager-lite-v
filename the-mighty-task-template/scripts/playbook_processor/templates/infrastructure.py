@@ -267,16 +267,16 @@ spec:
 ### Health Checks
 ```http
 GET /health
-{
+{{
   "status": "healthy",
   "timestamp": "2024-01-15T10:30:00Z",
   "version": "1.0.0",
-  "services": {
+  "services": {{
     "database": "healthy",
     "redis": "healthy",
     "external_api": "healthy"
-  }
-}
+  }}
+}}
 ```
 
 ---

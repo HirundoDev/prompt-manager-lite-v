@@ -27,6 +27,12 @@ class MissionResumer:
         self.daily_work_dir = self.base_path / 'daily-work'
         self.mission_resumes_dir = self.base_path / 'mission-resumes'
         
+        # Crear directorio mission-resumes si no existe
+        self.mission_resumes_dir.mkdir(exist_ok=True)
+        
+        # Inicializar estructura completa automáticamente
+        self._initialize_mission_resumes_structure()
+        
         # Inicializar módulos compartidos
         self.registry = PlaybookRegistry(self.base_path)
         self.detector = TemplateDetector()
@@ -51,23 +57,52 @@ class MissionResumer:
         sessions = []
         
         if not self.daily_work_dir.exists():
-            return sessions
-        
-        for session_dir in self.daily_work_dir.iterdir():
-            if not session_dir.is_dir() or session_dir.name.startswith('.'):
-                continue
-            
-            # Parsear nombre de sesión
-            session_info = self._parse_session_name(session_dir.name)
-            if not session_info:
-                continue
-            
-            # Aplicar filtro de tema si se especifica
-            if theme_filter and session_info['theme'] != theme_filter:
-                continue
-            
-            # Analizar contenido de la sesión
-            content_analysis = self._analyze_session_content(session_dir)
+            all_sessions = self.scan_sessions(theme_filter=theme_filter)
+            sessions = [s for s in all_sessions if s['has_meaningful_content']]
+        else:
+            for session_dir in self.daily_work_dir.glob('*'):
+                if session_dir.is_dir():
+                    # Extraer tema del nombre del directorio
+                    parts = session_dir.name.split('_', 1)
+                    if len(parts) >= 2:
+                        session_theme = parts[1]
+                        if theme_filter and session_theme != theme_filter:
+                            continue
+                        
+                        # Parsear nombre de sesión
+                        session_info = self._parse_session_name(session_dir.name)
+                        if not session_info:
+                            continue
+                        
+                        # Analizar contenido de la sesión
+                        content_analysis = self._analyze_session_content(session_dir)
+                        
+                        session_data = {
+                            'directory': session_dir,
+                            'name': session_dir.name,
+                            'date': session_info['date'],
+                            'theme': session_info['theme'],
+                            'content_analysis': content_analysis,
+                            'has_meaningful_content': content_analysis['has_real_content'],
+                            'completion_percentage': content_analysis['completion_percentage'],
+                            'files_count': content_analysis['files_count'],
+                            'templates_count': content_analysis['templates_count']
+                        }
+                        
+                        sessions.append(session_data)
+                    session_data = {
+                        'directory': session_dir,
+                        'name': session_dir.name,
+                        'date': session_info['date'],
+                        'theme': session_info['theme'],
+                        'content_analysis': content_analysis,
+                        'has_meaningful_content': content_analysis['has_real_content'],
+                        'completion_percentage': content_analysis['completion_percentage'],
+                        'files_count': content_analysis['files_count'],
+                        'templates_count': content_analysis['templates_count']
+                    }
+                    
+                    sessions.append(session_data)
             
             session_data = {
                 'directory': session_dir,
@@ -252,12 +287,9 @@ class MissionResumer:
         }
         
         try:
-            # Crear directorio de salida
-            output_dir = self.mission_resumes_dir / output_name
-            output_dir.mkdir(parents=True, exist_ok=True)
-            
-            # Archivo de salida principal
-            output_file = output_dir / f"{output_name}-CONSOLIDATED.md"
+            # Archivo de salida en docs/ usando tema como nombre único
+            theme_name = sessions[0]['theme'] if sessions else output_name
+            output_file = self.mission_resumes_dir / 'docs' / f"{theme_name}.md"
             
             # Generar contenido consolidado
             consolidated_content = self._generate_consolidated_content(sessions, output_name)
@@ -266,11 +298,11 @@ class MissionResumer:
             output_file.write_text(consolidated_content, encoding='utf-8')
             result['output_file'] = str(output_file)
             
-            # Copiar assets relevantes
-            self._copy_relevant_assets(sessions, output_dir, result)
+            # Consolidar todos los assets, charts, web-guides, etc.
+            self._consolidate_all_assets(sessions, result)
             
-            # Generar log de consolidación
-            self._generate_consolidation_log(sessions, output_dir, result)
+            # Generar log de consolidación en mission-resumes
+            self._generate_consolidation_log(sessions, self.mission_resumes_dir, result)
             
             # Actualizar tracking
             self._update_consolidation_tracking(sessions, output_name, result)
@@ -359,6 +391,34 @@ class MissionResumer:
                         content_parts.append(f"⚠️ Error procesando {meaningful_file}: {e}")
                         content_parts.append("")
         
+        # Sección de web-guides utilizadas
+        web_guides_used = self._extract_web_guides_references(sessions)
+        if web_guides_used:
+            content_parts.append("## 🌐 Web-Guides Utilizadas")
+            content_parts.append("")
+            content_parts.append("Las siguientes web-guides fueron creadas durante estas sesiones:")
+            content_parts.append("")
+            for guide in web_guides_used:
+                content_parts.append(f"- **{guide['name']}** - {guide['title']}")
+                content_parts.append(f"  - Archivo: `{guide['file_path']}`")
+                content_parts.append(f"  - Descripción: {guide['description']}")
+                content_parts.append(f"  - Usado en: {', '.join(guide['sessions_used'])}")
+                content_parts.append("")
+        
+        # Sección de guías operacionales utilizadas
+        operational_guides_used = self._extract_operational_guides_references(sessions)
+        if operational_guides_used:
+            content_parts.append("## 🔧 Guías Operacionales Utilizadas")
+            content_parts.append("")
+            content_parts.append("Las siguientes guías operacionales fueron referenciadas o utilizadas durante estas sesiones:")
+            content_parts.append("")
+            for guide in operational_guides_used:
+                content_parts.append(f"- **{guide['name']}** - {guide['title']}")
+                content_parts.append(f"  - Archivo: `operational-guides/{guide['filename']}`")
+                content_parts.append(f"  - Tags: {', '.join(guide['tags'])}")
+                content_parts.append(f"  - Usado en: {', '.join(guide['sessions'])}")
+                content_parts.append("")
+        
         # Sección de assets si existen
         total_assets = sum(s['content_analysis']['assets_count'] for s in sessions)
         if total_assets > 0:
@@ -408,26 +468,257 @@ class MissionResumer:
         
         return cleaned_content.strip()
     
+    def _initialize_mission_resumes_structure(self):
+        """Pre-carga automáticamente toda la estructura necesaria en mission-resumes/."""
+        try:
+            # 1. Crear carpetas base
+            folders = [
+                'assets', 
+                'assets/logs', 
+                'assets/screenshots', 
+                'charts', 
+                'web-guides', 
+                'support-docs',
+                'docs'
+            ]
+            
+            for folder in folders:
+                folder_path = self.mission_resumes_dir / folder
+                folder_path.mkdir(parents=True, exist_ok=True)
+            
+            # 2. Copiar templates DOC vacíos desde playbooks/documentation_playbooks/
+            doc_templates_dir = self.base_path / 'playbooks' / 'documentation_playbooks'
+            
+            if doc_templates_dir.exists():
+                for doc_file in doc_templates_dir.glob('DOC*.md'):
+                    dest_file = self.mission_resumes_dir / doc_file.name
+                    if not dest_file.exists():  # Solo si no existe
+                        shutil.copy2(doc_file, dest_file)
+            
+            # 3. Copiar templates DOC adicionales desde playbooks/ (raíz)
+            playbooks_dir = self.base_path / 'playbooks'
+            if playbooks_dir.exists():
+                for doc_file in playbooks_dir.glob('DOC*.md'):
+                    dest_file = self.mission_resumes_dir / doc_file.name
+                    if not dest_file.exists():  # Solo si no existe
+                        shutil.copy2(doc_file, dest_file)
+                        
+        except Exception as e:
+            # No fallar si hay problemas con la inicialización
+            pass
+    
+    def _extract_web_guides_references(self, sessions: List[Dict]) -> List[Dict]:
+        """
+        Extrae referencias a web-guides de las sesiones.
+        
+        Returns:
+            Lista de web-guides referenciadas con metadatos
+        """
+        web_guides_used = {}
+        
+        # Buscar web-guides en cada sesión
+        for session in sessions:
+            session_name = session['name']
+            web_guides_dir = session['directory'] / 'web-guides'
+            
+            if web_guides_dir.exists():
+                for guide_file in web_guides_dir.glob('*.md'):
+                    try:
+                        content = guide_file.read_text(encoding='utf-8')
+                        guide_name = guide_file.stem
+                        
+                        # Extraer metadatos del contenido
+                        lines = content.split('\n')
+                        title = guide_name
+                        description = ""
+                        
+                        for line in lines[:10]:  # Buscar en las primeras líneas
+                            if line.startswith('# '):
+                                title = line[2:].strip()
+                            elif line.startswith('**Descripción:**') or line.startswith('**Description:**'):
+                                description = line.split(':', 1)[1].strip()
+                        
+                        web_guides_used[guide_name] = {
+                            'name': guide_name,
+                            'title': title,
+                            'description': description,
+                            'file_path': str(guide_file.relative_to(self.base_path)),
+                            'sessions_used': [session_name],
+                            'size': len(content)
+                        }
+                        
+                    except Exception:
+                        pass
+        
+        return list(web_guides_used.values())
+    
+    def _extract_operational_guides_references(self, sessions: List[Dict]) -> List[Dict]:
+        """
+        Extrae referencias a guías operacionales de las sesiones.
+        
+        Returns:
+            Lista de guías operacionales referenciadas con metadatos
+        """
+        guides_used = {}
+        
+        # Cargar tracking de guías operacionales
+        operational_guides_tracking = self.base_path / 'operational-guides' / '.operational-guides-tracking.json'
+        available_guides = {}
+        
+        if operational_guides_tracking.exists():
+            try:
+                with open(operational_guides_tracking, 'r', encoding='utf-8') as f:
+                    tracking_data = json.load(f)
+                    for guide in tracking_data.get('guides', []):
+                        available_guides[guide['name']] = guide
+            except Exception:
+                pass
+        
+        # Buscar referencias en el contenido de las sesiones
+        for session in sessions:
+            session_name = session['name']
+            
+            # Buscar en archivo principal
+            main_files = list(session['directory'].glob('pending-tasks-*.md'))
+            if main_files:
+                try:
+                    content = main_files[0].read_text(encoding='utf-8')
+                    self._scan_content_for_guides(content, session_name, available_guides, guides_used)
+                except Exception:
+                    pass
+            
+            # Buscar en support-docs
+            support_docs_dir = session['directory'] / 'support-docs'
+            if support_docs_dir.exists():
+                for doc_file in support_docs_dir.glob('*.md'):
+                    try:
+                        content = doc_file.read_text(encoding='utf-8')
+                        self._scan_content_for_guides(content, session_name, available_guides, guides_used)
+                    except Exception:
+                        pass
+        
+        # Convertir a lista y agregar información de sesiones
+        result = []
+        for guide_name, guide_info in guides_used.items():
+            if guide_name in available_guides:
+                guide_data = available_guides[guide_name].copy()
+                guide_data['sessions'] = guide_info['sessions']
+                result.append(guide_data)
+        
+        return result
+    
+    def _consolidate_all_assets(self, sessions: List[Dict], result: Dict):
+        """Consolida assets, charts, web-guides de todas las sesiones."""
+        assets_consolidated = 0
+        
+        try:
+            for session in sessions:
+                session_dir = session['directory']
+                session_name = session['name']
+                
+                # Consolidar assets
+                assets_consolidated += self._consolidate_folder(session_dir / 'assets', 'assets', session_name)
+                
+                # Consolidar charts
+                assets_consolidated += self._consolidate_folder(session_dir / 'charts', 'charts', session_name)
+                
+                # Consolidar web-guides
+                assets_consolidated += self._consolidate_folder(session_dir / 'web-guides', 'web-guides', session_name)
+                
+                # Consolidar support-docs
+                assets_consolidated += self._consolidate_folder(session_dir / 'support-docs', 'support-docs', session_name)
+            
+            if assets_consolidated > 0:
+                result['assets_consolidated'] = assets_consolidated
+                
+        except Exception as e:
+            result['warnings'].append(f"Error consolidando assets: {e}")
+    
+    def _consolidate_folder(self, source_dir: Path, target_folder: str, session_name: str) -> int:
+        """Consolida una carpeta específica manteniendo organización."""
+        files_copied = 0
+        
+        if not source_dir.exists():
+            return 0
+        
+        try:
+            target_dir = self.mission_resumes_dir / target_folder / session_name
+            target_dir.mkdir(parents=True, exist_ok=True)
+            
+            # Copiar todos los archivos manteniendo estructura
+            for file_path in source_dir.rglob('*'):
+                if file_path.is_file():
+                    try:
+                        relative_path = file_path.relative_to(source_dir)
+                        dest_path = target_dir / relative_path
+                        dest_path.parent.mkdir(parents=True, exist_ok=True)
+                        
+                        # Solo copiar si no existe o es más reciente
+                        if not dest_path.exists() or file_path.stat().st_mtime > dest_path.stat().st_mtime:
+                            shutil.copy2(file_path, dest_path)
+                            files_copied += 1
+                            
+                    except Exception:
+                        continue
+                        
+        except Exception:
+            pass
+            
+        return files_copied
+    
+    def _scan_content_for_guides(self, content: str, session_name: str, available_guides: Dict, guides_used: Dict):
+        """Escanea contenido buscando referencias a guías operacionales."""
+        # Buscar menciones directas de nombres de guías
+        for guide_name in available_guides.keys():
+            # Buscar por nombre exacto
+            if guide_name in content.lower():
+                if guide_name not in guides_used:
+                    guides_used[guide_name] = {'sessions': []}
+                if session_name not in guides_used[guide_name]['sessions']:
+                    guides_used[guide_name]['sessions'].append(session_name)
+        
+        # Buscar patrones de referencias a archivos de guías
+        guide_patterns = [
+            r'operational-guides/([a-zA-Z0-9-_]+)\.md',
+            r'guía\s+([a-zA-Z0-9-_]+)',
+            r'guide\s+([a-zA-Z0-9-_]+)',
+            r'siguiendo\s+([a-zA-Z0-9-_]+)',
+            r'usando\s+([a-zA-Z0-9-_]+)'
+        ]
+        
+        for pattern in guide_patterns:
+            matches = re.findall(pattern, content, re.IGNORECASE)
+            for match in matches:
+                guide_name = match.lower().replace('_', '-')
+                if guide_name in available_guides:
+                    if guide_name not in guides_used:
+                        guides_used[guide_name] = {'sessions': []}
+                    if session_name not in guides_used[guide_name]['sessions']:
+                        guides_used[guide_name]['sessions'].append(session_name)
+    
     def _copy_relevant_assets(self, sessions: List[Dict], output_dir: Path, result: Dict):
         """Copia assets relevantes de las sesiones al directorio consolidado."""
-        assets_copied = 0
+        # Crear assets directory si hay assets para copiar
         output_assets_dir = output_dir / 'assets'
+        assets_copied = 0
         
         for session in sessions:
             session_assets_dir = session['directory'] / 'assets'
             if session_assets_dir.exists():
+                output_assets_dir.mkdir(exist_ok=True)
+                
                 for asset_file in session_assets_dir.rglob('*'):
                     if asset_file.is_file():
                         try:
-                            # Crear estructura de directorios en destino
+                            # Crear estructura de directorios en destino con timestamp
                             relative_path = asset_file.relative_to(session_assets_dir)
-                            dest_path = output_assets_dir / session['name'] / relative_path
+                            timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+                            dest_path = output_assets_dir / f"{session['name']}-{timestamp}" / relative_path
                             dest_path.parent.mkdir(parents=True, exist_ok=True)
                             
                             # Copiar archivo
                             shutil.copy2(asset_file, dest_path)
                             assets_copied += 1
-                            
                         except Exception as e:
                             result['warnings'].append(f"Error copiando {asset_file}: {e}")
         
@@ -436,7 +727,7 @@ class MissionResumer:
     
     def _generate_consolidation_log(self, sessions: List[Dict], output_dir: Path, result: Dict):
         """Genera log detallado de la consolidación."""
-        log_file = output_dir / 'consolidation-log.json'
+        log_file = output_dir / f'consolidation-log-{datetime.now().strftime("%Y%m%d-%H%M%S")}.json'
         
         log_data = {
             'consolidation_timestamp': datetime.now().isoformat(),

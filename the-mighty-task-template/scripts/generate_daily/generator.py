@@ -24,7 +24,11 @@ class DailySessionGenerator:
     def __init__(self, base_path: Optional[Path] = None):
         self.base_path = Path(base_path or Path(__file__).parent.parent.parent)
         self.daily_work_dir = self.base_path / 'daily-work'
-        self.template_file = self.base_path / 'template-pendingtask.md'
+        self.template_files = {
+            'development': self.base_path / 'template-pendingtask.md',
+            'operations': self.base_path / 'template-operations.md',
+            'research': self.base_path / 'template-web-research.md'
+        }
         self.tracking_file = self.daily_work_dir / '.tracking.json'
         
         # Inicializar módulos compartidos
@@ -153,22 +157,35 @@ class DailySessionGenerator:
         
         return duplicates
     
-    def load_template_content(self) -> str:
+    def load_template_content(self, template_type: str = 'development') -> str:
         """
-        Carga el contenido del template base.
+        Cargar contenido del template según el tipo
         
+        Args:
+            template_type: Tipo de template (development, operations, operations-modular, research)
+            
         Returns:
-            Contenido del template personalizado para la sesión
+            Contenido del template como string
         """
         try:
-            if self.template_file.exists():
-                return self.template_file.read_text(encoding='utf-8')
-            else:
-                # Template por defecto si no existe archivo
-                return self._get_default_template()
+            if template_type == 'operations':
+                template_path = self.base_path / 'template-pendingtask-operations.md'
+            elif template_type == 'operations-modular':
+                template_path = self.base_path / 'template-pendingtask-operations-modular.md'
+            elif template_type == 'research':
+                template_path = self.base_path / 'template-web-research.md'
+            else:  # development (default)
+                template_path = self.base_path / 'template-pendingtask.md'
+            
+            if not template_path.exists():
+                ColoredOutput.error(f"Template no encontrado: {template_path}")
+                ColoredOutput.info(f"Asegúrate de que existe el archivo: {template_path}")
+                sys.exit(1)
+                
+            return template_path.read_text(encoding='utf-8')
         except Exception as e:
-            ColoredOutput.warning(f"Error cargando template: {e}")
-            return self._get_default_template()
+            ColoredOutput.error(f"Error leyendo template: {e}")
+            sys.exit(1)
     
     def _get_default_template(self) -> str:
         """Template por defecto si no existe archivo."""
@@ -240,44 +257,68 @@ class DailySessionGenerator:
 **Generado por:** The Mighty Task - Daily Session Generator  
 **Última actualización:** {timestamp}
 """
-    
-    def customize_template_content(self, template_content: str, date_str: str, theme: str) -> str:
+
+    def customize_template_content(self, template_content: str, date_str: str, theme: str, template_type: str = 'development') -> str:
         """
-        Personaliza el contenido del template para la sesión específica.
+        Personaliza el contenido del template con datos específicos
         
+        Args:
+            template_content: Contenido base del template
+            date_str: Fecha en formato YYYY-MM-DD
+            theme: Tema de la sesión
+            template_type: Tipo de template para personalización condicional
+            
         Returns:
             Contenido personalizado del template
         """
-        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        # Reemplazos básicos comunes a todos los templates
+        customized = template_content.replace('[FECHA]', date_str)
+        customized = customized.replace('[TEMA]', theme)
+        customized = customized.replace('[YYYY-MM-DD]', date_str)
         
-        # Obtener playbooks para el tema
-        playbooks_info = self.registry.get_playbooks_for_theme(theme)
+        # Personalización específica por tipo de template
+        if template_type == 'development':
+            # Para templates de desarrollo, incluir secciones de playbooks
+            customized = customized.replace('[PLAYBOOK_SECTIONS]', self._get_playbook_sections())
+        elif template_type == 'operations':
+            # Para templates de operaciones, usar placeholders más simples
+            customized = customized.replace('[TÍTULO DE LA OPERACIÓN]', f"OPERACIÓN: {theme}")
+            customized = customized.replace('[VERSION]', "1.0")
+            customized = customized.replace('[PORCENTAJE]', "0")
+            customized = customized.replace('[Número de fase activa]', "1 - Análisis del Sistema")
+            customized = customized.replace('[OPS-NN.X.N]', "OPS-01.A.1")
+            customized = customized.replace('[Nombre específico de la tarea en progreso]', "Inventario de Sistema")
+            customized = customized.replace('[ID-SIGUIENTE]', "OPS-01.A.2")
+            customized = customized.replace('[Descripción de la siguiente tarea]', "Análisis de Dependencias")
+        elif template_type == 'research':
+            # Para templates de investigación
+            customized = customized.replace('[TÍTULO DE LA INVESTIGACIÓN]', f"INVESTIGACIÓN: {theme}")
+            customized = customized.replace('[OBJETIVO_INVESTIGACION]', f"Investigar y documentar: {theme}")
         
-        # Generar sección de playbooks
-        playbooks_section = "### 📖 Playbooks Relevantes\n\n"
-        total_tasks = 3  # Tareas base
-        
-        for playbook in playbooks_info:
-            playbooks_section += f"- **{playbook['code']}**: {playbook['description']}\n"
-            playbooks_section += f"  - Archivo: `{playbook['filename']}`\n"
-            playbooks_section += f"  - Estado: {'✅ Disponible' if playbook['exists'] else '❌ Faltante'}\n\n"
-            total_tasks += 2  # 2 tareas por playbook
-        
-        if not playbooks_info:
-            playbooks_section += "- ⚠️ No hay playbooks específicos mapeados para este tema\n\n"
-        
-        # Reemplazar placeholders
-        customized_content = template_content.format(
-            date=date_str,
-            theme=theme,
-            timestamp=timestamp,
-            playbooks_section=playbooks_section,
-            total_tasks=total_tasks
-        )
-        
-        return customized_content
+        return customized
     
-    def create_session_structure(self, date_str: str, theme: str, force: bool = False) -> Dict[str, any]:
+    def _get_playbook_sections(self) -> str:
+        """
+        Genera secciones de playbooks para incluir en templates de desarrollo.
+        
+        Returns:
+            String con secciones de playbooks formateadas
+        """
+        return """
+## 📚 Playbooks de Referencia
+
+### Playbooks Asociados
+- Consultar playbooks originales en `playbooks/documentation_playbooks/`
+- Completar templates correspondientes en `support-docs/`
+
+### Estructura de Trabajo
+1. Revisar playbooks originales para contexto
+2. Completar templates específicos 
+3. Documentar decisiones técnicas
+4. Actualizar estados de progreso
+"""
+    
+    def create_session_structure(self, date_str: str, theme: str, force: bool = False, template_type: str = 'development') -> Dict[str, any]:
         """
         Crea la estructura completa de la sesión.
         
@@ -328,8 +369,8 @@ class DailySessionGenerator:
             
             # Crear archivo principal de tareas
             main_file = session_dir / f"pending-tasks-{session_name}.md"
-            template_content = self.load_template_content()
-            customized_content = self.customize_template_content(template_content, date_str, theme)
+            template_content = self.load_template_content(template_type)
+            customized_content = self.customize_template_content(template_content, date_str, theme, template_type)
             
             main_file.write_text(customized_content, encoding='utf-8')
             result['files_created'].append(str(main_file))
