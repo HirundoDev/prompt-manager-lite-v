@@ -1,8 +1,8 @@
 # The Mighty Task - Flujo Completo del Sistema
 
 **Fecha:** 2025-08-26  
-**Versión:** 4.0  
-**Estado:** Sistema Modular con Guías Operacionales Independientes Implementado
+**Versión:** 5.0  
+**Estado:** Sistema Completo con Mission-Resumer v5.0 y Dashboard Web Moderno
 
 ---
 
@@ -18,6 +18,8 @@
 7. **🆕 Error tracking integrado** con códigos únicos y metodología universal
 8. **🆕 Guías operacionales independientes** con gestión modular y tracking separado
 9. **🆕 Temas operacionales** para instalaciones, investigación, planificación y análisis
+10. **🆕 Mission-Resumer v5.0** con consolidación automática y estructura única por tema
+11. **🆕 Dashboard Web Moderno** con Svelte 5 para gestión visual completa del sistema
 
 ---
 
@@ -65,14 +67,17 @@ the-mighty-task/
 │   ├── 2024-01-15_BACKEND-API-SETUP-report.md            # Reporte Markdown
 │   └── weekly-summary.html                                # Resúmenes semanales
 │
-├── 📂 mission-resumes/                    # Consolidación final
-│   ├── DOC006-BackendArchitecture.md                     # Playbooks fusionados
-│   ├── DOC007-BackendDependencies.md                     # (nombres originales)
-│   ├── assets/                                           # Assets consolidados
-│   ├── charts/                                           # Charts consolidados
-│   ├── support-docs/                                     # Docs adicionales
-│   ├── consolidation-log.json                            # Log de consolidación
-│   └── consolidation-resume.md                           # Resumen final
+├── 📂 mission-resumes/                    # 🆕 Punto único de consolidación automática
+│   ├── 📂 docs/                           # Consolidaciones únicas por tema
+│   │   ├── BACKEND-API-SETUP.md           # Un archivo único por tema
+│   │   ├── FRONTEND-COMPONENTS.md         # Un archivo único por tema
+│   │   └── [otros-temas].md               # Archivos únicos por tema
+│   ├── 📂 assets/                         # Assets consolidados por sesión
+│   ├── 📂 charts/                         # Charts consolidados por sesión
+│   ├── 📂 web-guides/                     # Web-guides consolidadas por sesión
+│   ├── 📂 support-docs/                   # Support-docs consolidados por sesión
+│   ├── DOC003-DOC036.md                   # Templates DOC pre-cargados automáticamente
+│   └── consolidation-log-*.json           # Logs detallados de consolidación
 │
 ├── 📂 operational-guides/                 # 🆕 Guías operacionales independientes (v4.0)
 │   ├── .operational-guides-tracking.json                 # Tracking independiente
@@ -92,37 +97,43 @@ the-mighty-task/
 │   ├── OPERATIONAL-GUIDES-SYSTEM.md                      # 🆕 Sistema guías operacionales
 │   └── MANUAL-COMANDOS-COMPLETO.md                        # Manual de comandos
 │
-└├── 📂 scripts/                            # Scripts de automatización (ARQUITECTURA MODULAR)
-    ├── 📂 generate_daily/                               # Módulo de generación diaria
-    │   ├── generator.py                                  # Lógica principal de generación
-    │   ├── cli.py                                        # Interface de línea de comandos
-    │   └── generate-daily.md                             # Documentación del módulo
-    ├── 📂 mission_resumer/                              # Módulo de consolidación
-    │   ├── resumer.py                                    # Lógica de consolidación inteligente
-    │   ├── cli.py                                        # Interface de línea de comandos
-    │   └── mission-resumer.md                            # Documentación del módulo
-    ├── 📂 consistency_checker/                          # Módulo de verificación
-    │   ├── checker.py                                    # Orquestador principal
-    │   ├── checker_methods.py                            # Métodos de verificación
-    │   ├── checker_utils.py                              # Utilidades y estadísticas
-    │   ├── cli.py                                        # Interface de línea de comandos
-    │   └── consistency-checker.md                        # Documentación del módulo
-    ├── 📂 status_checker/                               # Módulo de monitoreo
-    │   ├── status.py                                     # Análisis de estado del sistema
-    │   ├── display.py                                    # Presentación de información
-    │   ├── cli.py                                        # Interface de línea de comandos
-    │   └── status-checker.md                             # Documentación del módulo
-    ├── 📂 shared/                                       # Utilidades compartidas
-    │   ├── template_detector.py                          # Detección inteligente de templates
-    │   ├── playbook_registry.py                          # Registro central de playbooks
-    │   └── colored_output.py                             # Salida colorizada consistente
-    ├── generate-daily.py                                 # Entry point modular
-    ├── mission-resumer.py                                # Entry point modular
-    ├── consistency-checker.py                            # Entry point modular
-    ├── status-checker.py                                 # Entry point modular
-    ├── playbook-processor.py                             # Parsear playbooks → templates
-    ├── report-generator.py                               # Generar reportes HTML/MD
-    ├── web-guide-manager.py                              # Gestión de web-guides
+│
+├── 📂 the-mighty-dashboard/               # 🆕 Dashboard Web Moderno con Svelte 5
+│   ├── PLAN-DASHBOARD-COMPLETO.md                             # Plan completo del dashboard
+│   ├── src/                                                   # Código fuente Svelte
+│   ├── package.json                                           # Dependencias del dashboard
+│   └── README.md                                              # Documentación del dashboard
+│
+└── 📂 scripts/                            # Scripts del sistema modular v5.0
+    ├── 📂 generate_daily/                                      # Generación de sesiones
+    │   ├── cli.py                                              # CLI principal
+    │   ├── generator.py                                        # Lógica de generación
+    │   └── __init__.py
+    ├── 📂 mission_resumer/                                     # 🆕 Consolidación v5.0 automática
+    │   ├── cli.py                                              # CLI de consolidación
+    │   ├── resumer.py                                          # Lógica con pre-carga automática
+    │   └── __init__.py
+    ├── 📂 consistency_checker/                                 # Verificación de integridad
+    │   ├── cli.py                                              # CLI de verificación
+    │   ├── checker.py                                          # Lógica de verificación
+    │   └── __init__.py
+    ├── 📂 status_checker/                                      # Monitoreo del sistema
+    │   ├── cli.py                                              # CLI de estado
+    │   ├── status.py                                           # Análisis de estado
+    │   ├── display.py                                          # Visualización
+    │   └── __init__.py
+    ├── 📂 shared/                                              # Utilidades compartidas
+    │   ├── template_detector.py                                # Detección de templates
+    │   ├── playbook_registry.py                                # Registro de playbooks
+    │   ├── colored_output.py                                   # Salida con colores
+    │   └── __init__.py
+    ├── 📄 generate-daily.py                                    # Script principal generación
+    ├── 📄 mission-resumer.py                                   # 🆕 Script consolidación v5.0
+    ├── 📄 consistency-checker.py                               # Script principal verificación
+    ├── 📄 status-checker.py                                    # Script principal estado
+    ├── 📄 playbook-processor.py                                # Procesador de playbooks
+    ├── 📄 report-generator.py                                  # Generador de reportes
+    ├── 📄 web-guide-manager.py                                 # 🆕 Gestor de guías web-guides
     ├── operation-guide-manager.py                        # 🆕 Gestión de guías operacionales (v4.0)
     ├── maintenance.py                                     # Herramientas de mantenimiento
     └── test-system.py                                     # Suite completa de testing
@@ -130,7 +141,7 @@ the-mighty-task/
 
 ---
 
-## 🔄 **FLUJO COMPLETO DE TRABAJO** (ARQUITECTURA MODULAR v2.0)
+## 🔄 **FLUJO COMPLETO DE TRABAJO** (ARQUITECTURA MODULAR v5.0)
 
 ### **PASO 1: Crear Sesión de Trabajo Diaria**
 
@@ -283,32 +294,42 @@ python3 scripts/operation-guide-manager.py --search --name "installation"
 python3 scripts/operation-guide-manager.py --list
 ```
 
-### **PASO 7: Consolidación Final (SISTEMA MODULAR INTELIGENTE)**
+### **PASO 7: Consolidación Final (MISSION-RESUMER v5.0 - SISTEMA AUTOMÁTICO)**
 
 ```bash
-# Consolidar y fusionar múltiples sesiones del mismo tema (MODULAR)
-python3 scripts/mission-resumer.py --theme="BACKEND-API"
+# 🆕 Consolidar tema - genera UN archivo único automáticamente
+python3 scripts/mission_resumer/cli.py --theme="BACKEND-API-SETUP" --min-completion=0 --output="test"
+# Resultado: mission-resumes/docs/BACKEND-API-SETUP.md (archivo único)
 
-# Opciones avanzadas del sistema modular
-python3 scripts/mission-resumer.py --theme="BACKEND" --validation-only
-python3 scripts/mission-resumer.py --theme="BACKEND" --output-name="custom-name"
-python3 scripts/mission-resumer.py --list-sessions
+# Listar sesiones disponibles para consolidación
+python3 scripts/mission_resumer/cli.py --list-sessions
+
+# 🆕 Sistema completamente automático - regenera TODO desde cero
+# Si se elimina mission-resumes/, se regenera automáticamente con:
+# - Estructura completa (assets/, charts/, web-guides/, support-docs/, docs/)
+# - 12 DOC templates pre-cargados
+# - Consolidación de todos los assets por sesión
+# - Un archivo único por tema en docs/
 ```
 
-**¿Qué hace? (CONSOLIDACIÓN INTELIGENTE)**
+**¿Qué hace? (CONSOLIDACIÓN v5.0 AUTOMÁTICA)**
+- **🆕 Pre-carga automática** de estructura completa en mission-resumes/
+- **🆕 Copia automática** de 12 DOC templates desde playbooks/
+- **🆕 Consolidación única** - UN archivo por tema en docs/
+- **🆕 Replicabilidad total** - regenera todo desde cero automáticamente
 - **Escaneo inteligente** de sesiones con filtros por tema
 - **Detección de templates** vs contenido real para evitar duplicación
 - **Fusión sin pérdida** de información entre múltiples sesiones
-- **Validación previa** antes de consolidar
-- **Copia inteligente** de assets evitando duplicados
+- **Copia inteligente** de assets, charts, web-guides y support-docs por sesión
 - **Log detallado** de todas las operaciones realizadas
-- **Actualización automática** del tracking del sistema
 
-**Resultado esperado:**
-✅ Playbooks fusionados directamente en `mission-resumes/DOCxxx-*.md`  
-✅ Assets consolidados en `mission-resumes/assets/`  
-✅ Charts consolidados en `mission-resumes/charts/`  
-✅ Log detallado en `mission-resumes/consolidation-log.json`
+**Resultado esperado (v5.0):**
+✅ **Estructura automática:** assets/, charts/, web-guides/, support-docs/, docs/  
+✅ **Templates pre-cargados:** DOC003-DOC036.md en raíz de mission-resumes/  
+✅ **Consolidación única:** docs/BACKEND-API-SETUP.md (UN archivo por tema)  
+✅ **Assets por sesión:** mission-resumes/assets/session-name/  
+✅ **Charts por sesión:** mission-resumes/charts/session-name/  
+✅ **Log detallado:** consolidation-log-*.json con timestamps
 
 ---
 
@@ -576,7 +597,12 @@ python3 scripts/generate_daily/cli.py --date="$(date +%Y-%m-%d)" --theme="BACKEN
 python3 scripts/playbook-processor.py --date="$(date +%Y-%m-%d)" --theme="BACKEND-API-SETUP"
 # [Trabajar en la sesión]
 python3 scripts/report-generator.py --date="$(date +%Y-%m-%d)" --theme="BACKEND-API-SETUP"
-python3 scripts/mission_resumer/cli.py --theme="BACKEND-API"
+python3 scripts/mission_resumer/cli.py --theme="BACKEND-API-SETUP" --min-completion=0 --output="final"
+
+# 🆕 Dashboard Web Moderno (v5.0)
+cd the-mighty-dashboard/
+npm run dev  # Servidor de desarrollo Svelte
+# Acceder a http://localhost:5173 para gestión visual completa
 
 # 🆕 Flujo completo típico - OPERACIONAL (v4.0)
 python3 scripts/operation-guide-manager.py --create "docker-setup" --title "Docker Setup" --tags "docker,setup"

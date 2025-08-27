@@ -1,0 +1,31 @@
+{
+  "project_id": "TESTORG-DEMOAPIPROJECT-20250826200936",
+  "name": "Demo API Project",
+  "organization": "TestOrg",
+  "description": "Proyecto de demostración para testing de arquitectura dual",
+  "created_at": "2025-08-26T20:09:36.220271",
+  "last_modified": "2025-08-26T20:09:36.220271",
+  "version": "1.0.0",
+  "tags": [],
+  "owner": "",
+  "collaborators": [],
+  "settings": {
+    "default_template": "development",
+    "auto_backup": true,
+    "compression_level": 6,
+    "export_format": "mtp"
+  },
+  "statistics": {
+    "total_sessions": 0,
+    "total_reports": 0,
+    "total_mission_resumes": 0,
+    "last_activity": "2025-08-26T20:09:36.220271"
+  },
+  "paths": {
+    "daily_work": "daily-work",
+    "mission_resumes": "mission-resumes",
+    "playbooks": "playbooks",
+    "reports": "reports",
+    "operational_guides": "operational-guides"
+  }
+}

@@ -1,0 +1,182 @@
+# The Mighty Task - Arquitectura Dual Dashboard
+# .gitignore global para todos los proyectos
+
+# === NODE.JS / JAVASCRIPT ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.next
+.nuxt
+.nitro
+.cache
+.parcel-cache
+.vscode-test
+*.tsbuildinfo
+coverage/
+.nyc_output
+
+# === PYTHON ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+.venv/
+ENV/
+env/
+.ENV/
+
+# IDE - Python
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# === RUST / TAURI ===
+target/
+Cargo.lock
+
+# === SVELTE / VITE ===
+.svelte-kit/
+dist/
+build/
+.vercel
+.netlify
+
+# === LOGS ===
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# === RUNTIME DATA ===
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# === DEPLOYMENT ===
+/deploy
+
+# === TESTING ===
+coverage/
+.nyc_output
+jest.config.js
+*.test.js
+*.spec.js
+
+# === MISC ===
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.tmp
+*.temp
+.cache/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# === DATABASE ===
+*.db
+*.sqlite
+*.sqlite3
+data/
+*.sql
+
+# === BACKUP FILES ===
+*.bak
+*.backup
+*.old
+*.orig
+
+# === OS GENERATED FILES ===
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# === TEMP FILES ===
+*.tmp
+*.temp
+.tmp/
+.temp/
+
+# === PROJECT SPECIFIC ===
+# Dashboard Local
+the-mighty-dashboard-local/build/
+the-mighty-dashboard-local/dist/
+
+# Dashboard Server
+the-mighty-dashboard-server/__pycache__/
+the-mighty-dashboard-server/venv/
+the-mighty-dashboard-server/*.db
+
+# Template Project
+the-mighty-task-template/daily-work/
+the-mighty-task-template/__pycache__/
+the-mighty-task-template/venv/
+the-mighty-task-template/*.db
+
+# === CONFIG FILES ===
+.env
+.env.local
+.env.development
+.env.production
+config.local.json
+config.development.json
+secrets.json
+
+# === LOCK FILES ===
+package-lock.json
+yarn.lock
+Pipfile.lock
+poetry.lock
+
+# === DOCUMENTATION BUILD ===
+docs/build/
+docs/.vuepress/dist/
+*.pdf
+*.docx
+
+# === DEBUG FILES ===
+debug.log
+*.min.js.map
+*.min.css.map

@@ -1,8 +1,8 @@
-# GUÍA DE MISSION-RESUMES - The Mighty Task v3.1
+# GUÍA DE MISSION-RESUMES - The Mighty Task v5.0
 
-**Fecha:** 2025-08-25  
-**Versión:** 3.1  
-**Propósito:** Consolidación inteligente de sesiones múltiples en resúmenes ejecutivos
+**Fecha:** 2025-08-26  
+**Versión:** 5.0  
+**Propósito:** Consolidación automática con estructura única por tema y replicabilidad total
 
 ---
 
@@ -10,11 +10,14 @@
 
 Los Mission-Resumes transforman múltiples sesiones diarias en **documentos ejecutivos consolidados** que preservan el conocimiento técnico y eliminan la redundancia.
 
-### **Principios Fundamentales:**
-1. **Consolidación sin pérdida** - Preservar información técnica crítica
-2. **Deduplicación inteligente** - Eliminar repetición manteniendo valor único
-3. **Estructura ejecutiva** - Formato para stakeholders y futuras referencias
-4. **Trazabilidad completa** - Enlaces a sesiones fuente y artefactos
+### **Principios Fundamentales v5.0:**
+1. **🆕 Consolidación automática** - Sistema completamente replicable desde cero
+2. **🆕 Estructura única por tema** - UN archivo consolidado por tema en docs/
+3. **🆕 Pre-carga automática** - Templates y estructura generados automáticamente
+4. **Consolidación sin pérdida** - Preservar información técnica crítica
+5. **Deduplicación inteligente** - Eliminar repetición manteniendo valor único
+6. **Estructura ejecutiva** - Formato para stakeholders y futuras referencias
+7. **Trazabilidad completa** - Enlaces a sesiones fuente y artefactos
 
 ---
 
@@ -23,8 +26,8 @@ Los Mission-Resumes transforman múltiples sesiones diarias en **documentos ejec
 ### **1. IDENTIFICAR SESIONES RELACIONADAS**
 
 ```bash
-# Listar sesiones por tema
-python scripts/mission-resumer.py --list-sessions --theme "BACKEND-API-SETUP"
+# 🆕 Listar sesiones por tema (v5.0)
+python3 scripts/mission_resumer/cli.py --list-sessions
 
 # Resultado esperado:
 # 2025-08-25_BACKEND-API-SETUP
@@ -48,18 +51,28 @@ python scripts/consistency-checker.py --check-duplicates
 - ✅ Historial granular presente
 - ✅ Artefactos referenciados existen
 
-### **3. EJECUTAR CONSOLIDACIÓN**
+### **3. EJECUTAR CONSOLIDACIÓN (v5.0 - AUTOMÁTICA)**
 
 ```bash
-# Consolidar sesiones en mission-resume
-python scripts/mission-resumer.py --theme "BACKEND-API-SETUP" --consolidate-sessions --auto-deduplicate
+# 🆕 Consolidar tema - genera UN archivo único automáticamente
+python3 scripts/mission_resumer/cli.py --theme="BACKEND-API-SETUP" --min-completion=0 --output="final"
+# Resultado: mission-resumes/docs/BACKEND-API-SETUP.md (archivo único)
+
+# 🆕 Sistema completamente automático - regenera TODO desde cero
+# Si se elimina mission-resumes/, se regenera automáticamente con:
+# - Estructura completa (assets/, charts/, web-guides/, support-docs/, docs/)
+# - 12 DOC templates pre-cargados
+# - Consolidación de todos los assets por sesión
+# - Un archivo único por tema en docs/
 ```
 
-**Proceso interno:**
-1. **Análisis de contenido** - Identificar secciones similares
-2. **Deduplicación inteligente** - Merge de información redundante
-3. **Consolidación de artefactos** - Unificar web-guides y documentación
-4. **Generación de estructura ejecutiva** - Formato final optimizado
+**Proceso interno v5.0:**
+1. **🆕 Pre-carga automática** - Crea estructura completa y copia templates DOC
+2. **🆕 Consolidación única** - UN archivo por tema en docs/
+3. **Análisis de contenido** - Identificar secciones similares usando tema de sesión
+4. **Deduplicación inteligente** - Merge de información redundante
+5. **🆕 Consolidación por sesión** - Assets, charts, web-guides y support-docs organizados por sesión
+6. **🆕 Replicabilidad total** - Sistema regenera todo automáticamente
 
 ---
 
@@ -277,40 +290,52 @@ src/
 
 ## 🛠️ **COMANDOS DE GESTIÓN**
 
-### **Crear Mission-Resume**
+### **Crear Mission-Resume (v5.0)**
 ```bash
-# Consolidación automática
-python scripts/mission-resumer.py --theme "BACKEND-API-SETUP" --consolidate-sessions
+# 🆕 Consolidación automática v5.0 - genera archivo único
+python3 scripts/mission_resumer/cli.py --theme="BACKEND-API-SETUP" --min-completion=0 --output="final"
+# Resultado: mission-resumes/docs/BACKEND-API-SETUP.md
 
-# Con deduplicación específica
-python scripts/mission-resumer.py --theme "BACKEND-API-SETUP" --consolidate-sessions --auto-deduplicate
+# 🆕 Sistema automático - regenera estructura completa
+python3 scripts/mission_resumer/cli.py --theme="FRONTEND-COMPONENTS" --min-completion=0 --output="production"
+# Resultado: mission-resumes/docs/FRONTEND-COMPONENTS.md
 
-# Con validación previa
-python scripts/mission-resumer.py --theme "BACKEND-API-SETUP" --validate-first --consolidate-sessions
+# Listar sesiones disponibles
+python3 scripts/mission_resumer/cli.py --list-sessions
 ```
 
-### **Gestionar Mission-Resumes Existentes**
+### **🆕 Estructura Automática v5.0**
 ```bash
-# Listar mission-resumes
-python scripts/mission-resumer.py --list-resumes
+# Ver estructura generada automáticamente
+ls -la mission-resumes/
+# assets/          # Assets consolidados por sesión
+# charts/          # Charts consolidados por sesión  
+# web-guides/      # Web-guides consolidadas por sesión
+# support-docs/    # Support-docs consolidados por sesión
+# docs/            # Consolidaciones únicas por tema
+# DOC003-DOC036.md # Templates pre-cargados automáticamente
 
-# Actualizar mission-resume existente
-python scripts/mission-resumer.py --update-resume "DOC001-BACKEND-API-SETUP.md" --add-session "2025-08-28_BACKEND-API-SETUP-4"
-
-# Validar calidad de mission-resume
-python scripts/mission-resumer.py --validate-resume "DOC001-BACKEND-API-SETUP.md"
+# Ver consolidaciones únicas por tema
+ls -la mission-resumes/docs/
+# BACKEND-API-SETUP.md     # UN archivo único por tema
+# FRONTEND-COMPONENTS.md   # UN archivo único por tema
+# [otros-temas].md         # Archivos únicos por tema
 ```
 
-### **Análisis y Reportes**
+### **🆕 Características v5.0**
 ```bash
-# Generar reporte de consolidación
-python scripts/mission-resumer.py --consolidation-report --theme "BACKEND-API-SETUP"
+# 🆕 Replicabilidad total - eliminar y regenerar todo
+rm -rf mission-resumes/
+python3 scripts/mission_resumer/cli.py --theme="BACKEND-API-SETUP" --min-completion=0 --output="test"
+# Regenera automáticamente: estructura + templates + consolidación
 
-# Análisis de duplicación
-python scripts/mission-resumer.py --duplication-analysis --resume "DOC001-BACKEND-API-SETUP.md"
+# 🆕 Verificar logs de consolidación con timestamps
+cat mission-resumes/consolidation-log-*.json
+# Muestra: operaciones realizadas, archivos copiados, timestamps
 
-# Métricas de calidad
-python scripts/mission-resumer.py --quality-metrics --resume "DOC001-BACKEND-API-SETUP.md"
+# 🆕 Validar estructura automática
+python3 scripts/status_checker/cli.py --resumes
+# Muestra: archivos únicos por tema, assets por sesión, estructura completa
 ```
 
 ---
@@ -325,7 +350,10 @@ python scripts/mission-resumer.py --quality-metrics --resume "DOC001-BACKEND-API
 - ✅ **Consolidado:** Sin información duplicada
 - ✅ **Validado:** Pruebas tangibles documentadas
 
-### **Métricas de Consolidación:**
+### **🆕 Métricas de Consolidación v5.0:**
+- **🆕 Archivos únicos:** 1 archivo por tema en docs/
+- **🆕 Estructura automática:** 100% replicable desde cero
+- **🆕 Templates pre-cargados:** 12 DOC templates automáticamente
 - **Reducción de contenido:** 60-80% menos texto que sesiones originales
 - **Preservación de información:** 100% de datos técnicos críticos
 - **Deduplicación:** 0% contenido duplicado

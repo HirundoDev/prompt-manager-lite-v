@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables CSS personalizadas */
+:root {
+  --mighty-primary: #3b82f6;
+  --mighty-primary-dark: #1d4ed8;
+  --mighty-secondary: #64748b;
+  --mighty-success: #22c55e;
+  --mighty-warning: #f59e0b;
+  --mighty-error: #ef4444;
+  --mighty-bg: #f8fafc;
+  --mighty-bg-dark: #0f172a;
+  --mighty-text: #1e293b;
+  --mighty-text-dark: #f1f5f9;
+}
+
+/* Estilos base */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--mighty-bg);
+  color: var(--mighty-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Modo oscuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --mighty-bg: var(--mighty-bg-dark);
+    --mighty-text: var(--mighty-text-dark);
+  }
+}
+
+/* Componentes personalizados */
+.mighty-card {
+  @apply bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6;
+}
+
+.mighty-button {
+  @apply inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm transition-colors duration-200;
+}
+
+.mighty-button-primary {
+  @apply mighty-button bg-primary-600 hover:bg-primary-700 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500;
+}
+
+.mighty-button-secondary {
+  @apply mighty-button bg-gray-200 hover:bg-gray-300 text-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-100;
+}
+
+.mighty-input {
+  @apply block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-primary-500 focus:border-primary-500;
+}
+
+.mighty-badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.mighty-badge-success {
+  @apply mighty-badge bg-success-100 text-success-800 dark:bg-success-900 dark:text-success-200;
+}
+
+.mighty-badge-warning {
+  @apply mighty-badge bg-warning-100 text-warning-800 dark:bg-warning-900 dark:text-warning-200;
+}
+
+.mighty-badge-error {
+  @apply mighty-badge bg-error-100 text-error-800 dark:bg-error-900 dark:text-error-200;
+}
+
+.mighty-badge-info {
+  @apply mighty-badge bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200;
+}
+
+/* Animaciones personalizadas */
+.mighty-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.mighty-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Scrollbar personalizado */
+.mighty-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+.mighty-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mighty-scrollbar::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.mighty-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.mighty-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Estilos para código */
+.mighty-code {
+  @apply font-mono text-sm bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded border;
+}
+
+.mighty-code-block {
+  @apply font-mono text-sm bg-gray-100 dark:bg-gray-800 p-4 rounded-lg border overflow-x-auto mighty-scrollbar;
+}
+
+/* Transiciones suaves */
+.mighty-transition {
+  @apply transition-all duration-200 ease-in-out;
+}
